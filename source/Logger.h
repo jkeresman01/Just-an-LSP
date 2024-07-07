@@ -25,7 +25,7 @@ public:
                     const char* file,
                     uint32_t line) 
     {
-        std::ofstream logfile("/home/josip/faks/semestar_2/SPA/test/log.txt", std::ios::app);
+        std::ofstream logfile("~/faks/semestar_2/SPA/test/log.txt", std::ios::app);
 
         if (!logfile) 
         {
