@@ -1,11 +1,11 @@
 #pragma once
 
+#include <chrono>
 #include <cstdint>
-#include <iomanip>
+#include <ctime>
 #include <iostream>
 #include <fstream>
-#include <ctime>
-#include <chrono>
+#include <iomanip>
 
 #define LOG(severity, msg) Logger::log(severity, msg, __FILE__, __LINE__)
 
