@@ -57,7 +57,6 @@ void LanguageServer::handleRequest(const std::string& request)
     try 
     {
         logReceivedMethodRequest(request);
-        //TODO: call responde based on appropriate message
     } 
     catch (const std::exception& e) 
     {
@@ -68,6 +67,7 @@ void LanguageServer::handleRequest(const std::string& request)
 void LanguageServer::logReceivedMethodRequest(const std::string& request)
 {
     auto jsonRequest = parseRequest(request);
+
     if (jsonRequest.find("method") != jsonRequest.end()) 
     {
         std::string method = std::string(jsonRequest["method"]);
