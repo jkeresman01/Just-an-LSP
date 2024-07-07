@@ -11,7 +11,7 @@ RequestMessage::RequestMessage(const std::string& jsonRPC,
     m_method(method),
     m_id(id)
 {
-};
+}
 
 nlohmann::json RequestMessage::toJson() const 
 {
