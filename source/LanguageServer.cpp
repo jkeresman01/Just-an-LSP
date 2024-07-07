@@ -56,18 +56,22 @@ void LanguageServer::handleRequest(const std::string& request)
 {
     try 
     {
-        auto jsonRequest = parseRequest(request);
-        if (jsonRequest.find("method") != jsonRequest.end()) 
-        {
-            std::string method = std::string(jsonRequest["method"]);
-            LOG_INFO("Received request with method: " + method);
-        }
-
+        logReceivedMethodRequest(request);
         //TODO: call responde based on appropriate message
     } 
     catch (const std::exception& e) 
     {
         LOG_ERROR("Failed to handle request: " + std::string(e.what()));
+    }
+}
+
+void LanguageServer::logReceivedMethodRequest(const std::string& request)
+{
+    auto jsonRequest = parseRequest(request);
+    if (jsonRequest.find("method") != jsonRequest.end()) 
+    {
+        std::string method = std::string(jsonRequest["method"]);
+        LOG_INFO("Received request with method: " + method);
     }
 }
 
