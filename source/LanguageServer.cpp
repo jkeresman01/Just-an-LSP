@@ -10,7 +10,8 @@ LanguageServer::LanguageServer()
     LOG_INFO("Language server has successfully started!");
 }
 
-void LanguageServer::run() {
+void LanguageServer::run() 
+{
     while (true) 
     {
         std::string request = readRequest();
@@ -57,7 +58,7 @@ void LanguageServer::handleRequest(const std::string& request)
         if (jsonRequest.find("method") != jsonRequest.end()) 
         {
             std::string method = std::string(jsonRequest["method"]);
-            lsp::LOG_INFO("Received request with method: " + method);
+            LOG_INFO("Received request with method: " + method);
         }
 
         //TODO: call responde based on appropriate message
