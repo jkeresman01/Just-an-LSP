@@ -2,6 +2,10 @@
 Language Server is to provide the language-specific smarts inside a server that can communicate with development tooling over a protocol that enables inter-process communication.
 
 ## Neovim as client
+Nvim supports the Language Server Protocol (LSP), which means it acts as a client to LSP servers and includes a Lua framework `vim.lsp` for building enhanced LSP tools.
+
+Configure the LSP client per language server. See |vim.lsp.start()| or use this minimal example as a guide:
+
 ```Lua
 local client = vim.lsp.start({
     name = 'just-an-lsp',
@@ -14,4 +18,9 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.lsp.buf_attach_client(0, client)
     end
 })
+```
+Check that the server is attached to the buffer:
+
+```Lua
+:lua =vim.lsp.get_clients()
 ```
