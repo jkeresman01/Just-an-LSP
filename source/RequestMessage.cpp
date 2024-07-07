@@ -4,7 +4,7 @@
 namespace lsp
 {
 
-RequestMessage::RequestMessage(const std::string &jsonRPC,
+RequestMessage::RequestMessage(const std::string& jsonRPC,
                                const std::string& method,
                                int32_t id)
     :Message(jsonRPC),
