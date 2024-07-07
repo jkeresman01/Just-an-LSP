@@ -30,6 +30,7 @@ public:
         if (!logfile) 
         {
             std::cerr << "Failed to open log file!" << std::endl;
+            return;
         }
 
         auto now = std::chrono::high_resolution_clock::now();
@@ -38,6 +39,8 @@ public:
         logfile << "[" << std::put_time(std::localtime(&time), "%Y-%m-%d %H:%M:%S") << "] ";
         logfile << "[" << file << ":" << line << "]\t" <<  severity << ":  ";
         logfile << message << std::endl;
+
+        logfile.close();
     }
 };
 
