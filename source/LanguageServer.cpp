@@ -74,8 +74,8 @@ void LanguageServer::logReceivedMethodRequest(const std::string& request)
         return;
     }
 
-        std::string method = std::string(jsonRequest["method"]);
-        LOG_INFO("Received request with method: " + method);
+    std::string method = std::string(jsonRequest["method"]);
+    LOG_INFO("Received request with method: " + method);
 }
 
 nlohmann::json LanguageServer::parseRequest(const std::string& content) 
