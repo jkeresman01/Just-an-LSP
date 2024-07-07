@@ -41,7 +41,7 @@ std::string LanguageServer::readRequest()
 
     if (contentLength == 0) 
     {
-        lsp::LOG_ERROR("No valid content length found!");
+        LOG_ERROR("No valid content length found!");
         return "";
     }
 
