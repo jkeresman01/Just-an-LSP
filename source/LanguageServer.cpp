@@ -7,11 +7,13 @@ namespace lsp
 
 LanguageServer::LanguageServer()
 {
-    LOG_INFO("Language server has successfully started!");
+    LOG_INFO("Instace of Language server was successfully created!");
 }
 
 void LanguageServer::run() 
 {
+    LOG_INFO("Language server has successfully started!");
+
     while (true) 
     {
         std::string request = readRequest();
