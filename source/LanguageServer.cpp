@@ -49,7 +49,6 @@ std::string LanguageServer::readRequest()
     std::cin.read(&content[0], contentLength);
 
     return content;
-
 }
 
 void LanguageServer::handleRequest(const std::string& request) 
