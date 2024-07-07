@@ -1,3 +1,4 @@
+# !!!!!!!!!!!! THIS ISN'T BAKED YET !!!!!!!!!!!! 
 # Just-an-LSP
 Just-an-LSP is an attempt to build a toy Language Server for the C++ programming language.
 
