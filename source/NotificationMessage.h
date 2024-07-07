@@ -6,13 +6,15 @@
 
 namespace lsp
 {
-    class NotificationMessage : Message
-    {
-        public:
-            NotificationMessage(const std::string &method);
 
-        private:
-            std::string m_method;
-    };
-    
+class NotificationMessage : Message
+{
+    public:
+        NotificationMessage(const std::string &method,
+                            const std::string &jsonRPC);
+
+    private:
+        std::string m_method;
+};
+
 } // lsp
