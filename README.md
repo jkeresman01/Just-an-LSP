@@ -28,7 +28,7 @@ if not client then
 end
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "text",
+    pattern = "cpp",
     callback = function()
         vim.lsp.buf_attach_client(0, client)
     end
