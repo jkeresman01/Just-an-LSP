@@ -20,7 +20,7 @@ namespace lsp
 class Logger 
 {
 public:
-    static void log(const std::string &severity,
+    static void log(const std::string& severity,
                     const std::string& message,
                     const char* file,
                     uint32_t line) 
