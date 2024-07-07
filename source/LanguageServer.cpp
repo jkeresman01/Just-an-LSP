@@ -68,11 +68,14 @@ void LanguageServer::logReceivedMethodRequest(const std::string& request)
 {
     auto jsonRequest = parseRequest(request);
 
-    if (jsonRequest.find("method") != jsonRequest.end()) 
+    if(jsonRequest.find("method") == jsonRequest.end())
     {
+        LOG_ERROR("Received request with no method!");
+        return;
+    }
+
         std::string method = std::string(jsonRequest["method"]);
         LOG_INFO("Received request with method: " + method);
-    }
 }
 
 nlohmann::json LanguageServer::parseRequest(const std::string& content) 
