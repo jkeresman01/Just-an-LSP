@@ -35,5 +35,5 @@ ResponseMessage ResponseMessage::Builder::build() const
     return ResponseMessage(m_jsonRPC, m_result, m_responseError);
 }
 
-} // namespace lsp
+} // lsp
 
