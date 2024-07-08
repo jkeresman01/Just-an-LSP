@@ -3,7 +3,7 @@
 namespace lsp
 {
 
-ResponseMessage::ResponseMessage(const std::string &jsonRPC,
+ResponseMessage::ResponseMessage(const std::string& jsonRPC,
                                  const std::optional<std::string>& result,
                                  const std::optional<ResponseError>& responseError)
     : Message(jsonRPC),
