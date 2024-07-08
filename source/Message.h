@@ -12,7 +12,7 @@ class Message
     public:
         Message(const std::string& jsonRPC) : m_jsonRPC(jsonRPC){};
 
-        virtual nlohmann::json toJson() const = 0;
+        virtual nlohmann::json toJson() const;
 
     protected:
         std::string m_jsonRPC;
