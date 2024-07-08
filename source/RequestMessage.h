@@ -8,7 +8,7 @@
 namespace lsp
 {
 
-class RequestMessage : Message
+class RequestMessage : public Message
 {
     RequestMessage(const std::string& jsonRPC,
                    const std::string& method,
@@ -16,7 +16,7 @@ class RequestMessage : Message
 
     nlohmann::json toJson() const override;
     
-    private:
+    protected:
         int32_t m_id;
         std::string m_method;
 };

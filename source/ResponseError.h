@@ -12,7 +12,7 @@ class ResponseError
 {
     public:
         ResponseError(ErrorCodes code,
-                     const std::string& message);
+                      const std::string& message);
 
         void setData(const std::string& data);
 

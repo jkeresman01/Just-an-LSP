@@ -7,7 +7,7 @@
 namespace lsp
 {
 
-class NotificationMessage : Message
+class NotificationMessage : public Message
 {
     public:
         NotificationMessage(const std::string& method,
