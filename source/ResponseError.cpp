@@ -3,7 +3,8 @@
 namespace lsp
 {
 
-ResponseError::ResponseError(ErrorCodes code, const std::string& message)
+ResponseError::ResponseError(ErrorCode code,
+                            const std::string& message)
     :m_code(code),
     m_message(message),
     m_data(nullptr)

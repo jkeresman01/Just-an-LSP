@@ -5,7 +5,7 @@
 namespace lsp
 {
 
-enum class ErrorCodes : int32_t
+enum class ErrorCode : int32_t
 {
     PARSE_ERROR       =  -32700,
     INVALID_REQUEST   =  -32600,

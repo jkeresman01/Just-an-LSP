@@ -11,13 +11,13 @@ namespace lsp
 class ResponseError
 {
     public:
-        ResponseError(ErrorCodes code,
+        ResponseError(ErrorCode code,
                       const std::string& message);
 
         void setData(const std::string& data);
 
     private:
-        ErrorCodes m_code;
+        ErrorCode m_code;
         std::string m_message;
         std::optional<std::string> m_data;
 };

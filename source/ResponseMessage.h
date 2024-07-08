@@ -41,5 +41,5 @@ private:
     std::optional<ResponseError> m_responseError;
 };
 
-} // namespace lsp
+} // lsp
 
