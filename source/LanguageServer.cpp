@@ -2,7 +2,7 @@
 
 #include "Logger.h"
 
-namespace lsp 
+namespace justanlsp 
 {
 
 LanguageServer::LanguageServer()
@@ -88,5 +88,4 @@ void LanguageServer::respond(const nlohmann::json& response)
     std::cout << response.dump() << std::endl;
 }
 
-} // lsp
-
+} // justanlsp 

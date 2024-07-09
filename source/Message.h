@@ -4,7 +4,7 @@
 
 #include "json.hpp"
 
-namespace lsp
+namespace justanlsp
 {
 
 class Message
@@ -18,5 +18,4 @@ class Message
         std::string m_jsonRPC;
 };
     
-}// lsp
-
+} // justanlsp

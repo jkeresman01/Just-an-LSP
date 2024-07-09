@@ -1,11 +1,12 @@
 #pragma once
 
-#include "Message.h"
-#include "ResponseError.h"
 #include <optional>
 #include <string>
 
-namespace lsp
+#include "Message.h"
+#include "ResponseError.h"
+
+namespace justanlsp
 {
 
 class ResponseMessage : public Message
@@ -13,16 +14,16 @@ class ResponseMessage : public Message
 public:
     class Builder;
 
-    const std::optional<std::string>& getResult() const;
-    const std::optional<ResponseError>& getResponseError() const;
+    const std::string& getResult() const;
+    const ResponseError& getResponseError() const;
 
 private:
-    std::optional<std::string> m_result;
-    std::optional<ResponseError> m_responseError;
+    std::string m_result;
+    ResponseError m_responseError;
 
     ResponseMessage(const std::string &jsonRPC, 
-                    const std::optional<std::string>& result,
-                    const std::optional<ResponseError>& responseError);
+                    const std::string& result,
+                    const ResponseError& responseError);
 };
 
 class ResponseMessage::Builder
@@ -31,15 +32,13 @@ public:
     ResponseMessage build() const;
 
     Builder& withJsonRPC(const std::string& jsonRPC);
-    Builder& withResult(const std::optional<std::string>& result);
-    Builder& withResponseError(const std::optional<ResponseError>& responseError);
-    
+    Builder& withResult(const std::string& result);
+    Builder& withResponseError(const ResponseError& responseError);
     
 private:
     std::string m_jsonRPC;
-    std::optional<std::string> m_result;
-    std::optional<ResponseError> m_responseError;
+    std::string m_result;
+    ResponseError m_responseError;
 };
 
-} // lsp
-
+} // justanlsp

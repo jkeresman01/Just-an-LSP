@@ -4,7 +4,7 @@
 
 #include "Message.h"
 
-namespace lsp
+namespace justanlsp
 {
 
 class NotificationMessage : public Message
@@ -17,4 +17,4 @@ class NotificationMessage : public Message
         std::string m_method;
 };
 
-} // lsp
+} // justanlsp

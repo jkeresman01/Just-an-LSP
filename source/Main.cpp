@@ -2,6 +2,6 @@
 
 int main() 
 {
-    lsp::LanguageServer lsp;
+    justanlsp::LanguageServer lsp;
     lsp.run();
 }

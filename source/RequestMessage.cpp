@@ -1,7 +1,7 @@
 #include "RequestMessage.h"
 #include "Message.h"
 
-namespace lsp
+namespace justanlsp
 {
 
 RequestMessage::RequestMessage(const std::string& jsonRPC,
@@ -19,5 +19,4 @@ nlohmann::json RequestMessage::toJson() const
     return "";
 }
         
-} // lsp
-
+} // justanlsp

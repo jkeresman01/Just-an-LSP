@@ -1,6 +1,6 @@
 #include "NotificationMessage.h"
 
-namespace lsp
+namespace justanlsp
 {
 
 NotificationMessage::NotificationMessage(const std::string& method,
@@ -10,5 +10,4 @@ NotificationMessage::NotificationMessage(const std::string& method,
 {
 }
     
-} // lsp
-
+} // justanlsp

@@ -14,7 +14,7 @@
 #define LOG_WARN(message)  LOG("WARN",  message)
 #define LOG_ERROR(message) LOG("ERROR", message)
 
-namespace lsp
+namespace justanlsp
 {
 
 class Logger 
@@ -44,4 +44,4 @@ public:
     }
 };
 
-} // lsp
+} // justanlsp

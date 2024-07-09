@@ -5,7 +5,7 @@
 
 #include "ErrorCodes.h"
 
-namespace lsp
+namespace justanlsp
 {
 
 class ResponseError
@@ -22,4 +22,4 @@ class ResponseError
         std::optional<std::string> m_data;
 };
 
-} // lsp[
+} // justanlsp

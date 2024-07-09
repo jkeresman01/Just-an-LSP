@@ -5,7 +5,7 @@
 #include "Message.h"
 #include "json.hpp"
 
-namespace lsp
+namespace justanlsp
 {
 
 class RequestMessage : public Message
@@ -21,4 +21,4 @@ class RequestMessage : public Message
         std::string m_method;
 };
 
-} // lsp
+} // justanlsp

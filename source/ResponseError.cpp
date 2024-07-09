@@ -1,6 +1,6 @@
 #include "ResponseError.h"
 
-namespace lsp
+namespace justanlsp
 {
 
 ResponseError::ResponseError(ErrorCode code,
@@ -16,4 +16,4 @@ void ResponseError::setData(const std::string& data)
     m_data = data;
 }
 
-} // lsp
+} // justanlsp

@@ -4,7 +4,7 @@
 
 #include "json.hpp"
 
-namespace lsp 
+namespace justanlsp 
 {
 
 class LanguageServer 
@@ -25,5 +25,4 @@ private:
     nlohmann::json parseRequest(const std::string& content);
 };
 
-} // lsp
-
+} // justanlsp 
