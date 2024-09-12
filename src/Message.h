@@ -9,13 +9,13 @@ namespace justanlsp
 
 class Message
 {
-    public:
-        Message(const std::string& jsonRPC) : m_jsonRPC(jsonRPC){};
+  public:
+    Message(const std::string &jsonRPC) : m_jsonRPC(jsonRPC){};
 
-        virtual nlohmann::json toJson() const;
+    virtual nlohmann::json toJson() const;
 
-    protected:
-        std::string m_jsonRPC;
+  protected:
+    std::string m_jsonRPC;
 };
-    
-} // justanlsp
+
+} // namespace justanlsp

@@ -1,6 +1,6 @@
 #include "LanguageServer.h"
 
-int main() 
+int main()
 {
     justanlsp::LanguageServer lsp;
     lsp.run();

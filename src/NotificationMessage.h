@@ -9,12 +9,11 @@ namespace justanlsp
 
 class NotificationMessage : public Message
 {
-    public:
-        NotificationMessage(const std::string& method,
-                            const std::string& jsonRPC);
+  public:
+    NotificationMessage(const std::string &method, const std::string &jsonRPC);
 
-    private:
-        std::string m_method;
+  private:
+    std::string m_method;
 };
 
-} // justanlsp
+} // namespace justanlsp

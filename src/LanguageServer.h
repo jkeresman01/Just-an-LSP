@@ -4,25 +4,25 @@
 
 #include "json.hpp"
 
-namespace justanlsp 
+namespace justanlsp
 {
 
-class LanguageServer 
+class LanguageServer
 {
-public:
+  public:
     LanguageServer();
 
     void run();
 
-private:
-    void handleRequest(const std::string& request);
-    void respond(const nlohmann::json& response);
+  private:
+    void handleRequest(const std::string &request);
+    void respond(const nlohmann::json &response);
 
-    void logReceivedMethodRequest(const std::string& request);
+    void logReceivedMethodRequest(const std::string &request);
 
     std::string readRequest();
 
-    nlohmann::json parseRequest(const std::string& content);
+    nlohmann::json parseRequest(const std::string &content);
 };
 
-} // justanlsp 
+} // namespace justanlsp
