@@ -8,9 +8,4 @@ ResponseError::ResponseError(ErrorCode code, const std::string &message)
 {
 }
 
-void ResponseError::setData(const std::string &data)
-{
-    m_data = data;
-}
-
 } // namespace justanlsp

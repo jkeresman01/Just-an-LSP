@@ -9,10 +9,4 @@ RequestMessage::RequestMessage(const std::string &jsonRPC, const std::string &me
 {
 }
 
-nlohmann::json RequestMessage::toJson() const
-{
-    // TODO convert to JSON
-    return "";
-}
-
 } // namespace justanlsp

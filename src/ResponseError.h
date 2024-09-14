@@ -13,7 +13,7 @@ class ResponseError
   public:
     ResponseError(ErrorCode code, const std::string &message);
 
-    void setData(const std::string &data);
+    void setData(const std::string &data) { m_data = data; };
 
   private:
     ErrorCode m_code;
