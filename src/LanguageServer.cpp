@@ -56,33 +56,52 @@ std::string LanguageServer::readRequest()
 
 void LanguageServer::handleRequest(const std::string &request)
 {
-    try
+    logReceivedMethodRequest(request);
+
+    MessageType messageType = extractMsgType(request);
+
+    switch (messageType)
     {
-        logReceivedMethodRequest(request);
-    }
-    catch (const std::exception &e)
-    {
-        LOG_ERROR("Failed to handle request: " + std::string(e.what()));
+    case TEXT_DOCUMENT_DID_OPEN:
+        handleTextDocumentDidOpen(request);
+        break;
+    case TEXT_DOCUMENT_DID_CHANGE:
+        handleTextDocumentDidChange(request);
+        break;
+    default:
+        // TODO EnumtToString()
+        // LOG_ERROR("Received invalid message type: " << messageType << "!");
+        break;
     }
 }
 
-void LanguageServer::logReceivedMethodRequest(const std::string &request)
+void LanguageServer::handleTextDocumentDidOpen(const std::string &request)
 {
-    auto jsonRequest = parseRequest(request);
-
-    if (jsonRequest.find("method") == jsonRequest.end())
-    {
-        LOG_ERROR("Received request with no method!");
-        return;
-    }
-
-    std::string method = std::string(jsonRequest["method"]);
-    LOG_INFO("Received request with method: " + method);
+    // TODO
+    (void)request;
 }
 
-nlohmann::json LanguageServer::parseRequest(const std::string &content)
+void LanguageServer::handleTextDocumentDidChange(const std::string &request)
 {
-    return nlohmann::json::parse(content);
+    // TODO
+    (void)request;
+}
+
+MessageType LanguageServer::extractMsgType(const std::string &request)
+{
+    auto jsonRequest = nlohmann::json::parse(request);
+
+    auto it = jsonRequest.find("method");
+
+    if (it == jsonRequest.end())
+    {
+        LOG_ERROR("Received invalid reqest");
+        return INVALID_MESSAGE_TYPE;
+    }
+
+    std::string method = std::string(*it);
+
+    // TODO map value to correct msg type
 }
 
 void LanguageServer::respond(const nlohmann::json &response)
