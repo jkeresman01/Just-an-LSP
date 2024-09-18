@@ -97,7 +97,7 @@ MessageType LanguageServer::extractMsgType(const std::string &request)
         return INVALID_MESSAGE_TYPE;
     }
 
-    std::string method = std::string(*it);
+    std::string method = std::string(it->second);
 
     // TODO map value to correct msg type
 }
