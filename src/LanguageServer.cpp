@@ -56,8 +56,6 @@ std::string LanguageServer::readRequest()
 
 void LanguageServer::handleRequest(const std::string &request)
 {
-    logReceivedMethodRequest(request);
-
     MessageType messageType = extractMsgType(request);
 
     switch (messageType)
