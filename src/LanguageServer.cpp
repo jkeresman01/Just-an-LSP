@@ -1,6 +1,6 @@
-#include "LanguageServer.h"
+#include "headers/LanguageServer.h"
 
-#include "Logger.h"
+#include "headers/Logger.h"
 
 namespace justanlsp
 {
@@ -68,7 +68,6 @@ void LanguageServer::handleRequest(const std::string &request)
         break;
     default:
         // TODO EnumtToString()
-        // LOG_ERROR("Received invalid message type: " << messageType << "!");
         break;
     }
 }

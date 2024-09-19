@@ -1,4 +1,4 @@
-#include "LanguageServer.h"
+#include "headers/LanguageServer.h"
 
 int main()
 {
