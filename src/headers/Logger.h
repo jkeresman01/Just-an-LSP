@@ -31,7 +31,7 @@ class Logger
             return;
         }
 
-        auto now         = std::chrono::high_resolution_clock::now();
+        auto now = std::chrono::high_resolution_clock::now();
         std::time_t time = std::chrono::high_resolution_clock::to_time_t(now);
 
         logfile << "[" << std::put_time(std::localtime(&time), "%Y-%m-%d %H:%M:%S") << "] ";

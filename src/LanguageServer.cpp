@@ -28,6 +28,8 @@ std::string LanguageServer::readRequest()
 
     while (getline(std::cin, header))
     {
+        LOG_INFO("Header that I've read: ");
+
         header.erase(0, header.find_first_not_of(" \t\r\n\v\f"));
         header.erase(header.find_last_not_of(" \t\r\n\v\f") + 1);
 
@@ -67,7 +69,7 @@ void LanguageServer::handleRequest(const std::string &request)
         handleTextDocumentDidChange(request);
         break;
     default:
-        // TODO EnumtToString()
+        // TODO EnumtToString().cpp
         break;
     }
 }
