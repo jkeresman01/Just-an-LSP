@@ -96,9 +96,10 @@ MessageType LanguageServer::extractMsgType(const std::string &request)
         return INVALID_MESSAGE_TYPE;
     }
 
-    std::string method = std::string(it->second);
+    std::string method = std::string(*it);
 
     // TODO map value to correct msg type
+    return INVALID_MESSAGE_TYPE;
 }
 
 void LanguageServer::respond(const nlohmann::json &response)

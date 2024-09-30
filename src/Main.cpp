@@ -1,4 +1,4 @@
-#include "headers/LanguageServer.h"
+#include "headers/JustAnLSPServer.h"
 
 int main()
 {
