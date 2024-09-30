@@ -14,11 +14,9 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(nlohmann_json)
 
-include_directories(${PROJECT_SOURCE_DIR}/source)
-
 set(SOURCES
     src/Main.cpp
-    src/LanguageServer.cpp
+    src/JustAnLSPServer.cpp
 )
 
 add_executable(Just-an-LSP ${SOURCES})
