@@ -1,5 +1,7 @@
 #include "headers/JustAnLSPServer.h"
 
+#include <string>
+
 #include "headers/Logger.h"
 
 namespace justanlsp
@@ -86,17 +88,25 @@ void LanguageServer::handleTextDocumentDidChange(const std::string &request)
 
 MessageType LanguageServer::extractMsgType(const std::string &request)
 {
-    auto jsonRequest = nlohmann::json::parse(request);
-
-    auto it = jsonRequest.find("method");
-
-    if (it == jsonRequest.end())
+    try
     {
-        LOG_ERROR("Received invalid reqest");
-        return INVALID_MESSAGE_TYPE;
-    }
+        auto jsonRequest = nlohmann::json::parse(request);
+        auto it = jsonRequest.find("method");
+        if (it == jsonRequest.end())
+        {
+            LOG_ERROR("Received invalid reqest");
+            return INVALID_MESSAGE_TYPE;
+        }
 
-    std::string method = std::string(*it);
+        std::string method = std::string(jsonRequest["method"]);
+        LOG_INFO("Received request with method: " + method);
+        LOG_INFO(jsonRequest.dump(4));
+
+    }
+    catch (const std::exception &e)
+    {
+        LOG_ERROR("Failed to handle request: " + std::string(e.what()));
+    }
 
     // TODO map value to correct msg type
     return INVALID_MESSAGE_TYPE;
