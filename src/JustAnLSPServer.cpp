@@ -101,7 +101,6 @@ MessageType LanguageServer::extractMsgType(const std::string &request)
         std::string method = std::string(jsonRequest["method"]);
         LOG_INFO("Received request with method: " + method);
         LOG_INFO(jsonRequest.dump(4));
-
     }
     catch (const std::exception &e)
     {
