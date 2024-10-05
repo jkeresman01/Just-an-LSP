@@ -1,10 +1,11 @@
 #pragma once
 
+#include <nlohmann/json.hpp>
+
 #include <cstdint>
 #include <ostream>
 
 #include "Message.h"
-#include "json.hpp"
 
 namespace justanlsp
 {
