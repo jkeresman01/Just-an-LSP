@@ -21,6 +21,7 @@ set(SOURCES
     src/ResponseMessage.cpp
     src/NotificationMessage.cpp
     src/JustAnLSPServer.cpp
+    src/JustAnLSPFacade.cpp
 )
 
 add_executable(Just-an-LSP ${SOURCES})
