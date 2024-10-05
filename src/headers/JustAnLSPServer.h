@@ -26,7 +26,7 @@ class LanguageServer
     void handleTextDocumentDidOpen(const std::string &request);
     void handleTextDocumentDidChange(const std::string &request);
 
-    char* enumToString(const MessageType &messageType);
+    char *enumToString(const MessageType &messageType);
 
     void respond(const nlohmann::json &response);
 
