@@ -117,4 +117,26 @@ void LanguageServer::respond(const nlohmann::json &response)
     std::cout << response.dump() << std::endl;
 }
 
+char* enumToString(const MessageType &messageType)
+{
+    switch(messageType)
+    {
+        case TEXT_DOCUMENT_DID_OPEN:
+            return "textDocumentDidOpen";
+        case TEXT_DOCUMENT_DID_CHANGE:
+            return "TextDocumentDidChange";
+        default:
+            return "IvalidMessageType";
+    }
+}
+
+
+
+
+
+
+
+
+
+
 } // namespace justanlsp
