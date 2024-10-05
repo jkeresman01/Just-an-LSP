@@ -16,6 +16,10 @@ FetchContent_MakeAvailable(nlohmann_json)
 
 set(SOURCES
     src/Main.cpp
+    src/ResponseError.cpp
+    src/RequestMessage.cpp
+    src/ResponseMessage.cpp
+    src/NotificationMessage.cpp
     src/JustAnLSPServer.cpp
 )
 
