@@ -117,7 +117,7 @@ void LanguageServer::respond(const nlohmann::json &response)
     std::cout << response.dump() << std::endl;
 }
 
-char *enumToString(const MessageType &messageType)
+char *msgTypeToString(const MessageType &messageType)
 {
     switch (messageType)
     {
