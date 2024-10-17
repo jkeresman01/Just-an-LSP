@@ -26,7 +26,7 @@ class LanguageServer
     void handleTextDocumentDidOpen(const std::string &request);
     void handleTextDocumentDidChange(const std::string &request);
 
-    char *msgToString(const MessageType &messageType);
+    const char *msgTypeToString(const MessageType &messageType) const;
 
     void respond(const nlohmann::json &response);
 

@@ -69,7 +69,7 @@ void LanguageServer::handleRequest(const std::string &request)
         handleTextDocumentDidChange(request);
         break;
     default:
-        // TODO EnumtToString().cpp
+        /* LOG_ERROR("Received unkown request: " <<  msgTypeToString(messageType) << "!") */
         break;
     }
 }
@@ -117,16 +117,16 @@ void LanguageServer::respond(const nlohmann::json &response)
     std::cout << response.dump() << std::endl;
 }
 
-char *msgTypeToString(const MessageType &messageType)
+const char *LanguageServer::msgTypeToString(const MessageType &messageType) const
 {
     switch (messageType)
     {
     case TEXT_DOCUMENT_DID_OPEN:
         return "textDocumentDidOpen";
     case TEXT_DOCUMENT_DID_CHANGE:
-        return "TextDocumentDidChange";
+        return "textDocumentDidChange";
     default:
-        return "IvalidMessageType";
+        return "ivalidMessageType";
     }
 }
 
