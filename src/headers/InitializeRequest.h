@@ -1,5 +1,6 @@
 #pragma once
 
+#include "InitializeParams.h"
 #include "RequestMessage.h"
 
 namespace justanlsp
@@ -15,9 +16,30 @@ namespace justanlsp
 class InitializeRequest : public RequestMessage
 {
   public:
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Constructs the Initialize request from JSON RPC
+    ///
+    /// @param jsonRPC
+    ///
+    //////////////////////////////////////////////////////////////
     InitializeRequest(const nlohmann::json &jsonRPC);
 
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Serializes the InitializeRequest to JSON format
+    ///
+    /// @return Rerturns serialized InitializeRequest in JSON format
+    ///
+    //////////////////////////////////////////////////////////////
+    nlohmann::json toJson() const;
+
   private:
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Paramters used in Initalize Request
+    ///
+    //////////////////////////////////////////////////////////////
     InitializeParams m_initializeParams;
 };
 } // namespace justanlsp
