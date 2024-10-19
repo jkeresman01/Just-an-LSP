@@ -5,19 +5,19 @@
 namespace justanlsp
 {
 
-    //////////////////////////////////////////////////////////////
-    ///
-    /// @class InitializeRequest 
-    ///
-    /// @brief 
-    ///
-    //////////////////////////////////////////////////////////////
-    class InitializeRequest : public RequestMessage
-    {
-        public: 
-            InitializeRequest(const nlohmann::json &jsonRPC);
+//////////////////////////////////////////////////////////////
+///
+/// @class InitializeRequest
+///
+/// @brief
+///
+//////////////////////////////////////////////////////////////
+class InitializeRequest : public RequestMessage
+{
+  public:
+    InitializeRequest(const nlohmann::json &jsonRPC);
 
-        private:
-            InitializeParams m_initializeParams;
-    };
-}
+  private:
+    InitializeParams m_initializeParams;
+};
+} // namespace justanlsp
