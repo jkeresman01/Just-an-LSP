@@ -16,7 +16,7 @@ void LanguageServer::run()
 {
     LOG_INFO("Language server has successfully started!");
 
-    while (true)
+    for (;;)
     {
         std::string request = readRequest();
         handleRequest(request);
