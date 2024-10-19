@@ -3,18 +3,19 @@
 #include <string>
 
 #include "headers/Logger.h"
+#include "headers/RequestType.h"
 
 namespace justanlsp
 {
 
 LanguageServer::LanguageServer()
 {
-    LOG_INFO("Instace of Language server was successfully created!");
+    LOG_INFO("Instace of Language server successfully created!");
 }
 
 void LanguageServer::run()
 {
-    LOG_INFO("Language server has successfully started!");
+    LOG_INFO("Language server successfully started!");
 
     for (;;)
     {
@@ -58,35 +59,43 @@ std::string LanguageServer::readRequest()
 
 void LanguageServer::handleRequest(const std::string &request)
 {
-    MessageType messageType = extractMsgType(request);
+    RequestType messageType = extractMsgType(request);
 
     switch (messageType)
     {
-    case TEXT_DOCUMENT_DID_OPEN:
-        handleTextDocumentDidOpen(request);
-        break;
-    case TEXT_DOCUMENT_DID_CHANGE:
-        handleTextDocumentDidChange(request);
-        break;
-    default:
-        /* LOG_ERROR("Received unkown request: " <<  msgTypeToString(messageType) << "!") */
-        break;
+        case RequestType::INITIALIZE:
+            handleInitializeRequest(request);
+            break;
+        case RequestType::TEXT_DOCUMENT_DID_OPEN:
+            handleTextDocumentDidOpenRequest(request);
+            break;
+        case RequestType::TEXT_DOCUMENT_DID_CHANGE:
+            handleTextDocumentDidChangeRequest(request);
+            break;
+        default:
+            /* LOG_ERROR("Received unkown request: " <<  msgTypeToString(messageType) << "!") */
+            break;
     }
 }
 
-void LanguageServer::handleTextDocumentDidOpen(const std::string &request)
+void LanguageServer::handleInitializeRequest(const std::string &request)
+{
+
+}
+
+void LanguageServer::handleTextDocumentDidOpenRequest(const std::string &request)
 {
     // TODO
     (void)request;
 }
 
-void LanguageServer::handleTextDocumentDidChange(const std::string &request)
+void LanguageServer::handleTextDocumentDidChangeRequest(const std::string &request)
 {
     // TODO
     (void)request;
 }
 
-MessageType LanguageServer::extractMsgType(const std::string &request)
+RequestType LanguageServer::extractMsgType(const std::string &request)
 {
     try
     {
@@ -95,7 +104,7 @@ MessageType LanguageServer::extractMsgType(const std::string &request)
         if (it == jsonRequest.end())
         {
             LOG_ERROR("Received invalid reqest");
-            return INVALID_MESSAGE_TYPE;
+            return RequestType::INVALID_REQUEST;
         }
 
         std::string method = std::string(jsonRequest["method"]);
@@ -108,7 +117,7 @@ MessageType LanguageServer::extractMsgType(const std::string &request)
     }
 
     // TODO map value to correct msg type
-    return INVALID_MESSAGE_TYPE;
+    return RequestType::INVALID_REQUEST;
 }
 
 void LanguageServer::respond(const nlohmann::json &response)
@@ -117,16 +126,18 @@ void LanguageServer::respond(const nlohmann::json &response)
     std::cout << response.dump() << std::endl;
 }
 
-const char *LanguageServer::msgTypeToString(const MessageType &messageType) const
+const char *LanguageServer::msgTypeToString(const RequestType &messageType) const
 {
     switch (messageType)
     {
-    case TEXT_DOCUMENT_DID_OPEN:
-        return "textDocumentDidOpen";
-    case TEXT_DOCUMENT_DID_CHANGE:
-        return "textDocumentDidChange";
+        case RequestType::INITIALIZE:
+            return "initalize";
+        case RequestType::TEXT_DOCUMENT_DID_OPEN:
+            return "textDocumentDidOpen";
+        case RequestType::TEXT_DOCUMENT_DID_CHANGE:
+            return "textDocumentDidChange";
     default:
-        return "ivalidMessageType";
+        return "ivalidRequestType";
     }
 }
 

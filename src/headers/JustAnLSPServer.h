@@ -7,13 +7,6 @@
 namespace justanlsp
 {
 
-enum MessageType
-{
-    TEXT_DOCUMENT_DID_OPEN = 0,
-    TEXT_DOCUMENT_DID_CHANGE = 1,
-    INVALID_MESSAGE_TYPE = 2,
-};
-
 class LanguageServer
 {
   public:
@@ -23,8 +16,10 @@ class LanguageServer
 
   private:
     void handleRequest(const std::string &request);
-    void handleTextDocumentDidOpen(const std::string &request);
-    void handleTextDocumentDidChange(const std::string &request);
+
+    void handleInitializeRequest(const std::string &request);
+    void handleTextDocumentDidOpenRequest(const std::string &request);
+    void handleTextDocumentDidChangeRequest(const std::string &request);
 
     const char *msgTypeToString(const MessageType &messageType) const;
 
