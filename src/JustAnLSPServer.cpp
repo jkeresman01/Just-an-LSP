@@ -95,6 +95,7 @@ void LanguageServer::handleTextDocumentDidChangeRequest(const std::string &reque
     (void)request;
 }
 
+// TODO move from here somewhere else
 RequestType LanguageServer::extractMsgType(const std::string &request)
 {
     try
@@ -104,8 +105,8 @@ RequestType LanguageServer::extractMsgType(const std::string &request)
         auto it = jsonRequest.find("method");
         if (it == jsonRequest.end())
         {
-            LOG_ERROR("Received invalid reqest");
-            return RequestType::INVALID_REQUEST;
+            LOG_ERROR("Received unknown reqest type");
+            return RequestType::UNKNOWN;
         }
 
         std::string method = std::string(jsonRequest["method"]);
@@ -118,7 +119,7 @@ RequestType LanguageServer::extractMsgType(const std::string &request)
     }
 
     // TODO map value to correct msg type
-    return RequestType::INVALID_REQUEST;
+    return RequestType::UNKNOWN;
 }
 
 void LanguageServer::respond(const nlohmann::json &response)
