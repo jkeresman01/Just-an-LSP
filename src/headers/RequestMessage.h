@@ -1,21 +1,47 @@
 #pragma once
 
-#include <nlohmann/json.hpp>
-
 #include <cstdint>
-#include <ostream>
+#include <nlohmann/json.hpp>
 
 #include "Message.h"
 
 namespace justanlsp
 {
 
+
+//////////////////////////////////////////////////////////////
+///
+/// @class RequestMessage
+///
+/// @brief A request message to describe a request between 
+///        the client (editor) and the server.
+///
+//////////////////////////////////////////////////////////////
 class RequestMessage : public Message
 {
-    RequestMessage(const std::string &jsonRPC, const std::string &method, int32_t id);
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Constructs the RequestMessage from json RPC
+    ///
+    //////////////////////////////////////////////////////////////
+    RequestMessage(const nlohmann::json &jsonRPC): m_id(jsonRPC["id"]) {};
 
   protected:
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief The request ID 
+    ///
+    //////////////////////////////////////////////////////////////
     int32_t m_id;
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief The method to be invoked
+    ///
+    //////////////////////////////////////////////////////////////
+
     std::string m_method;
 };
 
