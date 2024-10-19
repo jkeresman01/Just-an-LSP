@@ -8,12 +8,11 @@
 namespace justanlsp
 {
 
-
 //////////////////////////////////////////////////////////////
 ///
 /// @class RequestMessage
 ///
-/// @brief A request message to describe a request between 
+/// @brief A request message to describe a request between
 ///        the client (editor) and the server.
 ///
 //////////////////////////////////////////////////////////////
@@ -25,13 +24,12 @@ class RequestMessage : public Message
     /// @brief Constructs the RequestMessage from json RPC
     ///
     //////////////////////////////////////////////////////////////
-    RequestMessage(const nlohmann::json &jsonRPC): m_id(jsonRPC["id"]) {};
+    RequestMessage(const nlohmann::json &jsonRPC) : m_id(jsonRPC["id"]){};
 
   protected:
-
     //////////////////////////////////////////////////////////////
     ///
-    /// @brief The request ID 
+    /// @brief The request ID
     ///
     //////////////////////////////////////////////////////////////
     int32_t m_id;
