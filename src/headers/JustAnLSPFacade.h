@@ -8,6 +8,7 @@ namespace justanlsp
 class JustAnLSPFacade
 {
   public:
+    JustAnLSPFacade() = default;
     void handleRequest(const RequestMessage &requestMessage);
 };
 

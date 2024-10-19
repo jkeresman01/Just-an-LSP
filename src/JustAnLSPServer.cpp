@@ -78,7 +78,10 @@ void LanguageServer::handleRequest(const std::string &request)
     }
 }
 
-void LanguageServer::handleInitializeRequest(const std::string &request) {}
+void LanguageServer::handleInitializeRequest(const std::string &request)
+{
+    nlohmann::json jsonRequest = nlohmann::json::parse(request);
+}
 
 void LanguageServer::handleTextDocumentDidOpenRequest(const std::string &request)
 {
@@ -96,7 +99,8 @@ RequestType LanguageServer::extractMsgType(const std::string &request)
 {
     try
     {
-        auto jsonRequest = nlohmann::json::parse(request);
+        nlohmann::json jsonRequest = nlohmann::json::parse(request);
+
         auto it = jsonRequest.find("method");
         if (it == jsonRequest.end())
         {

@@ -2,8 +2,5 @@
 
 namespace justanlsp
 {
-void JustAnLSPFacade::handleRequest(const RequestMessage &requestMessage)
-{
-    (void)requestMessage;
-}
+void JustAnLSPFacade::handleRequest(const RequestMessage &requestMessage) {}
 } // namespace justanlsp

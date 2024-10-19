@@ -1,8 +1,10 @@
 #pragma once
 
+#include <memory>
 #include <nlohmann/json.hpp>
-
 #include <string>
+
+#include "JustAnLSPFacade.h"
 
 namespace justanlsp
 {
@@ -29,7 +31,8 @@ class LanguageServer
 
     std::string readRequest();
 
-    nlohmann::json parseRequest(const std::string &content);
+  private:
+    std::shared_ptr<JustAnLSPFacade> m_justAnLspFace = std::make_shared<JustAnLSPFacade>();
 };
 
 } // namespace justanlsp
