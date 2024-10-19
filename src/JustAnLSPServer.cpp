@@ -63,25 +63,22 @@ void LanguageServer::handleRequest(const std::string &request)
 
     switch (messageType)
     {
-        case RequestType::INITIALIZE:
-            handleInitializeRequest(request);
-            break;
-        case RequestType::TEXT_DOCUMENT_DID_OPEN:
-            handleTextDocumentDidOpenRequest(request);
-            break;
-        case RequestType::TEXT_DOCUMENT_DID_CHANGE:
-            handleTextDocumentDidChangeRequest(request);
-            break;
-        default:
-            /* LOG_ERROR("Received unkown request: " <<  msgTypeToString(messageType) << "!") */
-            break;
+    case RequestType::INITIALIZE:
+        handleInitializeRequest(request);
+        break;
+    case RequestType::TEXT_DOCUMENT_DID_OPEN:
+        handleTextDocumentDidOpenRequest(request);
+        break;
+    case RequestType::TEXT_DOCUMENT_DID_CHANGE:
+        handleTextDocumentDidChangeRequest(request);
+        break;
+    default:
+        /* LOG_ERROR("Received unkown request: " <<  msgTypeToString(messageType) << "!") */
+        break;
     }
 }
 
-void LanguageServer::handleInitializeRequest(const std::string &request)
-{
-
-}
+void LanguageServer::handleInitializeRequest(const std::string &request) {}
 
 void LanguageServer::handleTextDocumentDidOpenRequest(const std::string &request)
 {
@@ -130,12 +127,12 @@ const char *LanguageServer::msgTypeToString(const RequestType &messageType) cons
 {
     switch (messageType)
     {
-        case RequestType::INITIALIZE:
-            return "initalize";
-        case RequestType::TEXT_DOCUMENT_DID_OPEN:
-            return "textDocumentDidOpen";
-        case RequestType::TEXT_DOCUMENT_DID_CHANGE:
-            return "textDocumentDidChange";
+    case RequestType::INITIALIZE:
+        return "initalize";
+    case RequestType::TEXT_DOCUMENT_DID_OPEN:
+        return "textDocumentDidOpen";
+    case RequestType::TEXT_DOCUMENT_DID_CHANGE:
+        return "textDocumentDidChange";
     default:
         return "ivalidRequestType";
     }
