@@ -35,7 +35,7 @@ class HoverClientCapabilities
     ///        The order describes the preferred format of the client.
     ///
     //////////////////////////////////////////////////////////////
-    std::vector<MarkupKind> m_contentFormat();
+    std::vector<MarkupKind> m_contentFormat;
 
     //////////////////////////////////////////////////////////////
     ///
