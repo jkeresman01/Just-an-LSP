@@ -36,7 +36,7 @@ class RequestUtil
 
         if (contentLength == 0)
         {
-            LOG_ERROR("No valid content length found, can't read the payload!");
+            LOG_ERROR << "No valid content length found, can't read the payload!";
             return "";
         }
 
@@ -52,12 +52,12 @@ class RequestUtil
 
         if (it == request.end())
         {
-            LOG_ERROR("Received unknown reqest type");
+            LOG_ERROR << "Received unknown request type";
             return RequestType::UNKNOWN;
         }
 
         std::string method = std::string(request["method"]);
-        LOG_INFO("Received request with method: " + method);
+        LOG_INFO << "Received request with method: " << method << "!";
 
         return mapMethodToRequestType(method);
     }
@@ -69,12 +69,11 @@ class RequestUtil
         try
         {
             jsonRequest = nlohmann::json::parse(request);
-            LOG_INFO("Trying to parse request");
-            LOG_INFO(jsonRequest.dump(4));
+            LOG_INFO << "Trying to parse request" << jsonRequest.dump(4);
         }
         catch (const std::exception &e)
         {
-            LOG_ERROR("Failed to parse request: " + std::string(e.what()));
+            LOG_ERROR << "Failed to parse request: " << std::string(e.what()) << "!";
         }
 
         return jsonRequest;

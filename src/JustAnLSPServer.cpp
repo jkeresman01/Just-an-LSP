@@ -2,21 +2,21 @@
 
 #include <string>
 
-#include "Logger.h"
 #include "RequestUtil.h"
 #include "ResponseUtil.h"
+#include "Logger.h"
 
 namespace justanlsp
 {
 
 LanguageServer::LanguageServer()
 {
-    LOG_INFO("Instace of Language server successfully created");
+    LOG_INFO << "Instace of Language server successfully created";
 }
 
 void LanguageServer::run()
 {
-    LOG_INFO("Language server successfully started");
+    LOG_INFO << "Language server successfully started";
 
     for (;;)
     {
