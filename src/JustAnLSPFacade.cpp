@@ -35,21 +35,21 @@ ResponseMessage JustAnLSPFacade::handleInitializeRequest(const std::string &requ
     ClientInfo clientInfo = initializeRequest->getInitializeParams()->getClientInfo();
     LOG_INFO << "Conneting to " << clientInfo.toString();
 
-    //TODO basic response
+    // TODO basic response
 }
 
-ResponseMessage JustAnLSPFacade::handleTextDocumentDidOpenRequest(const std::string &request) 
+ResponseMessage JustAnLSPFacade::handleTextDocumentDidOpenRequest(const std::string &request)
 {
     nlohmann::json jsonRPC = RequestUtil::tryParse(request);
 
-    //TODO basic response
+    // TODO basic response
 }
 
-ResponseMessage JustAnLSPFacade::handleTextDocumentDidChangeRequest(const std::string &request) 
+ResponseMessage JustAnLSPFacade::handleTextDocumentDidChangeRequest(const std::string &request)
 {
     nlohmann::json jsonRPC = RequestUtil::tryParse(request);
 
-    //TODO basic response
+    // TODO basic response
 }
 
 } // namespace justanlsp

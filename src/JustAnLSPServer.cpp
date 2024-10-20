@@ -2,9 +2,9 @@
 
 #include <string>
 
+#include "Logger.h"
 #include "RequestUtil.h"
 #include "ResponseUtil.h"
-#include "Logger.h"
 
 namespace justanlsp
 {

@@ -3,8 +3,8 @@
 #include <iostream>
 #include <nlohmann/json.hpp>
 
-#include "ResponseMessage.h"
 #include "Logger.h"
+#include "ResponseMessage.h"
 
 namespace justanlsp
 {
