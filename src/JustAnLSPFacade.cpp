@@ -35,7 +35,7 @@ ResponseMessage JustAnLSPFacade::handleInitializeRequest(const std::string &requ
 
     InitializeParams initializeParams = initializeRequest->getInitializeParams();
 
-    LOG_INFO << "Conneting to " << initializeParams.getClientInfo().toString();
+    LOG_INFO << "Connecting to " << initializeParams.getClientInfo().toString();
 
     m_client->registerCapabilites(initializeParams.getClientCapabilites());
 
