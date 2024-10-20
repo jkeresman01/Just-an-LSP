@@ -3,6 +3,7 @@
 #include <memory>
 
 #include "ClientInfo.h"
+#include "InitializeParams.h"
 #include "InitializeRequest.h"
 #include "Logger.h"
 #include "RequestType.h"
@@ -32,8 +33,11 @@ ResponseMessage JustAnLSPFacade::handleInitializeRequest(const std::string &requ
     nlohmann::json jsonRPC = RequestUtil::tryParse(request);
     std::shared_ptr<InitializeRequest> initializeRequest = std::make_shared<InitializeRequest>(jsonRPC);
 
-    ClientInfo clientInfo = initializeRequest->getInitializeParams()->getClientInfo();
-    LOG_INFO << "Conneting to " << clientInfo.toString();
+    InitializeParams initializeParams = initializeRequest->getInitializeParams();
+
+    LOG_INFO << "Conneting to " << initializeParams.getClientInfo().toString();
+
+    m_client->registerCapabilites(initializeParams.getClientCapabilites());
 
     // TODO basic response
 }

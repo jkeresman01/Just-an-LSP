@@ -5,6 +5,7 @@
 #include <optional>
 #include <string>
 
+#include "ClientCapabilites.h"
 #include "ClientInfo.h"
 #include "TraceValue.h"
 
@@ -39,6 +40,15 @@ class InitializeParams
     ///
     //////////////////////////////////////////////////////////////
     ClientInfo getClientInfo() const { return m_clientInfo; };
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Accessor method for Client capabilities
+    ///
+    /// @return ClientCapabilities
+    ///
+    //////////////////////////////////////////////////////////////
+    std::shared_ptr<ClientCapabilities> getClientCapabilites() const { return m_capabilities; };
 
   private:
     //////////////////////////////////////////////////////////////
@@ -77,7 +87,7 @@ class InitializeParams
     /// @brief The capabilities provided by the client (editor or tool)
     ///
     //////////////////////////////////////////////////////////////
-    std::shared_ptr<ClientCapabilites> m_capabilities;
+    std::shared_ptr<ClientCapabilities> m_capabilities;
 
     //////////////////////////////////////////////////////////////
     ///
