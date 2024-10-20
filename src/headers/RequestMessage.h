@@ -18,7 +18,6 @@ namespace justanlsp
 //////////////////////////////////////////////////////////////
 class RequestMessage : public Message
 {
-
     //////////////////////////////////////////////////////////////
     ///
     /// @brief Constructs the RequestMessage from json RPC
@@ -39,7 +38,6 @@ class RequestMessage : public Message
     /// @brief The method to be invoked
     ///
     //////////////////////////////////////////////////////////////
-
     std::string m_method;
 };
 

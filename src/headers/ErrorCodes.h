@@ -47,7 +47,6 @@ enum class ErrorCodes : int32_t
     /// @brief Internal error, error code defined by JSON RPC
     ///
     //////////////////////////////////////////////////////////////
-
     INTERNAL_ERROR = -32603,
 };
 
