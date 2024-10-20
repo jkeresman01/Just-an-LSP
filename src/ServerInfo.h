@@ -46,4 +46,4 @@ struct ServerInfo
         return ss.str();
     }
 };
-}
+} // namespace justanlsp
