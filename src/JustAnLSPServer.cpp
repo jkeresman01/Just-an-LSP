@@ -29,7 +29,6 @@ void LanguageServer::handleRequest(const std::string &request)
     LOG_INFO("Responding on the request with method: ");
     LOG_INFO(RequestUtil::getRequestType(request));
 
-
     ResponseMessage response = m_justAnLspFacade->handleRequest(request);
     sendResponse(response);
 }
