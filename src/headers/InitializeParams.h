@@ -1,6 +1,8 @@
 #pragma once
 
 #include <cstdint>
+#include <optional>
+#include <string>
 
 #include "ClientInfo.h"
 
@@ -37,7 +39,7 @@ class InitializeParams
     ///        (see exit notification) its process
     ///
     //////////////////////////////////////////////////////////////
-    int64_t m_processId;
+    std::optional<int64_t> m_processId;
 
     //////////////////////////////////////////////////////////////
     ///
@@ -47,6 +49,17 @@ class InitializeParams
     ///
     //////////////////////////////////////////////////////////////
     ClientInfo m_clientInfo;
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief The locale the client is currently showing the user
+    ///        interface in. This must not necessarily be the 
+    ///        locale of the operating system
+    ///
+    /// @since 3.16.0
+    ///
+    //////////////////////////////////////////////////////////////
+    std::string m_locale;
 };
 
 } // namespace justanlsp
