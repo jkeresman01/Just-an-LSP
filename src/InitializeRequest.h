@@ -11,7 +11,8 @@ namespace justanlsp
 ///
 /// @class InitializeRequest
 ///
-/// @brief
+/// @brief The initialize request is sent as the first request
+///        from the client to the server.
 ///
 //////////////////////////////////////////////////////////////
 class InitializeRequest : public RequestMessage
