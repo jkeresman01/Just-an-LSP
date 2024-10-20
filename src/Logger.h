@@ -28,7 +28,7 @@ class Logger
 
         if (!logfile)
         {
-            std::cerr << "Failed to open log file!" << std::endl;
+            std::cerr << "No can do for opening log file!" << std::endl;
             return;
         }
 
