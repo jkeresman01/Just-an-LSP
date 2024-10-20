@@ -6,8 +6,8 @@ namespace justanlsp
 ///
 /// @enum MarkupKind
 ///
-/// @brief Describes the content type that a client supports in 
-///        various result literals like `Hover`, 
+/// @brief Describes the content type that a client supports in
+///        various result literals like `Hover`,
 ///        `ParameterInfo` or `CompletionItem`.
 ///
 ///
@@ -29,4 +29,4 @@ enum class MarkupKind
     //////////////////////////////////////////////////////////////
     MARKDOWN,
 };
-}
+} // namespace justanlsp
