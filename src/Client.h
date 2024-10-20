@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ClientCapabilites.h"
+#include "ClientInfo.h"
 
 #include <memory>
 
@@ -16,7 +17,10 @@ class Client
         m_clientCapabilities = clientCapabilites;
     };
 
+    void saveInfo(const ClientInfo &clientInfo) { m_clientInfo = clientInfo; };
+
   private:
     std::shared_ptr<ClientCapabilities> m_clientCapabilities = std::make_shared<ClientCapabilities>();
+    ClientInfo m_clientInfo;
 };
 } // namespace justanlsp
