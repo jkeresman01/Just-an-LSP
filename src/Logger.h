@@ -1,5 +1,6 @@
 #pragma once
 
+#include "TimeUtil.h"
 #include <chrono>
 #include <cstdint>
 #include <ctime>
@@ -20,8 +21,8 @@ namespace justanlsp
 class Logger
 {
   public:
-    static void log(const std::string &severity, const std::string &message, const char *file,
-                    uint32_t line)
+    static void log(const std::string &severity, const std::string &message, const char *fileName,
+                    uint32_t lineNumber)
     {
         std::ofstream logfile("/tmp/log.txt", std::ios::app);
 
@@ -31,14 +32,24 @@ class Logger
             return;
         }
 
-        auto now = std::chrono::high_resolution_clock::now();
-        std::time_t time = std::chrono::high_resolution_clock::to_time_t(now);
-
-        logfile << "[" << std::put_time(std::localtime(&time), "%Y-%m-%d %H:%M:%S") << "] ";
-        logfile << "[" << file << ":" << line << "]\t" << severity << ":  ";
-        logfile << message << std::endl;
+        putLogMessage(logfile, message, severity, lineNumber, fileName);
 
         logfile.close();
+    }
+
+  private:
+    static void putLogMessage(std::ofstream &log, const std::string &message,
+                              const std::string severity, uint32_t lineNumber, const char *fileName)
+    {
+        log << "[";
+        TimeUtil::putTime(log, TimeUtil::now());
+        log << "] ";
+
+        log << "[";
+        log << fileName << ":" << lineNumber;
+        log << "]\t";
+
+        log << severity << ":  " << message << std::endl;
     }
 };
 
