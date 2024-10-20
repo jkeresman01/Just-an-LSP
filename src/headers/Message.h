@@ -34,7 +34,7 @@ class Message
     /// @return Returns serialized Message in JSON format
     ///
     //////////////////////////////////////////////////////////////
-    virtual nlohmann::json toJson() const = 0;
+    virtual nlohmann::json toJson() const;
 
   protected:
     //////////////////////////////////////////////////////////////
