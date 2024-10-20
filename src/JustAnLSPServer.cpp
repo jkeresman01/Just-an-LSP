@@ -3,7 +3,7 @@
 #include <string>
 
 #include "Logger.h"
-#include "RequestType.h"
+#include "RequestUtil.h"
 
 namespace justanlsp
 {
@@ -19,128 +19,30 @@ void LanguageServer::run()
 
     for (;;)
     {
-        std::string request = readRequest();
+        std::string request = RequestUtil::readRequest();
         handleRequest(request);
     }
 }
 
-std::string LanguageServer::readRequest()
-{
-    std::string header;
-    uint32_t contentLength = 0;
-
-    while (getline(std::cin, header))
-    {
-        header.erase(0, header.find_first_not_of(" \t\r\n\v\f"));
-        header.erase(header.find_last_not_of(" \t\r\n\v\f") + 1);
-
-        if (header.substr(0, 16) == "Content-Length: ")
-        {
-            contentLength = std::stoul(header.substr(16));
-        }
-
-        if (header.empty())
-        {
-            break;
-        }
-    }
-
-    if (contentLength == 0)
-    {
-        LOG_ERROR("No valid content length found, can't read the payload!");
-        return "";
-    }
-
-    std::string content(contentLength, ' ');
-    std::cin.read(&content[0], contentLength);
-
-    return content;
-}
-
 void LanguageServer::handleRequest(const std::string &request)
 {
-    RequestType messageType = extractMsgType(request);
+    LOG_INFO("Responding on the request with method: ");
+    LOG_INFO(RequestUtil::getRequestType(request));
 
-    switch (messageType)
-    {
-    case RequestType::INITIALIZE:
-        handleInitializeRequest(request);
-        break;
-    case RequestType::TEXT_DOCUMENT_DID_OPEN:
-        handleTextDocumentDidOpenRequest(request);
-        break;
-    case RequestType::TEXT_DOCUMENT_DID_CHANGE:
-        handleTextDocumentDidChangeRequest(request);
-        break;
-    default:
-        /* LOG_ERROR("Received unkown request: " <<  msgTypeToString(messageType) << "!") */
-        break;
-    }
+
+    ResponseMessage response = m_justAnLspFacade->handleRequest(request);
+    sendResponse(response);
 }
 
-void LanguageServer::handleInitializeRequest(const std::string &request)
+void LanguageServer::sendResponse(const ResponseMessage &response)
 {
-    nlohmann::json jsonRequest = nlohmann::json::parse(request);
-}
+    nlohmann::json jsonRPC = response.toJson();
 
-void LanguageServer::handleTextDocumentDidOpenRequest(const std::string &request)
-{
-    // TODO
-    (void)request;
-}
+    LOG_INFO("Sending response: ");
+    LOG_INFO(jsonRPC.dump(4));
 
-void LanguageServer::handleTextDocumentDidChangeRequest(const std::string &request)
-{
-    // TODO
-    (void)request;
-}
-
-// TODO move from here somewhere else
-RequestType LanguageServer::extractMsgType(const std::string &request)
-{
-    try
-    {
-        nlohmann::json jsonRequest = nlohmann::json::parse(request);
-
-        auto it = jsonRequest.find("method");
-        if (it == jsonRequest.end())
-        {
-            LOG_ERROR("Received unknown reqest type");
-            return RequestType::UNKNOWN;
-        }
-
-        std::string method = std::string(jsonRequest["method"]);
-        LOG_INFO("Received request with method: " + method);
-        LOG_INFO(jsonRequest.dump(4));
-    }
-    catch (const std::exception &e)
-    {
-        LOG_ERROR("Failed to handle request: " + std::string(e.what()));
-    }
-
-    // TODO map value to correct msg type
-    return RequestType::UNKNOWN;
-}
-
-void LanguageServer::respond(const nlohmann::json &response)
-{
-    std::cout << "Content-Length: " << response.dump().size() << "\r\n\r\n";
-    std::cout << response.dump() << std::endl;
-}
-
-const char *LanguageServer::msgTypeToString(const RequestType &messageType) const
-{
-    switch (messageType)
-    {
-    case RequestType::INITIALIZE:
-        return "initalize";
-    case RequestType::TEXT_DOCUMENT_DID_OPEN:
-        return "textDocumentDidOpen";
-    case RequestType::TEXT_DOCUMENT_DID_CHANGE:
-        return "textDocumentDidChange";
-    default:
-        return "ivalidRequestType";
-    }
+    std::cout << "Content-Length: " << jsonRPC.dump().size() << "\r\n\r\n";
+    std::cout << jsonRPC.dump() << std::endl;
 }
 
 } // namespace justanlsp

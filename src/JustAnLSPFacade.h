@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 #include "RequestMessage.h"
 
 namespace justanlsp
@@ -9,7 +11,8 @@ class JustAnLSPFacade
 {
   public:
     JustAnLSPFacade() = default;
-    void handleRequest(const RequestMessage &requestMessage);
+
+    void handleRequest(const std::string &request);
 };
 
 } // namespace justanlsp
