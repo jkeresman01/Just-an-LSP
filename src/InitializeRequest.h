@@ -2,6 +2,7 @@
 
 #include "InitializeParams.h"
 #include "RequestMessage.h"
+#include <memory>
 
 namespace justanlsp
 {
@@ -25,12 +26,21 @@ class InitializeRequest : public RequestMessage
     //////////////////////////////////////////////////////////////
     InitializeRequest(const nlohmann::json &jsonRPC);
 
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Accessor method for InitalizeParams
+    ///
+    /// @return InitializeParams
+    ///
+    //////////////////////////////////////////////////////////////
+    InitializeParams getInitializeParams() const { return m_initializeParams; };
+
   private:
     //////////////////////////////////////////////////////////////
     ///
     /// @brief Paramters used in Initalize Request
     ///
     //////////////////////////////////////////////////////////////
-    InitializeParams m_initializeParams;
+    std::shared_ptr<InitializeParams> m_initializeParams;
 };
 } // namespace justanlsp

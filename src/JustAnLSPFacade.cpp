@@ -1,5 +1,10 @@
 #include "JustAnLSPFacade.h"
 
+#include <memory>
+
+#include "ClientInfo.h"
+#include "InitializeRequest.h"
+#include "Logger.h"
 #include "RequestType.h"
 #include "RequestUtil.h"
 
@@ -17,12 +22,19 @@ ResponseMessage JustAnLSPFacade::handleRequest(const std::string &request)
     case RequestType::TEXT_DOCUMENT_DID_CHANGE:
         return handleTextDocumentDidChangeRequest(request);
     default:
-        LOG_WARN("Received request of unkown type");
+        LOG_WARN << "Received request of unkown type";
         break;
     }
 }
 
-ResponseMessage JustAnLSPFacade::handleInitializeRequest(const std::string &request) {}
+ResponseMessage JustAnLSPFacade::handleInitializeRequest(const std::string &request)
+{
+    nlohmann::json jsonRPC = RequestUtil::tryParse(request);
+    std::shared_ptr<InitializeRequest> initializeRequest = std::make_shared<InitializeRequest>(jsonRPC);
+
+    ClientInfo clientInfo = initializeRequest->getInitializeParams()->getClientInfo();
+    LOG_INFO << "Conneting to " << clientInfo.toString();
+}
 
 ResponseMessage JustAnLSPFacade::handleTextDocumentDidOpenRequest(const std::string &request) {}
 

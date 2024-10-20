@@ -1,5 +1,6 @@
 #pragma once
 
+#include <sstream>
 #include <string>
 
 namespace justanlsp
@@ -27,5 +28,20 @@ struct ClientInfo
     ///
     //////////////////////////////////////////////////////////////
     std::string version;
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief String representation of Client Info
+    ///
+    /// @return String representation of Client Info
+    ///
+    //////////////////////////////////////////////////////////////
+    std::string toString()
+    {
+        std::stringstream ss;
+        ss << "Client: " << name;
+        ss << ", version: " << version << std::endl;
+        return ss.str();
+    }
 };
 } // namespace justanlsp
