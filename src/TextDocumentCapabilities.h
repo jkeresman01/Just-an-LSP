@@ -30,7 +30,7 @@ class TextDocumentCapabilities
   private:
     //////////////////////////////////////////////////////////////
     ///
-    /// @brief  Capabilities specific to the textDocument syncrhonization
+    /// @brief Capabilities specific to the textDocument syncrhonization
     ///
     //////////////////////////////////////////////////////////////
     TextDocumentSyncClientCapabilities m_synchronization;
