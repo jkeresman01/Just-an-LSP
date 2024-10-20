@@ -1,9 +1,9 @@
-#include "headers/JustAnLSPServer.h"
+#include "JustAnLSPServer.h"
 
 #include <string>
 
-#include "headers/Logger.h"
-#include "headers/RequestType.h"
+#include "Logger.h"
+#include "RequestType.h"
 
 namespace justanlsp
 {

@@ -1,4 +1,4 @@
-#include "headers/ResponseError.h"
+#include "ResponseError.h"
 
 namespace justanlsp
 {

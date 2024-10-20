@@ -1,4 +1,4 @@
-#include "headers/JustAnLSPFacade.h"
+#include "JustAnLSPFacade.h"
 
 namespace justanlsp
 {

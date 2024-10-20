@@ -1,5 +1,5 @@
-#include "headers/RequestMessage.h"
-#include "headers/Message.h"
+#include "RequestMessage.h"
+#include "Message.h"
 
 namespace justanlsp
 {

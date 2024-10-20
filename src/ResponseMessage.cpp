@@ -1,4 +1,4 @@
-#include "headers/ResponseMessage.h"
+#include "ResponseMessage.h"
 
 namespace justanlsp
 {
