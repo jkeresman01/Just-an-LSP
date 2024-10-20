@@ -12,8 +12,8 @@ class TimeUtil
   public:
     static std::time_t now()
     {
-        auto current_time = std::chrono::high_resolution_clock::now();
-        return std::chrono::high_resolution_clock::to_time_t(current_time);
+        auto currentTime = std::chrono::high_resolution_clock::now();
+        return std::chrono::high_resolution_clock::to_time_t(currentTime);
     }
 
     static std::ostream &putTime(std::ostream &out, const std::time_t &time)
