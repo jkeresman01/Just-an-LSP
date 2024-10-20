@@ -5,6 +5,7 @@
 #include <string>
 
 #include "ClientInfo.h"
+#include "TraceValue.h"
 
 namespace justanlsp
 {
@@ -66,9 +67,18 @@ class InitializeParams
     ///        locale of the operating system
     ///
     /// @since 3.16.0
-    ///
+    /// Init
     //////////////////////////////////////////////////////////////
     std::string m_locale;
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief The initial trace setting.
+    ///        If omitted trace is disabled ('off')
+    ///
+    ///
+    //////////////////////////////////////////////////////////////
+    TraceValue m_traceValue;
 };
 
 } // namespace justanlsp
