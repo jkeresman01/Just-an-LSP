@@ -9,14 +9,14 @@ namespace justanlsp
 ///
 /// @enum ErrorCodes
 ///
-/// @brief Enumeration contating all possible error codes
+/// @brief Enumeration containing all possible error codes
 ///
 //////////////////////////////////////////////////////////////
 enum class ErrorCodes : int32_t
 {
     //////////////////////////////////////////////////////////////
     ///
-    /// @brief Parse error, code defined by JSON RPC
+    /// @brief Parse error, error code defined by JSON RPC
     ///
     //////////////////////////////////////////////////////////////
     PARSE_ERROR = -32700,
