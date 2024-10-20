@@ -94,6 +94,10 @@ class RequestUtil
         {
             return RequestType::TEXT_DOCUMENT_DID_OPEN;
         }
+        else if (method == "textDocumentHover")
+        {
+            return RequestType::TEXT_DOCUMENT_HOVER;
+        }
         else
         {
             return RequestType::UNKNOWN;

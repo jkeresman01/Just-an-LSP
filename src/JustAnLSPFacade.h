@@ -19,6 +19,7 @@ class JustAnLSPFacade
   private:
     ResponseMessage handleInitializeRequest(const std::string &request);
     ResponseMessage handleTextDocumentDidOpenRequest(const std::string &request);
+    ResponseMessage handleTextDocumentHoverRequest(const std::string &request);
     ResponseMessage handleTextDocumentDidChangeRequest(const std::string &request);
 
   private:

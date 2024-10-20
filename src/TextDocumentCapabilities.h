@@ -2,6 +2,8 @@
 
 #include <nlohmann/json.hpp>
 
+#include "HoverClientCapabilities.h"
+
 namespace justanlsp
 {
 
