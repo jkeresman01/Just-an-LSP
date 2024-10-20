@@ -48,6 +48,12 @@ class ClientCapabilities
     std::shared_ptr<TextDocumentCapabilities> getTextDocumentCapabilities() const { return m_textDocument; };
 
   private:
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief TextDocumentClientCapabilities define capabilities
+    ///        the editor / tool provides on text documents.
+    ///
+    //////////////////////////////////////////////////////////////
     std::shared_ptr<TextDocumentCapabilities> m_textDocument;
 };
 } // namespace justanlsp
