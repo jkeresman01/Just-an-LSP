@@ -28,8 +28,8 @@ struct TextDocumentSyncClientCapabilities
     ///         save notifications.
     ///
     //////////////////////////////////////////////////////////////
-
     bool isWillSaveSupported;
+
     //////////////////////////////////////////////////////////////
     ///
     /// @brief  The client supports sending a will save request and
