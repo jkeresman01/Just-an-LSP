@@ -10,6 +10,8 @@ namespace justanlsp
 class ResponseUtil
 {
   public:
+    ResponseUtil() = delete;
+
     static void sendResponse(const nlohmann::json &response)
     {
         LOG_INFO("Sending response: ");

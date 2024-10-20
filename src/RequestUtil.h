@@ -11,6 +11,8 @@ namespace justanlsp
 class RequestUtil
 {
   public:
+    RequestUtil() = delete;
+
     static std::string readRequest()
     {
         std::string header;

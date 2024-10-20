@@ -10,6 +10,8 @@ namespace justanlsp
 class TimeUtil
 {
   public:
+    TimeUtil() = delete;
+
     static std::time_t now()
     {
         auto currentTime = std::chrono::high_resolution_clock::now();
