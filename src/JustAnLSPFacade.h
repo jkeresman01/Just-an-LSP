@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "RequestMessage.h"
+#include "ResponseMessage.h"
 
 namespace justanlsp
 {
@@ -12,7 +12,12 @@ class JustAnLSPFacade
   public:
     JustAnLSPFacade() = default;
 
-    void handleRequest(const std::string &request);
+    ResponseMessage handleRequest(const std::string &request);
+
+  private:
+    ResponseMessage handleInitializeRequest(const std::string &request);
+    ResponseMessage handleTextDocumentDidOpenRequest(const std::string &request);
+    ResponseMessage handleTextDocumentDidChangeRequest(const std::string &request);
 };
 
 } // namespace justanlsp

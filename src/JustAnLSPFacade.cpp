@@ -8,22 +8,24 @@ namespace justanlsp
 
 ResponseMessage JustAnLSPFacade::handleRequest(const std::string &request)
 {
-
     switch (RequestUtil::getRequestType(request))
     {
     case RequestType::INITIALIZE:
-        handleInitializeRequest(request);
-        break;
+        return handleInitializeRequest(request);
     case RequestType::TEXT_DOCUMENT_DID_OPEN:
-        handleTextDocumentDidOpenRequest(request);
-        break;
+        return handleTextDocumentDidOpenRequest(request);
     case RequestType::TEXT_DOCUMENT_DID_CHANGE:
-        handleTextDocumentDidChangeRequest(request);
-        break;
+        return handleTextDocumentDidChangeRequest(request);
     default:
-        /* LOG_ERROR("Received unkown request: " <<  msgTypeToString(messageType) << "!") */
+        LOG_WARN("Received request of unkown type");
         break;
     }
 }
+
+ResponseMessage JustAnLSPFacade::handleInitializeRequest(const std::string &request) {}
+
+ResponseMessage JustAnLSPFacade::handleTextDocumentDidOpenRequest(const std::string &request) {}
+
+ResponseMessage JustAnLSPFacade::handleTextDocumentDidChangeRequest(const std::string &request) {}
 
 } // namespace justanlsp
