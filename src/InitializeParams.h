@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include <memory>
 #include <optional>
 #include <string>
 
@@ -67,9 +68,16 @@ class InitializeParams
     ///        locale of the operating system
     ///
     /// @since 3.16.0
-    /// 
+    ///
     //////////////////////////////////////////////////////////////
     std::string m_locale;
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief The capabilities provided by the client (editor or tool)
+    ///
+    //////////////////////////////////////////////////////////////
+    std::shared_ptr<ClientCapabilites> m_capabilities;
 
     //////////////////////////////////////////////////////////////
     ///
