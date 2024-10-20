@@ -1,5 +1,6 @@
 #include "JustAnLSPServer.h"
 
+#include <memory>
 #include <string>
 
 #include "Logger.h"
@@ -11,7 +12,9 @@ namespace justanlsp
 
 LanguageServer::LanguageServer()
 {
-    LOG_INFO << "Instace of Language server successfully created";
+    m_justAnLspFacade = std::make_shared<JustAnLSPFacade>();
+
+    LOG_INFO << "Instance of Language server successfully created";
 }
 
 void LanguageServer::run()

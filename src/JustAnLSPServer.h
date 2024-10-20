@@ -23,7 +23,7 @@ class LanguageServer
     void sendResponse(const ResponseMessage &response);
 
   private:
-    std::shared_ptr<JustAnLSPFacade> m_justAnLspFacade = std::make_shared<JustAnLSPFacade>();
+    std::shared_ptr<JustAnLSPFacade> m_justAnLspFacade;
 };
 
 } // namespace justanlsp
