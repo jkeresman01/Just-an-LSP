@@ -8,7 +8,7 @@
 #include "../params/InitializeParams.h"
 #include "../utils/Logger.h"
 #include "../utils/RequestUtil.h"
-#include "types/ClientInfo.h"
+#include "../types/ClientInfo.h"
 
 namespace justanlsp
 {
