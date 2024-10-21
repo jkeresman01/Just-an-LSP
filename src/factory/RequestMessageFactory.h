@@ -24,14 +24,14 @@ class RequestMessageFactory
             // TODO create initialized request
             break;
         case RequestType::TEXT_DOCUMENT_HOVER:
-            // TODO create initialize request
+            // TODO create text document hover req
             break;
         case RequestType::TEXT_DOCUMENT_DID_OPEN:
-            // TODO create text document did open
+            // TODO create text document did open req
             break;
 
         case RequestType::TEXT_DOCUMENT_DID_CHANGE:
-            // TODO create text document did change
+            // TODO create text document did change req
             break;
         default:
             throw std::invalid_argument("Unknown LSP request type");
