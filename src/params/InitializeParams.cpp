@@ -1,9 +1,8 @@
-#pragma once
+#include "InitializeParams.h"
 
 #include <string>
 
-#include "InitializeParams.h"
-#include "TraceUtil.h"
+#include "../utils/TraceUtil.h"
 
 namespace justanlsp
 {

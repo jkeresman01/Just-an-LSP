@@ -5,9 +5,9 @@
 #include <optional>
 #include <string>
 
-#include "ClientCapabilites.h"
-#include "ClientInfo.h"
-#include "TraceValue.h"
+#include "../capabilities/ClientCapabilites.h"
+#include "../types/ClientInfo.h"
+#include "../enums/TraceValue.h"
 
 namespace justanlsp
 {
