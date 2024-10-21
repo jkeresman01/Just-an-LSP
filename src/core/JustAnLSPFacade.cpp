@@ -1,4 +1,4 @@
-#include "JustAnLSPFacade.h"
+#j, ainclude "JustAnLSPFacade.h"
 
 #include <memory>
 
@@ -50,13 +50,17 @@ ResponseMessage JustAnLSPFacade::handleInitializeRequest(const std::string &requ
     // TODO basic response
 }
 
-ResponseMessage JustAnLSPFacade::handleInitializedRequest(const std::string &request) {}
-
-ResponseMessage JustAnLSPFacade::handleTextDocumentHoverRequest(const std::string &request)
+ResponseMessage JustAnLSPFacade::handleInitializedRequest(const std::string &request)
 {
     nlohmann::json jsonRPC = RequestUtil::tryParse(request);
     std::unique_ptr<InitializedRequest> initializeRequest =
         RequestMessageFactory::create(RequestType::INITIALIZED, jsonRPC);
+
+    // TODO basic response
+}
+
+ResponseMessage JustAnLSPFacade::handleTextDocumentHoverRequest(const std::string &request)
+{
 
     // TODO basic response
 }
