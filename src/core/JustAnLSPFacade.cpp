@@ -3,6 +3,7 @@
 #include <memory>
 
 #include "../enums/RequestType.h"
+#include "../factory/RequestMessageFactory.h"
 #include "../messages/InitializeRequest.h"
 #include "../params/InitializeParams.h"
 #include "../utils/Logger.h"
@@ -35,12 +36,13 @@ ResponseMessage JustAnLSPFacade::handleRequest(const std::string &request)
 ResponseMessage JustAnLSPFacade::handleInitializeRequest(const std::string &request)
 {
     nlohmann::json jsonRPC = RequestUtil::tryParse(request);
-    std::shared_ptr<InitializeRequest> initializeRequest = std::make_shared<InitializeRequest>(jsonRPC);
+    std::unique_ptr<InitializeRequest> initializeRequest =
+        RequestMessageFactory::create(RequestType::INITIALIZE, jsonRPC);
 
     InitializeParams initializeParams = initializeRequest->getInitializeParams();
     ClientInfo clientInfo = initializeParams.getClientInfo();
 
-    LOG_INFO << "Connecting to " << clientInfo.toString();
+    LOG_INFO << "Received initialize request from: " << clientInfo.toString();
 
     m_client->saveInfo(clientInfo);
     m_client->registerCapabilites(initializeParams.getClientCapabilites());
@@ -53,6 +55,8 @@ ResponseMessage JustAnLSPFacade::handleInitializedRequest(const std::string &req
 ResponseMessage JustAnLSPFacade::handleTextDocumentHoverRequest(const std::string &request)
 {
     nlohmann::json jsonRPC = RequestUtil::tryParse(request);
+    std::unique_ptr<InitializedRequest> initializeRequest =
+        RequestMessageFactory::create(RequestType::INITIALIZED, jsonRPC);
 
     // TODO basic response
 }
