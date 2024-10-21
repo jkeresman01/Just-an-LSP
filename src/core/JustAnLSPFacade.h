@@ -35,7 +35,6 @@ class JustAnLSPFacade
     ///
     //////////////////////////////////////////////////////////////
     ResponseMessage handleRequest(const std::string &request);
-
   private:
 
     //////////////////////////////////////////////////////////////
@@ -71,7 +70,6 @@ class JustAnLSPFacade
     //////////////////////////////////////////////////////////////
     ResponseMessage handleTextDocumentDidOpenRequest(const std::string &request);
 
-
     //////////////////////////////////////////////////////////////
     ///
     /// @brief Entry point for handling textDocument/didChange request
@@ -95,7 +93,6 @@ class JustAnLSPFacade
     ResponseMessage handleTextDocumentHoverRequest(const std::string &request);
 
   private:
-
     //////////////////////////////////////////////////////////////
     ///
     /// @brief Registered client (editor or tool)

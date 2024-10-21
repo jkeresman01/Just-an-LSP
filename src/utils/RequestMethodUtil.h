@@ -21,7 +21,6 @@ class RequestMethodUtil
         {
             return RequestType::INITIALIZED;
         }
-
         else if (method == "textDocument/DidChange")
         {
             return RequestType::TEXT_DOCUMENT_DID_CHANGE;
