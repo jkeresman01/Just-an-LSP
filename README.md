@@ -1,6 +1,6 @@
 # !!!!!!!!!!!!!! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; THIS ISN'T BAKED YET &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   !!!!!!!!!!!!!!
 # Just-an-LSP #
-Just-an-LSP is an attempt to build a toy Language Server for the C++ programming language.
+Just me and myself trying to build language server for C++ programming language
 
 # LSP overivew #
 The idea behind the Language Server Protocol (LSP) is to standardize the protocol for how tools and servers communicate, so a single Language Server can be re-used in multiple development tools, and tools can support languages with minimal effort.
