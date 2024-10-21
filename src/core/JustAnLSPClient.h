@@ -27,7 +27,7 @@ class JustAnLSPClient
 
     //////////////////////////////////////////////////////////////
     ///
-    /// @brief Registers client capabilities (fetures supported
+    /// @brief Registers client capabilities (features supported
     ///        by the editor or tool)
     ///
     /// @param clientCapabilites
