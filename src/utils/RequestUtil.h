@@ -4,7 +4,7 @@
 #include <string>
 
 #include "Logger.h"
-#include "RequestType.h"
+#include "../enums/RequestType.h"
 
 namespace justanlsp
 {

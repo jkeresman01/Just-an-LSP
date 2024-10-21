@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "TraceValue.h"
+#include "../enums/TraceValue.h"
 
 namespace justanlsp
 {
