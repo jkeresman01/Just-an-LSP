@@ -1,7 +1,7 @@
-#include "JustAnLSPServer.h"
+#include "core/JustAnLSPServer.h"
 
 int main()
 {
-    justanlsp::LanguageServer lsp;
-    lsp.run();
+    justanlsp::JustAnLSPServer justAnLSPServer;
+    justAnLSPServer.run();
 }
