@@ -18,6 +18,8 @@ ResponseMessage JustAnLSPFacade::handleRequest(const std::string &request)
     {
     case RequestType::INITIALIZE:
         return handleInitializeRequest(request);
+    case RequestType::INITIALIZED:
+        return handleInitializedRequest(request);
     case RequestType::TEXT_DOCUMENT_DID_OPEN:
         return handleTextDocumentDidOpenRequest(request);
     case RequestType::TEXT_DOCUMENT_DID_CHANGE:
@@ -45,6 +47,8 @@ ResponseMessage JustAnLSPFacade::handleInitializeRequest(const std::string &requ
 
     // TODO basic response
 }
+
+ResponseMessage JustAnLSPFacade::handleInitializedRequest(const std::string &request) {}
 
 ResponseMessage JustAnLSPFacade::handleTextDocumentHoverRequest(const std::string &request)
 {
