@@ -1,16 +1,16 @@
 #pragma once
 
-#include "ClientCapabilites.h"
-#include "ClientInfo.h"
+#include "../capabilities/ClientCapabilites.h"
+#include "../types/ClientInfo.h"
 
 #include <memory>
 
 namespace justanlsp
 {
-class Client
+class JustAnLSPClient
 {
   public:
-    Client() = default;
+    JustAnLSPClient() = default;
 
     void registerCapabilites(const std::shared_ptr<ClientCapabilities> &clientCapabilites)
     {

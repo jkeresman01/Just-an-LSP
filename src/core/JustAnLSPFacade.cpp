@@ -2,12 +2,12 @@
 
 #include <memory>
 
-#include "ClientInfo.h"
-#include "InitializeParams.h"
-#include "InitializeRequest.h"
-#include "Logger.h"
-#include "RequestType.h"
-#include "RequestUtil.h"
+#include "types/ClientInfo.h"
+#include "params/InitializeParams.h"
+#include "messages/InitializeRequest.h"
+#include "utils/Logger.h"
+#include "utils/RequestUtil.h"
+#include "enums/RequestType.h"
 
 namespace justanlsp
 {
