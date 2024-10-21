@@ -6,7 +6,7 @@
 #include <string>
 
 #include "JustAnLSPFacade.h"
-#include "ResponseMessage.h"
+#include "../messages/ResponseMessage.h"
 
 namespace justanlsp
 {

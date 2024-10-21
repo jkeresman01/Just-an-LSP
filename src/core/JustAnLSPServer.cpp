@@ -1,11 +1,10 @@
 #include "JustAnLSPServer.h"
 
-#include <memory>
 #include <string>
 
-#include "Logger.h"
-#include "RequestUtil.h"
-#include "ResponseUtil.h"
+#include "../utils/Logger.h"
+#include "../utils/RequestUtil.h"
+#include "../utils/ResponseUtil.h"
 
 namespace justanlsp
 {

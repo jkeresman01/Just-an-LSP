@@ -3,8 +3,8 @@
 #include <memory>
 #include <string>
 
-#include "Client.h"
-#include "ResponseMessage.h"
+#include "JustAnLSPClient.h"
+#include "../messages/ResponseMessage.h"
 
 namespace justanlsp
 {
@@ -23,7 +23,7 @@ class JustAnLSPFacade
     ResponseMessage handleTextDocumentDidChangeRequest(const std::string &request);
 
   private:
-    std::shared_ptr<Client> m_client = std::make_shared<Client>();
+    std::shared_ptr<JustAnLSPClient> m_client = std::make_shared<JustAnLSPClient>();
 };
 
 } // namespace justanlsp
