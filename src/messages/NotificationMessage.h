@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "Message.h"
+#include "../messages/Message.h"
 
 namespace justanlsp
 {

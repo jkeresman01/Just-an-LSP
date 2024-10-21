@@ -1,8 +1,9 @@
 #pragma once
 
-#include "InitializeParams.h"
-#include "RequestMessage.h"
 #include <memory>
+
+#include "../params/InitializeParams.h"
+#include "RequestMessage.h"
 
 namespace justanlsp
 {

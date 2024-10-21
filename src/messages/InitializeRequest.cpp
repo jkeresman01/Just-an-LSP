@@ -1,5 +1,3 @@
-#pragma once
-
 #include "InitializeRequest.h"
 
 namespace justanlsp

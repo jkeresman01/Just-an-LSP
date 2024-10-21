@@ -1,5 +1,4 @@
 #include "RequestMessage.h"
-#include "Message.h"
 
 namespace justanlsp
 {

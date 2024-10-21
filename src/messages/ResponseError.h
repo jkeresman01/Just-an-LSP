@@ -3,7 +3,7 @@
 #include <optional>
 #include <string>
 
-#include "ErrorCodes.h"
+#include "../errors/ErrorCodes.h"
 
 namespace justanlsp
 {
@@ -11,12 +11,12 @@ namespace justanlsp
 class ResponseError
 {
   public:
-    ResponseError(const ErrorCode &code, const std::string &message);
+    ResponseError(const ErrorCodes &code, const std::string &message);
 
     void setData(const std::string &data) { m_data = data; };
 
   private:
-    ErrorCode m_code;
+    ErrorCodes m_code;
     std::string m_message;
     std::optional<std::string> m_data;
 };

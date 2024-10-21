@@ -1,9 +1,8 @@
 #pragma once
 
 #include <cstdint>
-#include <nlohmann/json.hpp>
-
 #include <string>
+#include <nlohmann/json.hpp>
 
 namespace justanlsp
 {
