@@ -18,7 +18,6 @@ namespace justanlsp
 class JustAnLSPClient
 {
   public:
-
     //////////////////////////////////////////////////////////////
     ///
     /// @brief Default constructor
@@ -47,7 +46,6 @@ class JustAnLSPClient
     void saveInfo(const ClientInfo &clientInfo);
 
   private:
-
     //////////////////////////////////////////////////////////////
     ///
     /// @brief Client capabilites

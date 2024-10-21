@@ -49,4 +49,4 @@ enum class RequestType
     UNKNOWN,
 };
 
-}
+} // namespace justanlsp

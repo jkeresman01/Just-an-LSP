@@ -3,8 +3,8 @@
 #include <memory>
 #include <string>
 
-#include "JustAnLSPClient.h"
 #include "../messages/ResponseMessage.h"
+#include "JustAnLSPClient.h"
 
 namespace justanlsp
 {

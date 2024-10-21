@@ -5,8 +5,8 @@
 #include <memory>
 #include <string>
 
-#include "JustAnLSPFacade.h"
 #include "../messages/ResponseMessage.h"
+#include "JustAnLSPFacade.h"
 
 namespace justanlsp
 {
