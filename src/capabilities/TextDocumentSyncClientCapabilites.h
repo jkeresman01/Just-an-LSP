@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdint>
 #include <iomanip>
 #include <sstream>
 
@@ -58,8 +59,8 @@ struct TextDocumentSyncClientCapabilities
     {
         std::stringstream ss;
 
-        int optionWidth = 30;
-        int resultWidth = 20;
+        int8_t optionWidth = 30;
+        int8_t resultWidth = 20;
 
         ss << std::setw(optionWidth) << std::left << "Sync option";
         ss << std::setw(resultWidth) << std::left << "Yes/No" << std::endl;
