@@ -15,7 +15,7 @@ namespace justanlsp
 
 ResponseMessage JustAnLSPFacade::handleRequest(const std::string &request)
 {
-    switch (RequestUtil::getRequestType(request))
+    switch (RequestUtil::getType(request))
     {
     case RequestType::INITIALIZE:
         return handleInitializeRequest(request);

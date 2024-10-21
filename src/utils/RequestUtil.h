@@ -47,7 +47,7 @@ class RequestUtil
         return content;
     }
 
-    static RequestType getRequestType(const nlohmann::json &request)
+    static RequestType getType(const nlohmann::json &request)
     {
         auto it = request.find("method");
         if (it == request.end())
