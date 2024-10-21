@@ -11,6 +11,8 @@ namespace justanlsp
 class RequestMessageFactory
 {
   public:
+      RequestMessageFactory() = delete;
+
     static std::unique_ptr<RequestMessage> create(const RequestType &requestType,
                                                   const nlohmann::json &jsonRPC)
     {
