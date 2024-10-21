@@ -1,9 +1,9 @@
-#j, ainclude "JustAnLSPFacade.h"
+#include "JustAnLSPFacade.h"
 
 #include <memory>
 
 #include "../enums/RequestType.h"
-#include "../factory/RequestMessageFactory.h"
+#include "../factories/RequestMessageFactory.h"
 #include "../messages/InitializeRequest.h"
 #include "../params/InitializeParams.h"
 #include "../utils/Logger.h"
