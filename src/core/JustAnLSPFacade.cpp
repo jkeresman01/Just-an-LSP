@@ -35,6 +35,8 @@ ResponseMessage JustAnLSPFacade::handleRequest(const std::string &request)
 
 ResponseMessage JustAnLSPFacade::handleInitializeRequest(const std::string &request)
 {
+    LOG_INFO << "Proccessing initialize request";
+
     nlohmann::json jsonRPC = RequestUtil::tryParse(request);
     std::unique_ptr<InitializeRequest> initializeRequest =
         RequestMessageFactory::create(RequestType::INITIALIZE, jsonRPC);
@@ -52,6 +54,8 @@ ResponseMessage JustAnLSPFacade::handleInitializeRequest(const std::string &requ
 
 ResponseMessage JustAnLSPFacade::handleInitializedRequest(const std::string &request)
 {
+    LOG_INFO << "Proccessing initialized request";
+
     nlohmann::json jsonRPC = RequestUtil::tryParse(request);
     std::unique_ptr<InitializedRequest> initializeRequest =
         RequestMessageFactory::create(RequestType::INITIALIZED, jsonRPC);
@@ -61,12 +65,17 @@ ResponseMessage JustAnLSPFacade::handleInitializedRequest(const std::string &req
 
 ResponseMessage JustAnLSPFacade::handleTextDocumentHoverRequest(const std::string &request)
 {
+    LOG_INFO << "Proccessing textDocument/Hover request";
+
+    nlohmann::json jsonRPC = RequestUtil::tryParse(request);
 
     // TODO basic response
 }
 
 ResponseMessage JustAnLSPFacade::handleTextDocumentDidOpenRequest(const std::string &request)
 {
+    LOG_INFO << "Proccessing textDocument/DidOpen request";
+
     nlohmann::json jsonRPC = RequestUtil::tryParse(request);
 
     // TODO basic response
@@ -74,6 +83,8 @@ ResponseMessage JustAnLSPFacade::handleTextDocumentDidOpenRequest(const std::str
 
 ResponseMessage JustAnLSPFacade::handleTextDocumentDidChangeRequest(const std::string &request)
 {
+    LOG_INFO << "Proccessing textDocument/DidChange request";
+
     nlohmann::json jsonRPC = RequestUtil::tryParse(request);
 
     // TODO basic response

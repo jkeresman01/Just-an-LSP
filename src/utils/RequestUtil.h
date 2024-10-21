@@ -50,7 +50,6 @@ class RequestUtil
     static RequestType getRequestType(const nlohmann::json &request)
     {
         auto it = request.find("method");
-
         if (it == request.end())
         {
             LOG_ERROR << "Received unknown request type";
@@ -58,19 +57,15 @@ class RequestUtil
         }
 
         std::string method = std::string(request["method"]);
-        LOG_INFO << "Received request with method: " << method << "!";
-
         return RequestMethodUtil::getType(method);
     }
 
     static nlohmann::json tryParse(const std::string &request)
     {
         nlohmann::json jsonRequest;
-
         try
         {
             jsonRequest = nlohmann::json::parse(request);
-            LOG_INFO << "Trying to parse request" << jsonRequest.dump(4);
         }
         catch (const std::exception &e)
         {
