@@ -3,8 +3,9 @@
 #include <nlohmann/json.hpp>
 #include <string>
 
-#include "Logger.h"
 #include "../enums/RequestType.h"
+#include "Logger.h"
+#include "RequestMethodUtil.h"
 
 namespace justanlsp
 {
@@ -59,7 +60,7 @@ class RequestUtil
         std::string method = std::string(request["method"]);
         LOG_INFO << "Received request with method: " << method << "!";
 
-        return mapMethodToRequestType(method);
+        return RequestMethodUtil::getType(method);
     }
 
     static nlohmann::json tryParse(const std::string &request)
@@ -77,31 +78,6 @@ class RequestUtil
         }
 
         return jsonRequest;
-    }
-
-  private:
-    static RequestType mapMethodToRequestType(const std::string &method)
-    {
-        if (method == "initalize")
-        {
-            return RequestType::INITIALIZE;
-        }
-        else if (method == "textDocumentDidChange")
-        {
-            return RequestType::TEXT_DOCUMENT_DID_CHANGE;
-        }
-        else if (method == "textDocumentDidOpen")
-        {
-            return RequestType::TEXT_DOCUMENT_DID_OPEN;
-        }
-        else if (method == "textDocumentHover")
-        {
-            return RequestType::TEXT_DOCUMENT_HOVER;
-        }
-        else
-        {
-            return RequestType::UNKNOWN;
-        }
     }
 };
 } // namespace justanlsp
