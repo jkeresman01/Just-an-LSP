@@ -11,7 +11,7 @@ namespace justanlsp
 class ResponseError
 {
   public:
-    ResponseError(ErrorCode code, const std::string &message);
+    ResponseError(const ErrorCode &code, const std::string &message);
 
     void setData(const std::string &data) { m_data = data; };
 
