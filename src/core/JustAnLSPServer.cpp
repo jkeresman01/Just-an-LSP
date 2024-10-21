@@ -9,14 +9,14 @@
 namespace justanlsp
 {
 
-LanguageServer::LanguageServer()
+JustAnLSPServer::JustAnLSPServer()
 {
     m_justAnLspFacade = std::make_shared<JustAnLSPFacade>();
 
     LOG_INFO << "Instance of Language server successfully created";
 }
 
-void LanguageServer::run()
+void JustAnLSPServer::run()
 {
     LOG_INFO << "Language server successfully started";
 
@@ -27,13 +27,13 @@ void LanguageServer::run()
     }
 }
 
-void LanguageServer::handleRequest(const std::string &request)
+void JustAnLSPServer::handleRequest(const std::string &request)
 {
     ResponseMessage response = m_justAnLspFacade->handleRequest(request);
     sendResponse(response);
 }
 
-void LanguageServer::sendResponse(const ResponseMessage &response)
+void JustAnLSPServer::sendResponse(const ResponseMessage &response)
 {
     nlohmann::json jsonRPC = response.toJson();
     ResponseUtil::sendResponse(jsonRPC);

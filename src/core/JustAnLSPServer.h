@@ -11,10 +11,10 @@
 namespace justanlsp
 {
 
-class LanguageServer
+class JustAnLSPServer
 {
   public:
-    LanguageServer();
+    JustAnLSPServer();
 
     void run();
 
