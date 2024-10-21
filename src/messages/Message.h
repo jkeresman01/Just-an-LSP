@@ -39,8 +39,8 @@ class Message
   protected:
     //////////////////////////////////////////////////////////////
     ///
-    /// @brief RPC version, language server protocol always uses "2.0"
-    ///        as the jsonrpc version
+    /// @brief RPC version, language server protocol always 
+    ///        uses "2.0" as the jsonrpc version
     ///
     //////////////////////////////////////////////////////////////
     std::string m_jsonRPC;
