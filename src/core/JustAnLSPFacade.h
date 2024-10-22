@@ -13,7 +13,7 @@ namespace justanlsp
 ///
 /// @class JustAnLSPFacade
 ///
-/// @brief Single simplified interface for handling JustAnLspLSP 
+/// @brief Single simplified interface for handling JustAnLspLSP
 ///        request messages
 ///
 //////////////////////////////////////////////////////////////
@@ -22,10 +22,15 @@ class JustAnLSPFacade
   public:
     //////////////////////////////////////////////////////////////
     ///
-    /// @brief Default constructor
+    /// @brief Default constructor (default, copy, move)
+    ///        and assingment operators
     ///
     //////////////////////////////////////////////////////////////
     JustAnLSPFacade() = default;
+    JustAnLSPFacade(const JustAnLSPFacade &) = delete;
+    JustAnLSPFacade(JustAnLSPFacade &&) = delete;
+    JustAnLSPFacade &operator=(const JustAnLSPFacade &) = delete;
+    JustAnLSPFacade &operator=(JustAnLSPFacade &&) = delete;
 
     //////////////////////////////////////////////////////////////
     ///
@@ -35,8 +40,8 @@ class JustAnLSPFacade
     ///
     //////////////////////////////////////////////////////////////
     ResponseMessage handleRequest(const std::string &request);
-  private:
 
+  private:
     //////////////////////////////////////////////////////////////
     ///
     /// @brief Entry point for handling initialize request

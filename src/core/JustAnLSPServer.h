@@ -53,7 +53,7 @@ class JustAnLSPServer
   private:
     //////////////////////////////////////////////////////////////
     ///
-    /// @brief Single simplified interface for handling JustAnLspLSP 
+    /// @brief Single simplified interface for handling JustAnLspLSP
     ///        request messages
     ///
     //////////////////////////////////////////////////////////////

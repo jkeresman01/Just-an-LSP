@@ -6,9 +6,9 @@
 #include "../factories/RequestMessageFactory.h"
 #include "../messages/InitializeRequest.h"
 #include "../params/InitializeParams.h"
+#include "../types/ClientInfo.h"
 #include "../utils/Logger.h"
 #include "../utils/RequestUtil.h"
-#include "../types/ClientInfo.h"
 
 namespace justanlsp
 {
