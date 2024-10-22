@@ -3,8 +3,10 @@
 #include <memory>
 
 #include "../enums/RequestType.h"
+#include "../enums/TextDocumentSyncKind.h"
 #include "../factories/RequestMessageFactory.h"
 #include "../messages/InitializeRequest.h"
+#include "../messages/InitializeResponse.h"
 #include "../params/InitializeParams.h"
 #include "../types/ClientInfo.h"
 #include "../types/JustAnLSPClient.h"
@@ -46,7 +48,7 @@ ResponseMessage JustAnLSPFacade::handleInitializeRequest(const std::string &requ
     if (m_justAnLspCounters->getValue(RequestType::INITIALIZE) != 1)
     {
         LOG_ERROR << "Initialize request should be the first that is send from client to JustAnLSP server!";
-        // TODO return corresponding error code
+        // TODO return response with erorr code SERVER_NOT_INITIALIZED = -32002,
     }
 
     nlohmann::json jsonRPC = RequestUtil::tryParse(request);
@@ -64,7 +66,7 @@ ResponseMessage JustAnLSPFacade::handleInitializeRequest(const std::string &requ
 
     JustAnLSPClientService::getInstance().registerClient(client);
 
-    // TODO basic response
+    return InitializeResponse({"justAnLSP", "0.0.0.0.1-beta"}, {TextDocumentSyncKind::FULL});
 }
 
 ResponseMessage JustAnLSPFacade::handleInitializedRequest(const std::string &request)
