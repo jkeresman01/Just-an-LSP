@@ -23,7 +23,7 @@ class ClientCapabilities
   public:
     //////////////////////////////////////////////////////////////
     ///
-    /// @brief Degault contructor for ClientCapabilites
+    /// @brief Default contructor for ClientCapabilites
     ///
     //////////////////////////////////////////////////////////////
     ClientCapabilities() = default;
