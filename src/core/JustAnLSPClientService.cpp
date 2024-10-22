@@ -12,8 +12,7 @@ void JustAnLSPClientService::registerClient(const JustAnLSPClient &client)
     m_registeredClients.emplace(++m_clientId, client);
 
     LOG_INFO << "Client with ID: " << m_clientId << "(" << client.getInfo()
-             << ") has been successfully registered"
-             << "!";
+             << ") has been successfully registered" << "!";
 }
 
 JustAnLSPClient JustAnLSPClientService::getClientById(uint32_t clientId) const
