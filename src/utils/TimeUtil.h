@@ -7,6 +7,7 @@
 
 namespace justanlsp
 {
+
 class TimeUtil
 {
   public:
@@ -14,7 +15,8 @@ class TimeUtil
 
     static std::time_t now()
     {
-        auto currentTime = std::chrono::high_resolution_clock::now();
+        std::chrono::time_point<std::chrono::high_resolution_clock> currentTime =
+            std::chrono::high_resolution_clock::now();
         return std::chrono::high_resolution_clock::to_time_t(currentTime);
     }
 

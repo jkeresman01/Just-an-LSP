@@ -4,7 +4,6 @@
 #include <vector>
 
 #include "../enums/MarkupKind.h"
-#include "../enums/MarkupKind.h"
 
 namespace justanlsp
 {
