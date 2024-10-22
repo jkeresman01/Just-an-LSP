@@ -4,6 +4,7 @@
 
 namespace justanlsp
 {
+
 JustAnLSPClient::JustAnLSPClient(const ClientInfo &clientInfo,
                                  const std::shared_ptr<ClientCapabilities> &clientCapabilites)
 {
@@ -20,4 +21,5 @@ void JustAnLSPClient::registerCapabilites(const std::shared_ptr<ClientCapabiliti
 {
     m_clientCapabilities = clientCapabilites;
 }
+
 } // namespace justanlsp
