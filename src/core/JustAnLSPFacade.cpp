@@ -44,15 +44,17 @@ ResponseMessage JustAnLSPFacade::handleInitializeRequest(const std::string &requ
         RequestMessageFactory::create(RequestType::INITIALIZE, jsonRPC);
 
     InitializeParams initializeParams = initializeRequest->getInitializeParams();
+
+    std::shared_ptr<ClientCapabilities> clientCapabilities = initializeParams.getClientCapabilites();
     ClientInfo clientInfo = initializeParams.getClientInfo();
+
+    JustAnLSPClient client(clientInfo, clientCapabilities);
 
     LOG_INFO << "Received initialize request from: " << clientInfo.toString();
 
-    JustAnLSPClient client;
-    client.saveInfo(clientInfo);
-    client.registerCapabilites(initializeParams.getClientCapabilites());
-
     JustAnLSPClientService::getInstance().registerClient(client);
+
+    LOG_INFO << "Client has been successfully registered!";
 
     // TODO basic response
 }
