@@ -59,11 +59,7 @@ ResponseMessage JustAnLSPFacade::handleInitializeRequest(const std::string &requ
     std::shared_ptr<ClientCapabilities> clientCapabilities = initializeParams.getClientCapabilites();
     ClientInfo clientInfo = initializeParams.getClientInfo();
 
-    JustAnLSPClient client(clientInfo, clientCapabilities);
-
-    LOG_INFO << "Received initialize request from: " << clientInfo.toString();
-
-    JustAnLSPClientService::getInstance().registerClient(client);
+    JustAnLSPClientService::getInstance().registerClient({clientInfo, clientCapabilities});
 
     return InitializeResponse({"justAnLSP", "0.0.0.0.1-beta"}, {TextDocumentSyncKind::FULL});
 }
