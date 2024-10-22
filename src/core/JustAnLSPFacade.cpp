@@ -54,8 +54,6 @@ ResponseMessage JustAnLSPFacade::handleInitializeRequest(const std::string &requ
 
     JustAnLSPClientService::getInstance().registerClient(client);
 
-    LOG_INFO << "Client has been successfully registered!";
-
     // TODO basic response
 }
 
