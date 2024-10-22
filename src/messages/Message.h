@@ -28,6 +28,15 @@ class Message
 
     //////////////////////////////////////////////////////////////
     ///
+    /// @brief Constructs the Message from jsonRPC
+    ///
+    /// @param jsonRPC
+    ///
+    //////////////////////////////////////////////////////////////
+    Message(const std::string &jsonRPC) : m_jsonRPC(jsonRPC){};
+
+    //////////////////////////////////////////////////////////////
+    ///
     /// @brief  Serializes the message to JSON format
     ///
     /// @return Returns serialized Message in JSON format
