@@ -4,6 +4,7 @@
 #include <string>
 
 #include "../messages/ResponseMessage.h"
+#include "../utils/JustAnLSPCounter.h"
 
 namespace justanlsp
 {
@@ -95,6 +96,16 @@ class JustAnLSPFacade
     ///
     //////////////////////////////////////////////////////////////
     ResponseMessage handleTextDocumentHoverRequest(const std::string &request);
+
+  private:
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Request counter
+    ///
+    /// @param string representation of incoming request
+    ///
+    //////////////////////////////////////////////////////////////
+    std::unique_ptr<JustAnLSPCounter> m_justAnLspCounters = std::unique_ptr<JustAnLSPCounter>();
 };
 
 } // namespace justanlsp
