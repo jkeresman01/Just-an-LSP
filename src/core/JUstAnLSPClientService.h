@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../types/JustAnLSPClient.h"
+#include "JustAnLSPClient.h"
 
 #include <cstdint>
 #include <map>
