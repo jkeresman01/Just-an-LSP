@@ -13,12 +13,17 @@ JustAnLSPServer::JustAnLSPServer()
 {
     m_justAnLspFacade = std::make_shared<JustAnLSPFacade>();
 
-    LOG_INFO << "Instance of Language server successfully created";
+    LOG_INFO << "Instance of JustAnLSP server successfully created";
+}
+
+JustAnLSPServer::~JustAnLSPServer()
+{
+    LOG_INFO << "Successfull shutdown of JustAnLSP server";
 }
 
 void JustAnLSPServer::run()
 {
-    LOG_INFO << "Language server successfully started";
+    LOG_INFO << "JustAnLSP server successfully started";
 
     for (;;)
     {
