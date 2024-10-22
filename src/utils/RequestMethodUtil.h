@@ -21,15 +21,15 @@ class RequestMethodUtil
         {
             return RequestType::INITIALIZED;
         }
-        else if (method == "textDocument/DidChange")
+        else if (method == "textDocument/didChange")
         {
             return RequestType::TEXT_DOCUMENT_DID_CHANGE;
         }
-        else if (method == "textDocument/DidOpen")
+        else if (method == "textDocument/didOpen")
         {
             return RequestType::TEXT_DOCUMENT_DID_OPEN;
         }
-        else if (method == "textDocumen/tHover")
+        else if (method == "textDocumen/hover")
         {
             return RequestType::TEXT_DOCUMENT_HOVER;
         }

@@ -70,7 +70,7 @@ ResponseMessage JustAnLSPFacade::handleInitializedRequest(const std::string &req
 
 ResponseMessage JustAnLSPFacade::handleTextDocumentHoverRequest(const std::string &request)
 {
-    LOG_INFO << "Proccessing textDocument/Hover request";
+    LOG_INFO << "Proccessing textDocument/hover request";
 
     nlohmann::json jsonRPC = RequestUtil::tryParse(request);
 
@@ -79,7 +79,7 @@ ResponseMessage JustAnLSPFacade::handleTextDocumentHoverRequest(const std::strin
 
 ResponseMessage JustAnLSPFacade::handleTextDocumentDidOpenRequest(const std::string &request)
 {
-    LOG_INFO << "Proccessing textDocument/DidOpen request";
+    LOG_INFO << "Proccessing textDocument/didOpen request";
 
     nlohmann::json jsonRPC = RequestUtil::tryParse(request);
 
@@ -88,7 +88,7 @@ ResponseMessage JustAnLSPFacade::handleTextDocumentDidOpenRequest(const std::str
 
 ResponseMessage JustAnLSPFacade::handleTextDocumentDidChangeRequest(const std::string &request)
 {
-    LOG_INFO << "Proccessing textDocument/DidChange request";
+    LOG_INFO << "Proccessing textDocument/didChange request";
 
     nlohmann::json jsonRPC = RequestUtil::tryParse(request);
 
