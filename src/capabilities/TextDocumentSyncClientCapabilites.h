@@ -55,7 +55,7 @@ struct TextDocumentSyncClientCapabilities
     /// @return String representation of Clients sync capabilites
     ///
     //////////////////////////////////////////////////////////////
-    std::string toString()
+    std::string toString() const
     {
         std::stringstream ss;
 

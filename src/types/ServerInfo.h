@@ -38,7 +38,7 @@ struct ServerInfo
     /// @return String representation of ServerInfo
     ///
     //////////////////////////////////////////////////////////////
-    std::string toString()
+    std::string toString() const
     {
         std::stringstream ss;
         ss << "Server: " << name;

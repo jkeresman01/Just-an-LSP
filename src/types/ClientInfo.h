@@ -36,7 +36,7 @@ struct ClientInfo
     /// @return String representation of Client Info
     ///
     //////////////////////////////////////////////////////////////
-    std::string toString()
+    std::string toString() const
     {
         std::stringstream ss;
         ss << "Client: " << name;
