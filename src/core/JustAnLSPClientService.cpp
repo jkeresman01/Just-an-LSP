@@ -22,7 +22,7 @@ JustAnLSPClient JustAnLSPClientService::getClientById(uint32_t clientId) const
 
     if (it == m_registeredClients.end())
     {
-        LOG_ERROR << "There are no registered clients with ID: << clientId" << "!";
+        LOG_ERROR << "There are no registered clients with ID: " << clientId << "!";
     }
 
     return it->second;
