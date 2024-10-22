@@ -2,9 +2,8 @@
 
 #include <string>
 
+#include "../rpc/Rpc.h"
 #include "../utils/Logger.h"
-#include "../utils/RequestUtil.h"
-#include "../utils/ResponseUtil.h"
 
 namespace justanlsp
 {
@@ -27,21 +26,14 @@ void JustAnLSPServer::run()
 
     for (;;)
     {
-        std::string request = RequestUtil::readRequest();
+        std::string request = Rpc::read();
         handleRequest(request);
     }
 }
 
 void JustAnLSPServer::handleRequest(const std::string &request)
 {
-    ResponseMessage response = m_justAnLspFacade->handleRequest(request);
-    sendResponse(response);
-}
-
-void JustAnLSPServer::sendResponse(const ResponseMessage &response)
-{
-    nlohmann::json jsonRPC = response.toJson();
-    ResponseUtil::sendResponse(jsonRPC);
+    m_justAnLspFacade->handleRequest(request);
 }
 
 } // namespace justanlsp

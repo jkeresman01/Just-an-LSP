@@ -53,7 +53,7 @@ class JustAnLSPFacade
     /// @return responseMessage
     ///
     //////////////////////////////////////////////////////////////
-    ResponseMessage handleInitializeRequest(const std::string &request);
+    void handleInitializeRequest(const std::string &request);
 
     //////////////////////////////////////////////////////////////
     ///
@@ -64,7 +64,7 @@ class JustAnLSPFacade
     /// @return responseMessage
     ///
     //////////////////////////////////////////////////////////////
-    ResponseMessage handleInitializedRequest(const std::string &request);
+    void handleInitializedRequest(const std::string &request);
 
     //////////////////////////////////////////////////////////////
     ///
@@ -86,7 +86,7 @@ class JustAnLSPFacade
     /// @return responseMessage
     ///
     //////////////////////////////////////////////////////////////
-    ResponseMessage handleTextDocumentDidChangeRequest(const std::string &request);
+    void handleTextDocumentDidChangeRequest(const std::string &request);
 
     //////////////////////////////////////////////////////////////
     ///
@@ -97,7 +97,7 @@ class JustAnLSPFacade
     /// @return responseMessage
     ///
     //////////////////////////////////////////////////////////////
-    ResponseMessage handleTextDocumentHoverRequest(const std::string &request);
+    void handleTextDocumentHoverRequest(const std::string &request);
 
   private:
     //////////////////////////////////////////////////////////////

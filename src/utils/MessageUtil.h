@@ -9,43 +9,10 @@
 
 namespace justanlsp
 {
-class RequestUtil
+class MessageUtil
 {
   public:
     RequestUtil() = delete;
-
-    static std::string readRequest()
-    {
-        std::string header;
-        uint32_t contentLength = 0;
-
-        while (getline(std::cin, header))
-        {
-            header.erase(0, header.find_first_not_of(" \t\r\n\v\f"));
-            header.erase(header.find_last_not_of(" \t\r\n\v\f") + 1);
-
-            if (header.substr(0, 16) == "Content-Length: ")
-            {
-                contentLength = std::stoul(header.substr(16));
-            }
-
-            if (header.empty())
-            {
-                break;
-            }
-        }
-
-        if (contentLength == 0)
-        {
-            LOG_ERROR << "No valid content length found, can't read the payload!";
-            return "";
-        }
-
-        std::string content(contentLength, ' ');
-        std::cin.read(&content[0], contentLength);
-
-        return content;
-    }
 
     static RequestType getType(const nlohmann::json &request)
     {
