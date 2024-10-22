@@ -20,10 +20,12 @@ class JustAnLSPClient
   public:
     //////////////////////////////////////////////////////////////
     ///
-    /// @brief Default constructor
+    /// @brief Constructors
     ///
     //////////////////////////////////////////////////////////////
     JustAnLSPClient() = default;
+    JustAnLSPClient(const ClientInfo &clientInfo,
+                    const std::shared_ptr<ClientCapabilities> &clientCapabilites);
 
     //////////////////////////////////////////////////////////////
     ///

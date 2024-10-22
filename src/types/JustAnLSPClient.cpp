@@ -4,6 +4,13 @@
 
 namespace justanlsp
 {
+JustAnLSPClient::JustAnLSPClient(const ClientInfo &clientInfo,
+                                 const std::shared_ptr<ClientCapabilities> &clientCapabilites)
+{
+    saveInfo(clientInfo);
+    registerCapabilites(clientCapabilites);
+}
+
 void JustAnLSPClient::saveInfo(const ClientInfo &clientInfo)
 {
     m_clientInfo = clientInfo;

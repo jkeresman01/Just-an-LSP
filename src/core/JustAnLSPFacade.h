@@ -4,7 +4,6 @@
 #include <string>
 
 #include "../messages/ResponseMessage.h"
-#include "JustAnLSPClient.h"
 
 namespace justanlsp
 {
@@ -96,14 +95,6 @@ class JustAnLSPFacade
     ///
     //////////////////////////////////////////////////////////////
     ResponseMessage handleTextDocumentHoverRequest(const std::string &request);
-
-  private:
-    //////////////////////////////////////////////////////////////
-    ///
-    /// @brief Registered client (editor or tool)
-    ///
-    //////////////////////////////////////////////////////////////
-    std::shared_ptr<JustAnLSPClient> m_client = std::make_shared<JustAnLSPClient>();
 };
 
 } // namespace justanlsp

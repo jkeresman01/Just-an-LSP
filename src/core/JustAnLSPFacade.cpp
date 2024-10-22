@@ -7,8 +7,10 @@
 #include "../messages/InitializeRequest.h"
 #include "../params/InitializeParams.h"
 #include "../types/ClientInfo.h"
+#include "../types/JustAnLSPClient.h"
 #include "../utils/Logger.h"
 #include "../utils/RequestUtil.h"
+#include "JUstAnLSPClientService.h"
 
 namespace justanlsp
 {
@@ -46,8 +48,11 @@ ResponseMessage JustAnLSPFacade::handleInitializeRequest(const std::string &requ
 
     LOG_INFO << "Received initialize request from: " << clientInfo.toString();
 
-    m_client->saveInfo(clientInfo);
-    m_client->registerCapabilites(initializeParams.getClientCapabilites());
+    JustAnLSPClient client;
+    client.saveInfo(clientInfo);
+    client.registerCapabilites(initializeParams.getClientCapabilites());
+
+    JustAnLSPClientService::getInstance().registerClient(client);
 
     // TODO basic response
 }
