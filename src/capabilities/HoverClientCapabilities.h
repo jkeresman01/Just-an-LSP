@@ -3,7 +3,8 @@
 #include <nlohmann/json.hpp>
 #include <vector>
 
-#include "MarkupKind.h"
+#include "../enums/MarkupKind.h"
+#include "../enums/MarkupKind.h"
 
 namespace justanlsp
 {
@@ -35,7 +36,7 @@ class HoverClientCapabilities
     ///        The order describes the preferred format of the client.
     ///
     //////////////////////////////////////////////////////////////
-    std::vector<MarkupKind> m_contentFormat;
+    std::vector<MarkupKind> m_contentFormats;
 
     //////////////////////////////////////////////////////////////
     ///

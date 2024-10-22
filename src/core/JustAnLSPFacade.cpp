@@ -4,7 +4,7 @@
 
 #include "../enums/RequestType.h"
 #include "../enums/TextDocumentSyncKind.h"
-#include "../factories/RequestMessageFactory.h"
+#include "../factories/MessageFactory.h"
 #include "../messages/InitializeRequest.h"
 #include "../messages/InitializeResponse.h"
 #include "../params/InitializeParams.h"
@@ -50,16 +50,15 @@ ResponseMessage JustAnLSPFacade::handleInitializeRequest(const std::string &requ
 
     nlohmann::json jsonRPC = RequestUtil::tryParse(request);
     std::unique_ptr<InitializeRequest> initializeRequest =
-        RequestMessageFactory::create(RequestType::INITIALIZE, jsonRPC);
+        MessageFactory::create(RequestType::INITIALIZE, jsonRPC);
 
     InitializeParams initializeParams = initializeRequest->getInitializeParams();
-
     std::shared_ptr<ClientCapabilities> clientCapabilities = initializeParams.getClientCapabilites();
     ClientInfo clientInfo = initializeParams.getClientInfo();
 
     JustAnLSPClientService::getInstance().registerClient({clientInfo, clientCapabilities});
 
-    return InitializeResponse({"justAnLSP", "0.0.0.0.1-beta"}, {TextDocumentSyncKind::FULL});
+    return InitializeResponse({"JustAnLSP", "0.0.0.0.0.1-alpha"}, {TextDocumentSyncKind::FULL});
 }
 
 ResponseMessage JustAnLSPFacade::handleInitializedRequest(const std::string &request)
@@ -70,7 +69,7 @@ ResponseMessage JustAnLSPFacade::handleInitializedRequest(const std::string &req
 
     nlohmann::json jsonRPC = RequestUtil::tryParse(request);
     std::unique_ptr<InitializedRequest> initializeRequest =
-        RequestMessageFactory::create(RequestType::INITIALIZED, jsonRPC);
+        MessageFactory::create(RequestType::INITIALIZED, jsonRPC);
 
     // TODO basic response
 }
@@ -82,8 +81,6 @@ ResponseMessage JustAnLSPFacade::handleTextDocumentHoverRequest(const std::strin
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_HOVER);
 
     nlohmann::json jsonRPC = RequestUtil::tryParse(request);
-
-    // TODO basic response
 }
 
 ResponseMessage JustAnLSPFacade::handleTextDocumentDidOpenRequest(const std::string &request)
