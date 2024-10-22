@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include <locale>
 #include <memory>
 #include <optional>
 #include <string>
@@ -80,7 +81,7 @@ class InitializeParams
     /// @since 3.16.0
     ///
     //////////////////////////////////////////////////////////////
-    std::string m_locale;
+    std::locale m_locale;
 
     //////////////////////////////////////////////////////////////
     ///
