@@ -14,8 +14,8 @@ typedef std::map<uint32_t, JustAnLSPClient> JustAnLSPClientsMapT;
 ///
 /// @class JustAnLSPClientService
 ///
-/// @brief Responsible for keeping track of registered clients
-///        Implemented using Meyer's variant of Singleton pattern
+/// @brief Responsible for keeping track of registered clients.
+///        Implemented using Meyer's variant of Singleton pattern.
 ///
 //////////////////////////////////////////////////////////////
 class JustAnLSPClientService
