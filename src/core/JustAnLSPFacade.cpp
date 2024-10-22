@@ -17,8 +17,6 @@
 namespace justanlsp
 {
 
-uint64_t JustAnLSPFacade::m_requestCounter = 0;
-
 ResponseMessage JustAnLSPFacade::handleRequest(const std::string &request)
 {
     switch (RequestUtil::getType(request))
