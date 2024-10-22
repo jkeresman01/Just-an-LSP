@@ -1,10 +1,12 @@
+#include "JustAnLSPClient.h"
 #pragma onceFaca
 
 #include <memory>
 #include <string>
 
 #include "../messages/ResponseMessage.h"
-#include "../utils/JustAnLSPCounter.h"
+#include "JustAnLSPClient.h"
+#include "JustAnLSPCounter.h"
 
 namespace justanlsp
 {
@@ -102,10 +104,15 @@ class JustAnLSPFacade
     ///
     /// @brief Request counter
     ///
-    /// @param string representation of incoming request
-    ///
     //////////////////////////////////////////////////////////////
     std::unique_ptr<JustAnLSPCounter> m_justAnLspCounters = std::unique_ptr<JustAnLSPCounter>();
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Track only one client for the start
+    ///
+    //////////////////////////////////////////////////////////////
+    std::unique_ptr<JustAnLSPClient> m_justAnLSPClient;
 };
 
 } // namespace justanlsp

@@ -53,10 +53,14 @@ ResponseMessage JustAnLSPFacade::handleInitializeRequest(const std::string &requ
         MessageFactory::create(RequestType::INITIALIZE, jsonRPC);
 
     InitializeParams initializeParams = initializeRequest->getInitializeParams();
-    std::shared_ptr<ClientCapabilities> clientCapabilities = initializeParams.getClientCapabilites();
-    ClientInfo clientInfo = initializeParams.getClientInfo();
 
-    JustAnLSPClientService::getInstance().registerClient({clientInfo, clientCapabilities});
+    std::shared_ptr<ClientCapabilities> clientCapabilities = initializeParams.getClientCapabilites();
+    m_justAnLSPClient->registerCapabilities(clientCapabilities);
+
+    ClientInfo clientInfo = initializeParams.getClientInfo();
+    m_justAnLSPClient->saveInfo(clientInfo);
+
+    LOG_INFO << "Received initialization request from " << m_justAnLSPClient.toString();
 
     return InitializeResponse({"JustAnLSP", "0.0.0.0.0.1-alpha"}, {TextDocumentSyncKind::FULL});
 }
@@ -66,6 +70,10 @@ ResponseMessage JustAnLSPFacade::handleInitializedRequest(const std::string &req
     LOG_INFO << "Proccessing initialized request";
 
     m_justAnLspCounters->increment(RequestType::INITIALIZED);
+    if (m_justAnLspCounters.getValue(RequestType::INITIALIZED) != 1 and m_justAnLspCounters.getSum() != 2)
+    {
+        LOG_ERROR << "Initialied request should should be first one after Initialize request";
+    }
 
     nlohmann::json jsonRPC = RequestUtil::tryParse(request);
     std::unique_ptr<InitializedRequest> initializeRequest =
