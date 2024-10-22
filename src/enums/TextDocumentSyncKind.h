@@ -16,7 +16,7 @@ enum class TextDocumentSyncKind
 {
     //////////////////////////////////////////////////////////////
     ///
-    /// @brief Documents should not be synced at all.j
+    /// @brief Documents should not be synced at all.
     ///
     //////////////////////////////////////////////////////////////
     NONE = 0,
