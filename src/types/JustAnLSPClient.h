@@ -4,6 +4,8 @@
 #include "../types/ClientInfo.h"
 
 #include <memory>
+#include <string>
+#include <unordered_map>
 
 namespace justanlsp
 {
@@ -20,10 +22,20 @@ class JustAnLSPClient
   public:
     //////////////////////////////////////////////////////////////
     ///
-    /// @brief Constructors
+    /// @brief Default constructor
     ///
     //////////////////////////////////////////////////////////////
     JustAnLSPClient() = default;
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Constructor that saves client info and registers
+    ///        clients capabilities
+    ///
+    /// @param clientInfo
+    /// @param clientCapabilites
+    ///
+    //////////////////////////////////////////////////////////////
     JustAnLSPClient(const ClientInfo &clientInfo,
                     const std::shared_ptr<ClientCapabilities> &clientCapabilites);
 
@@ -48,6 +60,35 @@ class JustAnLSPClient
 
     //////////////////////////////////////////////////////////////
     ///
+    /// @brief Adds new document to keep track of
+    ///
+    /// @param URI
+    /// @param document
+    ///
+    //////////////////////////////////////////////////////////////
+    void addDocument(const std::string &URI, const std::string &document);
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Adds new document to keep track of
+    ///
+    /// @param URI
+    /// @param document
+    ///
+    //////////////////////////////////////////////////////////////
+    void updateDocumentByURI(const std::string &URI, const std::string &document);
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Gets document by provided URI
+    ///
+    /// @param URI
+    ///
+    //////////////////////////////////////////////////////////////
+    std::string getDocumentByURI(const std::string &URI) const;
+
+    //////////////////////////////////////////////////////////////
+    ///
     /// @brief Gets string represenation of client information
     ///
     /// @return clientInfo
@@ -69,5 +110,12 @@ class JustAnLSPClient
     ///
     //////////////////////////////////////////////////////////////
     ClientInfo m_clientInfo;
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Documents mapped by their corresponding URI
+    ///
+    //////////////////////////////////////////////////////////////
+    std::unordered_map<std::string, std::string> m_documentState;
 };
 } // namespace justanlsp
