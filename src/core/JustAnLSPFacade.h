@@ -22,8 +22,8 @@ class JustAnLSPFacade
   public:
     //////////////////////////////////////////////////////////////
     ///
-    /// @brief Default constructor (default, copy, move)
-    ///        and assingment operators
+    /// @brief Constructors (default, copy, move)
+    ///        and assignment operators
     ///
     //////////////////////////////////////////////////////////////
     JustAnLSPFacade() = default;
