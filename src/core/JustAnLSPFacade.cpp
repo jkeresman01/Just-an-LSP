@@ -53,8 +53,7 @@ void JustAnLSPFacade::handleInitializeRequest(const std::string &request)
 
     m_justAnLspCounters->increment(RequestType::INITIALIZE);
 
-    bool isInitializeReqReceivedFirst =
-        m_justAnLspCounters->getValue(RequestType::INITIALIZE) == 1 and m_justAnLspCounters->getSum() == 1;
+    bool isInitializeReqReceivedFirst = m_justAnLspCounters->getSum() == 1;
 
     if (!isInitializeReqReceivedFirst)
     {
