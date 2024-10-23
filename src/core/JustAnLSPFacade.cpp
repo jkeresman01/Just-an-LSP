@@ -49,7 +49,7 @@ ResponseMessage JustAnLSPFacade::handleRequest(const std::string &request)
 
 void JustAnLSPFacade::handleInitializeRequest(const std::string &request)
 {
-    LOG_INFO << "Proccessing initialize request";
+    LOG_INFO << "Received initialize request";
 
     m_justAnLspCounters->increment(RequestType::INITIALIZE);
 
@@ -79,7 +79,7 @@ void JustAnLSPFacade::handleInitializeRequest(const std::string &request)
 
 void JustAnLSPFacade::handleShutdownRequest(const std::string &request)
 {
-    LOG_INFO << "Proccessing shutdown request";
+    LOG_INFO << "Received shutdown request";
 
     nlohmann::json jsonRPC = MessageUtil::tryParse(request);
 
@@ -90,7 +90,7 @@ void JustAnLSPFacade::handleShutdownRequest(const std::string &request)
 
 void JustAnLSPFacade::handleInitializedRequest(const std::string &request)
 {
-    LOG_INFO << "Proccessing initialized request";
+    LOG_INFO << "Received initialized request";
 
     nlohmann::json jsonRPC = MessageUtil::tryParse(request);
     std::shared_ptr<InitializedRequest> initializeRequest =
@@ -101,7 +101,7 @@ void JustAnLSPFacade::handleInitializedRequest(const std::string &request)
 
 void JustAnLSPFacade::handleTextDocumentHoverRequest(const std::string &request)
 {
-    LOG_INFO << "Proccessing textDocument/hover request";
+    LOG_INFO << "Received textDocument/hover request";
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_HOVER);
 
@@ -110,7 +110,7 @@ void JustAnLSPFacade::handleTextDocumentHoverRequest(const std::string &request)
 
 void JustAnLSPFacade::handleTextDocumentDidOpenRequest(const std::string &request)
 {
-    LOG_INFO << "Proccessing textDocument/didOpen request";
+    LOG_INFO << "Received textDocument/didOpen request";
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_DID_OPEN);
 
@@ -121,7 +121,7 @@ void JustAnLSPFacade::handleTextDocumentDidOpenRequest(const std::string &reques
 
 void JustAnLSPFacade::handleTextDocumentDidChangeRequest(const std::string &request)
 {
-    LOG_INFO << "Proccessing textDocument/didChange request";
+    LOG_INFO << "Received textDocument/didChange request";
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_DID_CHANGE);
 
