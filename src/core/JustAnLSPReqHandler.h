@@ -48,6 +48,5 @@ class JustAnLSPReqHandler
     ///
     //////////////////////////////////////////////////////////////
     void shutdownRequest(const std::shared_ptr<ShutdownRequest> &shutdownRequest);
-
 };
 } // namespace justanlsp
