@@ -2,6 +2,7 @@
 
 #include "JustAnLSPClient.h"
 #include "JustAnLSPReqHandler.h"
+#include "JustAnLSPErrorHandler.h"
 
 #include <memory>
 #include <string>
@@ -107,6 +108,13 @@ class JustAnLSPFacade
     ///
     //////////////////////////////////////////////////////////////
     std::unique_ptr<JustAnLSPReqHandler> m_justAnLSPReqHandler = std::make_unique<JustAnLSPReqHandler>();
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Responsible for handling request such as init/shutdown
+    ///
+    //////////////////////////////////////////////////////////////
+    std::unique_ptr<JustAnLSPErrorHandler> m_justAnLSPErrorHandler = std::make_unique<JustAnLSPErrorHandler>();
 
     //////////////////////////////////////////////////////////////
     ///
