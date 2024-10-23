@@ -59,11 +59,12 @@ void JustAnLSPFacade::handleInitializeRequest(const std::string &request)
     {
         LOG_ERROR << "Received reqeuest before initialization";
 
-        ResponseError responseError{ErrorCodes::SERVER_NOT_INITIALIZED,
-                                    "Received reqeuest before initialization"};
-
         ResponseMessage initializationFailureResponse =
-            ResponseMessage::Builder().withJsonRPC("2.0").withResponseError(responseError).build();
+            ResponseMessage::Builder()
+                .withJsonRPC("2.0")
+                .withResponseError(
+                    {ErrorCodes::SERVER_NOT_INITIALIZED, "Received reqeuest before initialization"})
+                .build();
 
         Rpc::send(initializationFailureResponse);
     }
