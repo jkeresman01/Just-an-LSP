@@ -58,8 +58,7 @@ void JustAnLSPFacade::handleInitializeRequest(const std::string &request)
 
     if (!isInitializeReqReceivedFirst)
     {
-        LOG_ERROR << "Initialize request should be the first that is send from client to JustAnLSP "
-                     "server!";
+        LOG_ERROR << "Initialize request should be first that is send from client to JustAnLSP server!";
     }
 
     nlohmann::json jsonRPC = MessageUtil::tryParse(request);
