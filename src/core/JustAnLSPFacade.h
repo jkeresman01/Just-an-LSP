@@ -1,5 +1,7 @@
+#pragma once
+
 #include "JustAnLSPClient.h"
-#pragma onceFaca
+#include "JustAnLSPReqHandler.h"
 
 #include <memory>
 #include <string>
@@ -41,7 +43,7 @@ class JustAnLSPFacade
     /// @param String representation of incoming request
     ///
     //////////////////////////////////////////////////////////////
-    ResponseMessage handleRequest(const std::string &request);
+    void handleRequest(const std::string &request);
 
   private:
     //////////////////////////////////////////////////////////////
@@ -50,18 +52,23 @@ class JustAnLSPFacade
     ///
     /// @param string representation of incoming request
     ///
-    /// @return responseMessage
-    ///
     //////////////////////////////////////////////////////////////
     void handleInitializeRequest(const std::string &request);
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Entry point for handling shutdown request
+    ///
+    /// @param string representation of incoming request
+    ///
+    //////////////////////////////////////////////////////////////
+    void handleShutdownRequest(const std::string &request);
 
     //////////////////////////////////////////////////////////////
     ///
     /// @brief Entry point for handling initialized request
     ///
     /// @param string representation of incoming request
-    ///
-    /// @return responseMessage
     ///
     //////////////////////////////////////////////////////////////
     void handleInitializedRequest(const std::string &request);
@@ -72,8 +79,6 @@ class JustAnLSPFacade
     ///
     /// @param string representation of incoming request
     ///
-    /// @return responseMessage
-    ///
     //////////////////////////////////////////////////////////////
     ResponseMessage handleTextDocumentDidOpenRequest(const std::string &request);
 
@@ -82,8 +87,6 @@ class JustAnLSPFacade
     /// @brief Entry point for handling textDocument/didChange request
     ///
     /// @param string representation of incoming request
-    ///
-    /// @return responseMessage
     ///
     //////////////////////////////////////////////////////////////
     void handleTextDocumentDidChangeRequest(const std::string &request);
@@ -94,25 +97,16 @@ class JustAnLSPFacade
     ///
     /// @param string representation of incoming request
     ///
-    /// @return responseMessage
-    ///
     //////////////////////////////////////////////////////////////
     void handleTextDocumentHoverRequest(const std::string &request);
 
   private:
     //////////////////////////////////////////////////////////////
     ///
-    /// @brief Request counter
+    /// @brief Responsible for handling request such as init/shutdown
     ///
     //////////////////////////////////////////////////////////////
-    std::unique_ptr<JustAnLSPCounter> m_justAnLspCounters = std::unique_ptr<JustAnLSPCounter>();
-
-    //////////////////////////////////////////////////////////////
-    ///
-    /// @brief Track only one client for the start
-    ///
-    //////////////////////////////////////////////////////////////
-    std::unique_ptr<JustAnLSPClient> m_justAnLSPClient;
+    JustAnLSPReqHandler m_justAnLSPReqHandler;
 };
 
 } // namespace justanlsp
