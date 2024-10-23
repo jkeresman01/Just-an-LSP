@@ -7,6 +7,7 @@
 
 namespace justanlsp
 {
+
 void JustAnLSPReqHandler::initializeRequest(const std::shared_ptr<InitializeRequest> &initializeRequest)
 {
     LOG_INFO << "Processing initialize request";
@@ -31,6 +32,12 @@ void JustAnLSPReqHandler::initializeRequest(const std::shared_ptr<InitializeRequ
 void JustAnLSPReqHandler::shutdownRequest(const std::shared_ptr<ShutdownRequest> &shutdownRequest)
 {
     LOG_INFO << "Processing shutdown request";
+
+    ResponseMessage successfullShutdownResponse = ResponseMessage::Builder().withResult("null").build();
+
+    Rpc::send(successfullShutdownResponse);
+
+    LOG_INFO << "Response was sent for shutdown requestq!";
 }
 
 } // namespace justanlsp
