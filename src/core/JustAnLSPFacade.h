@@ -106,7 +106,14 @@ class JustAnLSPFacade
     /// @brief Responsible for handling request such as init/shutdown
     ///
     //////////////////////////////////////////////////////////////
-    JustAnLSPReqHandler m_justAnLSPReqHandler;
+    std::unique_ptr<JustAnLSPReqHandler> m_justAnLSPReqHandler = std::make_unique<JustAnLSPReqHandler>();
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Request counters
+    ///
+    //////////////////////////////////////////////////////////////
+    std::unique_ptr<JustAnLSPCounter> m_justAnLspCounters = std::unique_ptr<JustAnLSPCounter>();
 };
 
 } // namespace justanlsp

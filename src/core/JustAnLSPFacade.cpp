@@ -51,9 +51,19 @@ void JustAnLSPFacade::handleInitializeRequest(const std::string &request)
 {
     LOG_INFO << "Proccessing initialize request";
 
+    m_justAnLspCounters->increment(RequestType::INITIALIZE);
+
+    bool isInitializeReqFirstReceived =
+        m_justAnLspCounters->getValue(RequestType::INITIALIZE) == 1 and m_justAnLspCounters->getSum() == 1;
+
+    if (!isInitializeReqFirstReceived)
+    {
+        LOG_ERROR << "Initialize request should be the first that is send from client to JustAnLSP server!";
+    }
+
     nlohmann::json jsonRPC = MessageUtil::tryParse(request);
 
-    std::unique_ptr<InitializeRequest> initializeRequest =
+    std::shared_ptr<InitializeRequest> initializeRequest =
         MessageFactory::create(RequestType::INITIALIZE, jsonRPC);
 
     m_justAnLSPReqHandler->initializeRequest(initializeRequest);
@@ -65,7 +75,7 @@ void JustAnLSPFacade::handleShutdownRequest(const std::string &request)
 
     nlohmann::json jsonRPC = MessageUtil::tryParse(request);
 
-    std::unique_ptr<ShutdownRequest> shutdownRequest = MessageFactory::create(RequestType::SHUTDOWN, jsonRPC);
+    std::shared_ptr<ShutdownRequest> shutdownRequest = MessageFactory::create(RequestType::SHUTDOWN, jsonRPC);
 
     m_justAnLSPReqHandler->shutdownRequest(shutdownRequest);
 }
@@ -75,7 +85,7 @@ void JustAnLSPFacade::handleInitializedRequest(const std::string &request)
     LOG_INFO << "Proccessing initialized request";
 
     nlohmann::json jsonRPC = MessageUtil::tryParse(request);
-    std::unique_ptr<InitializedRequest> initializeRequest =
+    std::shared_ptr<InitializedRequest> initializeRequest =
         MessageFactory::create(RequestType::INITIALIZED, jsonRPC);
 
     // TODO basic response

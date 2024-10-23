@@ -3,6 +3,7 @@
 #include <memory>
 
 #include "../messages/InitializeRequest.h"
+#include "../messages/ShutdownRequest.h"
 #include "JustAnLSPCounter.h"
 
 namespace justanlsp
@@ -48,12 +49,5 @@ class JustAnLSPReqHandler
     //////////////////////////////////////////////////////////////
     void shutdownRequest(const std::shared_ptr<ShutdownRequest> &shutdownRequest);
 
-  private:
-    //////////////////////////////////////////////////////////////
-    ///
-    /// @brief Request counter
-    ///
-    //////////////////////////////////////////////////////////////
-    std::unique_ptr<JustAnLSPCounter> m_justAnLspCounters = std::unique_ptr<JustAnLSPCounter>();
 };
 } // namespace justanlsp

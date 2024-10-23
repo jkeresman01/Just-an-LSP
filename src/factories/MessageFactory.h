@@ -14,15 +14,15 @@ class MessageFactory
   public:
     MessageFactory() = delete;
 
-    static std::unique_ptr<RequestMessage> create(const RequestType &requestType,
+    static std::shared_ptr<RequestMessage> create(const RequestType &requestType,
                                                   const nlohmann::json &jsonRPC)
     {
         switch (requestType)
         {
         case RequestType::INITIALIZE:
-            return std::make_unique<InitializeRequest>(jsonRPC);
+            return std::make_shared<InitializeRequest>(jsonRPC);
         case RequestType::SHUTDOWN:
-            return std::make_unique<ShutdownRequest>(jsonRPC);
+            return std::make_shared<ShutdownRequest>(jsonRPC);
         case RequestType::INITIALIZED:
             // TODO create initialized request
         case RequestType::TEXT_DOCUMENT_HOVER:
