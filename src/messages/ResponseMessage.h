@@ -21,8 +21,8 @@ class ResponseMessage : public Message
     std::string m_result;
     ResponseError m_responseError;
 
-    ResponseMessage(const std::string &jsonRPC, const std::string &result,
-                    const ResponseError &responseError);
+    ResponseMessage(const std::string &jsonRPC, const std::string &result, const ResponseError &responseError)
+        : Message(jsonRPC), m_result(result), m_responseError(responseError){};
 };
 
 class ResponseMessage::Builder

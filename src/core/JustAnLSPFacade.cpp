@@ -5,8 +5,8 @@
 #include "../enums/RequestType.h"
 #include "../enums/TextDocumentSyncKind.h"
 #include "../factories/MessageFactory.h"
-#include "../messages/InitializeRequest.h"
 #include "../messages/InitializeResponse.h"
+#include "../messages/ResponseMessage.h"
 #include "../messages/ShutdownRequest.h"
 #include "../params/InitializeParams.h"
 #include "../rpc/Rpc.h"
@@ -59,6 +59,14 @@ void JustAnLSPFacade::handleInitializeRequest(const std::string &request)
     if (!isInitializeReqReceivedFirst)
     {
         LOG_ERROR << "Initialize request should be first that is send from client to JustAnLSP server!";
+
+        ResponseError responseError{ErrorCodes::SERVER_NOT_INITIALIZED,
+                                    "Received reqeuest before initialization"};
+
+        ResponseMessage initializationFailureResponse =
+            ResponseMessage::Builder().withJsonRPC("2.0").withResponseError(responseError).build();
+
+        Rpc::send(initializationFailureResponse);
     }
 
     nlohmann::json jsonRPC = MessageUtil::tryParse(request);
