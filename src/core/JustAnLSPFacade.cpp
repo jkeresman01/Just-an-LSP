@@ -53,12 +53,13 @@ void JustAnLSPFacade::handleInitializeRequest(const std::string &request)
 
     m_justAnLspCounters->increment(RequestType::INITIALIZE);
 
-    bool isInitializeReqFirstReceived =
+    bool isInitializeReqReceivedFirst =
         m_justAnLspCounters->getValue(RequestType::INITIALIZE) == 1 and m_justAnLspCounters->getSum() == 1;
 
-    if (!isInitializeReqFirstReceived)
+    if (!isInitializeReqReceivedFirst)
     {
-        LOG_ERROR << "Initialize request should be the first that is send from client to JustAnLSP server!";
+        LOG_ERROR << "Initialize request should be the first that is send from client to JustAnLSP "
+                     "server!";
     }
 
     nlohmann::json jsonRPC = MessageUtil::tryParse(request);
