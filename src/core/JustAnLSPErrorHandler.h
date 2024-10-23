@@ -33,7 +33,7 @@ class JustAnLSPErrorHandler
     /// @brief Handles the server not initialized error
     ///
     //////////////////////////////////////////////////////////////
-    void handleErrror(ErrorCodes errorCode);
+    void handle(const ErrorCodes errorCode);
 
   private:
     //////////////////////////////////////////////////////////////

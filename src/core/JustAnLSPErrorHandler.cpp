@@ -6,7 +6,7 @@
 
 namespace justanlsp
 {
-void JustAnLSPErrorHandler::handleErrror(ErrorCodes errorCode)
+void JustAnLSPErrorHandler::handle(const ErrorCodes errorCode)
 {
     switch (errorCode)
     {

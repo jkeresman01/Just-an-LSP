@@ -57,7 +57,7 @@ void JustAnLSPFacade::handleInitializeRequest(const std::string &request)
     if (!isInitializeReqReceivedFirst)
     {
         LOG_ERROR << "Received reqeuest before initialization";
-        m_justAnLSPErrorHandler->handleError(ErrorCodes::SERVER_NOT_INITIALIZED);
+        m_justAnLSPErrorHandler->handle(ErrorCodes::SERVER_NOT_INITIALIZED);
     }
 
     nlohmann::json jsonRPC = MessageUtil::tryParse(request);
