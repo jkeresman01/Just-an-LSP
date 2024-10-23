@@ -27,7 +27,7 @@ ResponseMessage JustAnLSPFacade::handleRequest(const std::string &request)
         handleInitializeRequest(request);
         break;
     case RequestType::SHUTDOWN:
-        handleInitializeRequest(request);
+        handleShutdownRequest(request);
         break;
     case RequestType::INITIALIZED:
         handleInitializedRequest(request);
