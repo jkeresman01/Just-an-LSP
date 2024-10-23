@@ -35,7 +35,7 @@ enum class MarkupKind
     ///        values
     ///
     //////////////////////////////////////////////////////////////
-    MAX_NUMBER_OF_OPTIONS,
+    OPTIONS_NO,
 };
 
 } // namespace justanlsp
