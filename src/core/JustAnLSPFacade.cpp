@@ -48,7 +48,11 @@ void JustAnLSPFacade::handleInitializeRequest(const std::string &request)
     LOG_INFO << "Proccessing initialize request";
 
     m_justAnLspCounters->increment(RequestType::INITIALIZE);
-    if (m_justAnLspCounters->getValue(RequestType::INITIALIZE) != 1)
+
+    bool isInitializeReqFirstReceived =
+        m_justAnLspCounters->getValue(RequestType::INITIALIZE) == 1 and m_justAnLspCounters->getSum() == 1;
+
+    if (!isInitializeReqFirstReceived)
     {
         LOG_ERROR << "Initialize request should be the first that is send from client to JustAnLSP server!";
         // TODO send response with erorr code SERVER_NOT_INITIALIZED = -32002,
