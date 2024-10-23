@@ -57,10 +57,10 @@ struct TextDocumentSyncClientCapabilities
     //////////////////////////////////////////////////////////////
     std::string toString() const
     {
-        std::stringstream ss;
-
         int8_t optionWidth = 30;
         int8_t resultWidth = 20;
+
+        std::stringstream ss;
 
         ss << std::setw(optionWidth) << std::left << "Sync option";
         ss << std::setw(resultWidth) << std::left << "Yes/No" << std::endl;
