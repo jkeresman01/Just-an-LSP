@@ -58,10 +58,9 @@ void JustAnLSPFacade::handleInitializeRequest(const std::string &request)
 
     if (!isInitializeReqReceivedFirst)
     {
-        LOG_ERROR << "Initialize request should be first that is send from client to JustAnLSP server!";
+        LOG_ERROR << "Received reqeuest before initialization";
 
-        ResponseError responseError{ErrorCodes::SERVER_NOT_INITIALIZED,
-                                    "Received reqeuest before initialization"};
+        ResponseError responseError{ErrorCodes::SERVER_NOT_INITIALIZED, "Received reqeuest before initialization"};
 
         ResponseMessage initializationFailureResponse =
             ResponseMessage::Builder().withJsonRPC("2.0").withResponseError(responseError).build();
