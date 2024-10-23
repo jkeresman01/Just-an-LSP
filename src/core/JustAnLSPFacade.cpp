@@ -50,7 +50,6 @@ ResponseMessage JustAnLSPFacade::handleRequest(const std::string &request)
 void JustAnLSPFacade::handleInitializeRequest(const std::string &request)
 {
     LOG_INFO << "Received initialize request";
-
     m_justAnLspCounters->increment(RequestType::INITIALIZE);
 
     bool isInitializeReqReceivedFirst = m_justAnLspCounters->getSum() == 1;
