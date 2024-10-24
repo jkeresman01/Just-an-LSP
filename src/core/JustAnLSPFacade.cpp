@@ -62,8 +62,7 @@ void JustAnLSPFacade::handleInitializeRequest(const std::string &request)
 
     nlohmann::json jsonRPC = MessageUtil::tryParse(request);
 
-    std::shared_ptr<InitializeRequest> initializeRequest =
-        MessageFactory::create(RequestType::INITIALIZE, jsonRPC);
+    std::shared_ptr<InitializeRequest> initializeRequest = MessageFactory::createInitializeReq(jsonRPC);
 
     m_justAnLSPReqHandler->initializeRequest(initializeRequest);
 }
