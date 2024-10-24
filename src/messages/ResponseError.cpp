@@ -2,9 +2,8 @@
 
 namespace justanlsp
 {
-
-ResponseError::ResponseError(ErrorCode code, const std::string &message)
-    : m_code(code), m_message(message), m_data(nullptr)
+ResponseError::ResponseError(const ErrorCodes &code, const std::string &message)
+    : m_code(code), m_message(message)
 {
 }
 
