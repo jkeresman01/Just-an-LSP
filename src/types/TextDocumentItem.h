@@ -1,0 +1,62 @@
+#pragma once
+
+#include <cstdint>
+#include <nlohmann/json.hpp>
+#include <string>
+
+namespace justanlsp
+{
+
+//////////////////////////////////////////////////////////////
+///
+/// @class TextDocumentItem
+///
+/// @brief Represents a text document in the language server protocol (LSP).
+///        This class stores information about a document's URI, language,
+///        version, and content, and can be constructed from a JSON-RPC request.
+///
+//////////////////////////////////////////////////////////////
+class TextDocumentItem
+{
+  public:
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Constructs the TextDocumentItem from a JSON-RPC request.
+    ///
+    /// @param jsonRPC The JSON object containing the TextDocumentItem information.
+    ///
+    //////////////////////////////////////////////////////////////
+    TextDocumentItem(const nlohmann::json &jsonRPC);
+
+  private:
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief The URI of the text document.
+    ///
+    //////////////////////////////////////////////////////////////
+    std::string m_URI;
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief The language identifier for the text document.
+    ///
+    //////////////////////////////////////////////////////////////
+    std::string m_languageId;
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief The version of the text document.
+    ///        This version number increases with every change, including undo/redo.
+    ///
+    //////////////////////////////////////////////////////////////
+    int64_t m_version;
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief The content of the text document.
+    ///
+    //////////////////////////////////////////////////////////////
+    std::string m_text;
+};
+
+} // namespace justanlsp
