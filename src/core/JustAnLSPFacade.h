@@ -1,8 +1,8 @@
 #pragma once
 
 #include "JustAnLSPClient.h"
-#include "JustAnLSPReqHandler.h"
 #include "JustAnLSPErrorHandler.h"
+#include "JustAnLSPReqHandler.h"
 
 #include <memory>
 #include <string>
@@ -114,7 +114,8 @@ class JustAnLSPFacade
     /// @brief Responsible for handling request such as init/shutdown
     ///
     //////////////////////////////////////////////////////////////
-    std::unique_ptr<JustAnLSPErrorHandler> m_justAnLSPErrorHandler = std::make_unique<JustAnLSPErrorHandler>();
+    std::unique_ptr<JustAnLSPErrorHandler> m_justAnLSPErrorHandler =
+        std::make_unique<JustAnLSPErrorHandler>();
 
     //////////////////////////////////////////////////////////////
     ///

@@ -74,7 +74,7 @@ void JustAnLSPFacade::handleShutdownRequest(const std::string &request)
 
     nlohmann::json jsonRPC = MessageUtil::tryParse(request);
 
-    std::shared_ptr<ShutdownRequest> shutdownRequest = MessageFactory::create(RequestType::SHUTDOWN, jsonRPC);
+    std::shared_ptr<ShutdownRequest> shutdownRequest = MessageFactory::createShutdownReq(jsonRPC);
 
     m_justAnLSPReqHandler->shutdownRequest(shutdownRequest);
 }
@@ -84,8 +84,6 @@ void JustAnLSPFacade::handleInitializedRequest(const std::string &request)
     LOG_INFO << "Received initialized request";
 
     nlohmann::json jsonRPC = MessageUtil::tryParse(request);
-    std::shared_ptr<InitializedRequest> initializeRequest =
-        MessageFactory::create(RequestType::INITIALIZED, jsonRPC);
 
     // TODO basic response
 }
