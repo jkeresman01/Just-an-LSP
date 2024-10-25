@@ -10,6 +10,7 @@ namespace justanlsp
 class ResponseError
 {
   public:
+    ResponseError() = default;
     ResponseError(const ErrorCodes &code, const std::string &message);
 
   private:

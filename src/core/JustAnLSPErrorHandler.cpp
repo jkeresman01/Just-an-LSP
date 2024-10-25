@@ -52,7 +52,7 @@ void JustAnLSPErrorHandler::handleInternalError()
     ResponseError internalError{ErrorCodes::INTERNAL_ERROR, "Internal error happened"};
 
     ResponseMessage internalErrorResponse =
-        ResponseMessage::Builder().withJsonRPC("2.0").withResponseError(methodNotFoundError).build();
+        ResponseMessage::Builder().withJsonRPC("2.0").withResponseError(internalError).build();
 
     Rpc::send(internalErrorResponse);
 }

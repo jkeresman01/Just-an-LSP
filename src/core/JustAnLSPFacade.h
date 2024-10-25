@@ -81,7 +81,7 @@ class JustAnLSPFacade
     /// @param string representation of incoming request
     ///
     //////////////////////////////////////////////////////////////
-    ResponseMessage handleTextDocumentDidOpenRequest(const std::string &request);
+    void handleTextDocumentDidOpenRequest(const std::string &request);
 
     //////////////////////////////////////////////////////////////
     ///

@@ -14,7 +14,7 @@ InitializeParams::InitializeParams(const nlohmann::json &jsonRPC)
     m_clientInfo.name = clientInfoJson["name"];
     m_clientInfo.version = clientInfoJson["version"];
 
-    nlohmann::json it = jsonRPC.find("trace");
+    auto it = jsonRPC.find("trace");
     if (it == jsonRPC.end())
     {
         m_traceValue = TraceValue::OFF;

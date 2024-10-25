@@ -56,7 +56,7 @@ class JustAnLSPClientService
     /// @param clientId
     ///
     //////////////////////////////////////////////////////////////
-    void getClientById(uint32_t clientId) const;
+    JustAnLSPClient getClientById(uint32_t clientId) const;
 
   private:
     //////////////////////////////////////////////////////////////

@@ -12,7 +12,7 @@ namespace justanlsp
 class MessageUtil
 {
   public:
-    RequestUtil() = delete;
+    MessageUtil() = delete;
 
     static RequestType getType(const nlohmann::json &request)
     {

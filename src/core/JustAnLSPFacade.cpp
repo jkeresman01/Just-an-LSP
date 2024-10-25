@@ -11,15 +11,15 @@
 #include "../params/InitializeParams.h"
 #include "../rpc/Rpc.h"
 #include "../types/ClientInfo.h"
-#include "../types/JustAnLSPClient.h"
 #include "../utils/Logger.h"
 #include "../utils/MessageUtil.h"
 #include "JUstAnLSPClientService.h"
+#include "JustAnLSPClient.h"
 
 namespace justanlsp
 {
 
-ResponseMessage JustAnLSPFacade::handleRequest(const std::string &request)
+void JustAnLSPFacade::handleRequest(const std::string &request)
 {
     switch (MessageUtil::getType(request))
     {
@@ -73,9 +73,8 @@ void JustAnLSPFacade::handleShutdownRequest(const std::string &request)
 
     nlohmann::json jsonRPC = MessageUtil::tryParse(request);
 
-    std::shared_ptr<ShutdownRequest> shutdownRequest = MessageFactory::createShutdownReq(jsonRPC);
-
-    m_justAnLSPReqHandler->shutdownRequest(shutdownRequest);
+    /* std::shared_ptr<ShutdownRequest> shutdownRequest = MessageFactory::createShutdownReq(jsonRPC); */
+    /* m_justAnLSPReqHandler->shutdownRequest(shutdownRequest); */
 }
 
 void JustAnLSPFacade::handleInitializedRequest(const std::string &request)

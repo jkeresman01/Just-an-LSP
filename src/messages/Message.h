@@ -24,7 +24,7 @@ class Message
     /// @param jsonRPC
     ///
     //////////////////////////////////////////////////////////////
-    Message(const nlohmann::json &jsonRPC) : m_jsonRPC(jsonRPC["jsonrpc"]){};
+    /* Message(const nlohmann::json &jsonRPC) : m_jsonRPC(jsonRPC["jsonrpc"]){}; */
 
     //////////////////////////////////////////////////////////////
     ///
@@ -42,7 +42,7 @@ class Message
     /// @return Returns serialized Message in JSON format
     ///
     //////////////////////////////////////////////////////////////
-    virtual nlohmann::json toJson() const;
+    nlohmann::json toJson() const { return {}; };
 
   protected:
     //////////////////////////////////////////////////////////////

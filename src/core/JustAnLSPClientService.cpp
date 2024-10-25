@@ -18,7 +18,7 @@ void JustAnLSPClientService::registerClient(const JustAnLSPClient &client)
 
 JustAnLSPClient JustAnLSPClientService::getClientById(uint32_t clientId) const
 {
-    JustAnLSPClientsMapT::iterator it = m_registeredClients.find(clientId);
+    auto it = m_registeredClients.find(clientId);
 
     if (it == m_registeredClients.end())
     {

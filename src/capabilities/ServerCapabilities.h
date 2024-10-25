@@ -21,7 +21,7 @@ class ServerCapabilities
 
   public:
     ServerCapabilities() = default;
-    ServerCapabilities(TextDocumentSyncKind textDocumentSyncKind);
+    ServerCapabilities(const TextDocumentSyncKind &textDocumentSyncKind);
 
     nlohmann::json toJson() const;
 

@@ -31,7 +31,7 @@ void JustAnLSPClient::addDocument(const std::string &URI, const std::string &doc
 
 std::string JustAnLSPClient::getDocumentByURI(const std::string &URI) const
 {
-    std::unordered_map<std::string, std::string>::iterator it = m_documentState.find(URI);
+    auto it = m_documentState.find(URI);
 
     if (it == m_documentState.end())
     {
