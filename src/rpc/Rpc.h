@@ -53,7 +53,7 @@ class Rpc
         std::cout << "Content-Length: " << jsonRPC.dump().size() << "\r\n\r\n";
         std::cout << jsonRPC.dump() << std::endl;
 
-        LOG_INFO << "Response successfuly sent: ";
+        LOG_INFO << "RPC response successfuly sent!";
     }
 };
 } // namespace justanlsp
