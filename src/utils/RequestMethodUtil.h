@@ -3,6 +3,7 @@
 #include <string>
 
 #include "../enums/RequestType.h"
+#include "../utils/Logger.h"
 
 namespace justanlsp
 {
@@ -13,11 +14,12 @@ class RequestMethodUtil
 
     static RequestType getType(const std::string &method)
     {
-        if (method == "initalize")
+
+        if (method == "initialize")
         {
             return RequestType::INITIALIZE;
         }
-        if (method == "initalized")
+        else if (method == "initalized")
         {
             return RequestType::INITIALIZED;
         }

@@ -5,6 +5,7 @@
 
 #include "../messages/InitializeRequest.h"
 #include "../messages/ShutdownRequest.h"
+#include "../utils/Logger.h"
 
 namespace justanlsp
 {
@@ -38,6 +39,7 @@ class MessageFactory
     //////////////////////////////////////////////////////////////
     static std::shared_ptr<InitializeRequest> createInitializeReq(const nlohmann::json &jsonRPC)
     {
+        LOG_INFO << "Creating initalize requst in factory impl!";
         return std::make_shared<InitializeRequest>(jsonRPC);
     }
 

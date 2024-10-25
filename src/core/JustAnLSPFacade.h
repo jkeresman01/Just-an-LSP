@@ -5,6 +5,7 @@
 #include "JustAnLSPReqHandler.h"
 
 #include <memory>
+#include <nlohmann/json.hpp>
 #include <string>
 
 #include "../messages/ResponseMessage.h"
@@ -44,7 +45,7 @@ class JustAnLSPFacade
     /// @param String representation of incoming request
     ///
     //////////////////////////////////////////////////////////////
-    void handleRequest(const std::string &request);
+    void handleRequest(const nlohmann::json &request);
 
   private:
     //////////////////////////////////////////////////////////////
@@ -54,7 +55,7 @@ class JustAnLSPFacade
     /// @param string representation of incoming request
     ///
     //////////////////////////////////////////////////////////////
-    void handleInitializeRequest(const std::string &request);
+    void handleInitializeRequest(const nlohmann::json &request);
 
     //////////////////////////////////////////////////////////////
     ///
@@ -63,7 +64,7 @@ class JustAnLSPFacade
     /// @param string representation of incoming request
     ///
     //////////////////////////////////////////////////////////////
-    void handleShutdownRequest(const std::string &request);
+    void handleShutdownRequest(const nlohmann::json &request);
 
     //////////////////////////////////////////////////////////////
     ///
@@ -72,7 +73,7 @@ class JustAnLSPFacade
     /// @param string representation of incoming request
     ///
     //////////////////////////////////////////////////////////////
-    void handleInitializedRequest(const std::string &request);
+    void handleInitializedRequest(const nlohmann::json &request);
 
     //////////////////////////////////////////////////////////////
     ///
@@ -81,7 +82,7 @@ class JustAnLSPFacade
     /// @param string representation of incoming request
     ///
     //////////////////////////////////////////////////////////////
-    void handleTextDocumentDidOpenRequest(const std::string &request);
+    void handleTextDocumentDidOpenRequest(const nlohmann::json &request);
 
     //////////////////////////////////////////////////////////////
     ///
@@ -90,7 +91,7 @@ class JustAnLSPFacade
     /// @param string representation of incoming request
     ///
     //////////////////////////////////////////////////////////////
-    void handleTextDocumentDidChangeRequest(const std::string &request);
+    void handleTextDocumentDidChangeRequest(const nlohmann::json &request);
 
     //////////////////////////////////////////////////////////////
     ///
@@ -99,7 +100,7 @@ class JustAnLSPFacade
     /// @param string representation of incoming request
     ///
     //////////////////////////////////////////////////////////////
-    void handleTextDocumentHoverRequest(const std::string &request);
+    void handleTextDocumentHoverRequest(const nlohmann::json &request);
 
   private:
     //////////////////////////////////////////////////////////////

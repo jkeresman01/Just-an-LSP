@@ -24,6 +24,8 @@ class MessageUtil
         }
 
         std::string method = std::string(request["method"]);
+        LOG_INFO << "Received request with method: " << method;
+
         return RequestMethodUtil::getType(method);
     }
 

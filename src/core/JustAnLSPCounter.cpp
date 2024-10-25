@@ -1,4 +1,5 @@
 #include "JustAnLSPCounter.h"
+#include "../utils/Logger.h"
 
 #include <numeric>
 
@@ -11,7 +12,9 @@ JustAnLSPCounter::JustAnLSPCounter()
 
 void JustAnLSPCounter::increment(RequestType requestType)
 {
-    m_justAnLSPCounters[int(requestType)]++;
+    LOG_INFO << "Incrementing counter ";
+    m_justAnLSPCounters[requestType]++;
+    LOG_INFO << "Finished incrementing";
 };
 
 uint32_t JustAnLSPCounter::getValue(RequestType requestType) const

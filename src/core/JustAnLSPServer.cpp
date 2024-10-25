@@ -4,6 +4,7 @@
 
 #include "../rpc/Rpc.h"
 #include "../utils/Logger.h"
+#include "../utils/MessageUtil.h"
 
 namespace justanlsp
 {
@@ -33,7 +34,8 @@ void JustAnLSPServer::run()
 
 void JustAnLSPServer::handleRequest(const std::string &request)
 {
-    m_justAnLspFacade->handleRequest(request);
+    nlohmann::json jsoRPC = MessageUtil::tryParse(request);
+    m_justAnLspFacade->handleRequest(jsoRPC);
 }
 
 } // namespace justanlsp

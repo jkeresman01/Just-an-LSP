@@ -19,8 +19,10 @@
 namespace justanlsp
 {
 
-void JustAnLSPFacade::handleRequest(const std::string &request)
+void JustAnLSPFacade::handleRequest(const nlohmann::json &request)
 {
+    LOG_INFO << "Entered handleRequest in Facade impl";
+
     switch (MessageUtil::getType(request))
     {
     case RequestType::INITIALIZE:
@@ -47,72 +49,61 @@ void JustAnLSPFacade::handleRequest(const std::string &request)
     }
 }
 
-void JustAnLSPFacade::handleInitializeRequest(const std::string &request)
+void JustAnLSPFacade::handleInitializeRequest(const nlohmann::json &jsonRPC)
 {
     LOG_INFO << "Received initialize request";
+
     m_justAnLspCounters->increment(RequestType::INITIALIZE);
 
     bool isInitializeReqReceivedFirst = m_justAnLspCounters->getSum() == 1;
-
     if (!isInitializeReqReceivedFirst)
     {
         LOG_ERROR << "Received reqeuest before initialization";
         m_justAnLSPErrorHandler->handleServerNotInitalizedError();
     }
 
-    nlohmann::json jsonRPC = MessageUtil::tryParse(request);
-
     std::shared_ptr<InitializeRequest> initializeRequest = MessageFactory::createInitializeReq(jsonRPC);
+    LOG_INFO << "Successfully constructed initializeRequest";
 
     m_justAnLSPReqHandler->initializeRequest(initializeRequest);
 }
 
-void JustAnLSPFacade::handleShutdownRequest(const std::string &request)
+void JustAnLSPFacade::handleShutdownRequest(const nlohmann::json &jsonRPC)
 {
     LOG_INFO << "Received shutdown request";
-
-    nlohmann::json jsonRPC = MessageUtil::tryParse(request);
 
     /* std::shared_ptr<ShutdownRequest> shutdownRequest = MessageFactory::createShutdownReq(jsonRPC); */
     /* m_justAnLSPReqHandler->shutdownRequest(shutdownRequest); */
 }
 
-void JustAnLSPFacade::handleInitializedRequest(const std::string &request)
+void JustAnLSPFacade::handleInitializedRequest(const nlohmann::json &jsonRPC)
 {
     LOG_INFO << "Received initialized request";
-
-    nlohmann::json jsonRPC = MessageUtil::tryParse(request);
 
     // TODO basic response
 }
 
-void JustAnLSPFacade::handleTextDocumentHoverRequest(const std::string &request)
+void JustAnLSPFacade::handleTextDocumentHoverRequest(const nlohmann::json &jsonRPC)
 {
     LOG_INFO << "Received textDocument/hover request";
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_HOVER);
-
-    nlohmann::json jsonRPC = MessageUtil::tryParse(request);
 }
 
-void JustAnLSPFacade::handleTextDocumentDidOpenRequest(const std::string &request)
+void JustAnLSPFacade::handleTextDocumentDidOpenRequest(const nlohmann::json &jsonRPC)
 {
     LOG_INFO << "Received textDocument/didOpen request";
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_DID_OPEN);
 
-    nlohmann::json jsonRPC = MessageUtil::tryParse(request);
-
     // TODO basic response
 }
 
-void JustAnLSPFacade::handleTextDocumentDidChangeRequest(const std::string &request)
+void JustAnLSPFacade::handleTextDocumentDidChangeRequest(const nlohmann::json &jsonRPC)
 {
     LOG_INFO << "Received textDocument/didChange request";
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_DID_CHANGE);
-
-    nlohmann::json jsonRPC = MessageUtil::tryParse(request);
 
     // TODO basic response
 }
