@@ -11,8 +11,6 @@ namespace justanlsp
 
 JustAnLSPServer::JustAnLSPServer()
 {
-    m_justAnLspFacade = std::make_shared<JustAnLSPFacade>();
-
     LOG_INFO << "Instance of JustAnLSP server successfully created";
 }
 

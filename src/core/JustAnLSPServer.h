@@ -57,7 +57,7 @@ class JustAnLSPServer
     ///        request messages
     ///
     //////////////////////////////////////////////////////////////
-    std::shared_ptr<JustAnLSPFacade> m_justAnLspFacade;
+    std::shared_ptr<JustAnLSPFacade> m_justAnLspFacade = std::make_shared<JustAnLSPFacade>();
 };
 
 } // namespace justanlsp
