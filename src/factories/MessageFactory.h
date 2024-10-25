@@ -39,7 +39,10 @@ class MessageFactory
     //////////////////////////////////////////////////////////////
     static std::shared_ptr<InitializeRequest> createInitializeReq(const nlohmann::json &jsonRPC)
     {
-        LOG_INFO << "Creating initalize requst in factory impl!";
+        LOG_INFO << "Creating initalize requst { message factory }";
+
+        LOG_INFO << "Received jsonRequest" << jsonRPC.dump(4);
+
         return std::make_shared<InitializeRequest>(jsonRPC);
     }
 

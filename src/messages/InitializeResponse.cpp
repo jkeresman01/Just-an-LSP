@@ -1,5 +1,8 @@
 #include "InitializeResponse.h"
 
+#include <sstream>
+#include <string>
+
 namespace justanlsp
 {
 
@@ -21,4 +24,12 @@ nlohmann::json InitializeResponse::toJson() const
 
     return initializeResponseJson;
 }
+
+std::string InitializeResponse::toString() const
+{
+    std::stringstream ss;
+    ss << "Initialization response from server { " << m_serverInfo.toString() << " }";
+    return ss.str();
+}
+
 } // namespace justanlsp

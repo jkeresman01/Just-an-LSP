@@ -11,7 +11,7 @@ void JustAnLSPErrorHandler::handleServerNotInitalizedError()
 {
     LOG_INFO << "Handling server not initialized error";
 
-    handleError(ErrorCodes::SERVER_NOT_INITIALIZED, "Received reqeuest before initialization");
+    handleError(ErrorCodes::SERVER_NOT_INITIALIZED, "Received request before initialization");
 }
 
 void JustAnLSPErrorHandler::handleParseError()
@@ -37,6 +37,10 @@ void JustAnLSPErrorHandler::handleInternalError()
 
 void JustAnLSPErrorHandler::handleError(const ErrorCodes errorCode, const std::string &errorMsg)
 {
+    ResponseError responseError{errorCode, errorMsg};
+
+    LOG_INFO << "Sending response error: " << responseError.toString();
+
     ResponseMessage responseErrorMsg =
         ResponseMessage::Builder().withJsonRPC("2.0").withResponseError({errorCode, errorMsg}).build();
 

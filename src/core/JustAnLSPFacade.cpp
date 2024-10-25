@@ -51,17 +51,16 @@ void JustAnLSPFacade::handleInitializeRequest(const nlohmann::json &jsonRPC)
 {
     LOG_INFO << "Received initialize request";
 
-    m_justAnLspCounters.increment(RequestType::INITIALIZE);
+    m_justAnLspCounters->increment(RequestType::INITIALIZE);
 
-    bool isInitializeReqReceivedFirst = m_justAnLspCounters.getSum() == 1;
+    bool isInitializeReqReceivedFirst = m_justAnLspCounters->getSum() >= 1;
     if (!isInitializeReqReceivedFirst)
     {
-        LOG_ERROR << "Received reqeuest before initialization";
+        LOG_ERROR << "Received request before initialization";
         m_justAnLSPErrorHandler->handleServerNotInitalizedError();
     }
 
     std::shared_ptr<InitializeRequest> initializeRequest = MessageFactory::createInitializeReq(jsonRPC);
-    LOG_INFO << "Successfully constructed initializeRequest";
 
     m_justAnLSPReqHandler->initializeRequest(initializeRequest);
 }
@@ -70,7 +69,7 @@ void JustAnLSPFacade::handleShutdownRequest(const nlohmann::json &jsonRPC)
 {
     LOG_INFO << "Received shutdown request";
 
-    m_justAnLspCounters.increment(RequestType::SHUTDOWN);
+    m_justAnLspCounters->increment(RequestType::SHUTDOWN);
 
     // TODO basic response
 }
@@ -86,7 +85,7 @@ void JustAnLSPFacade::handleTextDocumentHoverRequest(const nlohmann::json &jsonR
 {
     LOG_INFO << "Received textDocument/hover request";
 
-    m_justAnLspCounters.increment(RequestType::TEXT_DOCUMENT_HOVER);
+    m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_HOVER);
 
     // TODO basic response
 }
@@ -95,7 +94,7 @@ void JustAnLSPFacade::handleTextDocumentDidOpenRequest(const nlohmann::json &jso
 {
     LOG_INFO << "Received textDocument/didOpen request";
 
-    m_justAnLspCounters.increment(RequestType::TEXT_DOCUMENT_DID_OPEN);
+    m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_DID_OPEN);
 
     // TODO basic response
 }
@@ -104,7 +103,7 @@ void JustAnLSPFacade::handleTextDocumentDidChangeRequest(const nlohmann::json &j
 {
     LOG_INFO << "Received textDocument/didChange request";
 
-    m_justAnLspCounters.increment(RequestType::TEXT_DOCUMENT_DID_CHANGE);
+    m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_DID_CHANGE);
 
     // TODO basic response
 }

@@ -24,6 +24,8 @@ void JustAnLSPReqHandler::initializeRequest(const std::shared_ptr<InitializeRequ
 
     InitializeResponse initializeResponse({"JustAnLSP", "0.0.0.0.0.1-alpha"}, {TextDocumentSyncKind::FULL});
 
+    LOG_INFO << "Sending " << initializeResponse.toString();
+
     Rpc::send(initializeResponse);
 
     LOG_INFO << "Initialize response was successfully sent for client: " << clientInfo.toString();

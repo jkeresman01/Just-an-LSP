@@ -123,7 +123,7 @@ class JustAnLSPFacade
     /// @brief Request counters
     ///
     //////////////////////////////////////////////////////////////
-    JustAnLSPCounter m_justAnLspCounters;
+    std::unique_ptr<JustAnLSPCounter> m_justAnLspCounters = std::make_unique<JustAnLSPCounter>();
 };
 
 } // namespace justanlsp

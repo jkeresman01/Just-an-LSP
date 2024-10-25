@@ -35,7 +35,7 @@ class InitializeRequest : public RequestMessage
     /// @return InitializeParams
     ///
     //////////////////////////////////////////////////////////////
-    std::shared_ptr<InitializeParams> getInitializeParams() const { return m_initializeParams; };
+    std::unique_ptr<InitializeParams> getInitializeParams() const { return m_initializeParams; };
 
   private:
     //////////////////////////////////////////////////////////////
@@ -43,6 +43,6 @@ class InitializeRequest : public RequestMessage
     /// @brief Paramters used in Initalize Request
     ///
     //////////////////////////////////////////////////////////////
-    std::shared_ptr<InitializeParams> m_initializeParams;
+    std::unique_ptr<InitializeParams> m_initializeParams;
 };
 } // namespace justanlsp

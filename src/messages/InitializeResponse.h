@@ -3,6 +3,7 @@
 #include "../capabilities/ServerCapabilities.h"
 #include "../types/ServerInfo.h"
 #include "ResponseMessage.h"
+#include <string>
 
 namespace justanlsp
 {
@@ -37,6 +38,15 @@ class InitializeResponse : public Message
     ///
     //////////////////////////////////////////////////////////////
     nlohmann::json toJson() const;
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief String representation of InitializeResponse
+    ///
+    /// @brief String representation of InitializeResponse
+    ///
+    //////////////////////////////////////////////////////////////
+    std::string toString() const;
 
   private:
     //////////////////////////////////////////////////////////////
