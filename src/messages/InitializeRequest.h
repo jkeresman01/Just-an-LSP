@@ -35,7 +35,7 @@ class InitializeRequest : public RequestMessage
     /// @return InitializeParams
     ///
     //////////////////////////////////////////////////////////////
-    InitializeParams getInitializeParams() const { return m_initializeParams; };
+    std::shared_ptr<InitializeParams> getInitializeParams() const { return m_initializeParams; };
 
   private:
     //////////////////////////////////////////////////////////////

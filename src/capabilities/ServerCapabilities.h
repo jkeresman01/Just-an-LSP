@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <nlohmann/json.hpp>
 
 #include "../enums/TextDocumentSyncKind.h"
 
@@ -20,7 +21,7 @@ class ServerCapabilities
 
   public:
     ServerCapabilities() = default;
-    ServerCapabilities(TextDocumentSyncKind textDocumentSyncKind) = default;
+    ServerCapabilities(TextDocumentSyncKind textDocumentSyncKind);
 
     nlohmann::json toJson() const;
 

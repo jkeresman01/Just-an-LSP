@@ -12,9 +12,9 @@ void JustAnLSPReqHandler::initializeRequest(const std::shared_ptr<InitializeRequ
 {
     LOG_INFO << "Processing initialize request";
 
-    InitializeParams initializeParams = initializeRequest->getInitializeParams();
-    std::shared_ptr<ClientCapabilities> clientCapabilities = initializeParams.getClientCapabilites();
-    ClientInfo clientInfo = initializeParams.getClientInfo();
+    std::shared_ptr<InitializeParams> initializeParams = initializeRequest->getInitializeParams();
+    std::shared_ptr<ClientCapabilities> clientCapabilities = initializeParams->getClientCapabilites();
+    ClientInfo clientInfo = initializeParams->getClientInfo();
 
     LOG_INFO << "Client: " << clientInfo.toString() << " has sent initializtion request";
 

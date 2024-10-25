@@ -2,6 +2,7 @@
 
 #include <nlohmann/json.hpp>
 
+#include "../capabilities/TextDocumentSyncClientCapabilites.h"
 #include "HoverClientCapabilities.h"
 
 namespace justanlsp
