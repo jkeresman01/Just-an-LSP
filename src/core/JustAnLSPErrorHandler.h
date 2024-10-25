@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <string>
 
 #include "../errors/ErrorCodes.h"
 
@@ -55,5 +56,16 @@ class JustAnLSPErrorHandler
     ///
     //////////////////////////////////////////////////////////////
     void handleInternalError();
+
+  private:
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Handles the error
+    ///
+    /// @param errorCode
+    /// @param errorMsg
+    ///
+    //////////////////////////////////////////////////////////////
+    void handleError(const ErrorCodes errorCode, const std::string &errorMsg);
 };
 } // namespace justanlsp

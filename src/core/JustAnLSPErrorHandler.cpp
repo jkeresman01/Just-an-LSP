@@ -11,50 +11,36 @@ void JustAnLSPErrorHandler::handleServerNotInitalizedError()
 {
     LOG_INFO << "Handling server not initialized error";
 
-    ResponseError serverNotInitialized{ErrorCodes::SERVER_NOT_INITIALIZED,
-                                       "Received reqeuest before initialization"};
-
-    ResponseMessage initializationFailureResponse =
-        ResponseMessage::Builder().withJsonRPC("2.0").withResponseError(serverNotInitialized).build();
-
-    Rpc::send(initializationFailureResponse);
+    handleError(ErrorCodes::SERVER_NOT_INITIALIZED, "Received reqeuest before initialization");
 }
 
 void JustAnLSPErrorHandler::handleParseError()
 {
     LOG_INFO << "Handling server not initialized error";
 
-    ResponseError parseError{ErrorCodes::PARSE_ERROR,
-                             "There was an parse error during processing of request!"};
-
-    ResponseMessage parseErrorResponse =
-        ResponseMessage::Builder().withJsonRPC("2.0").withResponseError(parseError).build();
-
-    Rpc::send(parseErrorResponse);
+    handleError(ErrorCodes::PARSE_ERROR, "There was an parse error during processing of request!");
 }
 
 void JustAnLSPErrorHandler::handleMethodNotFoundError()
 {
     LOG_INFO << "Handling method not found error";
 
-    ResponseError methodNotFoundError{ErrorCodes::METHOD_NOT_FOUND, "Didn't find method for given request"};
-
-    ResponseMessage methodNotFoundResponse =
-        ResponseMessage::Builder().withJsonRPC("2.0").withResponseError(methodNotFoundError).build();
-
-    Rpc::send(methodNotFoundResponse);
+    handleError(ErrorCodes::METHOD_NOT_FOUND, "Didn't find method for given request");
 }
 
 void JustAnLSPErrorHandler::handleInternalError()
 {
     LOG_INFO << "Handling internal error";
 
-    ResponseError internalError{ErrorCodes::INTERNAL_ERROR, "Internal error happened"};
+    handleError(ErrorCodes::INTERNAL_ERROR, "Internal error happened");
+}
 
-    ResponseMessage internalErrorResponse =
-        ResponseMessage::Builder().withJsonRPC("2.0").withResponseError(internalError).build();
+void JustAnLSPErrorHandler::handleError(const ErrorCodes errorCode, const std::string &errorMsg)
+{
+    ResponseMessage responseErrorMsg =
+        ResponseMessage::Builder().withJsonRPC("2.0").withResponseError({errorCode, errorMsg}).build();
 
-    Rpc::send(internalErrorResponse);
+    Rpc::send(responseErrorMsg);
 }
 
 } // namespace justanlsp
