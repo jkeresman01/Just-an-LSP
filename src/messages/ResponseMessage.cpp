@@ -28,19 +28,19 @@ ResponseMessage ResponseMessage::Builder::build() const
 ResponseMessage::Builder &ResponseMessage::Builder::withJsonRPC(const std::string &jsonRPC)
 {
     m_jsonRPC = jsonRPC;
-    return *this; // Returning the current instance for chaining
+    return *this;
 }
 
 ResponseMessage::Builder &ResponseMessage::Builder::withResult(const std::string &result)
 {
     m_result = result;
-    return *this; // Returning the current instance for chaining
+    return *this;
 }
 
 ResponseMessage::Builder &ResponseMessage::Builder::withResponseError(const ResponseError &responseError)
 {
     m_responseError = responseError;
-    return *this; // Returning the current instance for chaining
+    return *this;
 }
 
 } // namespace justanlsp
