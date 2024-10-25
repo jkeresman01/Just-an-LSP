@@ -16,7 +16,7 @@ void JustAnLSPErrorHandler::handleServerNotInitalizedError()
 
 void JustAnLSPErrorHandler::handleParseError()
 {
-    LOG_INFO << "Handling server not initialized error";
+    LOG_INFO << "Handling parse error";
 
     handleError(ErrorCodes::PARSE_ERROR, "There was an parse error during processing of request!");
 }
