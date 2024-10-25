@@ -21,8 +21,6 @@ namespace justanlsp
 
 void JustAnLSPFacade::handleRequest(const nlohmann::json &request)
 {
-    LOG_INFO << "Entered handleRequest in Facade impl";
-
     switch (MessageUtil::getType(request))
     {
     case RequestType::INITIALIZE:
@@ -72,8 +70,9 @@ void JustAnLSPFacade::handleShutdownRequest(const nlohmann::json &jsonRPC)
 {
     LOG_INFO << "Received shutdown request";
 
-    /* std::shared_ptr<ShutdownRequest> shutdownRequest = MessageFactory::createShutdownReq(jsonRPC); */
-    /* m_justAnLSPReqHandler->shutdownRequest(shutdownRequest); */
+    m_justAnLspCounters->increment(RequestType::SHUTDOWN);
+
+    // TODO basic response
 }
 
 void JustAnLSPFacade::handleInitializedRequest(const nlohmann::json &jsonRPC)
@@ -88,6 +87,8 @@ void JustAnLSPFacade::handleTextDocumentHoverRequest(const nlohmann::json &jsonR
     LOG_INFO << "Received textDocument/hover request";
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_HOVER);
+
+    // TODO basic response
 }
 
 void JustAnLSPFacade::handleTextDocumentDidOpenRequest(const nlohmann::json &jsonRPC)

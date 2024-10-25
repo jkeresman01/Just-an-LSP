@@ -12,9 +12,7 @@ JustAnLSPCounter::JustAnLSPCounter()
 
 void JustAnLSPCounter::increment(RequestType requestType)
 {
-    LOG_INFO << "Incrementing counter ";
     m_justAnLSPCounters[requestType]++;
-    LOG_INFO << "Finished incrementing";
 };
 
 uint32_t JustAnLSPCounter::getValue(RequestType requestType) const
