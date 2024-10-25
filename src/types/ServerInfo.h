@@ -42,7 +42,7 @@ struct ServerInfo
     {
         std::stringstream ss;
         ss << "Server: " << name;
-        ss << ", version: " << version << std::endl;
+        ss << ", version: " << version;
         return ss.str();
     }
 };

@@ -40,7 +40,7 @@ struct ClientInfo
     {
         std::stringstream ss;
         ss << "Client: " << name;
-        ss << ", version: " << version << std::endl;
+        ss << ", version: " << version;
         return ss.str();
     }
 };
