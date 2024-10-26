@@ -30,6 +30,24 @@ class TextDocumentCapabilities
     //////////////////////////////////////////////////////////////
     TextDocumentCapabilities(const nlohmann::json &jsonRPC);
 
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Accessor method for text docuemnt sync capabilities
+    ///
+    /// @param synchronization capabilites
+    ///
+    //////////////////////////////////////////////////////////////
+    TextDocumentSyncClientCapabilities getTextDocumentSyncCapabilites() const { return m_synchronization; };
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Accessor method for text docuemnt hover capabilities
+    ///
+    /// @param hover capabilites
+    ///
+    //////////////////////////////////////////////////////////////
+    TextDocumentSyncClientCapabilities getHoverCapabilities() const { return m_hover; };
+
   private:
     //////////////////////////////////////////////////////////////
     ///
