@@ -23,7 +23,7 @@ void JustAnLSPServer::run()
 {
     LOG_INFO << "JustAnLSP server successfully started";
 
-   for(;;)
+    for (;;)
     {
         std::string message = Rpc::read();
         handleRequest(message);

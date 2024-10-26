@@ -13,10 +13,7 @@ InitializeResult::InitializeResult(const ServerInfo &serverInfo, const ServerCap
 
 nlohmann::json InitializeResult::toJson() const
 {
-    nlohmann::json initializeresponsejson = {{"serverinfo", {m_serverInfo.toJson()}},
-                                             {"capabilites", {m_serverCapabilities.toJson()}}};
-
-    return initializeresponsejson;
+    return {{"serverinfo", {m_serverInfo.toJson()}}, {"capabilites", {m_serverCapabilities.toJson()}}};
 }
 
 std::string InitializeResult::toString() const

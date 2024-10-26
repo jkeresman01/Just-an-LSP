@@ -43,6 +43,7 @@ std::string JustAnLSPClient::getDocumentByURI(const std::string &URI) const
 
 void JustAnLSPClient::updateDocumentByURI(const std::string &URI, const std::string &document)
 {
+    m_clientCapabilities.getTextDocumentCapabilites().;
     m_documentState[URI] = document;
 }
 
