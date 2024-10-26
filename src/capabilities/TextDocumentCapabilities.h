@@ -46,7 +46,7 @@ class TextDocumentCapabilities
     /// @param hover capabilites
     ///
     //////////////////////////////////////////////////////////////
-    TextDocumentSyncClientCapabilities getHoverCapabilities() const { return m_hover; };
+    HoverClientCapabilities getHoverCapabilities() const { return m_hover; };
 
   private:
     //////////////////////////////////////////////////////////////
