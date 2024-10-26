@@ -19,15 +19,6 @@ class Message
   public:
     //////////////////////////////////////////////////////////////
     ///
-    /// @brief Constructs the Message from jsonRPC request
-    ///
-    /// @param jsonRPC
-    ///
-    //////////////////////////////////////////////////////////////
-    /* Message(const nlohmann::json &jsonRPC) : m_jsonRPC(jsonRPC["jsonrpc"]){}; */
-
-    //////////////////////////////////////////////////////////////
-    ///
     /// @brief Constructs the Message from jsonRPC
     ///
     /// @param jsonRPC
