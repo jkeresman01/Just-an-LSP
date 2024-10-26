@@ -16,7 +16,7 @@ namespace justanlsp
 ///        in the language server protocol (LSP).
 ///
 //////////////////////////////////////////////////////////////
-class InitializeResponse : public Message
+class InitializeResponse : public ResponseMessage
 {
   public:
     //////////////////////////////////////////////////////////////
