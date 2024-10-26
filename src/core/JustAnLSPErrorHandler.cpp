@@ -11,38 +11,36 @@ void JustAnLSPErrorHandler::handleServerNotInitalizedError()
 {
     LOG_INFO << "Handling server not initialized error";
 
-    handleError(ErrorCodes::SERVER_NOT_INITIALIZED, "Received request before initialization");
+    handleError({ErrorCodes::SERVER_NOT_INITIALIZED, "Received request before initialization"});
 }
 
 void JustAnLSPErrorHandler::handleParseError()
 {
     LOG_INFO << "Handling parse error";
 
-    handleError(ErrorCodes::PARSE_ERROR, "There was an parse error during processing of request!");
+    handleError({ErrorCodes::PARSE_ERROR, "There was an parse error during processing of request!"});
 }
 
 void JustAnLSPErrorHandler::handleMethodNotFoundError()
 {
     LOG_INFO << "Handling method not found error";
 
-    handleError(ErrorCodes::METHOD_NOT_FOUND, "Didn't find method for given request");
+    handleError({ErrorCodes::METHOD_NOT_FOUND, "Didn't find method for given request"});
 }
 
 void JustAnLSPErrorHandler::handleInternalError()
 {
     LOG_INFO << "Handling internal error";
 
-    handleError(ErrorCodes::INTERNAL_ERROR, "Internal error happened");
+    handleError({ErrorCodes::INTERNAL_ERROR, "Internal error happened"});
 }
 
-void JustAnLSPErrorHandler::handleError(const ErrorCodes errorCode, const std::string &errorMsg)
+void JustAnLSPErrorHandler::handleError(const ResponseError &responseError)
 {
-    ResponseError responseError{errorCode, errorMsg};
-
     LOG_INFO << "Sending response error: " << responseError.toString();
 
     ResponseMessage responseErrorMsg =
-        ResponseMessage::Builder().withJsonRPC("2.0").withResponseError({errorCode, errorMsg}).build();
+        ResponseMessage::Builder().withJsonRPC("2.0").withResponseError(responseError).build();
 
     Rpc::send(responseErrorMsg);
 }

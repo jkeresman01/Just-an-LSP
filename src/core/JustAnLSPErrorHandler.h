@@ -4,6 +4,7 @@
 #include <string>
 
 #include "../errors/ErrorCodes.h"
+#include "../messages/ResponseError.h"
 
 namespace justanlsp
 {
@@ -66,6 +67,6 @@ class JustAnLSPErrorHandler
     /// @param errorMsg
     ///
     //////////////////////////////////////////////////////////////
-    void handleError(const ErrorCodes errorCode, const std::string &errorMsg);
+    void handleError(const ResponseError &responseError);
 };
 } // namespace justanlsp
