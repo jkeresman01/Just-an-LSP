@@ -1,9 +1,12 @@
 #pragma once
 
-#include "../capabilities/ServerCapabilities.h"
-#include "../types/ServerInfo.h"
-#include "ResponseMessage.h"
 #include <string>
+
+#include "../capabilities/ServerCapabilities.h"
+#include "../messages/InitializeResult.h"
+#include "../types/ServerInfo.h"
+#include "ResponseError.h"
+#include "ResponseMessage.h"
 
 namespace justanlsp
 {
@@ -24,11 +27,22 @@ class InitializeResponse : public ResponseMessage
     /// @brief Constructs an InitializeResponse with the provided
     ///        server info and capabilities.
     ///
-    /// @param serverInfo
-    /// @param serverCapabilities
+    /// @param initializeResult
     ///
     //////////////////////////////////////////////////////////////
-    InitializeResponse(const ServerInfo &serverInfo, const ServerCapabilities &serverCapabilities);
+    InitializeResponse(const std::string &jsonRPC, const int64_t &id,
+                       const InitializeResult &initializeResult);
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Constructs an InitializeResponse with the provided
+    ///        server info and capabilities.
+    ///
+    /// @param initializeResult
+    /// @param responseError
+    ///
+    //////////////////////////////////////////////////////////////
+    InitializeResponse(const InitializeResult &initializeResult, const ResponseError &responseErro);
 
     //////////////////////////////////////////////////////////////
     ///
@@ -43,7 +57,7 @@ class InitializeResponse : public ResponseMessage
     ///
     /// @brief String representation of InitializeResponse
     ///
-    /// @brief String representation of InitializeResponse
+    /// @return String representation of InitializeResponse
     ///
     //////////////////////////////////////////////////////////////
     std::string toString() const;
@@ -51,17 +65,10 @@ class InitializeResponse : public ResponseMessage
   private:
     //////////////////////////////////////////////////////////////
     ///
-    /// @brief Information about the server, such as its name and version.
+    /// @brief Result of initliaziation request
     ///
     //////////////////////////////////////////////////////////////
-    ServerInfo m_serverInfo;
-
-    //////////////////////////////////////////////////////////////
-    ///
-    /// @brief The server's capabilities, which define what the server can do.
-    ///
-    //////////////////////////////////////////////////////////////
-    ServerCapabilities m_serverCapabilities;
+    InitializeResult m_initializeResut;
 };
 
 } // namespace justanlsp

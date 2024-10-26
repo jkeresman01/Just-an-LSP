@@ -1,5 +1,6 @@
 #include "JustAnLSPFacade.h"
 
+#include <iostream>
 #include <memory>
 
 #include "../enums/RequestType.h"
@@ -15,6 +16,8 @@
 #include "../utils/MessageUtil.h"
 #include "JUstAnLSPClientService.h"
 #include "JustAnLSPClient.h"
+#include "JustAnLSPCounter.h"
+#include "JustAnLSPErrorHandler.h"
 
 namespace justanlsp
 {
@@ -50,19 +53,19 @@ void JustAnLSPFacade::handleRequest(const nlohmann::json &request)
 void JustAnLSPFacade::handleInitializeRequest(const nlohmann::json &jsonRPC)
 {
     LOG_INFO << "Received initialize request";
+    LOG_INFO << jsonRPC.dump(4);
 
-    m_justAnLspCounters->increment(RequestType::INITIALIZE);
+    // Create InitializeResult with your server capabilities
+    InitializeResult initializeResult({"JustAnLSP", "0.0.0.0.0.1-alpha"}, {TextDocumentSyncKind::FULL});
+    InitializeResponse initializeResponse("2.0", jsonRPC["id"], initializeResult);
 
-    bool isInitializeReqReceivedFirst = m_justAnLspCounters->getSum() >= 1;
-    if (!isInitializeReqReceivedFirst)
-    {
-        LOG_ERROR << "Received request before initialization";
-        m_justAnLSPErrorHandler->handleServerNotInitalizedError();
-    }
+    LOG_INFO << "Sending initialize response: ";
+    LOG_INFO << initializeResponse.toJson().dump(4);
 
-    std::shared_ptr<InitializeRequest> initializeRequest = MessageFactory::createInitializeReq(jsonRPC);
-
-    m_justAnLSPReqHandler->initializeRequest(initializeRequest);
+    // Calculate the correct Content-Length for the response
+    std::string responseBody = initializeResponse.toJson().dump();
+    std::cout << "Content-Length: " << responseBody.size() << "\r\n\r\n";
+    std::cout << responseBody << std::endl;
 }
 
 void JustAnLSPFacade::handleShutdownRequest(const nlohmann::json &jsonRPC)

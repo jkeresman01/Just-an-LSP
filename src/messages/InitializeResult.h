@@ -30,6 +30,10 @@ class InitializeResult
     //////////////////////////////////////////////////////////////
     InitializeResult(const ServerInfo &serverInfo, const ServerCapabilities &serverCapabilities);
 
+    ServerInfo getServerInfo() const { return m_serverInfo; };
+
+    ServerCapabilities getServerCapabilities() const { return m_serverCapabilities; };
+
     //////////////////////////////////////////////////////////////
     ///
     /// @brief Serializes the InitializeResult to JSON format.

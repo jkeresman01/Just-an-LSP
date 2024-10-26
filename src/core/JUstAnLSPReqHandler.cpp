@@ -22,11 +22,12 @@ void JustAnLSPReqHandler::initializeRequest(const std::shared_ptr<InitializeRequ
 
     LOG_INFO << "Client: " << clientInfo.toString() << " was successfully registered";
 
-    InitializeResponse initializeResponse({"JustAnLSP", "0.0.0.0.0.1-alpha"}, {TextDocumentSyncKind::FULL});
+    /* InitializeResponse initializeResponse({"JustAnLSP", "0.0.0.0.0.1-alpha"},
+     * {TextDocumentSyncKind::FULL}); */
 
-    LOG_INFO << "Sending " << initializeResponse.toString();
+    /* LOG_INFO << "Sending " << initializeResponse.toString(); */
 
-    Rpc::send(initializeResponse);
+    /* Rpc::send(initializeResponse); */
 
     LOG_INFO << "Initialize response was successfully sent for client: " << clientInfo.toString();
 }
@@ -35,9 +36,9 @@ void JustAnLSPReqHandler::shutdownRequest(const std::shared_ptr<ShutdownRequest>
 {
     LOG_INFO << "Processing shutdown request";
 
-    ResponseMessage successfullShutdownResponse = ResponseMessage::Builder().withResult("null").build();
+    /* ResponseMessage successfullShutdownResponse = ResponseMessage::Builder().withResult("null").build(); */
 
-    Rpc::send(successfullShutdownResponse);
+    /* Rpc::send(successfullShutdownResponse); */
 
     LOG_INFO << "Response was sent for shutdown requestq!";
 }

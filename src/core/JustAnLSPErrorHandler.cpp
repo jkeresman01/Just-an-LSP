@@ -39,10 +39,10 @@ void JustAnLSPErrorHandler::handleError(const ResponseError &responseError)
 {
     LOG_INFO << "Sending response error: " << responseError.toString();
 
-    ResponseMessage responseErrorMsg =
-        ResponseMessage::Builder().withJsonRPC("2.0").withResponseError(responseError).build();
+    /* ResponseMessage responseErrorMsg = */
+    /*     ResponseMessage::Builder().withJsonRPC("2.0").withResponseError(responseError).build(); */
 
-    Rpc::send(responseErrorMsg);
+    /* Rpc::send(responseErrorMsg); */
 }
 
 } // namespace justanlsp

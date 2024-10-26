@@ -23,10 +23,16 @@ void JustAnLSPServer::run()
 {
     LOG_INFO << "JustAnLSP server successfully started";
 
-    for (;;)
+    while (true)
     {
-        std::string request = Rpc::read();
-        handleRequest(request);
+        std::string message = Rpc::read();
+        if (message.empty())
+        {
+            LOG_ERROR << "Empty message or failed to read input. Exiting the loop.";
+            break; // Exit the loop if no more input
+        }
+        // Process the message
+        handleRequest(message); // Replace with your message handler
     }
 }
 
