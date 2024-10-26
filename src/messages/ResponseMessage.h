@@ -2,6 +2,7 @@
 
 #include <optional>
 #include <string>
+#include <nlohmann/json.hpp>
 
 #include "Message.h"
 #include "ResponseError.h"
@@ -26,7 +27,7 @@ class ResponseMessage : public Message
 {
   public:
     //////////////////////////////////////////////////////////////
-    ///
+    //
     /// @brief Builder class for constructing a ResponseMessage
     ///
     //////////////////////////////////////////////////////////////
@@ -50,6 +51,15 @@ class ResponseMessage : public Message
     //////////////////////////////////////////////////////////////
     const ResponseError &getResponseError() const;
 
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Serializes ResponseMessage to JSON format
+    ///
+    /// @return JSON represenation of ResponseMessage 
+    ///
+    //////////////////////////////////////////////////////////////
+    nlohmann::json toJson() const { return {};};
+
   protected:
     //////////////////////////////////////////////////////////////
     ///
@@ -68,8 +78,7 @@ class ResponseMessage : public Message
     /// @param responseError   The error object (if the request fails).
     ///
     //////////////////////////////////////////////////////////////
-    ResponseMessage(const std::string &jsonRPC, const std::string &result,
-                    const ResponseError &responseError);
+    ResponseMessage(const std::string &jsonRPC, const ResponseError &responseError);
 };
 
 //////////////////////////////////////////////////////////////
@@ -104,17 +113,6 @@ class ResponseMessage::Builder
     ///
     //////////////////////////////////////////////////////////////
     Builder &withJsonRPC(const std::string &jsonRPC);
-
-    //////////////////////////////////////////////////////////////
-    ///
-    /// @brief Sets the result of the request for the ResponseMessage.
-    ///
-    /// @param result    The result string of the request.
-    ///
-    /// @return A reference to the Builder object for chaining.
-    ///
-    //////////////////////////////////////////////////////////////
-    Builder &withResult(const std::string &result);
 
     //////////////////////////////////////////////////////////////
     ///
