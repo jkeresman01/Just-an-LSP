@@ -45,5 +45,18 @@ struct ServerInfo
         ss << ", version: " << version;
         return ss.str();
     }
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Serializes ServerInfo to JSON
+    ///
+    /// @return Serializes ServerInfo to JSON
+    ///
+    //////////////////////////////////////////////////////////////
+    nlohmann::json toJson() const
+    {
+        nlohmann::json serverInfoJson = {{"name", name}, {"version", version}};
+        return serverInfoJson;
+    }
 };
 } // namespace justanlsp
