@@ -41,6 +41,19 @@ class MessageFactory
     {
         return std::make_shared<InitializeRequest>(jsonRPC);
     }
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Creates an ShutdownRequest message object.
+    ///
+    /// @param jsonRPC The JSON object containing the request data.
+    ///
+    /// @return A shared pointer to an ShutdownRequest object.
+    ///
+    //////////////////////////////////////////////////////////////
+    static std::shared_ptr<ShutdownRequest> createShutdownReq(const nlohmann::json &jsonRPC)
+    {
+        return std::make_unique<ShutdownRequest>(jsonRPC);
+    }
 };
 
 } // namespace justanlsp
