@@ -14,12 +14,11 @@ class RequestMethodUtil
 
     static RequestType getType(const std::string &method)
     {
-
         if (method == "initialize")
         {
             return RequestType::INITIALIZE;
         }
-        else if (method == "initalized")
+        else if (method == "initialized")
         {
             return RequestType::INITIALIZED;
         }
@@ -31,7 +30,7 @@ class RequestMethodUtil
         {
             return RequestType::TEXT_DOCUMENT_DID_OPEN;
         }
-        else if (method == "textDocumen/hover")
+        else if (method == "textDocument/hover")
         {
             return RequestType::TEXT_DOCUMENT_HOVER;
         }
