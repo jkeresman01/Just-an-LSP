@@ -9,26 +9,23 @@
 namespace justanlsp
 {
 
-InitializeParams::InitializeParams(const nlohmann::json &jsonRPC)
+InitializeParams::InitializeParams(const nlohmann::json &jsonInitializeParams)
 {
-    setProccessId(jsonRPC);
-    setLocale(jsonRPC);
-    setClientInfo(jsonRPC);
-    setTraceLevel(jsonRPC);
+    setProccessId(jsonInitializeParams);
+    setClientInfo(jsonInitializeParams);
 }
 
 void InitializeParams::setProccessId(const nlohmann::json &jsonRPC)
 {
-    auto it = jsonRPC.find("proccessId");
+    auto it = jsonRPC.find("processId");
 
     if (it == jsonRPC.end())
     {
-        LOG_ERROR << "No locale value was set in Initialize request";
+        LOG_ERROR << "No process id was set in request";
     }
     else
     {
-        std::string processIdStr = std::string(jsonRPC["proccessId"]);
-        m_processId = Converter::convert<int64_t>(processIdStr);
+        m_processId = jsonRPC["processId"];
     }
 }
 
@@ -42,8 +39,7 @@ void InitializeParams::setLocale(const nlohmann::json &jsonRPC)
     }
     else
     {
-        std::string locale = std::string(jsonRPC["locale"]);
-        m_locale = locale;
+        m_locale = jsonRPC["locale"];
     }
 }
 
@@ -51,8 +47,8 @@ void InitializeParams::setClientInfo(const nlohmann::json &jsonRPC)
 {
     nlohmann::json clientInfoJson = jsonRPC["clientInfo"];
 
-    m_clientInfo.name = std::string(clientInfoJson["name"]);
-    m_clientInfo.version = std::string(clientInfoJson["version"]);
+    m_clientInfo.name = clientInfoJson["name"];
+    m_clientInfo.version = clientInfoJson["version"];
 }
 
 void InitializeParams::setTraceLevel(const nlohmann::json &jsonRPC)
@@ -66,8 +62,7 @@ void InitializeParams::setTraceLevel(const nlohmann::json &jsonRPC)
     }
     else
     {
-        std::string traceStr = std::string(jsonRPC["trace"]);
-        m_traceValue = TraceUtil::getTraceValue(traceStr);
+        m_traceValue = jsonRPC["trace"];
     }
 }
 
