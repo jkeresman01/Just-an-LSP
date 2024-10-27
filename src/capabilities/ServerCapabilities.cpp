@@ -10,7 +10,6 @@ ServerCapabilities::ServerCapabilities(const TextDocumentSyncKind &textDocumentS
 
 nlohmann::json ServerCapabilities::toJson() const
 {
-    nlohmann::json serverCapabilitiesJson = {{"textDocumentSync", m_textDocumentSyncKind}};
-    return serverCapabilitiesJson;
+    return {{"textDocumentSync", m_textDocumentSyncKind}};
 }
 } // namespace justanlsp
