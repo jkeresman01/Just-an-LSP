@@ -14,7 +14,29 @@ class Rpc
   public:
     Rpc() = delete;
 
+    static void send(const ResponseMessage &response)
+    {
+        nlohmann::json jsonRPC = response.toJson();
+
+        LOG_INFO << "Content length: " << jsonRPC.dump().size();
+        LOG_INFO << "Content" << jsonRPC.dump(4);
+
+        std::cout << "Content-Length: " << jsonRPC.dump().size() << "\r\n\r\n";
+        std::cout << jsonRPC.dump() << std::endl;
+    }
+
     static std::string read()
+    {
+        uint32_t contentLength = readContentLength();
+
+        std::string content(contentLength, ' ');
+        std::cin.read(&content[0], contentLength);
+
+        return content;
+    }
+
+  private:
+    static uint32_t readContentLength()
     {
         std::string header;
         uint32_t contentLength = 0;
@@ -31,30 +53,10 @@ class Rpc
 
             if (header.empty())
             {
-                break;
+                return contentLength;
             }
         }
-
-        if (contentLength == 0)
-        {
-            return "";
-        }
-
-        std::string content(contentLength, ' ');
-        std::cin.read(&content[0], contentLength);
-
-        return content;
     }
 
-    static void send(const ResponseMessage &response)
-    {
-        nlohmann::json jsonRPC = response.toJson();
-
-        LOG_INFO << "Content length: " << jsonRPC.dump().size();
-        LOG_INFO << "Content" << jsonRPC.dump(4);
-
-        std::cout << "Content-Length: " << jsonRPC.dump().size() << "\r\n\r\n";
-        std::cout << jsonRPC.dump() << std::endl;
-    }
 };
 } // namespace justanlsp
