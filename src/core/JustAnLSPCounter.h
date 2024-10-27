@@ -17,7 +17,6 @@ class JustAnLSPCounter
     ///
     //////////////////////////////////////////////////////////////
     JustAnLSPCounter();
-
     JustAnLSPCounter(const JustAnLSPCounter &) = delete;
     JustAnLSPCounter(JustAnLSPCounter &&) = delete;
     JustAnLSPCounter &operator=(const JustAnLSPCounter &) = delete;
