@@ -84,6 +84,8 @@ void JustAnLSPFacade::handleShutdownRequest(const nlohmann::json &jsonRPC)
 
 void JustAnLSPFacade::handleInitializedRequest(const nlohmann::json &jsonRPC)
 {
+    m_justAnLspCounters->increment(RequestType::INITIALIZED);
+
     LOG_INFO << "Received notification with method: initialized";
     LOG_INFO << "Successful connection between client and JustAnLSPServer has been established";
 }
