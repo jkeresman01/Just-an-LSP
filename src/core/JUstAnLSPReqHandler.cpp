@@ -10,8 +10,6 @@ namespace justanlsp
 
 void JustAnLSPReqHandler::initializeRequest(const std::shared_ptr<InitializeRequest> &initializeRequest)
 {
-    LOG_INFO << "Processing initialize request";
-
     std::shared_ptr<InitializeParams> initializeParams = initializeRequest->getInitializeParams();
     std::shared_ptr<ClientCapabilities> clientCapabilities = initializeParams->getClientCapabilites();
     ClientInfo clientInfo = initializeParams->getClientInfo();
@@ -20,13 +18,12 @@ void JustAnLSPReqHandler::initializeRequest(const std::shared_ptr<InitializeRequ
 
     JustAnLSPClientService::getInstance().registerClient({clientInfo, clientCapabilities});
 
-    LOG_INFO << "Client: " << clientInfo.toString() << " was successfully registered";
-
     InitializeResult initializeResult({"JustAnLSP", "0.0.0.0.0.1-alpha"}, {TextDocumentSyncKind::FULL});
     InitializeResponse initializeResponse("2.0", 1, initializeResult);
 
     std::string responseBody = initializeResponse.toJson().dump();
     std::cout << "Content-Length: " << responseBody.size() << "\r\n\r\n";
+    std::cout << responseBody << std::endl;
 
     LOG_INFO << "Initialize response was successfully sent for client: " << clientInfo.toString();
 }
