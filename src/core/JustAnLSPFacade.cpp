@@ -90,15 +90,6 @@ void JustAnLSPFacade::handleInitializedRequest(const nlohmann::json &jsonRPC)
     LOG_INFO << "Successful connection between client and JustAnLSPServer has been established";
 }
 
-void JustAnLSPFacade::handleTextDocumentHoverRequest(const nlohmann::json &jsonRPC)
-{
-    LOG_INFO << "Received request with method: textDocument/hover";
-
-    m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_HOVER);
-
-    // TODO basic response
-}
-
 void JustAnLSPFacade::handleTextDocumentDidOpenRequest(const nlohmann::json &jsonRPC)
 {
     LOG_INFO << "Received request with method: textDocument/didOpen";
@@ -117,6 +108,15 @@ void JustAnLSPFacade::handleTextDocumentDidChangeRequest(const nlohmann::json &j
     LOG_WARN << jsonRPC.dump(4);
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_DID_CHANGE);
+
+    // TODO basic response
+}
+
+void JustAnLSPFacade::handleTextDocumentHoverRequest(const nlohmann::json &jsonRPC)
+{
+    LOG_INFO << "Received request with method: textDocument/hover";
+
+    m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_HOVER);
 
     // TODO basic response
 }
