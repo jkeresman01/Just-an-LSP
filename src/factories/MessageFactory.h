@@ -3,6 +3,7 @@
 #include <memory>
 #include <nlohmann/json.hpp>
 
+#include "../messages/DidOpenTextDocumentRequest.h"
 #include "../messages/InitializeRequest.h"
 #include "../messages/ShutdownRequest.h"
 #include "../utils/Logger.h"
@@ -41,6 +42,7 @@ class MessageFactory
     {
         return std::make_shared<InitializeRequest>(jsonRPC);
     }
+
     //////////////////////////////////////////////////////////////
     ///
     /// @brief Creates an ShutdownRequest message object.
@@ -53,6 +55,21 @@ class MessageFactory
     static std::shared_ptr<ShutdownRequest> createShutdownReq(const nlohmann::json &jsonRPC)
     {
         return std::make_unique<ShutdownRequest>(jsonRPC);
+    }
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Creates an DidOpenTextDocumentRequest message object.
+    ///
+    /// @param jsonRPC The JSON object containing the request data.
+    ///
+    /// @return A shared pointer to an DidOpenTextDocumentRequest object.
+    ///
+    //////////////////////////////////////////////////////////////
+    static std::shared_ptr<DidOpenTextDocumentRequest> createDidOpenTextDocumentReq(
+        const nlohmann::json &jsonRPC)
+    {
+        return std::make_unique<DidOpenTextDocumentRequest>(jsonRPC);
     }
 };
 
