@@ -1,5 +1,6 @@
 #pragma once
 
+#include <nlohmann/json.hpp>
 #include <string>
 
 #include "../errors/ErrorCodes.h"
@@ -23,8 +24,6 @@ class ResponseError
     ///
     /// @brief Default constructor for ResponseError.
     ///
-    /// Constructs a ResponseError with default values.
-    ///
     //////////////////////////////////////////////////////////////
     ResponseError() = default;
 
@@ -32,11 +31,11 @@ class ResponseError
     ///
     /// @brief Constructs a ResponseError with a specific code and message.
     ///
-    /// @param code    The ErrorCodes enumeration representing the error code.
-    /// @param message A string providing a detailed message about the error.
+    /// @param errorCode
+    /// @param message
     ///
     //////////////////////////////////////////////////////////////
-    ResponseError(const ErrorCodes &code, const std::string &message);
+    ResponseError(const ErrorCodes &errorCode, const std::string &message);
 
     //////////////////////////////////////////////////////////////
     ///
@@ -47,13 +46,22 @@ class ResponseError
     //////////////////////////////////////////////////////////////
     std::string toString() const;
 
+    ///////////////////////////////////////////////////////////////
+    ///
+    /// @brief Sereializes ResponseEror to JSON format
+    ///
+    /// @return ResponseError in JSON formt
+    ///
+    //////////////////////////////////////////////////////////////
+    nlohmann::json toJson() const;
+
   private:
     //////////////////////////////////////////////////////////////
     ///
     /// @brief The error code representing the type of error.
     ///
     //////////////////////////////////////////////////////////////
-    ErrorCodes m_code;
+    ErrorCodes m_errorCode;
 
     //////////////////////////////////////////////////////////////
     ///
