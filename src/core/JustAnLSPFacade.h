@@ -52,7 +52,7 @@ class JustAnLSPFacade
     ///
     /// @brief Entry point for handling initialize request
     ///
-    /// @param string representation of incoming request
+    /// @param jsonRPC request
     ///
     //////////////////////////////////////////////////////////////
     void handleInitializeRequest(const nlohmann::json &request);
@@ -61,7 +61,7 @@ class JustAnLSPFacade
     ///
     /// @brief Entry point for handling shutdown request
     ///
-    /// @param string representation of incoming request
+    /// @param jsonRPC request
     ///
     //////////////////////////////////////////////////////////////
     void handleShutdownRequest(const nlohmann::json &request);
@@ -70,7 +70,7 @@ class JustAnLSPFacade
     ///
     /// @brief Entry point for handling initialized request
     ///
-    /// @param string representation of incoming request
+    /// @param jsonRPC request
     ///
     //////////////////////////////////////////////////////////////
     void handleInitializedRequest(const nlohmann::json &request);
@@ -79,7 +79,7 @@ class JustAnLSPFacade
     ///
     /// @brief Entry point for handling textDocument/didOpen request
     ///
-    /// @param string representation of incoming request
+    /// @param jsonRPC request
     ///
     //////////////////////////////////////////////////////////////
     void handleTextDocumentDidOpenRequest(const nlohmann::json &request);
@@ -88,7 +88,7 @@ class JustAnLSPFacade
     ///
     /// @brief Entry point for handling textDocument/didChange request
     ///
-    /// @param string representation of incoming request
+    /// @param jsonRPC request
     ///
     //////////////////////////////////////////////////////////////
     void handleTextDocumentDidChangeRequest(const nlohmann::json &request);
@@ -97,10 +97,19 @@ class JustAnLSPFacade
     ///
     /// @brief Entry point for handling textDocument/hover request
     ///
-    /// @param string representation of incoming request
+    /// @param jsonRPC request
     ///
     //////////////////////////////////////////////////////////////
     void handleTextDocumentHoverRequest(const nlohmann::json &request);
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Entry point for handling textDocument/completion request
+    ///
+    /// @param jsonRPC request
+    ///
+    //////////////////////////////////////////////////////////////
+    void handleTextDocumentCompletionRequest(const nlohmann::json &request);
 
   private:
     //////////////////////////////////////////////////////////////
