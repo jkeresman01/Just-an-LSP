@@ -55,8 +55,7 @@ struct ServerInfo
     //////////////////////////////////////////////////////////////
     nlohmann::json toJson() const
     {
-        nlohmann::json serverInfoJson = {{"name", name}, {"version", version}};
-        return serverInfoJson;
+        return {{"name", name}, {"version", version}};
     }
 };
 } // namespace justanlsp
