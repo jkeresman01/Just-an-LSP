@@ -9,7 +9,7 @@
 namespace justanlsp
 {
 
-RequestMessage::RequestMessage(const nlohmann::json &jsonRPC) : Message(jsonRPC["jsonrpc"])
+RequestMessage::RequestMessage(const nlohmann::json &jsonRPC) : Message("2.0")
 {
     setId(jsonRPC);
     setMethod(jsonRPC);
@@ -25,8 +25,7 @@ void RequestMessage::setId(const nlohmann::json &jsonRPC)
     }
     else
     {
-        std::string idStr = std::string(jsonRPC["id"]);
-        m_id = Converter::convert<int64_t>(idStr);
+        m_id = jsonRPC["id"];
     }
 }
 
@@ -40,7 +39,7 @@ void RequestMessage::setMethod(const nlohmann::json &jsonRPC)
     }
     else
     {
-        m_method = std::string(jsonRPC["method"]);
+        m_method = jsonRPC["method"];
     }
 }
 
