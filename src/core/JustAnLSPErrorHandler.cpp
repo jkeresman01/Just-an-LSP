@@ -45,7 +45,7 @@ void JustAnLSPErrorHandler::handleInternalError(int64_t id)
     handleError(internalServerError, id);
 }
 
-void JustAnLSPErrorHandler::handleReceivedReqAfterShutdown(int64_t id)
+void JustAnLSPErrorHandler::handleReceivedReqAfterShutdownError(int64_t id)
 {
      LOG_INFO << "Handling invalid request error";
 

@@ -65,7 +65,7 @@ void JustAnLSPFacade::handleInitializeRequest(const nlohmann::json &jsonRPC)
         m_justAnLSPErrorHandler->handleServerNotInitalizedError(jsonRPC["id"]);
     }
 
-    bool wasShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN);
+    bool wasShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
     if(wasShutdownReqReceived)
     {
        LOG_ERROR << "Received request after shutdown"; 
@@ -92,7 +92,7 @@ void JustAnLSPFacade::handleInitializedRequest(const nlohmann::json &jsonRPC)
 {
     m_justAnLspCounters->increment(RequestType::INITIALIZED);
 
-    bool wasShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN);
+    bool wasShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
     if(wasShutdownReqReceived)
     {
        LOG_ERROR << "Received request after shutdown"; 
@@ -107,7 +107,7 @@ void JustAnLSPFacade::handleTextDocumentDidOpenRequest(const nlohmann::json &jso
 {
     LOG_INFO << "Received notification with method: textDocument/didOpen";
 
-    bool wasShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN);
+    bool wasShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
     if(wasShutdownReqReceived)
     {
        LOG_ERROR << "Received request after shutdown"; 
@@ -126,7 +126,7 @@ void JustAnLSPFacade::handleTextDocumentDidChangeRequest(const nlohmann::json &j
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_DID_CHANGE);
 
-    bool wasShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN);
+    bool wasShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
     if(wasShutdownReqReceived)
     {
        LOG_ERROR << "Received request after shutdown"; 
@@ -142,7 +142,7 @@ void JustAnLSPFacade::handleTextDocumentHoverRequest(const nlohmann::json &jsonR
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_HOVER);
 
-    bool wasShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN);
+    bool wasShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
     if(wasShutdownReqReceived)
     {
        LOG_ERROR << "Received request after shutdown"; 
