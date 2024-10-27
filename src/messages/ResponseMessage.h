@@ -18,7 +18,7 @@ namespace justanlsp
 /// @brief Represents a response message in the JSON-RPC protocol.
 ///        This message can either be a successful response or
 ///        an error response.
-//
+///
 //////////////////////////////////////////////////////////////
 class ResponseMessage : public Message
 {
