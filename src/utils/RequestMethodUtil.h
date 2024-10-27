@@ -26,6 +26,10 @@ class RequestMethodUtil
         {
             return RequestType::TEXT_DOCUMENT_DID_CHANGE;
         }
+        else if (method == "textDocument/completion")
+        {
+            return RequestType::TEXT_DOCUMENT_COMPLETION;
+        }
         else if (method == "textDocument/didOpen")
         {
             return RequestType::TEXT_DOCUMENT_DID_OPEN;

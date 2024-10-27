@@ -53,7 +53,7 @@ class ResponseMessage : public Message
     //////////////////////////////////////////////////////////////
     virtual nlohmann::json toJson() const;
 
-  private:
+  protected:
     //////////////////////////////////////////////////////////////
     ///
     /// @brief Unique identifier for the request associated

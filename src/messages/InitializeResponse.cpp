@@ -15,8 +15,8 @@ InitializeResponse::InitializeResponse(const std::string &jsonRPC, const int64_t
 
 nlohmann::json InitializeResponse::toJson() const
 {
-    return {{"jsonrpc", "2.0"},
-            {"id", 1},
+    return {{"jsonrpc", m_jsonRPC},
+            {"id", m_id},
             {"result",
              {{"serverInfo", m_initializeResut.getServerInfo().toJson()},
               {"capabilities", m_initializeResut.getServerCapabilities().toJson()}}}};

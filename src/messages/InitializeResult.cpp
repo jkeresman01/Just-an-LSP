@@ -13,8 +13,15 @@ InitializeResult::InitializeResult(const ServerInfo &serverInfo, const ServerCap
 
 nlohmann::json InitializeResult::toJson() const
 {
-    return {{"serverinfo", {m_serverInfo.toJson()}},
-            {"capabilites", {m_serverCapabilities.toJson()}, {"completionProvider", "{}"}}};
+    // TODO completionProvider is hardoced for test purposes
+
+    return {{"serverinfo", m_serverInfo.toJson()},
+            {"capabilities",
+             {{"textDocumentSync", m_serverCapabilities.toJson()},
+              {"completionProvider",
+               {
+                   {"resolveProvider", false},
+               }}}}};
 }
 
 std::string InitializeResult::toString() const

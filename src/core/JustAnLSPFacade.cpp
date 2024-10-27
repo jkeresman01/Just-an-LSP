@@ -3,16 +3,18 @@
 
 #include <iostream>
 #include <memory>
+#include <vector>
 
 #include "../enums/RequestType.h"
 #include "../enums/TextDocumentSyncKind.h"
 #include "../factories/MessageFactory.h"
-#include "../messages/InitializeResponse.h"
+#include "../messages/CompletionResponse.h"
 #include "../messages/ResponseMessage.h"
 #include "../messages/ShutdownRequest.h"
 #include "../params/InitializeParams.h"
 #include "../rpc/Rpc.h"
 #include "../types/ClientInfo.h"
+#include "../types/CompletionItem.h"
 #include "../utils/Logger.h"
 #include "../utils/MessageUtil.h"
 #include "JUstAnLSPClientService.h"
@@ -42,6 +44,9 @@ void JustAnLSPFacade::handleRequest(const nlohmann::json &request)
         break;
     case RequestType::TEXT_DOCUMENT_DID_CHANGE:
         handleTextDocumentDidChangeRequest(request);
+        break;
+    case RequestType::TEXT_DOCUMENT_COMPLETION:
+        handleTextDocumentCompletionRequest(request);
         break;
     case RequestType::TEXT_DOCUMENT_HOVER:
         handleTextDocumentHoverRequest(request);
@@ -134,6 +139,34 @@ void JustAnLSPFacade::handleTextDocumentDidChangeRequest(const nlohmann::json &j
     }
 
     // TODO Update internal document state
+}
+
+void JustAnLSPFacade::handleTextDocumentCompletionRequest(const nlohmann::json &jsonRPC)
+{
+    LOG_INFO << "Received request with notification: textDocument/completion";
+
+    m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_COMPLETION);
+
+    bool wasShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
+    if (wasShutdownReqReceived)
+    {
+        LOG_ERROR << "Received request after shutdown";
+        m_justAnLSPErrorHandler->handleReceivedReqAfterShutdownError(jsonRPC["id"]);
+    }
+
+    std::vector<CompletionItem> completionItems{
+        {"dnsClient", "DNS client test 1", "DNS client test 1 documentation"},
+        {"dnsClientId", "DNS client test 1", "DNS client id test 1 documentation"},
+        {"dnsClientIpAddress", "DNS client ip address test 1", "DNS client ip address test 1 documentation"},
+    };
+
+    int64_t id = jsonRPC["id"].get<int64_t>();
+
+    CompletionResponse completionResponse{"2.0", id, {completionItems}};
+
+    std::string responseBody = completionResponse.toJson().dump();
+    std::cout << "Content-Length: " << responseBody.size() << "\r\n\r\n";
+    std::cout << responseBody << std::endl;
 }
 
 void JustAnLSPFacade::handleTextDocumentHoverRequest(const nlohmann::json &jsonRPC)
