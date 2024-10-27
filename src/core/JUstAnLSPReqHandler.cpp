@@ -14,7 +14,7 @@ void JustAnLSPReqHandler::initializeRequest(const std::shared_ptr<InitializeRequ
     std::shared_ptr<ClientCapabilities> clientCapabilities = initializeParams->getClientCapabilites();
     ClientInfo clientInfo = initializeParams->getClientInfo();
 
-    LOG_INFO << "Client: " << clientInfo.toString() << " has sent initializtion request";
+    LOG_INFO << clientInfo.toString() << " has sent initializtion request";
 
     JustAnLSPClientService::getInstance().registerClient({clientInfo, clientCapabilities});
 
