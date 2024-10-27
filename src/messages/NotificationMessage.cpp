@@ -3,8 +3,8 @@
 namespace justanlsp
 {
 
-NotificationMessage::NotificationMessage(const std::string &method, const std::string &jsonRPC)
-    : Message(jsonRPC), m_method(method)
+NotificationMessage::NotificationMessage(const nlohmann::json &jsonRPC)
+    : Message("2.0"), m_method(jsonRPC["method"])
 {
 }
 

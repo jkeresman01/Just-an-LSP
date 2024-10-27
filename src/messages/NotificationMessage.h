@@ -25,11 +25,10 @@ class NotificationMessage : public Message
     /// @brief Constructs a NotificationMessage with the specified
     ///        method and JSON-RPC version.
     ///
-    /// @param method
     /// @param jsonRPC
     ///
     //////////////////////////////////////////////////////////////
-    NotificationMessage(const std::string &method, const std::string &jsonRPC);
+    NotificationMessage(const nlohmann::json &jsonRPC);
 
   private:
     //////////////////////////////////////////////////////////////
