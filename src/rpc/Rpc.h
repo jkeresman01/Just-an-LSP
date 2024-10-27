@@ -57,6 +57,5 @@ class Rpc
             }
         }
     }
-
 };
 } // namespace justanlsp
