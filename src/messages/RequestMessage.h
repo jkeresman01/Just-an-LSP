@@ -27,7 +27,22 @@ class RequestMessage : public Message
     RequestMessage(const nlohmann::json &jsonRPC);
 
   private:
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Mutator method for setting and validating request ID
+    ///
+    /// @param jsonRPC
+    ///
+    //////////////////////////////////////////////////////////////
     void setId(const nlohmann::json &jsonRPC);
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Mutator method for setting and validating request method
+    ///
+    /// @param jsonRPC
+    ///
+    //////////////////////////////////////////////////////////////
     void setMethod(const nlohmann::json &jsonRPC);
 
   protected:

@@ -53,9 +53,40 @@ class InitializeParams
     std::shared_ptr<ClientCapabilities> getClientCapabilites() const { return m_capabilities; };
 
   private:
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Mutator method for setting and validataing processId
+    ///
+    /// @param jsoRPC
+    ///
+    //////////////////////////////////////////////////////////////
     void setProccessId(const nlohmann::json &jsonRPC);
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Mutator method for setting and validataing locale
+    ///
+    /// @param jsoRPC
+    ///
+    //////////////////////////////////////////////////////////////
     void setLocale(const nlohmann::json &jsonRPC);
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Mutator method for setting and validataing clientInfo
+    ///
+    /// @param jsoRPC
+    ///
+    //////////////////////////////////////////////////////////////
     void setClientInfo(const nlohmann::json &jsonRPC);
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Mutator method for setting and validataing trace level
+    ///
+    /// @param jsoRPC
+    ///
+    //////////////////////////////////////////////////////////////
     void setTraceLevel(const nlohmann::json &jsonRPC);
 
   private:

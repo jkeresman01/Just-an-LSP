@@ -20,6 +20,7 @@ InitializeParams::InitializeParams(const nlohmann::json &jsonRPC)
 void InitializeParams::setProccessId(const nlohmann::json &jsonRPC)
 {
     auto it = jsonRPC.find("proccessId");
+
     if (it == jsonRPC.end())
     {
         LOG_ERROR << "No locale value was set in Initialize request";
@@ -34,6 +35,7 @@ void InitializeParams::setProccessId(const nlohmann::json &jsonRPC)
 void InitializeParams::setLocale(const nlohmann::json &jsonRPC)
 {
     auto it = jsonRPC.find("locale");
+
     if (it == jsonRPC.end())
     {
         LOG_ERROR << "No locale value was set in Initialize request";
@@ -56,6 +58,7 @@ void InitializeParams::setClientInfo(const nlohmann::json &jsonRPC)
 void InitializeParams::setTraceLevel(const nlohmann::json &jsonRPC)
 {
     auto it = jsonRPC.find("trace");
+
     if (it == jsonRPC.end())
     {
         LOG_INFO << "No trace value set in Initialize request, defaultin to TraceValue::OFF";
