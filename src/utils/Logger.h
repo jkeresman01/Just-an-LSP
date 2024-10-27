@@ -48,11 +48,18 @@ class Logger
         TimeUtil::putTime(log, TimeUtil::now());
         log << "] ";
 
-        log << "[";
-        log << fileName << ":" << lineNumber;
-        log << "]\t";
+        std::ostringstream location;
+        location << "[" << fileName << ":" << lineNumber << "]";
 
-        log << severity << ":  " << message << std::endl;
+        log << location.str();
+
+        int padding = 74 - location.str().length();
+        if (padding > 0)
+        {
+            log << std::setw(padding) << " ";
+        }
+
+        log << severity << ": " << message << std::endl;
     }
 };
 
