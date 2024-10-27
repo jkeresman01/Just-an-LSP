@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <locale>
 #include <memory>
+#include <nlohmann/json.hpp>
 #include <optional>
 #include <string>
 
@@ -50,6 +51,12 @@ class InitializeParams
     ///
     //////////////////////////////////////////////////////////////
     std::shared_ptr<ClientCapabilities> getClientCapabilites() const { return m_capabilities; };
+
+  private:
+    void setProccessId(const nlohmann::json &jsonRPC);
+    void setLocale(const nlohmann::json &jsonRPC);
+    void setClientInfo(const nlohmann::json &jsonRPC);
+    void setTraceLevel(const nlohmann::json &jsonRPC);
 
   private:
     //////////////////////////////////////////////////////////////
