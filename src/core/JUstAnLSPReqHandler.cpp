@@ -28,6 +28,9 @@ void JustAnLSPReqHandler::initializeRequest(const std::shared_ptr<InitializeRequ
     std::cout << "Content-Length: " << responseBody.size() << "\r\n\r\n";
     std::cout << responseBody << std::endl;
 
+    LOG_INFO << "Response: ";
+    LOG_INFO << responseBody;
+
     LOG_INFO << "Initialize response was successfully sent for client: " << clientInfo.toString();
 }
 

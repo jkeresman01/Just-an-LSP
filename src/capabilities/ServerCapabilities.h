@@ -2,11 +2,15 @@
 
 #include <memory>
 #include <nlohmann/json.hpp>
+#include <string>
+#include <unordered_map>
 
 #include "../enums/TextDocumentSyncKind.h"
 
 namespace justanlsp
 {
+
+typedef std::unordered_map<std::string, std::string> CompletionProviderT;
 
 //////////////////////////////////////////////////////////////
 ///
@@ -27,5 +31,7 @@ class ServerCapabilities
 
   private:
     TextDocumentSyncKind m_textDocumentSyncKind;
+
+    CompletionProviderT m_completionProvider;
 };
 } // namespace justanlsp
