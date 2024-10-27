@@ -47,7 +47,7 @@ void JustAnLSPErrorHandler::handleInternalError(int64_t id)
 
 void JustAnLSPErrorHandler::handleReceivedReqAfterShutdownError(int64_t id)
 {
-     LOG_INFO << "Handling invalid request error";
+    LOG_INFO << "Handling invalid request error";
 
     ResponseError invalidRequestError{ErrorCodes::INVALID_REQUEST, "Received request after shutdown"};
 
