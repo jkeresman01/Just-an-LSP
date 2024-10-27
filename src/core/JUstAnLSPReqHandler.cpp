@@ -22,12 +22,11 @@ void JustAnLSPReqHandler::initializeRequest(const std::shared_ptr<InitializeRequ
 
     LOG_INFO << "Client: " << clientInfo.toString() << " was successfully registered";
 
-    /* InitializeResponse initializeResponse({"JustAnLSP", "0.0.0.0.0.1-alpha"},
-     * {TextDocumentSyncKind::FULL}); */
+    InitializeResult initializeResult({"JustAnLSP", "0.0.0.0.0.1-alpha"}, {TextDocumentSyncKind::FULL});
+    InitializeResponse initializeResponse("2.0", 1, initializeResult);
 
-    /* LOG_INFO << "Sending " << initializeResponse.toString(); */
-
-    /* Rpc::send(initializeResponse); */
+    std::string responseBody = initializeResponse.toJson().dump();
+    std::cout << "Content-Length: " << responseBody.size() << "\r\n\r\n";
 
     LOG_INFO << "Initialize response was successfully sent for client: " << clientInfo.toString();
 }

@@ -1,4 +1,5 @@
 #include "JustAnLSPFacade.h"
+#include "JustAnLSPServer.h"
 
 #include <iostream>
 #include <memory>
@@ -18,6 +19,7 @@
 #include "JustAnLSPClient.h"
 #include "JustAnLSPCounter.h"
 #include "JustAnLSPErrorHandler.h"
+#include "JustAnLSPServer.h"
 
 namespace justanlsp
 {
@@ -53,19 +55,10 @@ void JustAnLSPFacade::handleRequest(const nlohmann::json &request)
 void JustAnLSPFacade::handleInitializeRequest(const nlohmann::json &jsonRPC)
 {
     LOG_INFO << "Received initialize request";
-    LOG_INFO << jsonRPC.dump(4);
 
-    // Create InitializeResult with your server capabilities
-    InitializeResult initializeResult({"JustAnLSP", "0.0.0.0.0.1-alpha"}, {TextDocumentSyncKind::FULL});
-    InitializeResponse initializeResponse("2.0", jsonRPC["id"], initializeResult);
+    std::shared_ptr<InitializeRequest> initializeRequest = MessageFactory::createInitializeReq(jsonRPC);
 
-    LOG_INFO << "Sending initialize response: ";
-    LOG_INFO << initializeResponse.toJson().dump(4);
-
-    // Calculate the correct Content-Length for the response
-    std::string responseBody = initializeResponse.toJson().dump();
-    std::cout << "Content-Length: " << responseBody.size() << "\r\n\r\n";
-    std::cout << responseBody << std::endl;
+    m_justAnLSPReqHandler->initializeRequest(initializeRequest);
 }
 
 void JustAnLSPFacade::handleShutdownRequest(const nlohmann::json &jsonRPC)
@@ -74,14 +67,19 @@ void JustAnLSPFacade::handleShutdownRequest(const nlohmann::json &jsonRPC)
 
     m_justAnLspCounters->increment(RequestType::SHUTDOWN);
 
-    // TODO basic response
+    nlohmann::json response = {{"jsonrpc", "2.0"}, {"id", jsonRPC["id"]}, {"result", nullptr}};
+
+    LOG_INFO << "Sending shutdown response: " << response.dump(4);
+
+    std::string responseBody = response.dump();
+    std::cout << "Content-Length: " << responseBody.size() << "\r\n\r\n";
+    std::cout << responseBody << std::endl;
 }
 
 void JustAnLSPFacade::handleInitializedRequest(const nlohmann::json &jsonRPC)
 {
     LOG_INFO << "Received initialized request";
-
-    // TODO basic response
+    LOG_INFO << "Successfull connectio between client and JustAnLSPServer";
 }
 
 void JustAnLSPFacade::handleTextDocumentHoverRequest(const nlohmann::json &jsonRPC)
