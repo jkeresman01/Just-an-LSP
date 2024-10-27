@@ -34,39 +34,47 @@ class JustAnLSPErrorHandler
     ///
     /// @brief Handles the server not initialized error
     ///
+    /// @param message id
+    ///
     //////////////////////////////////////////////////////////////
-    void handleServerNotInitalizedError();
+    void handleServerNotInitalizedError(int64_t id);
 
     //////////////////////////////////////////////////////////////
     ///
     /// @brief Handles the parse error
     ///
+    /// @param message id
+    ///
     //////////////////////////////////////////////////////////////
-    void handleParseError();
+    void handleParseError(int64_t id);
 
     //////////////////////////////////////////////////////////////
     ///
     /// @brief Handles the method not found error
     ///
+    /// @param message id
+    ///
     //////////////////////////////////////////////////////////////
-    void handleMethodNotFoundError();
+    void handleMethodNotFoundError(int64_t id);
 
     //////////////////////////////////////////////////////////////
     ///
     /// @brief Handles the internal error
     ///
+    /// @param message id
+    ///
     //////////////////////////////////////////////////////////////
-    void handleInternalError();
+    void handleInternalError(int64_t id);
 
   private:
     //////////////////////////////////////////////////////////////
     ///
     /// @brief Handles the error
     ///
-    /// @param errorCode
-    /// @param errorMsg
+    /// @param responseError
+    /// @param id
     ///
     //////////////////////////////////////////////////////////////
-    void handleError(const ResponseError &responseError);
+    void handleError(const ResponseError &responseError, int64_t id);
 };
 } // namespace justanlsp
