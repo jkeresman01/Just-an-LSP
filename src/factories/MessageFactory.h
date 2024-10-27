@@ -39,7 +39,6 @@ class MessageFactory
     //////////////////////////////////////////////////////////////
     static std::shared_ptr<InitializeRequest> createInitializeReq(const nlohmann::json &jsonRPC)
     {
-        LOG_INFO << "Creating initalize requst from provided jsonRPC request";
         return std::make_shared<InitializeRequest>(jsonRPC);
     }
 };
