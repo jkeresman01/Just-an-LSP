@@ -1,7 +1,10 @@
 #include "JustAnLSPReqHandler.h"
 
+#include <cstdint>
+
 #include "../enums/TextDocumentSyncKind.h"
 #include "../messages/InitializeResponse.h"
+#include "../messages/ShutdownResponse.h"
 #include "../rpc/Rpc.h"
 #include "JUstAnLSPClientService.h"
 
@@ -19,7 +22,7 @@ void JustAnLSPReqHandler::initializeRequest(const std::shared_ptr<InitializeRequ
     JustAnLSPClientService::getInstance().registerClient({clientInfo, clientCapabilities});
 
     InitializeResult initializeResult({"JustAnLSP", "0.0.0.0.0.1-alpha"}, {TextDocumentSyncKind::FULL});
-    InitializeResponse initializeResponse("2.0", 1, initializeResult);
+    InitializeResponse initializeResponse("2.0", initializeRequest->getId(), initializeResult);
 
     std::string responseBody = initializeResponse.toJson().dump();
     std::cout << "Content-Length: " << responseBody.size() << "\r\n\r\n";
@@ -32,9 +35,11 @@ void JustAnLSPReqHandler::shutdownRequest(const std::shared_ptr<ShutdownRequest>
 {
     LOG_INFO << "Processing shutdown request";
 
-    /* ResponseMessage successfullShutdownResponse = ResponseMessage::Builder().withResult("null").build(); */
+    ShutdownResponse shutdownResponse{"2.0", shutdownRequest->getId()};
 
-    /* Rpc::send(successfullShutdownResponse); */
+    std::string responseBody = shutdownResponse.toJson().dump();
+    std::cout << "Content-Length: " << responseBody.size() << "\r\n\r\n";
+    std::cout << responseBody << std::endl;
 
     LOG_INFO << "Response was sent for shutdown requestq!";
 }
