@@ -1,10 +1,12 @@
 #include "JustAnLSPServer.h"
 
+#include <memory>
 #include <string>
 
 #include "../rpc/Rpc.h"
 #include "../utils/Logger.h"
 #include "../utils/MessageUtil.h"
+#include "JustAnLSPFacade.h"
 
 namespace justanlsp
 {
@@ -14,7 +16,7 @@ JustAnLSPServer::JustAnLSPServer()
     LOG_INFO << "Instance of JustAnLSP server successfully created";
 }
 
-JustAnLSPServer::~JustAnLSPServer()
+void JustAnLSPServer::stop()
 {
     LOG_INFO << "Successfull shutdown of JustAnLSP server";
 }
