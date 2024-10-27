@@ -56,6 +56,16 @@ void JustAnLSPFacade::handleInitializeRequest(const nlohmann::json &jsonRPC)
 {
     LOG_INFO << "Prcoessing request with method: initialize";
 
+    m_justAnLspCounters->increment(RequestType::INITIALIZE);
+
+    bool isInitializeReqReceivedFirst = m_justAnLspCounters->getSum() <= 1;
+
+    if (!isInitializeReqReceivedFirst)
+    {
+        LOG_ERROR << "Received request before initialization";
+        m_justAnLSPErrorHandler->handleServerNotInitalizedError(jsonRPC["id"]);
+    }
+
     std::shared_ptr<InitializeRequest> initializeRequest = MessageFactory::createInitializeReq(jsonRPC);
 
     m_justAnLSPReqHandler->initializeRequest(initializeRequest);
@@ -67,13 +77,9 @@ void JustAnLSPFacade::handleShutdownRequest(const nlohmann::json &jsonRPC)
 
     m_justAnLspCounters->increment(RequestType::SHUTDOWN);
 
-    nlohmann::json response = {{"jsonrpc", "2.0"}, {"id", jsonRPC["id"]}, {"result", nullptr}};
+    std::shared_ptr<ShutdownRequest> shutdownRequest = MessageFactory::createShutdownReq(jsonRPC);
 
-    LOG_INFO << "Sending shutdown response: " << response.dump(4);
-
-    std::string responseBody = response.dump();
-    std::cout << "Content-Length: " << responseBody.size() << "\r\n\r\n";
-    std::cout << responseBody << std::endl;
+    m_justAnLSPReqHandler->shutdownRequest(shutdownRequest);
 }
 
 void JustAnLSPFacade::handleInitializedRequest(const nlohmann::json &jsonRPC)
@@ -95,6 +101,8 @@ void JustAnLSPFacade::handleTextDocumentDidOpenRequest(const nlohmann::json &jso
 {
     LOG_INFO << "Received request with method: textDocument/didOpen";
 
+    LOG_WARN << jsonRPC.dump(4);
+
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_DID_OPEN);
 
     // TODO basic response
@@ -103,6 +111,8 @@ void JustAnLSPFacade::handleTextDocumentDidOpenRequest(const nlohmann::json &jso
 void JustAnLSPFacade::handleTextDocumentDidChangeRequest(const nlohmann::json &jsonRPC)
 {
     LOG_INFO << "Received request with method: textDocument/didChange";
+
+    LOG_WARN << jsonRPC.dump(4);
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_DID_CHANGE);
 
