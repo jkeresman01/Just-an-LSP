@@ -26,7 +26,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
         local client = vim.lsp.start({
             name = "JustAnLSP",
-            cmd = {"/path/to//JustAnLSPServer/binary"}
+            cmd = {"/path/to/JustAnLSPServer/binary"}
         })
 
         if not client then
