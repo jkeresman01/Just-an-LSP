@@ -24,7 +24,11 @@ class RequestMessage : public Message
     /// @brief Constructs the RequestMessage from json RPC
     ///
     //////////////////////////////////////////////////////////////
-    RequestMessage(const std::string &jsonRPC);
+    RequestMessage(const nlohmann::json &jsonRPC);
+
+  private:
+    void setId(const nlohmann::json &jsonRPC);
+    void setMethod(const nlohmann::json &jsonRPC);
 
   protected:
     //////////////////////////////////////////////////////////////
