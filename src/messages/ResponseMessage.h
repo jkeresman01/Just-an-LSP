@@ -39,7 +39,7 @@ class ResponseMessage : public Message
     ///
     /// @param jsonRpc
     /// @param id
-    /// @param error
+    /// @param responseError
     ///
     //////////////////////////////////////////////////////////////
     ResponseMessage(const std::string &jsonRpc, const int64_t id, const ResponseError &responseError);
@@ -51,7 +51,7 @@ class ResponseMessage : public Message
     /// @return Returns the ResponseMessage in serialized JSON format.
     ///
     //////////////////////////////////////////////////////////////
-    nlohmann::json toJson() const;
+    virtual nlohmann::json toJson() const;
 
   private:
     //////////////////////////////////////////////////////////////
