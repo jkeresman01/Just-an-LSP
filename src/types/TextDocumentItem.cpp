@@ -6,9 +6,9 @@ namespace justanlsp
 {
 TextDocumentItem::TextDocumentItem(const nlohmann::json &jsonRPC)
 {
-    setURI(jsonRPC);
-    setLanguageId(jsonRPC);
-    setTextVersion(jsonRPC);
+    /* setURI(jsonRPC); */
+    /* setLanguageId(jsonRPC); */
+    /* setTextVersion(jsonRPC); */
     setText(jsonRPC);
 }
 
