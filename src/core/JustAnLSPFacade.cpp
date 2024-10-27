@@ -47,14 +47,14 @@ void JustAnLSPFacade::handleRequest(const nlohmann::json &request)
         handleTextDocumentHoverRequest(request);
         break;
     default:
-        LOG_WARN << "Received request of unkown type";
+        LOG_ERROR << "Received request/notification with method: UNKNOWN_TYPE";
         break;
     }
 }
 
 void JustAnLSPFacade::handleInitializeRequest(const nlohmann::json &jsonRPC)
 {
-    LOG_INFO << "Received initialize request";
+    LOG_INFO << "Prcoessing request with method: initialize";
 
     std::shared_ptr<InitializeRequest> initializeRequest = MessageFactory::createInitializeReq(jsonRPC);
 
@@ -63,7 +63,7 @@ void JustAnLSPFacade::handleInitializeRequest(const nlohmann::json &jsonRPC)
 
 void JustAnLSPFacade::handleShutdownRequest(const nlohmann::json &jsonRPC)
 {
-    LOG_INFO << "Received shutdown request";
+    LOG_INFO << "Received request with method: shutdown";
 
     m_justAnLspCounters->increment(RequestType::SHUTDOWN);
 
@@ -78,13 +78,13 @@ void JustAnLSPFacade::handleShutdownRequest(const nlohmann::json &jsonRPC)
 
 void JustAnLSPFacade::handleInitializedRequest(const nlohmann::json &jsonRPC)
 {
-    LOG_INFO << "Received initialized request";
-    LOG_INFO << "Successfull connectio between client and JustAnLSPServer";
+    LOG_INFO << "Received notification with method: initialized";
+    LOG_INFO << "Successful connection between client and JustAnLSPServer has been established";
 }
 
 void JustAnLSPFacade::handleTextDocumentHoverRequest(const nlohmann::json &jsonRPC)
 {
-    LOG_INFO << "Received textDocument/hover request";
+    LOG_INFO << "Received request with method: textDocument/hover";
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_HOVER);
 
@@ -93,7 +93,7 @@ void JustAnLSPFacade::handleTextDocumentHoverRequest(const nlohmann::json &jsonR
 
 void JustAnLSPFacade::handleTextDocumentDidOpenRequest(const nlohmann::json &jsonRPC)
 {
-    LOG_INFO << "Received textDocument/didOpen request";
+    LOG_INFO << "Received request with method: textDocument/didOpen";
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_DID_OPEN);
 
@@ -102,7 +102,7 @@ void JustAnLSPFacade::handleTextDocumentDidOpenRequest(const nlohmann::json &jso
 
 void JustAnLSPFacade::handleTextDocumentDidChangeRequest(const nlohmann::json &jsonRPC)
 {
-    LOG_INFO << "Received textDocument/didChange request";
+    LOG_INFO << "Received request with method: textDocument/didChange";
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_DID_CHANGE);
 
