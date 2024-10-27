@@ -39,8 +39,7 @@ struct ClientInfo
     std::string toString() const
     {
         std::stringstream ss;
-        ss << "Client: " << name;
-        ss << ", version: " << version;
+        ss << name << ", version: " << version;
         return ss.str();
     }
 };

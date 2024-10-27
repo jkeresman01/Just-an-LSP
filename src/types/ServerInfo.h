@@ -41,8 +41,7 @@ struct ServerInfo
     std::string toString() const
     {
         std::stringstream ss;
-        ss << "Server: " << name;
-        ss << ", version: " << version;
+        ss << name << ", version: " << version;
         return ss.str();
     }
 
@@ -53,9 +52,6 @@ struct ServerInfo
     /// @return Serializes ServerInfo to JSON
     ///
     //////////////////////////////////////////////////////////////
-    nlohmann::json toJson() const
-    {
-        return {{"name", name}, {"version", version}};
-    }
+    nlohmann::json toJson() const { return {{"name", name}, {"version", version}}; }
 };
 } // namespace justanlsp
