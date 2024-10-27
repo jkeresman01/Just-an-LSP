@@ -19,24 +19,29 @@ Nvim supports the Language Server Protocol (LSP), which means it acts as a clien
 To configure the LSP client, you can use this example:
 
 ```Lua
-local client = vim.lsp.start({
-    name = "just-an-lsp",
-    cmd = {"/path/to/just-an-lsp/binary"}
-})
-
-if not client then
-    vim.notify "No can do for just-an-lsp!"
-end
-
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "cpp",
+    pattern = "markdown",
+
     callback = function()
-        vim.lsp.buf_attach_client(0, client)
+
+        local client = vim.lsp.start({
+            name = "just-an-lsp",
+            cmd = {"/home/josip/git/cpp/Just-an-LSP/build/JustAnLSPServer"}
+        })
+
+        if not client then
+            vim.notify "No can do for JustAnLSPServer!"
+        else
+            vim.lsp.buf_attach_client(0, client)
+        end
     end
+
 })
+
 ```
 Afterwards you can check that the server is attached to the buffer:
 
 ```Lua
 :lua =vim.lsp.get_clients()
 ```
+
