@@ -17,6 +17,7 @@ class MessageUtil
     static RequestType getType(const nlohmann::json &request)
     {
         auto it = request.find("method");
+
         if (it == request.end())
         {
             LOG_ERROR << "Received unknown request type";
@@ -24,8 +25,6 @@ class MessageUtil
         }
 
         std::string method = std::string(request["method"]);
-        LOG_INFO << "Received request with method: " << method;
-
         return RequestMethodUtil::getType(method);
     }
 
