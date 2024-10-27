@@ -9,9 +9,9 @@ namespace justanlsp
 
 //////////////////////////////////////////////////////////////
 ///
-/// @struct ServerInfo
+/// @struct Position
 ///
-/// @brief Position in a text document expressed as zero-based 
+/// @brief Position in a text document expressed as zero-based
 ///        line and zero-based character offset
 ///
 //////////////////////////////////////////////////////////////
@@ -31,4 +31,4 @@ struct Position
     //////////////////////////////////////////////////////////////
     uint64_t character;
 };
-}
+} // namespace justanlsp
