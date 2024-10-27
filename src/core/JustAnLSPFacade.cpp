@@ -92,24 +92,21 @@ void JustAnLSPFacade::handleInitializedRequest(const nlohmann::json &jsonRPC)
 
 void JustAnLSPFacade::handleTextDocumentDidOpenRequest(const nlohmann::json &jsonRPC)
 {
-    LOG_INFO << "Received request with method: textDocument/didOpen";
+    LOG_INFO << "Received notification with method: textDocument/didOpen";
 
-    LOG_WARN << jsonRPC.dump(4);
+    std::shared_ptr<DidOpenTextDocumentRequest> didOpenTextDocumentNotification =
+        MessageFactory::createDidOpenTextDocumentReq(jsonRPC);
 
-    m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_DID_OPEN);
-
-    // TODO basic response
+    // TODO Update internal document state
 }
 
 void JustAnLSPFacade::handleTextDocumentDidChangeRequest(const nlohmann::json &jsonRPC)
 {
-    LOG_INFO << "Received request with method: textDocument/didChange";
-
-    LOG_WARN << jsonRPC.dump(4);
+    LOG_INFO << "Received request with notification: textDocument/didChange";
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_DID_CHANGE);
 
-    // TODO basic response
+    // TODO Update internal document state
 }
 
 void JustAnLSPFacade::handleTextDocumentHoverRequest(const nlohmann::json &jsonRPC)
