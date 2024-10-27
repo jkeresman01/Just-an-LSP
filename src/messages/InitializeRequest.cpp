@@ -1,11 +1,27 @@
 #include "InitializeRequest.h"
 
+#include "../utils/Logger.h"
+
 namespace justanlsp
 {
 
 InitializeRequest::InitializeRequest(const nlohmann::json &jsonRPC) : RequestMessage(jsonRPC)
 {
-    m_initializeParams = std::make_shared<InitializeParams>(jsonRPC);
+    setInitializeParams(jsonRPC);
+}
+
+void InitializeRequest::setInitializeParams(const nlohmann::json &jsonRPC)
+{
+    auto it = jsonRPC.find("params");
+
+    if (it == jsonRPC.end())
+    {
+        LOG_ERROR << "No initliaze params in initialize request";
+    }
+    else
+    {
+        m_initializeParams = std::make_shared<InitializeParams>(jsonRPC["params"]);
+    }
 }
 
 } // namespace justanlsp
