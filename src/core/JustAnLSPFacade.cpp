@@ -59,11 +59,17 @@ void JustAnLSPFacade::handleInitializeRequest(const nlohmann::json &jsonRPC)
     m_justAnLspCounters->increment(RequestType::INITIALIZE);
 
     bool isInitializeReqReceivedFirst = m_justAnLspCounters->getSum() <= 1;
-
     if (!isInitializeReqReceivedFirst)
     {
         LOG_ERROR << "Received request before initialization";
         m_justAnLSPErrorHandler->handleServerNotInitalizedError(jsonRPC["id"]);
+    }
+
+    bool wasShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN);
+    if(wasShutdownReqReceived)
+    {
+       LOG_ERROR << "Received request after shutdown"; 
+       m_justAnLSPErrorHandler->handleReceivedReqAfterShutdownError(jsonRPC["id"]);
     }
 
     std::shared_ptr<InitializeRequest> initializeRequest = MessageFactory::createInitializeReq(jsonRPC);
@@ -86,6 +92,13 @@ void JustAnLSPFacade::handleInitializedRequest(const nlohmann::json &jsonRPC)
 {
     m_justAnLspCounters->increment(RequestType::INITIALIZED);
 
+    bool wasShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN);
+    if(wasShutdownReqReceived)
+    {
+       LOG_ERROR << "Received request after shutdown"; 
+       m_justAnLSPErrorHandler->handleReceivedReqAfterShutdownError(jsonRPC["id"]);
+    }
+
     LOG_INFO << "Received notification with method: initialized";
     LOG_INFO << "Successful connection between client and JustAnLSPServer has been established";
 }
@@ -93,6 +106,13 @@ void JustAnLSPFacade::handleInitializedRequest(const nlohmann::json &jsonRPC)
 void JustAnLSPFacade::handleTextDocumentDidOpenRequest(const nlohmann::json &jsonRPC)
 {
     LOG_INFO << "Received notification with method: textDocument/didOpen";
+
+    bool wasShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN);
+    if(wasShutdownReqReceived)
+    {
+       LOG_ERROR << "Received request after shutdown"; 
+       m_justAnLSPErrorHandler->handleReceivedReqAfterShutdownError(jsonRPC["id"]);
+    }
 
     std::shared_ptr<DidOpenTextDocumentRequest> didOpenTextDocumentNotification =
         MessageFactory::createDidOpenTextDocumentReq(jsonRPC);
@@ -106,6 +126,13 @@ void JustAnLSPFacade::handleTextDocumentDidChangeRequest(const nlohmann::json &j
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_DID_CHANGE);
 
+    bool wasShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN);
+    if(wasShutdownReqReceived)
+    {
+       LOG_ERROR << "Received request after shutdown"; 
+       m_justAnLSPErrorHandler->handleReceivedReqAfterShutdownError(jsonRPC["id"]);
+    }
+
     // TODO Update internal document state
 }
 
@@ -114,6 +141,13 @@ void JustAnLSPFacade::handleTextDocumentHoverRequest(const nlohmann::json &jsonR
     LOG_INFO << "Received request with method: textDocument/hover";
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_HOVER);
+
+    bool wasShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN);
+    if(wasShutdownReqReceived)
+    {
+       LOG_ERROR << "Received request after shutdown"; 
+       m_justAnLSPErrorHandler->handleReceivedReqAfterShutdownError(jsonRPC["id"]);
+    }
 
     // TODO basic response
 }

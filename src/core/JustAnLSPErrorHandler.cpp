@@ -45,6 +45,15 @@ void JustAnLSPErrorHandler::handleInternalError(int64_t id)
     handleError(internalServerError, id);
 }
 
+void JustAnLSPErrorHandler::handleReceivedReqAfterShutdown(int64_t id)
+{
+     LOG_INFO << "Handling invalid request error";
+
+    ResponseError invalidRequestError{ErrorCodes::INVALID_REQUEST, "Received request after shutdown"};
+
+    handleError(invalidRequestError, id);
+}
+
 void JustAnLSPErrorHandler::handleError(const ResponseError &responseError, int64_t id)
 {
     LOG_INFO << "Sending response error: " << responseError.toString();
