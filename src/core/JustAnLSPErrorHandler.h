@@ -73,7 +73,7 @@ class JustAnLSPErrorHandler
     /// @param message id
     ///
     //////////////////////////////////////////////////////////////
-    void handleReceivedReqAfterShutdown(int64_t id);
+    void handleReceivedReqAfterShutdownError(int64_t id);
 
   private:
     //////////////////////////////////////////////////////////////
