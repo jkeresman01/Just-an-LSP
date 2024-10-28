@@ -20,7 +20,7 @@ To configure the LSP client, you can use this example:
 
 ```Lua
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "markdown",
+    pattern = "cpp",
 
     callback = function()
 
