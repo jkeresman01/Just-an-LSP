@@ -7,8 +7,8 @@ namespace justanlsp
 ///
 /// @enum DiagnosticTag
 ///
-/// @brief Diagnostic tags supported by the
-///        langauage server protocol curretly supports
+/// @brief Diagnostic tags scurretly supported by the
+///        langauage server protocol
 ///
 //////////////////////////////////////////////////////////////
 enum class DiagnosticTag

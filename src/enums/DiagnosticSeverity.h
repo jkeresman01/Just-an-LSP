@@ -7,8 +7,8 @@ namespace justanlsp
 ///
 /// @enum DiagnosticSeverity
 ///
-/// @brief Diagnostic severities supported by the
-///        langauage server protocol curretly supports
+/// @brief Diagnostic severities curretly supported by the
+///        langauage server protocol
 ///
 //////////////////////////////////////////////////////////////
 enum class DiagnosticSeverity
