@@ -16,7 +16,7 @@ void InitializeRequest::setInitializeParams(const nlohmann::json &jsonRPC)
 
     if (it == jsonRPC.end())
     {
-        LOG_ERROR << "No initliaze params in initialize request";
+        LOG_ERROR("No initliaze params in initialize request");
     }
     else
     {

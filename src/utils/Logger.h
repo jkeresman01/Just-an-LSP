@@ -1,20 +1,33 @@
 #pragma once
 
 #include "TimeUtil.h"
+
 #include <chrono>
+#include <cstdarg>
 #include <cstdint>
+#include <cstdio>
 #include <ctime>
 #include <fstream>
 #include <iomanip>
 #include <iostream>
 #include <sstream>
+#include <string>
 
-#define LOG(severity) LoggerStream(severity, __FILE__, __LINE__)
+#define MAX_BUFFER_SIZE 256
 
-#define LOG_DEBUG LOG("DEBUG")
-#define LOG_INFO LOG("INFO")
-#define LOG_WARN LOG("WARN")
-#define LOG_ERROR LOG("ERROR")
+#define STR(format, ...)                                                                                     \
+    [](const char *fmt, auto... args) {                                                                      \
+        char buffer[MAX_BUFFER_SIZE];                                                                        \
+        snprintf(buffer, sizeof(buffer), fmt, args...);                                                      \
+        return std::string(buffer);                                                                          \
+    }(format, __VA_ARGS__)
+
+#define LOG(severity, message) justanlsp::Logger::log(severity, message, __FILE__, __LINE__)
+
+#define LOG_DEBUG(message) LOG("DEBUG", message)
+#define LOG_INFO(message) LOG("INFO", message)
+#define LOG_WARN(message) LOG("WARN", message)
+#define LOG_ERROR(message) LOG("ERROR", message)
 
 namespace justanlsp
 {
@@ -61,29 +74,6 @@ class Logger
 
         log << severity << ": " << message << std::endl;
     }
-};
-
-class LoggerStream
-{
-  public:
-    LoggerStream(const std::string &severity, const char *file, uint32_t line)
-        : m_severity(severity), m_file(file), m_lineNumber(line), m_stream()
-    {
-    }
-
-    ~LoggerStream() { Logger::log(m_severity, m_stream.str(), m_file, m_lineNumber); }
-
-    template <typename T> LoggerStream &operator<<(const T &value)
-    {
-        m_stream << value;
-        return *this;
-    }
-
-  private:
-    std::string m_severity;
-    const char *m_file;
-    uint32_t m_lineNumber;
-    std::ostringstream m_stream;
 };
 
 } // namespace justanlsp

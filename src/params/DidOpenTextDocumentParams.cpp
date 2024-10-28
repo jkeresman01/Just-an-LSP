@@ -17,7 +17,7 @@ void DidOpenTextDocumentParams::setTextDocumentItemKind(const nlohmann::json &js
 
     if (it == jsonRPC.end())
     {
-        LOG_ERROR << "No textDocument in textDocument/didOpen request";
+        LOG_ERROR("No textDocument in textDocument/didOpen request");
     }
     else
     {

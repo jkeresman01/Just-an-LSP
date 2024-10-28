@@ -19,12 +19,12 @@ class Converter
 
         if (!(converter >> result))
         {
-            LOG_ERROR << "Conversion failed: invalid input '" << input << "'";
+            LOG_ERROR(STR("Conversion failed: invalid input '%s'", input));
         }
 
         if (!converter.eof())
         {
-            LOG_ERROR << "Conversion failed: extra characters in input '" << input << "'";
+            LOG_ERROR(STR("Conversion failed: extra characters in input '%s'", input));
         }
 
         return result;

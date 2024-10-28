@@ -20,7 +20,7 @@ class MessageUtil
 
         if (it == request.end())
         {
-            LOG_ERROR << "Received unknown request type";
+            LOG_ERROR("Received unknown request type");
             return RequestType::UNKNOWN;
         }
 
@@ -37,7 +37,7 @@ class MessageUtil
         }
         catch (const std::exception &e)
         {
-            LOG_ERROR << "Failed to parse request: " << std::string(e.what()) << "!";
+            LOG_ERROR(STR("Failed to parse request: %s!", e.what()));
         }
 
         return jsonRequest;

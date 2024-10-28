@@ -18,7 +18,7 @@ void DidOpenTextDocumentRequest::setParams(const nlohmann::json &jsonRPC)
 
     if (it == jsonRPC.end())
     {
-        LOG_ERROR << "No textDocumentDidChange params in textDocument/DidChange request";
+        LOG_ERROR("No textDocumentDidChange params in textDocument/DidChange request");
     }
     else
     {

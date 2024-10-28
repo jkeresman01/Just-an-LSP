@@ -21,7 +21,7 @@ void InitializeParams::setProccessId(const nlohmann::json &jsonRPC)
 
     if (it == jsonRPC.end())
     {
-        LOG_ERROR << "No process id was set in request";
+        LOG_ERROR("No process id was set in request");
     }
     else
     {
@@ -35,7 +35,7 @@ void InitializeParams::setLocale(const nlohmann::json &jsonRPC)
 
     if (it == jsonRPC.end())
     {
-        LOG_ERROR << "No locale value was set in Initialize request";
+        LOG_ERROR("No locale value was set in Initialize request");
     }
     else
     {
@@ -57,7 +57,7 @@ void InitializeParams::setTraceLevel(const nlohmann::json &jsonRPC)
 
     if (it == jsonRPC.end())
     {
-        LOG_INFO << "No trace value set in Initialize request, defaultin to TraceValue::OFF";
+        LOG_INFO("No trace value set in Initialize request, defaultin to TraceValue::OFF");
         m_traceValue = TraceValue::OFF;
     }
     else

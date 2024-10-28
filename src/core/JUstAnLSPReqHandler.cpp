@@ -17,7 +17,7 @@ void JustAnLSPReqHandler::initializeRequest(const std::shared_ptr<InitializeRequ
     std::shared_ptr<ClientCapabilities> clientCapabilities = initializeParams->getClientCapabilites();
     ClientInfo clientInfo = initializeParams->getClientInfo();
 
-    LOG_INFO << clientInfo.toString() << " has sent initializtion request";
+    LOG_INFO(STR("%s has sent initializtion request", clientInfo.toString().c_str()));
 
     JustAnLSPClientService::getInstance().registerClient({clientInfo, clientCapabilities});
 
@@ -28,15 +28,12 @@ void JustAnLSPReqHandler::initializeRequest(const std::shared_ptr<InitializeRequ
     std::cout << "Content-Length: " << responseBody.size() << "\r\n\r\n";
     std::cout << responseBody << std::endl;
 
-    LOG_INFO << "Response: ";
-    LOG_INFO << responseBody;
-
-    LOG_INFO << "Initialize response was successfully sent for client: " << clientInfo.toString();
+    LOG_INFO(STR("Initialize response was successfully sent for client: %s", clientInfo.toString().c_str()));
 }
 
 void JustAnLSPReqHandler::shutdownRequest(const std::shared_ptr<ShutdownRequest> &shutdownRequest)
 {
-    LOG_INFO << "Processing shutdown request";
+    LOG_INFO("Processing shutdown request");
 
     ShutdownResponse shutdownResponse{"2.0", shutdownRequest->getId()};
 
@@ -44,7 +41,7 @@ void JustAnLSPReqHandler::shutdownRequest(const std::shared_ptr<ShutdownRequest>
     std::cout << "Content-Length: " << responseBody.size() << "\r\n\r\n";
     std::cout << responseBody << std::endl;
 
-    LOG_INFO << "Response was sent for shutdown requestq!";
+    LOG_INFO("Response was sent for shutdown hequest!");
 }
 
 } // namespace justanlsp

@@ -24,7 +24,7 @@ void TextDocumentPositionParams::setPostion(const nlohmann::json &jsonRPC)
 
     if (it == jsonRPC.end())
     {
-        LOG_ERROR << "No text docuemnt identifier in TextDocumentPositionParams";
+        LOG_ERROR("No text docuemnt identifier in TextDocumentPositionParams");
     }
     else
     {

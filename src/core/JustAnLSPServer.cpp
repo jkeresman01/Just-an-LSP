@@ -13,17 +13,17 @@ namespace justanlsp
 
 JustAnLSPServer::JustAnLSPServer()
 {
-    LOG_INFO << "Instance of JustAnLSP server successfully created";
+    LOG_INFO("Instance of JustAnLSP server successfully created");
 }
 
 void JustAnLSPServer::stop()
 {
-    LOG_INFO << "Successfull shutdown of JustAnLSP server";
+    LOG_INFO("Successfull shutdown of JustAnLSP server");
 }
 
 void JustAnLSPServer::run()
 {
-    LOG_INFO << "JustAnLSP server successfully started";
+    LOG_INFO("JustAnLSP server successfully started");
 
     for (;;)
     {

@@ -9,7 +9,7 @@ namespace justanlsp
 
 void JustAnLSPErrorHandler::handleServerNotInitalizedError(int64_t id)
 {
-    LOG_INFO << "Handling server not initialized error";
+    LOG_INFO("Handling server not initialized error");
 
     ResponseError serverNotInitializedError{ErrorCodes::SERVER_NOT_INITIALIZED,
                                             "Received request before initialization"};
@@ -19,7 +19,7 @@ void JustAnLSPErrorHandler::handleServerNotInitalizedError(int64_t id)
 
 void JustAnLSPErrorHandler::handleParseError(int64_t id)
 {
-    LOG_INFO << "Handling parse error";
+    LOG_INFO("Handling parse error");
 
     ResponseError parseError{ErrorCodes::PARSE_ERROR,
                              "There was an parse error during processing of request!"};
@@ -29,7 +29,7 @@ void JustAnLSPErrorHandler::handleParseError(int64_t id)
 
 void JustAnLSPErrorHandler::handleMethodNotFoundError(int64_t id)
 {
-    LOG_INFO << "Handling method not found error";
+    LOG_INFO("Handling method not found error");
 
     ResponseError methodNotFoundError{ErrorCodes::METHOD_NOT_FOUND, "Didn't find method for given request"};
 
@@ -38,7 +38,7 @@ void JustAnLSPErrorHandler::handleMethodNotFoundError(int64_t id)
 
 void JustAnLSPErrorHandler::handleInternalError(int64_t id)
 {
-    LOG_INFO << "Handling internal server error";
+    LOG_INFO("Handling internal server error");
 
     ResponseError internalServerError{ErrorCodes::INTERNAL_ERROR, "Internal error happened"};
 
@@ -47,7 +47,7 @@ void JustAnLSPErrorHandler::handleInternalError(int64_t id)
 
 void JustAnLSPErrorHandler::handleReceivedReqAfterShutdownError(int64_t id)
 {
-    LOG_INFO << "Handling invalid request error";
+    LOG_INFO("Handling invalid request error");
 
     ResponseError invalidRequestError{ErrorCodes::INVALID_REQUEST, "Received request after shutdown"};
 
@@ -56,7 +56,7 @@ void JustAnLSPErrorHandler::handleReceivedReqAfterShutdownError(int64_t id)
 
 void JustAnLSPErrorHandler::handleError(const ResponseError &responseError, int64_t id)
 {
-    LOG_INFO << "Sending response error: " << responseError.toString();
+    LOG_INFO(STR("Sending response error: %s", responseError.toString().c_str()));
 
     ResponseMessage responseMessage("2.0", id, responseError);
 

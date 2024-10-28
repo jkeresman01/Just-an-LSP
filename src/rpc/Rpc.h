@@ -18,9 +18,6 @@ class Rpc
     {
         nlohmann::json jsonRPC = response.toJson();
 
-        LOG_INFO << "Content length: " << jsonRPC.dump().size();
-        LOG_INFO << "Content" << jsonRPC.dump(4);
-
         std::cout << "Content-Length: " << jsonRPC.dump().size() << "\r\n\r\n";
         std::cout << jsonRPC.dump() << std::endl;
     }

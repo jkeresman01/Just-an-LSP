@@ -35,7 +35,7 @@ std::string JustAnLSPClient::getDocumentByURI(const std::string &URI) const
 
     if (it == m_documentState.end())
     {
-        LOG_ERROR << "There are no registered documents with URI: " << URI << "!";
+        LOG_ERROR(STR("There are no registered documents with URI: %s !", URI.c_str()));
     }
 
     return it->second;
