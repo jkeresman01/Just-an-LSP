@@ -45,9 +45,6 @@ Afterwards you can check that the server is attached to the buffer:
 :lua =vim.lsp.get_clients()
 ```
 
-#### First autocompletion ####
-![Screenshot from 2024-10-27 23-27-55](https://github.com/user-attachments/assets/dac9279d-39e0-403a-8e03-cd0ab12a0012)
-
 
 
 
