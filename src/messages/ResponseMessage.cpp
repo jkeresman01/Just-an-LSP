@@ -1,4 +1,5 @@
 #include "ResponseMessage.h"
+#include <ostream>
 
 namespace justanlsp
 {
@@ -20,4 +21,15 @@ nlohmann::json ResponseMessage::toJson() const
 
     return result;
 }
+
+std::ostream &operator<<(std::ostream &os, const ResponseMessage &responseMessage)
+{
+    nlohmann::json jsonRPC = responseMessage.toJson();
+
+    os << "Content-Length: " << jsonRPC.dump().size() << "\r\n\r\n";
+    os << jsonRPC.dump() << std::endl;
+
+    return os;
+}
+
 } // namespace justanlsp

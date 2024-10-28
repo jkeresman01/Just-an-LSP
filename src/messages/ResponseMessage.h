@@ -6,6 +6,7 @@
 #include <cstdint>
 #include <nlohmann/json.hpp>
 #include <optional>
+#include <ostream>
 #include <string>
 
 namespace justanlsp
@@ -52,6 +53,8 @@ class ResponseMessage : public Message
     ///
     //////////////////////////////////////////////////////////////
     virtual nlohmann::json toJson() const;
+
+    friend std::ostream &operator<<(std::ostream &out, const ResponseMessage &responseMessage);
 
   protected:
     //////////////////////////////////////////////////////////////

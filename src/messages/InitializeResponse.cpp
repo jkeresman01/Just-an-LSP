@@ -29,4 +29,14 @@ std::string InitializeResponse::toString() const
     return ss.str();
 }
 
+std::ostream &operator<<(std::ostream &os, const InitializeResponse &initializeResponse)
+{
+    nlohmann::json jsonRPC = initializeResponse.toJson();
+
+    os << "Content-Length: " << jsonRPC.dump().size() << "\r\n\r\n";
+    os << jsonRPC.dump() << std::endl;
+
+    return os;
+}
+
 } // namespace justanlsp

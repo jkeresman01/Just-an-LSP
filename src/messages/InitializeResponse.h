@@ -1,5 +1,6 @@
 #pragma once
 
+#include <ostream>
 #include <string>
 
 #include "../capabilities/ServerCapabilities.h"
@@ -61,6 +62,8 @@ class InitializeResponse : public ResponseMessage
     ///
     //////////////////////////////////////////////////////////////
     std::string toString() const;
+
+    friend std::ostream &operator<<(std::ostream &os, const InitializeResponse &initializeResponse);
 
   private:
     //////////////////////////////////////////////////////////////

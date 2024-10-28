@@ -1,6 +1,7 @@
 #pragma once
 
 #include <nlohmann/json.hpp>
+#include <ostream>
 #include <string>
 
 #include "CompletionResult.h"
@@ -39,6 +40,8 @@ class CompletionResponse : public ResponseMessage
     ///
     //////////////////////////////////////////////////////////////
     nlohmann::json toJson() const;
+
+    friend std::ostream &operator<<(std::ostream &os, const CompletionResponse &completionResponse);
 
   private:
     //////////////////////////////////////////////////////////////
