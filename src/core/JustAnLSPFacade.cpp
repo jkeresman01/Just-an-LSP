@@ -70,8 +70,8 @@ void JustAnLSPFacade::handleInitializeRequest(const nlohmann::json &jsonRPC)
         m_justAnLSPErrorHandler->handleServerNotInitalizedError(jsonRPC["id"]);
     }
 
-    bool wasShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
-    if (wasShutdownReqReceived)
+    bool isShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
+    if (isShutdownReqReceived)
     {
         LOG_ERROR("Received request after shutdown");
         m_justAnLSPErrorHandler->handleReceivedReqAfterShutdownError(jsonRPC["id"]);
@@ -97,8 +97,8 @@ void JustAnLSPFacade::handleInitializedRequest(const nlohmann::json &jsonRPC)
 {
     m_justAnLspCounters->increment(RequestType::INITIALIZED);
 
-    bool wasShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
-    if (wasShutdownReqReceived)
+    bool isShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
+    if (isShutdownReqReceived)
     {
         LOG_ERROR("Received request after shutdown");
         m_justAnLSPErrorHandler->handleReceivedReqAfterShutdownError(jsonRPC["id"]);
@@ -112,8 +112,8 @@ void JustAnLSPFacade::handleTextDocumentDidOpenRequest(const nlohmann::json &jso
 {
     LOG_INFO("Received notification with method: textDocument/didOpen");
 
-    bool wasShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
-    if (wasShutdownReqReceived)
+    bool isShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
+    if (isShutdownReqReceived)
     {
         LOG_ERROR("Received request after shutdown");
         m_justAnLSPErrorHandler->handleReceivedReqAfterShutdownError(jsonRPC["id"]);
@@ -131,8 +131,8 @@ void JustAnLSPFacade::handleTextDocumentDidChangeRequest(const nlohmann::json &j
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_DID_CHANGE);
 
-    bool wasShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
-    if (wasShutdownReqReceived)
+    bool isShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
+    if (isShutdownReqReceived)
     {
         LOG_ERROR("Received request after shutdown");
         m_justAnLSPErrorHandler->handleReceivedReqAfterShutdownError(jsonRPC["id"]);
@@ -147,8 +147,8 @@ void JustAnLSPFacade::handleTextDocumentCompletionRequest(const nlohmann::json &
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_COMPLETION);
 
-    bool wasShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
-    if (wasShutdownReqReceived)
+    bool isShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
+    if (isShutdownReqReceived)
     {
         LOG_ERROR("Received request after shutdown");
         m_justAnLSPErrorHandler->handleReceivedReqAfterShutdownError(jsonRPC["id"]);
@@ -175,8 +175,8 @@ void JustAnLSPFacade::handleTextDocumentHoverRequest(const nlohmann::json &jsonR
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_HOVER);
 
-    bool wasShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
-    if (wasShutdownReqReceived)
+    bool isShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
+    if (isShutdownReqReceived)
     {
         LOG_ERROR("Received request after shutdown");
         m_justAnLSPErrorHandler->handleReceivedReqAfterShutdownError(jsonRPC["id"]);
