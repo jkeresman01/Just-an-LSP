@@ -154,6 +154,8 @@ void JustAnLSPFacade::handleTextDocumentCompletionRequest(const nlohmann::json &
         m_justAnLSPErrorHandler->handleReceivedReqAfterShutdownError(jsonRPC["id"]);
     }
 
+    // TODO create request and move logic from here
+
     std::vector<CompletionItem> completionItems{
         {"dnsClient", "DNS client test 1", "DNS client test 1 documentation"},
         {"dnsClientId", "DNS client test 1", "DNS client id test 1 documentation"},
