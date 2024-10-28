@@ -5,7 +5,7 @@ namespace justanlsp
 
 HoverClientCapabilities::HoverClientCapabilities(const nlohmann::json &jsonRPC)
 {
-    m_contentFormats.reserve(size_t(MarkupKind::OPTIONS_NO));
+    m_contentFormats.reserve(static_cast<size_t>(MarkupKind::OPTIONS_NO));
 
     // TODO get contentForrmat from request and dynamic reg options
 }
