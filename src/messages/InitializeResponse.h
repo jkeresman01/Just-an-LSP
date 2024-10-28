@@ -52,7 +52,7 @@ class InitializeResponse : public ResponseMessage
     /// @return Returns the response in JSON format.
     ///
     //////////////////////////////////////////////////////////////
-    nlohmann::json toJson() const;
+    nlohmann::json toJson() const override;
 
     //////////////////////////////////////////////////////////////
     ///

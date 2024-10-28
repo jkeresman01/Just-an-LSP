@@ -14,13 +14,7 @@ class Rpc
   public:
     Rpc() = delete;
 
-    static void send(const ResponseMessage &response)
-    {
-        nlohmann::json jsonRPC = response.toJson();
-
-        std::cout << "Content-Length: " << jsonRPC.dump().size() << "\r\n\r\n";
-        std::cout << jsonRPC.dump() << std::endl;
-    }
+    static void send(const ResponseMessage &response) { std::cout << response << std::endl; }
 
     static std::string read()
     {

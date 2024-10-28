@@ -24,9 +24,7 @@ void JustAnLSPReqHandler::initializeRequest(const std::shared_ptr<InitializeRequ
     InitializeResult initializeResult({"JustAnLSP", "0.0.0.0.0.1-alpha"}, {TextDocumentSyncKind::FULL});
     InitializeResponse initializeResponse("2.0", initializeRequest->getId(), initializeResult);
 
-    std::string responseBody = initializeResponse.toJson().dump();
-    std::cout << "Content-Length: " << responseBody.size() << "\r\n\r\n";
-    std::cout << responseBody << std::endl;
+    Rpc::send(initializeResponse);
 
     LOG_INFO(STR("Initialize response was successfully sent for client: %s", clientInfo.toString().c_str()));
 }
@@ -37,9 +35,7 @@ void JustAnLSPReqHandler::shutdownRequest(const std::shared_ptr<ShutdownRequest>
 
     ShutdownResponse shutdownResponse{"2.0", shutdownRequest->getId()};
 
-    std::string responseBody = shutdownResponse.toJson().dump();
-    std::cout << "Content-Length: " << responseBody.size() << "\r\n\r\n";
-    std::cout << responseBody << std::endl;
+    Rpc::send(shutdownResponse);
 
     LOG_INFO("Response was sent for shutdown hequest!");
 }

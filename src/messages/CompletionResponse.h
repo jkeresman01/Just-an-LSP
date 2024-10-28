@@ -39,7 +39,7 @@ class CompletionResponse : public ResponseMessage
     /// @return Returns a JSON object representing the completion response
     ///
     //////////////////////////////////////////////////////////////
-    nlohmann::json toJson() const;
+    nlohmann::json toJson() const override;
 
     friend std::ostream &operator<<(std::ostream &os, const CompletionResponse &completionResponse);
 

@@ -164,9 +164,7 @@ void JustAnLSPFacade::handleTextDocumentCompletionRequest(const nlohmann::json &
 
     CompletionResponse completionResponse{"2.0", id, {completionItems}};
 
-    std::string responseBody = completionResponse.toJson().dump();
-    std::cout << "Content-Length: " << responseBody.size() << "\r\n\r\n";
-    std::cout << responseBody << std::endl;
+    Rpc::send(completionResponse);
 }
 
 void JustAnLSPFacade::handleTextDocumentHoverRequest(const nlohmann::json &jsonRPC)
