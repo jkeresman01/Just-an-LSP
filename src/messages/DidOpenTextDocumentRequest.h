@@ -27,6 +27,15 @@ class DidOpenTextDocumentRequest : public NotificationMessage
     //////////////////////////////////////////////////////////////
     DidOpenTextDocumentRequest(const nlohmann::json &jsonRPC);
 
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Accessor method for textDocument/didOpen params
+    ///
+    /// @param textDocument/didOpen params
+    ///
+    //////////////////////////////////////////////////////////////
+    std::shared_ptr<DidOpenTextDocumentParams> getParams() const { return m_params; };
+
   private:
     //////////////////////////////////////////////////////////////
     ///

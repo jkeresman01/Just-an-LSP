@@ -6,9 +6,9 @@ namespace justanlsp
 {
 TextDocumentItem::TextDocumentItem(const nlohmann::json &jsonRPC)
 {
-    /* setURI(jsonRPC); */
-    /* setLanguageId(jsonRPC); */
-    /* setTextVersion(jsonRPC); */
+    setURI(jsonRPC);
+    setLanguageId(jsonRPC);
+    setTextVersion(jsonRPC);
     setText(jsonRPC);
 }
 
@@ -50,7 +50,7 @@ void TextDocumentItem::setTextVersion(const nlohmann::json &jsonRPC)
     }
     else
     {
-        m_URI = jsonRPC["version"];
+        m_version = jsonRPC["version"];
     }
 }
 

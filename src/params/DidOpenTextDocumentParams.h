@@ -36,7 +36,7 @@ class DidOpenTextDocumentParams
     /// @return TextDocumentItem
     ///
     //////////////////////////////////////////////////////////////
-    TextDocumentItem getTextDocumentItem() const;
+    std::shared_ptr<TextDocumentItem> getTextDocumentItem() const { return m_textDocumentItem; };
 
   private:
     //////////////////////////////////////////////////////////////
