@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <nlohmann/json.hpp>
 #include <string>
 
 #include "../params/DidChangeTextDocumentParams.h"
@@ -11,12 +12,12 @@ namespace justanlsp
 class DidChangeTextDocumentRequest : public RequestMessage
 {
   public:
-    DidChangeTextDocumentRequest(const std::nlohamnn::json &jsonRPC);
+    DidChangeTextDocumentRequest(const nlohmann::json &jsonRPC);
 
     std::shared_ptr<DidChangeTextDocumenParams> getParams() const { return m_didChangeTextDocumentParams; };
 
   private:
-    void setParams(const std::nlohamnn::json &jsonRPC);
+    void setParams(const nlohmann::json &jsonRPC);
 
   private:
     std::shared_ptr<DidChangeTextDocumenParams> m_didChangeTextDocumentParams;

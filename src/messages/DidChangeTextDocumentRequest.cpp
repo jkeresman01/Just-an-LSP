@@ -1,18 +1,16 @@
 #include "DidChangeTextDocumentRequest.h"
 
-#include <memory>
-
 #include "../utils/Logger.h"
 
 namespace justanlsp
 {
-DidChangeTextDocumentRequest::DidChangeTextDocumentRequest(const std::nlohamnn::json &jsonRPC)
+DidChangeTextDocumentRequest::DidChangeTextDocumentRequest(const nlohmann::json &jsonRPC)
     : RequestMessage(jsonRPC)
 {
     setParams(jsonRPC);
 }
 
-void DidChangeTextDocumentRequest::setParams(const std::nlohamnn::json &jsonRPC)
+void DidChangeTextDocumentRequest::setParams(const nlohmann::json &jsonRPC)
 {
     auto it = jsonRPC.find("params");
 

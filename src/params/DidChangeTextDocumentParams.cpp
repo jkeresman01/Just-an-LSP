@@ -1,17 +1,17 @@
-#include "../params/DidOpenTextDocumentParams.h"
+#include "DidChangeTextDocumentParams.h"
 
 #include "../utils/Logger.h"
 
 namespace justanlsp
 {
 
-DidChangeTextDocumenParams::DidChangeTextDocumenParams(const std::nlohamnn::json &jsonRPC)
+DidChangeTextDocumenParams::DidChangeTextDocumenParams(const nlohmann::json &jsonRPC)
 {
     setTextDocumentIdentifier(jsonRPC);
     setContentChanges(jsonRPC);
 }
 
-void DidChangeTextDocumenParams::setTextDocumentIdentifier(const std::nlohamnn::json &jsonRPC)
+void DidChangeTextDocumenParams::setTextDocumentIdentifier(const nlohmann::json &jsonRPC)
 {
     auto it = jsonRPC.find("textDocument");
 
@@ -21,11 +21,11 @@ void DidChangeTextDocumenParams::setTextDocumentIdentifier(const std::nlohamnn::
     }
     else
     {
-        m_textDocumentItem.URI = jsonRPC["textDocument"];
+        m_textDocument.URI = jsonRPC["textDocument"];
     }
 }
 
-void DidChangeTextDocumenParams::setContentChanges(const std::nlohamnn::json &jsonRPC)
+void DidChangeTextDocumenParams::setContentChanges(const nlohmann::json &jsonRPC)
 {
     auto it = jsonRPC.find("contentChanges");
 
@@ -35,7 +35,7 @@ void DidChangeTextDocumenParams::setContentChanges(const std::nlohamnn::json &js
     }
     else
     {
-        m_textDocumentItem.URI = jsonRPC["contentChanges"][0];
+        m_contentChanges = jsonRPC["contentChanges"][0];
     }
 }
 } // namespace justanlsp

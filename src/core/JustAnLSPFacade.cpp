@@ -128,7 +128,7 @@ void JustAnLSPFacade::handleTextDocumentDidChangeRequest(const nlohmann::json &j
         m_justAnLSPErrorHandler->handleReceivedReqAfterShutdownError(jsonRPC["id"]);
     }
 
-    std::shared_ptr<DidChangeTextDocumenParams> didChangeTextDocumentReq =
+    std::shared_ptr<DidChangeTextDocumentRequest> didChangeTextDocumentReq =
         MessageFactory::createDidChangeTextDocumentReq(jsonRPC);
 
     // TODO Update internal document state
@@ -167,7 +167,7 @@ void JustAnLSPFacade::handleTextDocumentHoverRequest(const nlohmann::json &jsonR
     // TODO basic response
 }
 
-void JustAnLSPFacade::verifyNoShutdownReqIsReceived(const nlohmann::json &request)
+void JustAnLSPFacade::verifyNoShutdownReqIsReceived(const nlohmann::json &jsonRPC)
 {
     bool isShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
 
