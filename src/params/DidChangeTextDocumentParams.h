@@ -7,18 +7,60 @@
 
 namespace justanlsp
 {
-class DidChangeTextDocumenParams
+
+//////////////////////////////////////////////////////////////
+///
+/// @class DidChangeTextDocumentParams
+///
+/// @brief Handles the parameters for the `textDocument/didChange`
+///        notification in the Language Server Protocol (LSP).
+//
+//////////////////////////////////////////////////////////////
+class DidChangeTextDocumentParams
 {
   public:
-    DidChangeTextDocumenParams(const nlohmann::json &jsonRPC);
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Constructs DidChangeTextDocumentParams from a JSON-RPC
+    ///
+    /// @param jsonRPC
+    ///
+    //////////////////////////////////////////////////////////////
+    DidChangeTextDocumentParams(const nlohmann::json &jsonRPC);
 
   private:
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Mutator method for text document identifier
+    ///
+    /// @param jsonRPC
+    ///
+    //////////////////////////////////////////////////////////////
     void setTextDocumentIdentifier(const nlohmann::json &jsonRPC);
 
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Mutator method for content changes
+    ///
+    /// @param jsonRPC The JSON-RPC object containing LSP message data.
+    ///
+    //////////////////////////////////////////////////////////////
     void setContentChanges(const nlohmann::json &jsonRPC);
 
   private:
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Identifier of the text document that has changed.
+    ///
+    //////////////////////////////////////////////////////////////
     TextDocumentIdentifier m_textDocument;
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Represents content changes in the document.
+    ///
+    //////////////////////////////////////////////////////////////
     std::string m_contentChanges;
 };
+
 } // namespace justanlsp
