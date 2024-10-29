@@ -9,6 +9,7 @@
 #include "../enums/TextDocumentSyncKind.h"
 #include "../factories/MessageFactory.h"
 #include "../messages/CompletionResponse.h"
+#include "../messages/DidChangeTextDocumentRequest.h"
 #include "../messages/ResponseMessage.h"
 #include "../messages/ShutdownRequest.h"
 #include "../params/InitializeParams.h"
@@ -143,6 +144,8 @@ void JustAnLSPFacade::handleTextDocumentDidChangeRequest(const nlohmann::json &j
         LOG_ERROR("Received request after shutdown");
         m_justAnLSPErrorHandler->handleReceivedReqAfterShutdownError(jsonRPC["id"]);
     }
+
+    std::shared_ptr<DidChangeTextDocumenParams> didChangeTextDocumentReq = MessageFactory::createDidChangeTextDocumentReq(jsonRPC);
 
     // TODO Update internal document state
 }

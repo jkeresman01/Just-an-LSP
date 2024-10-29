@@ -76,14 +76,14 @@ class MessageFactory
     //////////////////////////////////////////////////////////////
     ///
     ///
-    /// @brief Creates an DidOpenTextDocumentRequest message object.
+    /// @brief Creates an DidChangeTextDocument message object.
     ///
     /// @param jsonRPC The JSON object containing the request data.
     ///
-    /// @return A shared pointer to an DidOpenTextDocumentRequest object.
+    /// @return A shared pointer to an DidChangeTextDocument object.
     ///
     //////////////////////////////////////////////////////////////
-    static std::shared_ptr<DidChangeTextDocumentRequest> createDidOpenTextDocumentReq(
+    static std::shared_ptr<DidChangeTextDocumentRequest> createDidChangeTextDocumentReq(
         const nlohmann::json &jsonRPC)
     {
         return std::make_unique<DidChangeTextDocumentRequest>(jsonRPC);
