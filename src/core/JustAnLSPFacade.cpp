@@ -98,14 +98,7 @@ void JustAnLSPFacade::handleTextDocumentDidOpenRequest(const nlohmann::json &jso
 {
     LOG_INFO("Received notification with method: textDocument/didOpen");
 
-    LOG_INFO(jsonRPC.dump(4));
-
-    bool isShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
-    if (isShutdownReqReceived)
-    {
-        LOG_ERROR("Received request after shutdown");
-        m_justAnLSPErrorHandler->handleReceivedReqAfterShutdownError(jsonRPC["id"]);
-    }
+    verifyNoShutdownReqIsReceived(jsonRPC);
 
     std::shared_ptr<DidOpenTextDocumentRequest> didOpenTextDocumentNotification =
         MessageFactory::createDidOpenTextDocumentReq(jsonRPC);
@@ -117,16 +110,9 @@ void JustAnLSPFacade::handleTextDocumentDidChangeRequest(const nlohmann::json &j
 {
     LOG_INFO("Received request with notification: textDocument/didChange");
 
-    LOG_INFO(jsonRPC.dump(4));
-
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_DID_CHANGE);
 
-    bool isShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
-    if (isShutdownReqReceived)
-    {
-        LOG_ERROR("Received request after shutdown");
-        m_justAnLSPErrorHandler->handleReceivedReqAfterShutdownError(jsonRPC["id"]);
-    }
+    verifyNoShutdownReqIsReceived(jsonRPC);
 
     std::shared_ptr<DidChangeTextDocumentRequest> didChangeTextDocumentReq =
         MessageFactory::createDidChangeTextDocumentReq(jsonRPC);
