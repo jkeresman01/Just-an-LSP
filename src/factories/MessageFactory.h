@@ -3,6 +3,7 @@
 #include <memory>
 #include <nlohmann/json.hpp>
 
+#include "../messages/DidChangeTextDocumentRequest.h"
 #include "../messages/DidOpenTextDocumentRequest.h"
 #include "../messages/InitializeRequest.h"
 #include "../messages/ShutdownRequest.h"
@@ -70,6 +71,22 @@ class MessageFactory
         const nlohmann::json &jsonRPC)
     {
         return std::make_unique<DidOpenTextDocumentRequest>(jsonRPC);
+    }
+
+    //////////////////////////////////////////////////////////////
+    ///
+    ///
+    /// @brief Creates an DidOpenTextDocumentRequest message object.
+    ///
+    /// @param jsonRPC The JSON object containing the request data.
+    ///
+    /// @return A shared pointer to an DidOpenTextDocumentRequest object.
+    ///
+    //////////////////////////////////////////////////////////////
+    static std::shared_ptr<DidChangeTextDocumentRequest> createDidOpenTextDocumentReq(
+        const nlohmann::json &jsonRPC)
+    {
+        return std::make_unique<DidChangeTextDocumentRequest>(jsonRPC);
     }
 };
 
