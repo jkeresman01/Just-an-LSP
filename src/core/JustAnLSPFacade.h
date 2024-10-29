@@ -114,6 +114,17 @@ class JustAnLSPFacade
   private:
     //////////////////////////////////////////////////////////////
     ///
+    /// @brief Ensures no request is processed after shudtown request
+    ///        has been received, except exit notification
+    ///
+    /// @param jsonRPC request
+    ///
+    //////////////////////////////////////////////////////////////
+    void verifyNoShutdownReqIsReceived(const nlohmann::json &request);
+
+  private:
+    //////////////////////////////////////////////////////////////
+    ///
     /// @brief Responsible for handling request such as init/shutdown
     ///
     //////////////////////////////////////////////////////////////

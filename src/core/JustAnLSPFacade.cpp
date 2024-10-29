@@ -64,19 +64,7 @@ void JustAnLSPFacade::handleInitializeRequest(const nlohmann::json &jsonRPC)
 
     m_justAnLspCounters->increment(RequestType::INITIALIZE);
 
-    bool isInitializeReqReceivedFirst = m_justAnLspCounters->getSum() <= 1;
-    if (!isInitializeReqReceivedFirst)
-    {
-        LOG_ERROR("Received request before initialization");
-        m_justAnLSPErrorHandler->handleServerNotInitalizedError(jsonRPC["id"]);
-    }
-
-    bool isShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
-    if (isShutdownReqReceived)
-    {
-        LOG_ERROR("Received request after shutdown");
-        m_justAnLSPErrorHandler->handleReceivedReqAfterShutdownError(jsonRPC["id"]);
-    }
+    verifyNoShutdownReqIsReceived(jsonRPC);
 
     std::shared_ptr<InitializeRequest> initializeRequest = MessageFactory::createInitializeReq(jsonRPC);
 
@@ -100,12 +88,7 @@ void JustAnLSPFacade::handleInitializedRequest(const nlohmann::json &jsonRPC)
 
     m_justAnLspCounters->increment(RequestType::INITIALIZED);
 
-    bool isShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
-    if (isShutdownReqReceived)
-    {
-        LOG_ERROR("Received request after shutdown");
-        m_justAnLSPErrorHandler->handleReceivedReqAfterShutdownError(jsonRPC["id"]);
-    }
+    verifyNoShutdownReqIsReceived(jsonRPC);
 
     LOG_INFO("Received notification with method: initialized");
     LOG_INFO("Successful connection between client and JustAnLSPServer has been established");
@@ -157,15 +140,9 @@ void JustAnLSPFacade::handleTextDocumentCompletionRequest(const nlohmann::json &
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_COMPLETION);
 
-    bool isShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
-    if (isShutdownReqReceived)
-    {
-        LOG_ERROR("Received request after shutdown");
-        m_justAnLSPErrorHandler->handleReceivedReqAfterShutdownError(jsonRPC["id"]);
-    }
+    verifyNoShutdownReqIsReceived(jsonRPC);
 
     // TODO create request and move logic from here
-
     std::vector<CompletionItem> completionItems{
         {"dnsClient", "DNS client test 1", "DNS client test 1 documentation"},
         {"dnsClientId", "DNS client test 1", "DNS client id test 1 documentation"},
@@ -185,14 +162,20 @@ void JustAnLSPFacade::handleTextDocumentHoverRequest(const nlohmann::json &jsonR
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_HOVER);
 
+    verifyNoShutdownReqIsReceived(jsonRPC);
+
+    // TODO basic response
+}
+
+void JustAnLSPFacade::verifyNoShutdownReqIsReceived(const nlohmann::json &request)
+{
     bool isShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
+
     if (isShutdownReqReceived)
     {
         LOG_ERROR("Received request after shutdown");
         m_justAnLSPErrorHandler->handleReceivedReqAfterShutdownError(jsonRPC["id"]);
     }
-
-    // TODO basic response
 }
 
 } // namespace justanlsp
