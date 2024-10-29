@@ -11,7 +11,7 @@
 namespace justanlsp
 {
 
-void JustAnLSPReqHandler::initializeRequest(const std::shared_ptr<InitializeRequest> &initializeRequest)
+void JustAnLSPReqHandler::initializeReq(const std::shared_ptr<InitializeRequest> &initializeRequest)
 {
     std::shared_ptr<InitializeParams> initializeParams = initializeRequest->getInitializeParams();
     std::shared_ptr<ClientCapabilities> clientCapabilities = initializeParams->getClientCapabilites();
@@ -29,7 +29,16 @@ void JustAnLSPReqHandler::initializeRequest(const std::shared_ptr<InitializeRequ
     LOG_INFO(STR("Initialize response was successfully sent for client: %s", clientInfo.toString().c_str()));
 }
 
-void JustAnLSPReqHandler::shutdownRequest(const std::shared_ptr<ShutdownRequest> &shutdownRequest)
+void JustAnLSPReqHandler::textDocumentDidOpenReq(
+    const std::shared_ptr<DidOpenTextDocumentRequest> &didOpenTextDocumentReq)
+{
+    std::shared_ptr<DidOpenTextDocumentParams> didOpenParams = didOpenTextDocumentReq->getParams();
+    std::shared_ptr<TextDocumentItem> textDocumentItem = didOpenParams->getTextDocumentItem();
+
+    LOG_INFO("textDocument/didOpen request was successfully processed");
+}
+
+void JustAnLSPReqHandler::shutdownReq(const std::shared_ptr<ShutdownRequest> &shutdownRequest)
 {
     LOG_INFO("Processing shutdown request");
 

@@ -79,7 +79,7 @@ void JustAnLSPFacade::handleInitializeRequest(const nlohmann::json &jsonRPC)
 
     std::shared_ptr<InitializeRequest> initializeRequest = MessageFactory::createInitializeReq(jsonRPC);
 
-    m_justAnLSPReqHandler->initializeRequest(initializeRequest);
+    m_justAnLSPReqHandler->initializeReq(initializeRequest);
 }
 
 void JustAnLSPFacade::handleShutdownRequest(const nlohmann::json &jsonRPC)
@@ -90,11 +90,13 @@ void JustAnLSPFacade::handleShutdownRequest(const nlohmann::json &jsonRPC)
 
     std::shared_ptr<ShutdownRequest> shutdownRequest = MessageFactory::createShutdownReq(jsonRPC);
 
-    m_justAnLSPReqHandler->shutdownRequest(shutdownRequest);
+    m_justAnLSPReqHandler->shutdownReq(shutdownRequest);
 }
 
 void JustAnLSPFacade::handleInitializedRequest(const nlohmann::json &jsonRPC)
 {
+    LOG_INFO("Received notification with method: initialized");
+
     m_justAnLspCounters->increment(RequestType::INITIALIZED);
 
     bool isShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
@@ -112,6 +114,8 @@ void JustAnLSPFacade::handleTextDocumentDidOpenRequest(const nlohmann::json &jso
 {
     LOG_INFO("Received notification with method: textDocument/didOpen");
 
+    LOG_INFO(jsonRPC.dump(4));
+
     bool isShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
     if (isShutdownReqReceived)
     {
@@ -128,6 +132,8 @@ void JustAnLSPFacade::handleTextDocumentDidOpenRequest(const nlohmann::json &jso
 void JustAnLSPFacade::handleTextDocumentDidChangeRequest(const nlohmann::json &jsonRPC)
 {
     LOG_INFO("Received request with notification: textDocument/didChange");
+
+    LOG_INFO(jsonRPC.dump(4));
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_DID_CHANGE);
 

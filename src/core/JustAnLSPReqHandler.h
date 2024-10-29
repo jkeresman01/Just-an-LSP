@@ -2,6 +2,7 @@
 
 #include <memory>
 
+#include "../messages/DidOpenTextDocumentRequest.h"
 #include "../messages/InitializeRequest.h"
 #include "../messages/ShutdownRequest.h"
 #include "JustAnLSPCounter.h"
@@ -38,7 +39,7 @@ class JustAnLSPReqHandler
     /// @param initializeRequest
     ///
     //////////////////////////////////////////////////////////////
-    void initializeRequest(const std::shared_ptr<InitializeRequest> &initializeRequest);
+    void initializeReq(const std::shared_ptr<InitializeRequest> &initializeRequest);
 
     //////////////////////////////////////////////////////////////
     ///
@@ -47,6 +48,15 @@ class JustAnLSPReqHandler
     /// @param shutdownRequest
     ///
     //////////////////////////////////////////////////////////////
-    void shutdownRequest(const std::shared_ptr<ShutdownRequest> &shutdownRequest);
+    void shutdownReq(const std::shared_ptr<ShutdownRequest> &shutdownRequest);
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief textDocument/didOpen request
+    ///
+    /// @param textDocument/didOpen request
+    ///
+    //////////////////////////////////////////////////////////////
+    void textDocumentDidOpenReq(const std::shared_ptr<DidOpenTextDocumentRequest> &didOpenTextDocumentReq);
 };
 } // namespace justanlsp
