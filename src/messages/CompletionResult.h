@@ -28,8 +28,7 @@ class CompletionResult
     /// @param completionItems
     ///
     //////////////////////////////////////////////////////////////
-    CompletionResult(const std::vector<CompletionItem> &completionItems)
-        : m_completionItems(completionItems){};
+    CompletionResult(const std::vector<CompletionItem> &completionItems);
 
     //////////////////////////////////////////////////////////////
     ///
@@ -38,17 +37,7 @@ class CompletionResult
     /// @return Returns list of comletion options
     ///
     //////////////////////////////////////////////////////////////
-    nlohmann::json toJson() const
-    {
-        std::vector<nlohmann::json> completions;
-
-        for (const auto &completionItem : m_completionItems)
-        {
-            completions.push_back(completionItem.toJson());
-        }
-
-        return completions;
-    }
+    nlohmann::json toJson() const;
 
   private:
     //////////////////////////////////////////////////////////////
