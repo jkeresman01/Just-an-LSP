@@ -70,7 +70,7 @@ class MessageFactory
     static std::shared_ptr<DidOpenTextDocumentRequest> createDidOpenTextDocumentReq(
         const nlohmann::json &jsonRPC)
     {
-        return std::make_unique<DidOpenTextDocumentRequest>(jsonRPC);
+        return std::make_shared<DidOpenTextDocumentRequest>(jsonRPC);
     }
 
     //////////////////////////////////////////////////////////////
@@ -86,7 +86,7 @@ class MessageFactory
     static std::shared_ptr<DidChangeTextDocumentRequest> createDidChangeTextDocumentReq(
         const nlohmann::json &jsonRPC)
     {
-        return std::make_unique<DidChangeTextDocumentRequest>(jsonRPC);
+        return std::make_shared<DidChangeTextDocumentRequest>(jsonRPC);
     }
 };
 
