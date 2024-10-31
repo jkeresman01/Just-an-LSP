@@ -55,7 +55,7 @@ class MessageFactory
     //////////////////////////////////////////////////////////////
     static std::shared_ptr<ShutdownRequest> createShutdownReq(const nlohmann::json &jsonRPC)
     {
-        return std::make_unique<ShutdownRequest>(jsonRPC);
+        return std::make_shared<ShutdownRequest>(jsonRPC);
     }
 
     //////////////////////////////////////////////////////////////
