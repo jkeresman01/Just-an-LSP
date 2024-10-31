@@ -36,7 +36,7 @@ class DidChangeTextDocumentRequest : public RequestMessage
     /// @return textDocument/didChange params
     ///
     //////////////////////////////////////////////////////////////
-    std::shared_ptr<DidChangeTextDocumenParams> getParams() const { return m_didChangeTextDocumentParams; };
+    std::shared_ptr<DidChangeTextDocumentParams> getParams() const { return m_didChangeTextDocumentParams; };
 
   private:
     //////////////////////////////////////////////////////////////
@@ -54,7 +54,7 @@ class DidChangeTextDocumentRequest : public RequestMessage
     /// @brief textDocument/didChange parameters
     ///
     //////////////////////////////////////////////////////////////
-    std::shared_ptr<DidChangeTextDocumenParams> m_didChangeTextDocumentParams;
+    std::shared_ptr<DidChangeTextDocumentParams> m_didChangeTextDocumentParams;
 };
 
 } // namespace justanlsp

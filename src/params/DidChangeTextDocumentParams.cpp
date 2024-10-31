@@ -1,17 +1,17 @@
-#include "DidChangeTextDocumentParams.h"
+#include "DidOpenTextDocumentParams.h"
 
 #include "../utils/Logger.h"
 
 namespace justanlsp
 {
 
-DidChangeTextDocumenParams::DidChangeTextDocumenParams(const nlohmann::json &jsonRPC)
+DidOpenTextDocumentParams::DidOpenTextDocumentParams(const nlohmann::json &jsonRPC)
 {
     setTextDocumentIdentifier(jsonRPC);
     setContentChanges(jsonRPC);
 }
 
-void DidChangeTextDocumenParams::setTextDocumentIdentifier(const nlohmann::json &jsonRPC)
+void DidOpenTextDocumentParams::setTextDocumentIdentifier(const nlohmann::json &jsonRPC)
 {
     auto it = jsonRPC.find("textDocument");
 
@@ -25,7 +25,7 @@ void DidChangeTextDocumenParams::setTextDocumentIdentifier(const nlohmann::json 
     }
 }
 
-void DidChangeTextDocumenParams::setContentChanges(const nlohmann::json &jsonRPC)
+void DidOpenTextDocumentParams::setContentChanges(const nlohmann::json &jsonRPC)
 {
     auto it = jsonRPC.find("contentChanges");
 

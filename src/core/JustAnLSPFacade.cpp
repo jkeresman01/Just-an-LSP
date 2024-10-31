@@ -64,7 +64,7 @@ void JustAnLSPFacade::handleInitializeRequest(const nlohmann::json &jsonRPC)
 
     m_justAnLspCounters->increment(RequestType::INITIALIZE);
 
-    verifyNoShutdownReqIsReceived(jsonRPC);
+    ensureNoReqIsProcessedAfterShutdown(jsonRPC);
 
     std::shared_ptr<InitializeRequest> initializeRequest = MessageFactory::createInitializeReq(jsonRPC);
 
@@ -88,7 +88,7 @@ void JustAnLSPFacade::handleInitializedRequest(const nlohmann::json &jsonRPC)
 
     m_justAnLspCounters->increment(RequestType::INITIALIZED);
 
-    verifyNoShutdownReqIsReceived(jsonRPC);
+    ensureNoReqIsProcessedAfterShutdown(jsonRPC);
 
     LOG_INFO("Received notification with method: initialized");
     LOG_INFO("Successful connection between client and JustAnLSPServer has been established");
@@ -98,7 +98,7 @@ void JustAnLSPFacade::handleTextDocumentDidOpenRequest(const nlohmann::json &jso
 {
     LOG_INFO("Received notification with method: textDocument/didOpen");
 
-    verifyNoShutdownReqIsReceived(jsonRPC);
+    ensureNoReqIsProcessedAfterShutdown(jsonRPC);
 
     std::shared_ptr<DidOpenTextDocumentRequest> didOpenTextDocumentNotification =
         MessageFactory::createDidOpenTextDocumentReq(jsonRPC);
@@ -112,7 +112,7 @@ void JustAnLSPFacade::handleTextDocumentDidChangeRequest(const nlohmann::json &j
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_DID_CHANGE);
 
-    verifyNoShutdownReqIsReceived(jsonRPC);
+    ensureNoReqIsProcessedAfterShutdown(jsonRPC);
 
     std::shared_ptr<DidChangeTextDocumentRequest> didChangeTextDocumentReq =
         MessageFactory::createDidChangeTextDocumentReq(jsonRPC);
@@ -126,7 +126,7 @@ void JustAnLSPFacade::handleTextDocumentCompletionRequest(const nlohmann::json &
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_COMPLETION);
 
-    verifyNoShutdownReqIsReceived(jsonRPC);
+    ensureNoReqIsProcessedAfterShutdown(jsonRPC);
 
     // TODO create request and move logic from here
     std::vector<CompletionItem> completionItems{
@@ -148,12 +148,12 @@ void JustAnLSPFacade::handleTextDocumentHoverRequest(const nlohmann::json &jsonR
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_HOVER);
 
-    verifyNoShutdownReqIsReceived(jsonRPC);
+    ensureNoReqIsProcessedAfterShutdown(jsonRPC);
 
     // TODO basic response
 }
 
-void JustAnLSPFacade::verifyNoShutdownReqIsReceived(const nlohmann::json &jsonRPC)
+void JustAnLSPFacade::ensureNoReqIsProcessedAfterShutdown(const nlohmann::json &jsonRPC)
 {
     bool isShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
 

@@ -1,7 +1,5 @@
 #include "DidOpenTextDocumentParams.h"
 
-#include <memory>
-
 #include "../utils/Logger.h"
 
 namespace justanlsp

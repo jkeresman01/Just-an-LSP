@@ -120,7 +120,7 @@ class JustAnLSPFacade
     /// @param jsonRPC request
     ///
     //////////////////////////////////////////////////////////////
-    void verifyNoShutdownReqIsReceived(const nlohmann::json &request);
+    void ensureNoReqIsProcessedAfterShutdown(const nlohmann::json &request);
 
   private:
     //////////////////////////////////////////////////////////////
