@@ -34,9 +34,6 @@ void JustAnLSPFacade::handleRequest(const nlohmann::json &request)
     case RequestType::INITIALIZE:
         handleInitializeRequest(request);
         break;
-    case RequestType::SHUTDOWN:
-        handleShutdownRequest(request);
-        break;
     case RequestType::INITIALIZED:
         handleInitializedRequest(request);
         break;
@@ -51,6 +48,12 @@ void JustAnLSPFacade::handleRequest(const nlohmann::json &request)
         break;
     case RequestType::TEXT_DOCUMENT_HOVER:
         handleTextDocumentHoverRequest(request);
+        break;
+    case RequestType::SHUTDOWN:
+        handleShutdownRequest(request);
+        break;
+    case RequestType::EXIT:
+        handleExitRequest(request);
         break;
     default:
         LOG_ERROR("Received request/notification with method: UNKNOWN_TYPE");
@@ -139,6 +142,26 @@ void JustAnLSPFacade::handleTextDocumentCompletionRequest(const nlohmann::json &
     CompletionResponse completionResponse{"2.0", id, {completionItems}};
 
     Rpc::send(completionResponse);
+}
+
+void JustAnLSPFacade::handleExitRequest(const nlohmann::json &jsonRPC)
+{
+    LOG_INFO("Received notification with method: exit");
+
+    m_justAnLspCounters->increment(RequestType::EXIT);
+
+    bool isShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
+
+    if (isShutdownReqReceived)
+    {
+        LOG_INFO("Exiting with status code 0 (successful shutdown)");
+        std::exit(0);
+    }
+    else
+    {
+        LOG_ERROR("Exiting with status code 1 (shutdown not received)");
+        std::exit(1);
+    }
 }
 
 void JustAnLSPFacade::handleTextDocumentHoverRequest(const nlohmann::json &jsonRPC)

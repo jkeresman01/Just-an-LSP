@@ -38,6 +38,14 @@ class RequestMethodUtil
         {
             return RequestType::TEXT_DOCUMENT_HOVER;
         }
+        else if (method == "shutdown")
+        {
+            return RequestType::SHUTDOWN;
+        }
+        else if (method == "exit")
+        {
+            return RequestType::EXIT;
+        }
         else
         {
             return RequestType::UNKNOWN;
