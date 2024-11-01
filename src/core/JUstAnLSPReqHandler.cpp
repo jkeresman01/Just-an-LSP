@@ -6,6 +6,8 @@
 #include "../messages/response/CompletionResponse.h"
 #include "../messages/response/InitializeResponse.h"
 #include "../messages/response/ShutdownResponse.h"
+#include "../params/DidChangeTextDocumentParams.h"
+#include "../params/DidOpenTextDocumentParams.h"
 #include "../rpc/Rpc.h"
 #include "../types/CompletionItem.h"
 #include "../types/TextDocumentItem.h"
@@ -66,6 +68,13 @@ void JustAnLSPReqHandler::textDocumentDidChangeReq(
     const std::shared_ptr<DidChangeTextDocumentRequest> &didChangeTextDocumentReq)
 {
     LOG_INFO("Processing textDocument/didChange request");
+
+    std::shared_ptr<DidChangeTextDocumentParams> didChangeParams = didChangeTextDocumentReq->getParams();
+
+    std::string URI = didChangeParams->getChangedDocumentURI();
+    std::string contentChanges = didChangeParams->getContentChanges();
+
+    m_justAnLSPClient->updateDocumentByURI(URI, contentChanges);
 }
 
 void JustAnLSPReqHandler::shutdownReq(const std::shared_ptr<ShutdownRequest> &shutdownRequest)
