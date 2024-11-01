@@ -3,7 +3,10 @@
 namespace justanlsp
 {
 
-CompletionResult(const std::vector<CompletionItem> &completionItems) : m_completionItems(completionItems) {}
+CompletionResult::CompletionResult(const std::vector<CompletionItem> &completionItems)
+    : m_completionItems(completionItems)
+{
+}
 
 nlohmann::json CompletionResult::toJson() const
 {

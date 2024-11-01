@@ -20,7 +20,7 @@ void DidChangeTextDocumentRequest::setParams(const nlohmann::json &jsonRPC)
     }
     else
     {
-        m_didChangeTextDocumentParams = std::make_shared<DidChangeTextDocumentRequest>(jsonRPC["params"]);
+        m_didChangeTextDocumentParams = std::make_shared<DidChangeTextDocumentParams>(jsonRPC["params"]);
     }
 }
 } // namespace justanlsp
