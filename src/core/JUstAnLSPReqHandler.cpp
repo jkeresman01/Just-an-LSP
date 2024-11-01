@@ -3,9 +3,12 @@
 #include <cstdint>
 
 #include "../enums/TextDocumentSyncKind.h"
+#include "../messages/response/CompletionResponse.h"
 #include "../messages/response/InitializeResponse.h"
 #include "../messages/response/ShutdownResponse.h"
 #include "../rpc/Rpc.h"
+#include "../types/CompletionItem.h"
+#include "../types/TextDocumentItem.h"
 #include "JUstAnLSPClientService.h"
 
 namespace justanlsp
@@ -13,6 +16,8 @@ namespace justanlsp
 
 void JustAnLSPReqHandler::initializeReq(const std::shared_ptr<InitializeRequest> &initializeRequest)
 {
+    LOG_INFO("Processing textDocument/initialize request");
+
     std::shared_ptr<InitializeParams> initializeParams = initializeRequest->getInitializeParams();
     std::shared_ptr<ClientCapabilities> clientCapabilities = initializeParams->getClientCapabilites();
     ClientInfo clientInfo = initializeParams->getClientInfo();
@@ -39,6 +44,28 @@ void JustAnLSPReqHandler::textDocumentDidOpenReq(
     m_justAnLSPClient->addDocument(textDocumentItem->getURI(), textDocumentItem->getText());
 
     LOG_INFO("Request with method: textDocument/didOpen was successfully processed");
+}
+
+void JustAnLSPReqHandler::textDocumentCompletionReq(const std::shared_ptr<CompletionRequest> &completionReq)
+{
+    // TODO Move this out, it's just to test communcation
+    std::vector<CompletionItem> completionItems{
+        {"dnsClient", "DNS client test 1", "DNS client test 1 documentation"},
+        {"dnsClientId", "DNS client test 1", "DNS client id test 1 documentation"},
+        {"dnsClientIpAddress", "DNS client ip address test 1", "DNS client ip address test 1 documentation"},
+    };
+
+    int64_t requestId = completionReq->getId();
+
+    CompletionResponse completionResponse{"2.0", requestId, {completionItems}};
+
+    Rpc::send(completionResponse);
+}
+
+void JustAnLSPReqHandler::textDocumentDidChangeReq(
+    const std::shared_ptr<DidChangeTextDocumentRequest> &didChangeTextDocumentReq)
+{
+    LOG_INFO("Processing textDocument/didChange request");
 }
 
 void JustAnLSPReqHandler::shutdownReq(const std::shared_ptr<ShutdownRequest> &shutdownRequest)

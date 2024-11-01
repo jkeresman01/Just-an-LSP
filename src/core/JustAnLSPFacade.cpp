@@ -119,7 +119,7 @@ void JustAnLSPFacade::handleTextDocumentDidChangeRequest(const nlohmann::json &j
     std::shared_ptr<DidChangeTextDocumentRequest> didChangeTextDocumentReq =
         MessageFactory::createDidChangeTextDocumentReq(jsonRPC);
 
-    // TODO Update internal document state
+    m_justAnLSPReqHandler->textDocumentDidChangeReq(didChangeTextDocumentReq);
 }
 
 void JustAnLSPFacade::handleTextDocumentCompletionRequest(const nlohmann::json &jsonRPC)
@@ -128,23 +128,11 @@ void JustAnLSPFacade::handleTextDocumentCompletionRequest(const nlohmann::json &
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_COMPLETION);
 
-    LOG_INFO(jsonRPC.dump(4));
-    LOG_INFO(jsonRPC.dump(4));
-
     ensureNoReqIsProcessedAfterShutdown(jsonRPC);
 
-    // TODO create request and move logic from here
-    std::vector<CompletionItem> completionItems{
-        {"dnsClient", "DNS client test 1", "DNS client test 1 documentation"},
-        {"dnsClientId", "DNS client test 1", "DNS client id test 1 documentation"},
-        {"dnsClientIpAddress", "DNS client ip address test 1", "DNS client ip address test 1 documentation"},
-    };
+    std::shared_ptr<CompletionRequest> completionRequest = MessageFactory::createCompletionReq(jsonRPC);
 
-    int64_t id = jsonRPC["id"].get<int64_t>();
-
-    CompletionResponse completionResponse{"2.0", id, {completionItems}};
-
-    Rpc::send(completionResponse);
+    m_justAnLSPReqHandler->textDocumentCompletionReq(completionRequest);
 }
 
 void JustAnLSPFacade::handleExitRequest(const nlohmann::json &jsonRPC)
@@ -175,7 +163,7 @@ void JustAnLSPFacade::handleTextDocumentHoverRequest(const nlohmann::json &jsonR
 
     ensureNoReqIsProcessedAfterShutdown(jsonRPC);
 
-    // TODO basic response
+    // TODO implement pretty much everything
 }
 
 void JustAnLSPFacade::ensureNoReqIsProcessedAfterShutdown(const nlohmann::json &jsonRPC)

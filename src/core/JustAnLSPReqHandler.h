@@ -2,6 +2,8 @@
 
 #include <memory>
 
+#include "../messages/request/CompletionRequest.h"
+#include "../messages/request/DidChangeTextDocumentRequest.h"
 #include "../messages/request/DidOpenTextDocumentRequest.h"
 #include "../messages/request/InitializeRequest.h"
 #include "../messages/request/ShutdownRequest.h"
@@ -67,9 +69,25 @@ class JustAnLSPReqHandler
     /// @param textDocument/completion  request
     ///
     //////////////////////////////////////////////////////////////
-    void textDocumentCompletionReq(const std::shared_ptr<DidOpenTextDocumentRequest> &didOpenTextDocumentReq);
+    void textDocumentCompletionReq(const std::shared_ptr<CompletionRequest> &completionReq);
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Handles textDocument/didChange request
+    ///
+    /// @param textDocument/didChange  request
+    ///
+    //////////////////////////////////////////////////////////////
+    void textDocumentDidChangeReq(
+        const std::shared_ptr<DidChangeTextDocumentRequest> &didChangeTextDocumentReq);
 
   private:
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief JustAnLSPClient - editor or tool attached to
+    ///        JustAnLSP server
+    ///
+    //////////////////////////////////////////////////////////////
     std::unique_ptr<JustAnLSPClient> m_justAnLSPClient = std::make_unique<JustAnLSPClient>();
 };
 } // namespace justanlsp
