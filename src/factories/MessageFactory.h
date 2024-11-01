@@ -3,6 +3,7 @@
 #include <memory>
 #include <nlohmann/json.hpp>
 
+#include "../messages/request/CompletionRequest.h"
 #include "../messages/request/DidChangeTextDocumentRequest.h"
 #include "../messages/request/DidOpenTextDocumentRequest.h"
 #include "../messages/request/InitializeRequest.h"
@@ -75,7 +76,6 @@ class MessageFactory
 
     //////////////////////////////////////////////////////////////
     ///
-    ///
     /// @brief Creates an DidChangeTextDocument message object.
     ///
     /// @param jsonRPC The JSON object containing the request data.
@@ -87,6 +87,20 @@ class MessageFactory
         const nlohmann::json &jsonRPC)
     {
         return std::make_shared<DidChangeTextDocumentRequest>(jsonRPC);
+    }
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Creates an Completion request message object.
+    ///
+    /// @param jsonRPC The JSON object containing the request data.
+    ///
+    /// @return A shared pointer to an Completion request object.
+    ///
+    //////////////////////////////////////////////////////////////
+    static std::shared_ptr<CompletionRequest> createCompletionReq(const nlohmann::json &jsonRPC)
+    {
+        return std::make_shared<CompletionRequest>(jsonRPC);
     }
 };
 
