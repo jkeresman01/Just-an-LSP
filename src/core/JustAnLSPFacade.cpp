@@ -139,8 +139,6 @@ void JustAnLSPFacade::handleExitRequest(const nlohmann::json &jsonRPC)
 {
     LOG_INFO("Received notification with method: exit");
 
-    m_justAnLspCounters->increment(RequestType::EXIT);
-
     bool isShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
 
     if (isShutdownReqReceived)
