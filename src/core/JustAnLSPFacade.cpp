@@ -8,10 +8,10 @@
 #include "../enums/RequestType.h"
 #include "../enums/TextDocumentSyncKind.h"
 #include "../factories/MessageFactory.h"
-#include "../messages/CompletionResponse.h"
-#include "../messages/DidChangeTextDocumentRequest.h"
-#include "../messages/ResponseMessage.h"
-#include "../messages/ShutdownRequest.h"
+#include "../messages/request/DidChangeTextDocumentRequest.h"
+#include "../messages/request/ShutdownRequest.h"
+#include "../messages/response/CompletionResponse.h"
+#include "../messages/response/ResponseMessage.h"
 #include "../params/InitializeParams.h"
 #include "../rpc/Rpc.h"
 #include "../types/ClientInfo.h"
@@ -90,7 +90,6 @@ void JustAnLSPFacade::handleInitializedRequest(const nlohmann::json &jsonRPC)
 
     ensureNoReqIsProcessedAfterShutdown(jsonRPC);
 
-    LOG_INFO("Received notification with method: initialized");
     LOG_INFO("Successful connection between client and JustAnLSPServer has been established");
 }
 

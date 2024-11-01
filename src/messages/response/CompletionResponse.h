@@ -4,8 +4,8 @@
 #include <ostream>
 #include <string>
 
-#include "CompletionResult.h"
-#include "ResponseMessage.h"
+#include "../messages/response/ResponseMessage.h"
+#include "../results/CompletionResult.h"
 
 namespace justanlsp
 {

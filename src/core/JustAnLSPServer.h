@@ -5,7 +5,7 @@
 #include <memory>
 #include <string>
 
-#include "../messages/ResponseMessage.h"
+#include "../messages/response/ResponseMessage.h"
 #include "JustAnLSPFacade.h"
 
 namespace justanlsp

@@ -1,4 +1,4 @@
-#include "../messages/NotificationMessage.h"
+#include "NotificationMessage.h"
 
 namespace justanlsp
 {

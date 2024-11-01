@@ -3,7 +3,7 @@
 #include <string>
 
 #include "../enums/RequestType.h"
-#include "../messages/ResponseMessage.h"
+#include "../messages/response/ResponseMessage.h"
 #include "../utils/Convert.h"
 #include "../utils/Logger.h"
 

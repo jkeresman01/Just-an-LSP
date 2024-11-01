@@ -8,7 +8,7 @@
 #include <nlohmann/json.hpp>
 #include <string>
 
-#include "../messages/ResponseMessage.h"
+#include "../messages/response/ResponseMessage.h"
 #include "JustAnLSPClient.h"
 #include "JustAnLSPCounter.h"
 

@@ -3,8 +3,8 @@
 #include <cstdint>
 
 #include "../enums/TextDocumentSyncKind.h"
-#include "../messages/InitializeResponse.h"
-#include "../messages/ShutdownResponse.h"
+#include "../messages/response/InitializeResponse.h"
+#include "../messages/response/ShutdownResponse.h"
 #include "../rpc/Rpc.h"
 #include "JUstAnLSPClientService.h"
 

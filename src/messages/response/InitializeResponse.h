@@ -4,7 +4,7 @@
 #include <string>
 
 #include "../capabilities/ServerCapabilities.h"
-#include "../messages/InitializeResult.h"
+#include "../results/InitializeResult.h"
 #include "../types/ServerInfo.h"
 #include "ResponseError.h"
 #include "ResponseMessage.h"

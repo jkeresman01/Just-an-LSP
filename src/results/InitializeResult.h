@@ -1,9 +1,10 @@
 #pragma once
 
-#include "../capabilities/ServerCapabilities.h"
-#include "../types/ServerInfo.h"
-#include "ResponseMessage.h"
 #include <string>
+
+#include "../capabilities/ServerCapabilities.h"
+#include "../messages/response/ResponseMessage.h"
+#include "../types/ServerInfo.h"
 
 namespace justanlsp
 {

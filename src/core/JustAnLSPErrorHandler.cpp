@@ -1,6 +1,6 @@
 #include "JustAnLSPErrorHandler.h"
 
-#include "../messages/ResponseMessage.h"
+#include "../messages/response/ResponseMessage.h"
 #include "../rpc/Rpc.h"
 #include "../utils/Logger.h"
 

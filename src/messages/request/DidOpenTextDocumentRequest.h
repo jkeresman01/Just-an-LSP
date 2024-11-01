@@ -2,8 +2,8 @@
 
 #include <memory>
 
+#include "../notification/NotificationMessage.h"
 #include "../params/DidOpenTextDocumentParams.h"
-#include "NotificationMessage.h"
 
 namespace justanlsp
 {

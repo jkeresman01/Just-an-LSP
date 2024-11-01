@@ -2,9 +2,9 @@
 
 #include <memory>
 
-#include "../messages/DidOpenTextDocumentRequest.h"
-#include "../messages/InitializeRequest.h"
-#include "../messages/ShutdownRequest.h"
+#include "../messages/request/DidOpenTextDocumentRequest.h"
+#include "../messages/request/InitializeRequest.h"
+#include "../messages/request/ShutdownRequest.h"
 #include "JustAnLSPCounter.h"
 
 namespace justanlsp
