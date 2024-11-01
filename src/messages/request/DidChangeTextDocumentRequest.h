@@ -4,8 +4,8 @@
 #include <nlohmann/json.hpp>
 #include <string>
 
+#include "../notification/NotificationMessage.h"
 #include "../params/DidChangeTextDocumentParams.h"
-#include "RequestMessage.h"
 
 namespace justanlsp
 {
@@ -17,7 +17,7 @@ namespace justanlsp
 /// @brief Represents a textDocument/didChange request in the LSP
 ///
 //////////////////////////////////////////////////////////////
-class DidChangeTextDocumentRequest : public RequestMessage
+class DidChangeTextDocumentRequest : public NotificationMessage
 {
   public:
     //////////////////////////////////////////////////////////////

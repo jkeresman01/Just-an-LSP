@@ -5,7 +5,7 @@
 namespace justanlsp
 {
 DidChangeTextDocumentRequest::DidChangeTextDocumentRequest(const nlohmann::json &jsonRPC)
-    : RequestMessage(jsonRPC)
+    : NotificationMessage(jsonRPC)
 {
     setParams(jsonRPC);
 }

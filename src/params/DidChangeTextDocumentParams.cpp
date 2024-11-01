@@ -7,13 +7,13 @@ namespace justanlsp
 
 DidChangeTextDocumentParams::DidChangeTextDocumentParams(const nlohmann::json &jsonRPC)
 {
-    setTextDocumentIdentifier(jsonRPC);
-    setContentChanges(jsonRPC);
+    setTextDocumentIdentifier(jsonRPC["textDocument"]);
+    setContentChanges(jsonRPC["contentChanges"][0]);
 }
 
 void DidChangeTextDocumentParams::setTextDocumentIdentifier(const nlohmann::json &jsonRPC)
 {
-    auto it = jsonRPC.find("textDocument");
+    auto it = jsonRPC.find("uri");
 
     if (it == jsonRPC.end())
     {
@@ -21,21 +21,21 @@ void DidChangeTextDocumentParams::setTextDocumentIdentifier(const nlohmann::json
     }
     else
     {
-        m_textDocument.URI = jsonRPC["textDocument"];
+        m_textDocument.URI = jsonRPC["uri"];
     }
 }
 
 void DidChangeTextDocumentParams::setContentChanges(const nlohmann::json &jsonRPC)
 {
-    auto it = jsonRPC.find("contentChanges");
+    auto it = jsonRPC.find("text");
 
     if (it == jsonRPC.end())
     {
-        LOG_ERROR("No content changes  in textDocument/didChange notification!");
+        LOG_ERROR("No text changes in textDocument/didChange notification!");
     }
     else
     {
-        m_contentChanges = jsonRPC["contentChanges"][0];
+        m_contentChanges = jsonRPC["text"];
     }
 }
 } // namespace justanlsp
