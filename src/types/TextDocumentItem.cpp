@@ -36,7 +36,7 @@ void TextDocumentItem::setLanguageId(const nlohmann::json &jsonRPC)
     }
     else
     {
-        m_URI = jsonRPC["languageId"];
+        m_languageId = jsonRPC["languageId"];
     }
 }
 
@@ -64,7 +64,7 @@ void TextDocumentItem::setText(const nlohmann::json &jsonRPC)
     }
     else
     {
-        m_URI = jsonRPC["text"];
+        m_text = jsonRPC["text"];
     }
 }
 } // namespace justanlsp
