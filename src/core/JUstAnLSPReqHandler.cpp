@@ -50,7 +50,7 @@ void JustAnLSPReqHandler::textDocumentDidOpenReq(
 
 void JustAnLSPReqHandler::textDocumentCompletionReq(const std::shared_ptr<CompletionRequest> &completionReq)
 {
-    // TODO Move this out, it's just to test communcation
+    // TODO Move this out, it's here just to test communication
     std::vector<CompletionItem> completionItems{
         {"dnsClient", "DNS client test 1", "DNS client test 1 documentation"},
         {"dnsClientId", "DNS client test 1", "DNS client id test 1 documentation"},
