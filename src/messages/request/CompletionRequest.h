@@ -37,14 +37,6 @@ class CompletionRequest : public RequestMessage
     //////////////////////////////////////////////////////////////
     std::shared_ptr<CompletionParams> getParams() const { return m_completionParams; };
 
-    //////////////////////////////////////////////////////////////
-    ///
-    /// @brief Accessor method for text document URI on which
-    ///        completion is requested
-    ///
-    //////////////////////////////////////////////////////////////
-    std::string getURI() const { return m_textDocumentIdentifier.URI; }
-
   private:
     //////////////////////////////////////////////////////////////
     ///

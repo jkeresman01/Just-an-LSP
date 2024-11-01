@@ -7,7 +7,7 @@ namespace justanlsp
 CompletionParams::CompletionParams(const nlohmann::json &jsonRPC)
 {
     setCompletionContext(jsonRPC["context"]);
-    setRange(jsonRPC["position"]);
+    setPosition(jsonRPC["position"]);
     setTextDocumentIdentifier(jsonRPC["textDocument"]);
 }
 

@@ -4,7 +4,7 @@
 
 namespace justanlsp
 {
-CompletionRequest::CompletionRequest(const nlohmann::json &jsonRPC)
+CompletionRequest::CompletionRequest(const nlohmann::json &jsonRPC) : RequestMessage(jsonRPC)
 {
     setParams(jsonRPC);
 }
