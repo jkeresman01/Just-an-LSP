@@ -26,6 +26,9 @@ void JustAnLSPClient::registerCapabilites(const std::shared_ptr<ClientCapabiliti
 
 void JustAnLSPClient::addDocument(const std::string &URI, const std::string &document)
 {
+    LOG_INFO(STR("Adding text document with URI: %s, for client: %s", URI.c_str(),
+                 m_clientInfo.toString().c_str()));
+
     m_documentState.emplace(URI, document);
 }
 

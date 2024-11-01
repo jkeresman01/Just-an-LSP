@@ -17,9 +17,10 @@ void JustAnLSPReqHandler::initializeReq(const std::shared_ptr<InitializeRequest>
     std::shared_ptr<ClientCapabilities> clientCapabilities = initializeParams->getClientCapabilites();
     ClientInfo clientInfo = initializeParams->getClientInfo();
 
-    LOG_INFO(STR("%s has sent initializtion request", clientInfo.toString().c_str()));
+    LOG_INFO(STR("Client: %s has sent initializtion request", clientInfo.toString().c_str()));
 
-    JustAnLSPClientService::getInstance().registerClient({clientInfo, clientCapabilities});
+    m_justAnLSPClient->saveInfo(clientInfo);
+    m_justAnLSPClient->registerCapabilites(clientCapabilities);
 
     InitializeResult initializeResult({"JustAnLSP", "0.0.0.0.0.1-alpha"}, {TextDocumentSyncKind::FULL});
     InitializeResponse initializeResponse("2.0", initializeRequest->getId(), initializeResult);
@@ -35,7 +36,9 @@ void JustAnLSPReqHandler::textDocumentDidOpenReq(
     std::shared_ptr<DidOpenTextDocumentParams> didOpenParams = didOpenTextDocumentReq->getParams();
     std::shared_ptr<TextDocumentItem> textDocumentItem = didOpenParams->getTextDocumentItem();
 
-    LOG_INFO("textDocument/didOpen request was successfully processed");
+    m_justAnLSPClient->addDocument(textDocumentItem->getURI(), textDocumentItem->getText());
+
+    LOG_INFO("Request with method: textDocument/didOpen was successfully processed");
 }
 
 void JustAnLSPReqHandler::shutdownReq(const std::shared_ptr<ShutdownRequest> &shutdownRequest)
@@ -46,7 +49,7 @@ void JustAnLSPReqHandler::shutdownReq(const std::shared_ptr<ShutdownRequest> &sh
 
     Rpc::send(shutdownResponse);
 
-    LOG_INFO("Response was sent for shutdown hequest!");
+    LOG_INFO("Response was sent for shutdown request!");
 }
 
 } // namespace justanlsp

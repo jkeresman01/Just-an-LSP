@@ -5,6 +5,7 @@
 #include "../messages/request/DidOpenTextDocumentRequest.h"
 #include "../messages/request/InitializeRequest.h"
 #include "../messages/request/ShutdownRequest.h"
+#include "JustAnLSPClient.h"
 #include "JustAnLSPCounter.h"
 
 namespace justanlsp
@@ -52,11 +53,23 @@ class JustAnLSPReqHandler
 
     //////////////////////////////////////////////////////////////
     ///
-    /// @brief textDocument/didOpen request
+    /// @brief Handles textDocument/didOpen request
     ///
     /// @param textDocument/didOpen request
     ///
     //////////////////////////////////////////////////////////////
     void textDocumentDidOpenReq(const std::shared_ptr<DidOpenTextDocumentRequest> &didOpenTextDocumentReq);
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Handles textDocument/completion request
+    ///
+    /// @param textDocument/completion  request
+    ///
+    //////////////////////////////////////////////////////////////
+    void textDocumentCompletionReq(const std::shared_ptr<DidOpenTextDocumentRequest> &didOpenTextDocumentReq);
+
+  private:
+    std::unique_ptr<JustAnLSPClient> m_justAnLSPClient = std::make_unique<JustAnLSPClient>();
 };
 } // namespace justanlsp

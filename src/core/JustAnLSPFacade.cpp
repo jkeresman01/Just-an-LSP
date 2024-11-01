@@ -63,7 +63,7 @@ void JustAnLSPFacade::handleRequest(const nlohmann::json &request)
 
 void JustAnLSPFacade::handleInitializeRequest(const nlohmann::json &jsonRPC)
 {
-    LOG_INFO("Prcoessing request with method: initialize");
+    LOG_INFO("Received request with method: initialize");
 
     m_justAnLspCounters->increment(RequestType::INITIALIZE);
 
@@ -105,7 +105,7 @@ void JustAnLSPFacade::handleTextDocumentDidOpenRequest(const nlohmann::json &jso
     std::shared_ptr<DidOpenTextDocumentRequest> didOpenTextDocumentNotification =
         MessageFactory::createDidOpenTextDocumentReq(jsonRPC);
 
-    // TODO Update internal document state
+    m_justAnLSPReqHandler->textDocumentDidOpenReq(didOpenTextDocumentNotification);
 }
 
 void JustAnLSPFacade::handleTextDocumentDidChangeRequest(const nlohmann::json &jsonRPC)
@@ -127,6 +127,9 @@ void JustAnLSPFacade::handleTextDocumentCompletionRequest(const nlohmann::json &
     LOG_INFO("Received request with notification: textDocument/completion");
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_COMPLETION);
+
+    LOG_INFO(jsonRPC.dump(4));
+    LOG_INFO(jsonRPC.dump(4));
 
     ensureNoReqIsProcessedAfterShutdown(jsonRPC);
 
