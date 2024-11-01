@@ -100,6 +100,8 @@ void JustAnLSPFacade::handleTextDocumentDidOpenRequest(const nlohmann::json &jso
 {
     LOG_INFO("Received notification with method: textDocument/didOpen");
 
+    m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_DID_OPEN);
+
     ensureNoReqIsProcessedAfterShutdown(jsonRPC);
 
     std::shared_ptr<DidOpenTextDocumentRequest> didOpenTextDocumentNotification =
