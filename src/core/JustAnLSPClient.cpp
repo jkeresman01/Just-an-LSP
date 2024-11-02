@@ -49,7 +49,6 @@ void JustAnLSPClient::updateDocumentByURI(const std::string &URI, const std::str
     LOG_INFO(STR("Updating text document with URI: %s, for client: %s", URI.c_str(),
                  m_clientInfo.toString().c_str()));
 
-    // TODO update acctual chages not whole document
     m_documentState[URI] = document;
 }
 
