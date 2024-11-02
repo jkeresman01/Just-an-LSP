@@ -55,6 +55,7 @@ void JustAnLSPReqHandler::textDocumentDidOpenReq(
     std::vector<Diagnostic> diagnostics{
         {{10, 10}, DiagnosticSeverity::ERROR, "Source is this stuff", "THis is really big error msg!!!"}};
 
+    // TODO Move this out, it's here just to test communication
     std::shared_ptr<PublishDiagnosticsParams> diagnosticsParams =
         std::make_shared<PublishDiagnosticsParams>(URI, diagnostics);
     PublishDiagnosticsNoticifation publishDiagnostics("textDocument/publishDiagnostics", diagnosticsParams);
@@ -79,6 +80,7 @@ void JustAnLSPReqHandler::textDocumentDidChangeReq(
 
     m_justAnLSPClient->updateDocumentByURI(URI, contentChanges);
 
+    // TODO Move this out, it's here just to test communication
     std::vector<Diagnostic> diagnostics{
         {{10, 10}, DiagnosticSeverity::ERROR, "Source is this stuff", "THis is really big error msg!!!"}};
 
