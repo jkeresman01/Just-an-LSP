@@ -1,6 +1,7 @@
 #include "JustAnLSPFacade.h"
 #include "JustAnLSPServer.h"
 
+#include <exception>
 #include <iostream>
 #include <memory>
 #include <vector>
@@ -10,6 +11,7 @@
 #include "../factories/MessageFactory.h"
 #include "../messages/request/DidChangeTextDocumentRequest.h"
 #include "../messages/request/ShutdownRequest.h"
+#include "../messages/request/HoverRequest.h"
 #include "../messages/response/CompletionResponse.h"
 #include "../messages/response/ResponseMessage.h"
 #include "../params/InitializeParams.h"
@@ -163,7 +165,7 @@ void JustAnLSPFacade::handleTextDocumentHoverRequest(const nlohmann::json &jsonR
 
     ensureNoReqIsProcessedAfterShutdown(jsonRPC);
 
-    // TODO implement pretty much everything
+    std::shared_ptr<HoverRequest> hoverRequest = MessageFactory::createHoverReq(jsonRPC);
 }
 
 void JustAnLSPFacade::ensureNoReqIsProcessedAfterShutdown(const nlohmann::json &jsonRPC)

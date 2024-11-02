@@ -6,21 +6,19 @@ namespace justanlsp
 {
 TextDocumentPositionParams::TextDocumentPositionParams(const nlohmann::json &jsonRPC)
 {
-    setTextDocumentIdentifier(jsonRPC);
-    setPostion(jsonRPC);
+    setTextDocumentIdentifier(jsonRPC["textDocument"]);
+    setPostion(jsonRPC["position"]);
 }
 
 void TextDocumentPositionParams::setTextDocumentIdentifier(const nlohmann::json &jsonRPC)
 {
-    auto it = jsonRPC.find("position");
-
     m_position.line = jsonRPC["line"];
     m_position.character = jsonRPC["character"];
 }
 
 void TextDocumentPositionParams::setPostion(const nlohmann::json &jsonRPC)
 {
-    auto it = jsonRPC.find("textDocument");
+    auto it = jsonRPC.find("uri");
 
     if (it == jsonRPC.end())
     {
@@ -28,7 +26,7 @@ void TextDocumentPositionParams::setPostion(const nlohmann::json &jsonRPC)
     }
     else
     {
-        m_textDocument.URI = jsonRPC["textDocument"];
+        m_textDocument.URI = jsonRPC["uri"];
     }
 }
 } // namespace justanlsp

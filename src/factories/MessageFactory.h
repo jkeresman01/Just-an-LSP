@@ -7,6 +7,7 @@
 #include "../messages/request/DidChangeTextDocumentRequest.h"
 #include "../messages/request/DidOpenTextDocumentRequest.h"
 #include "../messages/request/InitializeRequest.h"
+#include "../messages/request/HoverRequest.h"
 #include "../messages/request/ShutdownRequest.h"
 #include "../utils/Logger.h"
 
@@ -102,6 +103,21 @@ class MessageFactory
     {
         return std::make_shared<CompletionRequest>(jsonRPC);
     }
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Creates an Hover request message object.
+    ///
+    /// @param jsonRPC The JSON object containing the request data.
+    ///
+    /// @return A shared pointer to an Hover request object.
+    ///
+    //////////////////////////////////////////////////////////////
+    static std::shared_ptr<HoverRequest> createHoverReq(const nlohmann::json &jsonRPC)
+    {
+        return std::make_shared<HoverRequest>(jsonRPC);
+    }
+
 };
 
 } // namespace justanlsp
