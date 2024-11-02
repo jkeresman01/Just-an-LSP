@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(SRC_DIR ${CMAKE_SOURCE_DIR}/src)
 
 include_directories(${SRC_DIR})
+include_directories(${SRC_DIR}/algo)
 include_directories(${SRC_DIR}/capabilities)
 include_directories(${SRC_DIR}/core)
 include_directories(${SRC_DIR}/enums)
