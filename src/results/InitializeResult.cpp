@@ -13,11 +13,12 @@ InitializeResult::InitializeResult(const ServerInfo &serverInfo, const ServerCap
 
 nlohmann::json InitializeResult::toJson() const
 {
-    // TODO completionProvider is hardoced for test purposes
+    // TODO completionProvider and hoverProvider are hardoced for test purposes
 
     return {{"serverinfo", m_serverInfo.toJson()},
             {"capabilities",
              {{"textDocumentSync", m_serverCapabilities.toJson()},
+              {"hoverProvider", true},
               {"completionProvider",
                {
                    {"resolveProvider", false},
