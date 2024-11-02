@@ -16,7 +16,6 @@ class TrieTest : public ::testing::Test
         for (const auto &word : words)
         {
             trie.insert(word);
-            std::cout << "Inserted: " << word << std::endl; // Debug output
         }
     }
 };
