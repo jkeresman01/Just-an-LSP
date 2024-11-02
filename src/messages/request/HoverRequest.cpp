@@ -6,7 +6,7 @@ namespace justanlsp
 {
 HoverRequest::HoverRequest(const nlohmann::json &jsonRPC) : RequestMessage(jsonRPC)
 {
-    /* setParams(jsonRPC); */
+    setParams(jsonRPC);
 }
 
 void HoverRequest::setParams(const nlohmann::json &jsonRPC)
