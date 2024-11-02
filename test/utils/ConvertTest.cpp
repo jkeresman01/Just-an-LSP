@@ -1,13 +1,15 @@
 #include <gtest/gtest.h>
 
-#include "../../src/utils/Convert.h" 
+#include "../../src/utils/Convert.h"
 
 using namespace justanlsp;
 
-class ConverterTest : public ::testing::Test {
+class ConverterTest : public ::testing::Test
+{
 };
 
-TEST_F(ConverterTest, WillConvertValidInteger) {
+TEST_F(ConverterTest, WillConvertValidInteger)
+{
     // GIVEN
     std::string input = "42";
 
@@ -18,7 +20,8 @@ TEST_F(ConverterTest, WillConvertValidInteger) {
     EXPECT_EQ(result, 42);
 }
 
-TEST_F(ConverterTest, WillConvertValidFloat) {
+TEST_F(ConverterTest, WillConvertValidFloat)
+{
     // GIVEN
     std::string input = "3.14";
 
@@ -29,7 +32,8 @@ TEST_F(ConverterTest, WillConvertValidFloat) {
     EXPECT_FLOAT_EQ(result, 3.14f);
 }
 
-TEST_F(ConverterTest, WillConvertValidDouble) {
+TEST_F(ConverterTest, WillConvertValidDouble)
+{
     // GIVEN
     std::string input = "2.718281828";
 
@@ -40,7 +44,8 @@ TEST_F(ConverterTest, WillConvertValidDouble) {
     EXPECT_DOUBLE_EQ(result, 2.718281828);
 }
 
-TEST_F(ConverterTest, WillConvertZero) {
+TEST_F(ConverterTest, WillConvertZero)
+{
     // GIVEN
     std::string input = "0";
 
@@ -51,7 +56,8 @@ TEST_F(ConverterTest, WillConvertZero) {
     EXPECT_EQ(result, 0);
 }
 
-TEST_F(ConverterTest, WillConvertWithWhitespace) {
+TEST_F(ConverterTest, WillConvertWithWhitespace)
+{
     // GIVEN
     std::string input = "   99  ";
 

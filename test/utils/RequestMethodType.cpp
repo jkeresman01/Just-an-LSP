@@ -1,14 +1,16 @@
 #include <gtest/gtest.h>
 
-#include "../../src/utils/RequestMethodUtil.h"
 #include "../../src/enums/RequestType.h"
+#include "../../src/utils/RequestMethodUtil.h"
 
 using namespace justanlsp;
 
-class RequestMethodUtilTest : public ::testing::Test {
+class RequestMethodUtilTest : public ::testing::Test
+{
 };
 
-TEST_F(RequestMethodUtilTest, WillReturnInitializeType) {
+TEST_F(RequestMethodUtilTest, WillReturnInitializeType)
+{
     // GIVEN
     std::string method = "initialize";
 
@@ -19,7 +21,8 @@ TEST_F(RequestMethodUtilTest, WillReturnInitializeType) {
     EXPECT_EQ(result, RequestType::INITIALIZE);
 }
 
-TEST_F(RequestMethodUtilTest, WillReturnInitializedType) {
+TEST_F(RequestMethodUtilTest, WillReturnInitializedType)
+{
     // GIVEN
     std::string method = "initialized";
 
@@ -30,7 +33,8 @@ TEST_F(RequestMethodUtilTest, WillReturnInitializedType) {
     EXPECT_EQ(result, RequestType::INITIALIZED);
 }
 
-TEST_F(RequestMethodUtilTest, WillReturnTextDocumentDidChangeType) {
+TEST_F(RequestMethodUtilTest, WillReturnTextDocumentDidChangeType)
+{
     // GIVEN
     std::string method = "textDocument/didChange";
 
@@ -41,7 +45,8 @@ TEST_F(RequestMethodUtilTest, WillReturnTextDocumentDidChangeType) {
     EXPECT_EQ(result, RequestType::TEXT_DOCUMENT_DID_CHANGE);
 }
 
-TEST_F(RequestMethodUtilTest, WillReturnTextDocumentCompletionType) {
+TEST_F(RequestMethodUtilTest, WillReturnTextDocumentCompletionType)
+{
     // GIVEN
     std::string method = "textDocument/completion";
 
@@ -52,7 +57,8 @@ TEST_F(RequestMethodUtilTest, WillReturnTextDocumentCompletionType) {
     EXPECT_EQ(result, RequestType::TEXT_DOCUMENT_COMPLETION);
 }
 
-TEST_F(RequestMethodUtilTest, WillReturnTextDocumentDidOpenType) {
+TEST_F(RequestMethodUtilTest, WillReturnTextDocumentDidOpenType)
+{
     // GIVEN
     std::string method = "textDocument/didOpen";
 
@@ -63,7 +69,8 @@ TEST_F(RequestMethodUtilTest, WillReturnTextDocumentDidOpenType) {
     EXPECT_EQ(result, RequestType::TEXT_DOCUMENT_DID_OPEN);
 }
 
-TEST_F(RequestMethodUtilTest, WillReturnTextDocumentHoverType) {
+TEST_F(RequestMethodUtilTest, WillReturnTextDocumentHoverType)
+{
     // GIVEN
     std::string method = "textDocument/hover";
 
@@ -74,7 +81,8 @@ TEST_F(RequestMethodUtilTest, WillReturnTextDocumentHoverType) {
     EXPECT_EQ(result, RequestType::TEXT_DOCUMENT_HOVER);
 }
 
-TEST_F(RequestMethodUtilTest, WillReturnShutdownType) {
+TEST_F(RequestMethodUtilTest, WillReturnShutdownType)
+{
     // GIVEN
     std::string method = "shutdown";
 
@@ -85,7 +93,8 @@ TEST_F(RequestMethodUtilTest, WillReturnShutdownType) {
     EXPECT_EQ(result, RequestType::SHUTDOWN);
 }
 
-TEST_F(RequestMethodUtilTest, WillReturnExitType) {
+TEST_F(RequestMethodUtilTest, WillReturnExitType)
+{
     // GIVEN
     std::string method = "exit";
 
@@ -96,7 +105,8 @@ TEST_F(RequestMethodUtilTest, WillReturnExitType) {
     EXPECT_EQ(result, RequestType::EXIT);
 }
 
-TEST_F(RequestMethodUtilTest, WillReturnUnknownTypeForInvalidMethod) {
+TEST_F(RequestMethodUtilTest, WillReturnUnknownTypeForInvalidMethod)
+{
     // GIVEN
     std::string method = "unknownMethod";
 
@@ -107,7 +117,8 @@ TEST_F(RequestMethodUtilTest, WillReturnUnknownTypeForInvalidMethod) {
     EXPECT_EQ(result, RequestType::UNKNOWN);
 }
 
-TEST_F(RequestMethodUtilTest, WillReturnUnknownTypeForEmptyMethod) {
+TEST_F(RequestMethodUtilTest, WillReturnUnknownTypeForEmptyMethod)
+{
     // GIVEN
     std::string method = "";
 
@@ -117,4 +128,3 @@ TEST_F(RequestMethodUtilTest, WillReturnUnknownTypeForEmptyMethod) {
     // THEN
     EXPECT_EQ(result, RequestType::UNKNOWN);
 }
-

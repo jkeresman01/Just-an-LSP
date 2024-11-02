@@ -1,14 +1,16 @@
 #include <gtest/gtest.h>
 
-#include "../../src/utils/TraceUtil.h"
 #include "../../src/enums/TraceValue.h"
+#include "../../src/utils/TraceUtil.h"
 
 using namespace justanlsp;
 
-class TraceUtilTest : public ::testing::Test {
+class TraceUtilTest : public ::testing::Test
+{
 };
 
-TEST_F(TraceUtilTest, WillReturnMessagesTraceValue) {
+TEST_F(TraceUtilTest, WillReturnMessagesTraceValue)
+{
     // GIVEN
     std::string traceValueStr = "messages";
 
@@ -19,7 +21,8 @@ TEST_F(TraceUtilTest, WillReturnMessagesTraceValue) {
     EXPECT_EQ(result, TraceValue::MESSAGES);
 }
 
-TEST_F(TraceUtilTest, WillReturnVerboseTraceValue) {
+TEST_F(TraceUtilTest, WillReturnVerboseTraceValue)
+{
     // GIVEN
     std::string traceValueStr = "verbose";
 
@@ -30,7 +33,8 @@ TEST_F(TraceUtilTest, WillReturnVerboseTraceValue) {
     EXPECT_EQ(result, TraceValue::VERBOSE);
 }
 
-TEST_F(TraceUtilTest, WillReturnOffTraceValueForUnknownString) {
+TEST_F(TraceUtilTest, WillReturnOffTraceValueForUnknownString)
+{
     // GIVEN
     std::string traceValueStr = "unknown";
 
@@ -41,7 +45,8 @@ TEST_F(TraceUtilTest, WillReturnOffTraceValueForUnknownString) {
     EXPECT_EQ(result, TraceValue::OFF);
 }
 
-TEST_F(TraceUtilTest, WillReturnOffTraceValueForEmptyString) {
+TEST_F(TraceUtilTest, WillReturnOffTraceValueForEmptyString)
+{
     // GIVEN
     std::string traceValueStr = "";
 
@@ -51,4 +56,3 @@ TEST_F(TraceUtilTest, WillReturnOffTraceValueForEmptyString) {
     // THEN
     EXPECT_EQ(result, TraceValue::OFF);
 }
-
