@@ -10,13 +10,13 @@ TextDocumentPositionParams::TextDocumentPositionParams(const nlohmann::json &jso
     setPostion(jsonRPC["position"]);
 }
 
-void TextDocumentPositionParams::setTextDocumentIdentifier(const nlohmann::json &jsonRPC)
+void TextDocumentPositionParams::setPostion(const nlohmann::json &jsonRPC)
 {
     m_position.line = jsonRPC["line"];
     m_position.character = jsonRPC["character"];
 }
 
-void TextDocumentPositionParams::setPostion(const nlohmann::json &jsonRPC)
+void TextDocumentPositionParams::setTextDocumentIdentifier(const nlohmann::json &jsonRPC)
 {
     auto it = jsonRPC.find("uri");
 
