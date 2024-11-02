@@ -9,13 +9,15 @@ void Trie::insert(const std::string &word)
 
     for (const char &ch : word)
     {
-        if (current->children[ch - 'a'] == nullptr)
+        uint32_t index = ch - 'a';
+
+        if (current->children[index] == nullptr)
         {
             std::shared_ptr<TrieNode> newTrieNode = std::make_shared<TrieNode>();
-            current->children[ch - 'a'] = newTrieNode;
+            current->children[index] = newTrieNode;
         }
 
-        current = current->children[ch - 'a'];
+        current = current->children[index];
     }
 
     current->isLeaf = true;
@@ -41,7 +43,7 @@ std::shared_ptr<TrieNode> Trie::getTrieNode(const std::string &prefix) const
 
     for (const char &ch : prefix)
     {
-        int index = ch - 'a';
+        uint32_t index = ch - 'a';
 
         if (current->children[index] == nullptr)
         {
