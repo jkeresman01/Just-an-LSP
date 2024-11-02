@@ -30,5 +30,14 @@ struct Position
     ///
     //////////////////////////////////////////////////////////////
     uint64_t character;
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Serializes the Position to JSON format
+    ///
+    /// @return Text document position in JSON format
+    ///
+    //////////////////////////////////////////////////////////////
+    nlohmann::json toJson() const { return {{"line", line}, {"character", character}}; }
 };
 } // namespace justanlsp

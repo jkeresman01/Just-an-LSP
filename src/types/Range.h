@@ -1,5 +1,7 @@
 #pragma once
 
+#include <nlohmann/json.hpp>
+
 #include "Position.h"
 
 namespace justanlsp
@@ -30,5 +32,20 @@ struct Range
     ///
     //////////////////////////////////////////////////////////////
     Position end;
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Serializes the Range to JSON format
+    ///
+    /// @return Range in JSON format
+    ///
+    //////////////////////////////////////////////////////////////
+    nlohmann::json toJson() const
+    {
+        return {
+            {"start", start.toJson()},
+            {"end", end.toJson()},
+        };
+    }
 };
 } // namespace justanlsp

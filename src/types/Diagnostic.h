@@ -1,5 +1,6 @@
 #pragma once
 
+#include <nlohmann/json.hpp>
 #include <string>
 
 #include "../enums/DiagnosticSeverity.h"
@@ -29,8 +30,16 @@ class Diagnostic
     ///
     //////////////////////////////////////////////////////////////
     Diagnostic(const Range &range, const DiagnosticSeverity &severity, const std::string &source,
-               const std::string &message)
-        : m_range(range), m_severity(severity), m_source(source), m_message(message){};
+               const std::string &message);
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Serializes Diagnostics item to JSON format
+    ///
+    /// @return Diagnostics item in JSON format
+    ///
+    //////////////////////////////////////////////////////////////
+    nlohmann::json toJson() const;
 
   private:
     //////////////////////////////////////////////////////////////
