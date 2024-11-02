@@ -28,6 +28,7 @@ set(TEST_FILES
     algo/TrieTest.cpp 
     utils/ConvertTest.cpp 
     utils/RequestMethodType.cpp
+    utils/TraceLevelTest.cpp
 )
 
 add_executable(run-tests ${SOURCE_FILES} ${TEST_FILES})
