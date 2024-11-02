@@ -6,8 +6,8 @@
 #include "../messages/request/CompletionRequest.h"
 #include "../messages/request/DidChangeTextDocumentRequest.h"
 #include "../messages/request/DidOpenTextDocumentRequest.h"
-#include "../messages/request/InitializeRequest.h"
 #include "../messages/request/HoverRequest.h"
+#include "../messages/request/InitializeRequest.h"
 #include "../messages/request/ShutdownRequest.h"
 #include "../utils/Logger.h"
 
@@ -117,7 +117,6 @@ class MessageFactory
     {
         return std::make_shared<HoverRequest>(jsonRPC);
     }
-
 };
 
 } // namespace justanlsp
