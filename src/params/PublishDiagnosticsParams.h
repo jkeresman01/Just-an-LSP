@@ -1,5 +1,6 @@
 #pragma once
 
+#include <nlohmann/json.hpp>
 #include <string>
 #include <vector>
 
@@ -10,7 +11,12 @@ namespace justanlsp
 class PublishDiagnosticsParams
 {
   public:
-    // TODO It's self explanatory what I need to do here
+    PublishDiagnosticsParams(const std::string &URI, const std::vector<Diagnostic> &diagnostics);
+
+    nlohmann::json toJson() const;
+
+  private:
+    nlohmann::json dianosticItemsToJson() const;
 
   private:
     std::string m_URI;

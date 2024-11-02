@@ -30,7 +30,27 @@ class NotificationMessage : public Message
     //////////////////////////////////////////////////////////////
     NotificationMessage(const nlohmann::json &jsonRPC);
 
-  private:
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Constructs a NotificationMessage with the specified
+    ///        method
+    ///
+    /// @param method
+    ///
+    //////////////////////////////////////////////////////////////
+    NotificationMessage(const std::string &method);
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Constructs a NotificationMessage with the specified
+    ///        method
+    ///
+    /// @param method
+    ///
+    //////////////////////////////////////////////////////////////
+    nlohmann::json toJson() const override;
+
+  protected:
     //////////////////////////////////////////////////////////////
     ///
     /// @brief The method of the notification, which describes the action or event.

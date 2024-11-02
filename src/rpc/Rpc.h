@@ -3,7 +3,7 @@
 #include <string>
 
 #include "../enums/RequestType.h"
-#include "../messages/response/ResponseMessage.h"
+#include "../messages/Message.h"
 #include "../utils/Convert.h"
 #include "../utils/Logger.h"
 
@@ -14,7 +14,7 @@ class Rpc
   public:
     Rpc() = delete;
 
-    static void send(const ResponseMessage &response) { std::cout << response << std::endl; }
+    static void send(const Message &response) { std::cout << response << std::endl; }
 
     static std::string read()
     {

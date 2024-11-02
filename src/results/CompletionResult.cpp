@@ -10,11 +10,11 @@ CompletionResult::CompletionResult(const std::vector<CompletionItem> &completion
 
 nlohmann::json CompletionResult::toJson() const
 {
-    std::vector<nlohmann::json> completions;
+    std::vector<nlohmann::json> completions(m_completionItems.size());
 
-    for (const auto &completionItem : m_completionItems)
+    for (size_t i = 0; i < completions.size(); ++i)
     {
-        completions.push_back(completionItem.toJson());
+        completions[i] = m_completionItems[i].toJson();
     }
 
     return completions;

@@ -1,15 +1,19 @@
 #include "JustAnLSPReqHandler.h"
 
 #include <cstdint>
+#include <vector>
 
 #include "../enums/TextDocumentSyncKind.h"
+#include "../messages/notification/PublishDiagnosticsNotification.h"
 #include "../messages/response/CompletionResponse.h"
 #include "../messages/response/InitializeResponse.h"
 #include "../messages/response/ShutdownResponse.h"
 #include "../params/DidChangeTextDocumentParams.h"
 #include "../params/DidOpenTextDocumentParams.h"
+#include "../params/PublishDiagnosticsParams.h"
 #include "../rpc/Rpc.h"
 #include "../types/CompletionItem.h"
+#include "../types/Diagnostic.h"
 #include "../types/TextDocumentItem.h"
 #include "JUstAnLSPClientService.h"
 
@@ -43,9 +47,46 @@ void JustAnLSPReqHandler::textDocumentDidOpenReq(
     std::shared_ptr<DidOpenTextDocumentParams> didOpenParams = didOpenTextDocumentReq->getParams();
     std::shared_ptr<TextDocumentItem> textDocumentItem = didOpenParams->getTextDocumentItem();
 
-    m_justAnLSPClient->addDocument(textDocumentItem->getURI(), textDocumentItem->getText());
+    std::string URI = textDocumentItem->getURI();
+    std::string textDocumentContent = textDocumentItem->getText();
+
+    m_justAnLSPClient->addDocument(URI, textDocumentContent);
+
+    std::vector<Diagnostic> diagnostics{
+        {{10, 10}, DiagnosticSeverity::ERROR, "Source is this stuff", "THis is really big error msg!!!"}};
+
+    std::shared_ptr<PublishDiagnosticsParams> diagnosticsParams =
+        std::make_shared<PublishDiagnosticsParams>(URI, diagnostics);
+    PublishDiagnosticsNoticifation publishDiagnostics("textDocument/publishDiagnostics", diagnosticsParams);
+
+    LOG_WARN("Diagnostics format");
+    LOG_WARN(publishDiagnostics.toJson().dump(4));
+
+    Rpc::send(publishDiagnostics);
 
     LOG_INFO("Request with method: textDocument/didOpen was successfully processed");
+}
+
+void JustAnLSPReqHandler::textDocumentDidChangeReq(
+    const std::shared_ptr<DidChangeTextDocumentRequest> &didChangeTextDocumentReq)
+{
+    LOG_INFO("Processing textDocument/didChange request");
+
+    std::shared_ptr<DidChangeTextDocumentParams> didChangeParams = didChangeTextDocumentReq->getParams();
+
+    std::string URI = didChangeParams->getChangedDocumentURI();
+    std::string contentChanges = didChangeParams->getContentChanges();
+
+    m_justAnLSPClient->updateDocumentByURI(URI, contentChanges);
+
+    std::vector<Diagnostic> diagnostics{
+        {{10, 10}, DiagnosticSeverity::ERROR, "Source is this stuff", "THis is really big error msg!!!"}};
+
+    std::shared_ptr<PublishDiagnosticsParams> diagnosticsParams =
+        std::make_shared<PublishDiagnosticsParams>(URI, diagnostics);
+    PublishDiagnosticsNoticifation publishDiagnostics("textDocument/publishDiagnostics", diagnosticsParams);
+
+    Rpc::send(publishDiagnostics);
 }
 
 void JustAnLSPReqHandler::textDocumentCompletionReq(const std::shared_ptr<CompletionRequest> &completionReq)
@@ -62,19 +103,6 @@ void JustAnLSPReqHandler::textDocumentCompletionReq(const std::shared_ptr<Comple
     CompletionResponse completionResponse{"2.0", requestId, {completionItems}};
 
     Rpc::send(completionResponse);
-}
-
-void JustAnLSPReqHandler::textDocumentDidChangeReq(
-    const std::shared_ptr<DidChangeTextDocumentRequest> &didChangeTextDocumentReq)
-{
-    LOG_INFO("Processing textDocument/didChange request");
-
-    std::shared_ptr<DidChangeTextDocumentParams> didChangeParams = didChangeTextDocumentReq->getParams();
-
-    std::string URI = didChangeParams->getChangedDocumentURI();
-    std::string contentChanges = didChangeParams->getContentChanges();
-
-    m_justAnLSPClient->updateDocumentByURI(URI, contentChanges);
 }
 
 void JustAnLSPReqHandler::shutdownReq(const std::shared_ptr<ShutdownRequest> &shutdownRequest)
