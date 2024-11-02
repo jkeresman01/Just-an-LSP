@@ -10,6 +10,7 @@ ServerCapabilities::ServerCapabilities(const TextDocumentSyncKind &textDocumentS
 
 nlohmann::json ServerCapabilities::toJson() const
 {
-    return {{"textDocumentSync", m_textDocumentSyncKind}, {"completionProvider", "{}"}, {"hoverProvider", true}};
+    return {
+        {"textDocumentSync", m_textDocumentSyncKind}, {"completionProvider", "{}"}, {"hoverProvider", true}};
 }
 } // namespace justanlsp
