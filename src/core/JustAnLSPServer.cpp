@@ -18,7 +18,7 @@ JustAnLSPServer::JustAnLSPServer()
 
 JustAnLSPServer::~JustAnLSPServer()
 {
-    LOG_INFO("Tilda Swilton - Successfull shutdown of JustANLSPServer!");
+    LOG_INFO("Tilda Swinton - Successfull shutdown of JustANLSPServer!");
 }
 
 void JustAnLSPServer::run()
