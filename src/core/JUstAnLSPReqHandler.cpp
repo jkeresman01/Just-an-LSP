@@ -60,9 +60,6 @@ void JustAnLSPReqHandler::textDocumentDidOpenReq(
         std::make_shared<PublishDiagnosticsParams>(URI, diagnostics);
     PublishDiagnosticsNoticifation publishDiagnostics("textDocument/publishDiagnostics", diagnosticsParams);
 
-    LOG_WARN("Diagnostics format");
-    LOG_WARN(publishDiagnostics.toJson().dump(4));
-
     Rpc::send(publishDiagnostics);
 
     LOG_INFO("Request with method: textDocument/didOpen was successfully processed");
