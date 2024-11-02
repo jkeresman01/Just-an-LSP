@@ -25,7 +25,5 @@ class Trie
 
   private:
     std::shared_ptr<TrieNode> m_root = std::make_shared<TrieNode>();
-
-    static constexpr uint32_t MAX_CHAR_NO = 26;
 };
 } // namespace justanlsp

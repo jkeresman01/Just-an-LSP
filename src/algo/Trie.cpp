@@ -9,15 +9,12 @@ void Trie::insert(const std::string &word)
 
     for (const char &ch : word)
     {
-        uint32_t index = ch - 'a';
-
-        if (current->children[index] == nullptr)
+        if (current->children.find(ch) == current->children.end())
         {
-            std::shared_ptr<TrieNode> newTrieNode = std::make_shared<TrieNode>();
-            current->children[index] = newTrieNode;
+            current->children[ch] = std::make_shared<TrieNode>();
         }
 
-        current = current->children[index];
+        current = current->children[ch];
     }
 
     current->isLeaf = true;
@@ -26,7 +23,6 @@ void Trie::insert(const std::string &word)
 std::vector<std::string> Trie::getCompletionWords(const std::string &prefix) const
 {
     std::vector<std::string> completionOptions;
-
     std::shared_ptr<TrieNode> node = getTrieNode(prefix);
 
     if (node != nullptr)
@@ -43,14 +39,12 @@ std::shared_ptr<TrieNode> Trie::getTrieNode(const std::string &prefix) const
 
     for (const char &ch : prefix)
     {
-        uint32_t index = ch - 'a';
-
-        if (current->children[index] == nullptr)
+        if (current->children.find(ch) == current->children.end())
         {
             return nullptr;
         }
 
-        current = current->children[index];
+        current = current->children[ch];
     }
 
     return current;
@@ -64,13 +58,9 @@ void Trie::findAllWords(std::shared_ptr<TrieNode> node, const std::string &prefi
         results.push_back(prefix);
     }
 
-    for (size_t i = 0; i < MAX_CHAR_NO; ++i)
+    for (const auto &pair : node->children)
     {
-        if (node->children[i] != nullptr)
-        {
-            char nextChar = 'a' + i;
-            findAllWords(node->children[i], prefix + nextChar, results);
-        }
+        findAllWords(pair.second, prefix + pair.first, results);
     }
 }
 
