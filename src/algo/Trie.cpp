@@ -23,7 +23,7 @@ void Trie::insert(const std::string &word)
     current->isLeaf = true;
 }
 
-std::vector<std::string> Trie::getCompletionWords(const std::string &prefix)
+std::vector<std::string> Trie::getCompletionWords(const std::string &prefix) const
 {
     std::vector<std::string> completionOptions;
 

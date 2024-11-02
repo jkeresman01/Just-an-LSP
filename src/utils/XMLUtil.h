@@ -14,6 +14,7 @@ class XMLUtil
     {
         std::stack<std::string> tags;
         std::regex tagRegex("<(/?)(\\w+)>"); // Match <tag> or </tag>
+
         auto tagsBegin = std::sregex_iterator(xml.begin(), xml.end(), tagRegex);
         auto tagsEnd = std::sregex_iterator();
 

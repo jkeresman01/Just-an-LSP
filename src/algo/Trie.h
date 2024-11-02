@@ -15,7 +15,7 @@ class Trie
 
     void insert(const std::string &word);
 
-    std::vector<std::string> getCompletionWords(const std::string &prefix);
+    std::vector<std::string> getCompletionWords(const std::string &prefix) const;
 
   private:
     std::shared_ptr<TrieNode> getTrieNode(const std::string &prefix) const;
