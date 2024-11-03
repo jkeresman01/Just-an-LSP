@@ -16,7 +16,7 @@ class InitializeResponseTest : public ::testing::Test
     int64_t mockId = 1;
     std::string mockJsonRPC = "2.0";
 
-    InitializeResult initializeResult{{"JustAnLSP", "0.0.0.0.0.1-alpha"}, {TextDocumentSyncKind::FULL}};
+    InitializeResult initializeResult{{"JustAnLSP", "0.0.0.0.0.1-alpha"}, ServerCapabilities(TextDocumentSyncKind::FULL)};
 
     InitializeResponse initializeResponse{mockJsonRPC, mockId, initializeResult};
 };

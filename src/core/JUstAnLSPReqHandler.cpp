@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "../enums/TextDocumentSyncKind.h"
+#include "../capabilities/ServerCapabilities.h"
 #include "../messages/notification/PublishDiagnosticsNotification.h"
 #include "../messages/response/CompletionResponse.h"
 #include "../messages/response/InitializeResponse.h"
@@ -33,7 +34,7 @@ void JustAnLSPReqHandler::initializeReq(const std::shared_ptr<InitializeRequest>
     m_justAnLSPClient->saveInfo(clientInfo);
     m_justAnLSPClient->registerCapabilites(clientCapabilities);
 
-    InitializeResult initializeResult({"JustAnLSP", "0.0.0.0.0.1-alpha"}, {TextDocumentSyncKind::FULL});
+    InitializeResult initializeResult({"JustAnLSP", "0.0.0.0.0.1-alpha"}, ServerCapabilities(TextDocumentSyncKind::FULL));
     InitializeResponse initializeResponse("2.0", initializeRequest->getId(), initializeResult);
 
     Rpc::send(initializeResponse);
