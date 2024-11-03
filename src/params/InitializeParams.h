@@ -32,7 +32,7 @@ class InitializeParams
     /// @param jsonRPC
     ///
     //////////////////////////////////////////////////////////////
-    InitializeParams(const nlohmann::json &jsonInitializeParams);
+    explicit InitializeParams(const nlohmann::json &jsonInitializeParams);
 
     //////////////////////////////////////////////////////////////
     ///

@@ -26,7 +26,7 @@ class ClientCapabilities
     /// @brief Default contructor for ClientCapabilites
     ///
     //////////////////////////////////////////////////////////////
-    ClientCapabilities() = default;
+    explicit ClientCapabilities() = default;
 
     //////////////////////////////////////////////////////////////
     ///

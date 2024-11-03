@@ -28,7 +28,7 @@ class TextDocumentCapabilities
     /// @param jsonRPC
     ///
     //////////////////////////////////////////////////////////////
-    TextDocumentCapabilities(const nlohmann::json &jsonRPC);
+    explicit TextDocumentCapabilities(const nlohmann::json &jsonRPC);
 
     //////////////////////////////////////////////////////////////
     ///

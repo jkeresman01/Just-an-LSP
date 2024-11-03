@@ -26,7 +26,7 @@ class DidChangeTextDocumentParams
     /// @param jsonRPC
     ///
     //////////////////////////////////////////////////////////////
-    DidChangeTextDocumentParams(const nlohmann::json &jsonRPC);
+    explicit DidChangeTextDocumentParams(const nlohmann::json &jsonRPC);
 
     //////////////////////////////////////////////////////////////
     ///

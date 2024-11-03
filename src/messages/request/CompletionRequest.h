@@ -28,7 +28,7 @@ class CompletionRequest : public RequestMessage
     /// @param jsonRPC
     ///
     //////////////////////////////////////////////////////////////
-    CompletionRequest(const nlohmann::json &jsonRPC);
+    explicit CompletionRequest(const nlohmann::json &jsonRPC);
 
     //////////////////////////////////////////////////////////////
     ///

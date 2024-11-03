@@ -23,6 +23,6 @@ class ShutdownRequest : public RequestMessage
     /// @param jsonRPC
     ///
     //////////////////////////////////////////////////////////////
-    ShutdownRequest(const nlohmann::json &jsonRPC) : RequestMessage(jsonRPC){};
+    explicit ShutdownRequest(const nlohmann::json &jsonRPC) : RequestMessage(jsonRPC){};
 };
 } // namespace justanlsp

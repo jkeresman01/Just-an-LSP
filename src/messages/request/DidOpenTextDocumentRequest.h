@@ -25,7 +25,7 @@ class DidOpenTextDocumentRequest : public NotificationMessage
     /// @param jsonRPC
     ///
     //////////////////////////////////////////////////////////////
-    DidOpenTextDocumentRequest(const nlohmann::json &jsonRPC);
+    explicit DidOpenTextDocumentRequest(const nlohmann::json &jsonRPC);
 
     //////////////////////////////////////////////////////////////
     ///

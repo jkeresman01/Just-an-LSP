@@ -26,7 +26,7 @@ class TextDocumentPositionParams
     /// @param jsonRPC
     ///
     //////////////////////////////////////////////////////////////
-    TextDocumentPositionParams(const nlohmann::json &jsonRPC);
+    explicit TextDocumentPositionParams(const nlohmann::json &jsonRPC);
 
     //////////////////////////////////////////////////////////////
     ///

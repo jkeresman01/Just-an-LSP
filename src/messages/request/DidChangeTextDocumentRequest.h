@@ -27,7 +27,7 @@ class DidChangeTextDocumentRequest : public NotificationMessage
     /// @param jsonRPC
     ///
     //////////////////////////////////////////////////////////////
-    DidChangeTextDocumentRequest(const nlohmann::json &jsonRPC);
+    explicit DidChangeTextDocumentRequest(const nlohmann::json &jsonRPC);
 
     //////////////////////////////////////////////////////////////
     ///

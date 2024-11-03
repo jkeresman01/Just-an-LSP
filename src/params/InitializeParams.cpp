@@ -1,11 +1,4 @@
-#include "InitializeParams.h"
-
-#include <string>
-
-#include "../utils/Convert.h"
-#include "../utils/Logger.h"
-#include "../utils/TraceUtil.h"
-
+#include "InitializeParams.h" #include <string> #include "../utils/Convert.h" #include "../utils/Logger.h" #include "../utils/TraceUtil.h"
 namespace justanlsp
 {
 

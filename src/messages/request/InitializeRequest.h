@@ -26,7 +26,7 @@ class InitializeRequest : public RequestMessage
     /// @param jsonRPC
     ///
     //////////////////////////////////////////////////////////////
-    InitializeRequest(const nlohmann::json &jsonRPC);
+    explicit InitializeRequest(const nlohmann::json &jsonRPC);
 
     //////////////////////////////////////////////////////////////
     ///

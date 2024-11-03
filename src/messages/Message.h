@@ -26,7 +26,7 @@ class Message
     /// @param jsonRPC
     ///
     //////////////////////////////////////////////////////////////
-    Message(const std::string &jsonRPC) : m_jsonRPC(jsonRPC){};
+    explicit Message(const std::string &jsonRPC) : m_jsonRPC(jsonRPC){};
 
     //////////////////////////////////////////////////////////////
     ///

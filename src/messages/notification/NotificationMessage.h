@@ -28,7 +28,7 @@ class NotificationMessage : public Message
     /// @param jsonRPC
     ///
     //////////////////////////////////////////////////////////////
-    NotificationMessage(const nlohmann::json &jsonRPC);
+    explicit NotificationMessage(const nlohmann::json &jsonRPC);
 
     //////////////////////////////////////////////////////////////
     ///

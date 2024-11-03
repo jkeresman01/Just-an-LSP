@@ -9,6 +9,6 @@ namespace justanlsp
 class HoverParams : public TextDocumentPositionParams
 {
   public:
-    HoverParams(const nlohmann::json &jsonRPC) : TextDocumentPositionParams(jsonRPC){};
+    explicit HoverParams(const nlohmann::json &jsonRPC) : TextDocumentPositionParams(jsonRPC){};
 };
 } // namespace justanlsp

@@ -25,7 +25,7 @@ class TextDocumentItem
     /// @param jsonRPC The JSON object containing the TextDocumentItem information.
     ///
     //////////////////////////////////////////////////////////////
-    TextDocumentItem(const nlohmann::json &jsonRPC);
+    explicit TextDocumentItem(const nlohmann::json &jsonRPC);
 
     //////////////////////////////////////////////////////////////
     ///

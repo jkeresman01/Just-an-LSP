@@ -11,7 +11,7 @@ namespace justanlsp
 class HoverRequest : public RequestMessage
 {
   public:
-    HoverRequest(const nlohmann::json &jsonRPC);
+    explicit HoverRequest(const nlohmann::json &jsonRPC);
 
     std::shared_ptr<HoverParams> getParams() const { return m_hoverParams; };
 
