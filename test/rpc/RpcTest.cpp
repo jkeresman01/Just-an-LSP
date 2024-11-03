@@ -65,8 +65,6 @@ TEST_F(RpcTest, WillSendMessage)
     std::string expectedOutput =
         "Content-Length: " + std::to_string(expectedContent.size()) + "\r\n\r\n" + expectedContent + "\n\n";
 
-    std::cout << "OUTPUT" << expectedOutput << std::endl;
-
     EXPECT_EQ(output, expectedOutput);
 }
 
