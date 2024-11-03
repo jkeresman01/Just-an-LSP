@@ -18,7 +18,7 @@ jobs:
 
     - name: Run static analysis with cppcheck
       run: |
-        cppcheck --enable=all . \
+        cppcheck src/ --enable=all . \
         --suppress=missingIncludeSystem 2> cppcheck-report.txt
         if [ -s cppcheck-report.txt ]; then
           echo "Reported issue: "
