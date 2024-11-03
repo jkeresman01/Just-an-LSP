@@ -44,6 +44,7 @@ set(TEST_FILES
     Test.cpp
     algo/TrieTest.cpp 
     rpc/RpcTest.cpp 
+    messages/ResponseMessageTest.cpp
     messages/CompletionResponseTest.cpp
     messages/InitializeResponseTest.cpp
     utils/ConvertTest.cpp 

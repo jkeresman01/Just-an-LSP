@@ -3,7 +3,7 @@
 #include <nlohmann/json.hpp>
 #include <string>
 
-#include "../errors/ErrorCodes.h"
+#include "../../errors/ErrorCodes.h"
 
 namespace justanlsp
 {
@@ -37,6 +37,24 @@ class ResponseError
     //////////////////////////////////////////////////////////////
     ResponseError(const ErrorCodes &errorCode, const std::string &message);
 
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Accessor method for error code
+    ///
+    /// @return Error code
+    ///
+    //////////////////////////////////////////////////////////////
+    ErrorCodes getErrorCode() const { return m_errorCode; }; 
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Accessor method for error message
+    ///
+    /// @return Error message
+    ///
+    //////////////////////////////////////////////////////////////
+    std::string getErrorMessage() const { return m_message; };
+    
     //////////////////////////////////////////////////////////////
     ///
     /// @brief String representation of ResponseError
