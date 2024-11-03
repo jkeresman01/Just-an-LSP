@@ -44,7 +44,7 @@ class ResponseError
     /// @return Error code
     ///
     //////////////////////////////////////////////////////////////
-    ErrorCodes getErrorCode() const { return m_errorCode; }; 
+    ErrorCodes getErrorCode() const { return m_errorCode; };
 
     //////////////////////////////////////////////////////////////
     ///
@@ -54,7 +54,7 @@ class ResponseError
     ///
     //////////////////////////////////////////////////////////////
     std::string getErrorMessage() const { return m_message; };
-    
+
     //////////////////////////////////////////////////////////////
     ///
     /// @brief String representation of ResponseError
