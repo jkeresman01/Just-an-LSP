@@ -13,8 +13,6 @@ InitializeParams::InitializeParams(const nlohmann::json &jsonInitializeParams)
 {
     setProccessId(jsonInitializeParams);
     setClientInfo(jsonInitializeParams);
-    setLocale(jsonInitializeParams);
-    setTraceLevel(jsonInitializeParams);
 }
 
 void InitializeParams::setProccessId(const nlohmann::json &jsonRPC)

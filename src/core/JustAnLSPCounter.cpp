@@ -8,7 +8,7 @@ namespace justanlsp
 {
 JustAnLSPCounter::JustAnLSPCounter()
 {
-    m_justAnLSPCounters.reserve(static_cast<size_t>(RequestType::COUNT));
+    m_justAnLSPCounters.resize(static_cast<size_t>(RequestType::COUNT), 0);
 }
 
 void JustAnLSPCounter::increment(RequestType requestType)
