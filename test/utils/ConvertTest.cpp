@@ -15,7 +15,7 @@ TEST_F(ConverterTest, WillConvertValidInteger)
     std::string input = "42";
 
     // WHEN
-    int result = Converter::convert<uint16_t>(input);
+    uint16_t result = Converter::convert<uint16_t>(input);
 
     // THEN
     EXPECT_EQ(result, 42);
@@ -51,7 +51,7 @@ TEST_F(ConverterTest, WillConvertZero)
     std::string input = "0";
 
     // WHEN
-    int result = Converter::convert<int32_t>(input);
+    int32_t result = Converter::convert<int32_t>(input);
 
     // THEN
     EXPECT_EQ(result, 0);
@@ -63,7 +63,7 @@ TEST_F(ConverterTest, WillConvertWithWhitespace)
     std::string input = "   99  ";
 
     // WHEN
-    int result = Converter::convert<uint64_t>(input);
+    uint64_t result = Converter::convert<uint64_t>(input);
 
     // THEN
     EXPECT_EQ(result, 99);
