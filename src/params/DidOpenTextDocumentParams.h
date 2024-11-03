@@ -27,7 +27,7 @@ class DidOpenTextDocumentParams
     /// @param jsonRPC
     ///
     //////////////////////////////////////////////////////////////
-    DidOpenTextDocumentParams(const nlohmann::json &jsonRPC);
+    explicit DidOpenTextDocumentParams(const nlohmann::json &jsonRPC);
 
     //////////////////////////////////////////////////////////////
     ///

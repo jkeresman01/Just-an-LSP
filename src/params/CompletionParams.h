@@ -19,7 +19,7 @@ class CompletionParams
     /// @param jsonRPC
     ///
     //////////////////////////////////////////////////////////////
-    CompletionParams(const nlohmann::json &jsonRPC);
+    explicit CompletionParams(const nlohmann::json &jsonRPC);
 
     //////////////////////////////////////////////////////////////
     ///

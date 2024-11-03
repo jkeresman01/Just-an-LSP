@@ -28,7 +28,7 @@ class CompletionResult
     /// @param completionItems
     ///
     //////////////////////////////////////////////////////////////
-    CompletionResult(const std::vector<CompletionItem> &completionItems);
+    explicit CompletionResult(const std::vector<CompletionItem> &completionItems);
 
     //////////////////////////////////////////////////////////////
     ///

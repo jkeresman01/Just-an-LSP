@@ -38,7 +38,7 @@ class NotificationMessage : public Message
     /// @param method
     ///
     //////////////////////////////////////////////////////////////
-    NotificationMessage(const std::string &method);
+    explicit NotificationMessage(const std::string &method);
 
     //////////////////////////////////////////////////////////////
     ///
