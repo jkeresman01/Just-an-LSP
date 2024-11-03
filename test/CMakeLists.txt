@@ -36,10 +36,14 @@ set(SOURCE_FILES
     ../src/messages/response/CompletionResponse.cpp
     ../src/messages/response/InitializeResponse.cpp
     ../src/messages/response/ResponseMessage.cpp
+    ../src/messages/response/ResponseError.cpp
+    ../src/messages/notification/NotificationMessage.cpp
+    ../src/messages/notification/PublishDiagnosticsNotification.cpp
+    ../src/params/PublishDiagnosticsParams.cpp
     ../src/results/CompletionResult.cpp
     ../src/results/InitializeResult.cpp
     ../src/capabilities/ServerCapabilities.cpp
-    ../src/messages/response/ResponseError.cpp
+    ../src/types/Diagnostic.cpp
 )
 
 set(TEST_FILES
@@ -52,6 +56,7 @@ set(TEST_FILES
     messages/CompletionResponseTest.cpp
     messages/InitializeResponseTest.cpp
     messages/ShutdownResponseTest.cpp
+    messages/PublishDiagnosticsTest.cpp
     utils/ConvertTest.cpp 
     utils/RequestMethodType.cpp
     utils/MessageUtilTest.cpp

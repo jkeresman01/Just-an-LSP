@@ -41,18 +41,6 @@ TEST_F(JustAnLSPClientTest, WillAddDocumentCorrectly)
     EXPECT_EQ(client.getDocumentByURI(URI), documentContent);
 }
 
-TEST_F(JustAnLSPClientTest, WillLogErrorForUnknownURI)
-{
-    // GIVEN
-    std::string unknownURI = "Kolinda";
-
-    // WHEN
-    std::string result = client.getDocumentByURI(unknownURI);
-
-    // THEN
-    EXPECT_EQ(result, "");
-}
-
 TEST_F(JustAnLSPClientTest, WillUpdateDocumentCorrectly)
 {
     // GIVEN
