@@ -2,9 +2,9 @@
 #include <nlohmann/json.hpp>
 #include <sstream>
 
+#include "../../src/errors/ErrorCodes.h"
 #include "../../src/messages/response/ResponseError.h" // Assuming this is where ResponseError is defined
 #include "../../src/messages/response/ResponseMessage.h"
-#include "../../src/errors/ErrorCodes.h"
 
 using json = nlohmann::json;
 

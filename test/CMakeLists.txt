@@ -47,6 +47,7 @@ set(TEST_FILES
     messages/ResponseMessageTest.cpp
     messages/CompletionResponseTest.cpp
     messages/InitializeResponseTest.cpp
+    messages/ShutdownResponseTest.cpp
     utils/ConvertTest.cpp 
     utils/RequestMethodType.cpp
     utils/MessageUtilTest.cpp
