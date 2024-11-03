@@ -35,7 +35,7 @@ class Message
     /// @return Returns serialized Message in JSON format
     ///
     //////////////////////////////////////////////////////////////
-    virtual nlohmann::json toJson() const { return {"jsonrpc", m_jsonRPC}; }
+    virtual nlohmann::json toJson() const { return {{"jsonrpc", m_jsonRPC}}; }
 
     friend std::ostream &operator<<(std::ostream &os, const Message &mesage)
     {
