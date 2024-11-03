@@ -4,7 +4,7 @@ namespace justanlsp
 {
 
 PublishDiagnosticsNoticifation::PublishDiagnosticsNoticifation(
-    std::string method, const std::shared_ptr<PublishDiagnosticsParams> &diagnosticsParams)
+    std::string &method, const std::shared_ptr<PublishDiagnosticsParams> &diagnosticsParams)
     : NotificationMessage(method), m_diagnosticsParams(diagnosticsParams)
 {
 }
