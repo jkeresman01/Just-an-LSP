@@ -32,8 +32,11 @@ include_directories(
 set(SOURCE_FILES
     ../src/algo/Trie.cpp 
     ../src/messages/response/CompletionResponse.cpp
+    ../src/messages/response/InitializeResponse.cpp
     ../src/messages/response/ResponseMessage.cpp
     ../src/results/CompletionResult.cpp
+    ../src/results/InitializeResult.cpp
+    ../src/capabilities/ServerCapabilities.cpp
     ../src/messages/response/ResponseError.cpp
 )
 
@@ -42,6 +45,7 @@ set(TEST_FILES
     algo/TrieTest.cpp 
     rpc/RpcTest.cpp 
     messages/CompletionResponseTest.cpp
+    messages/InitializeResponseTest.cpp
     utils/ConvertTest.cpp 
     utils/RequestMethodType.cpp
     utils/MessageUtilTest.cpp
