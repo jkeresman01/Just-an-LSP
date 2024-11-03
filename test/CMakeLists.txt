@@ -37,6 +37,7 @@ set(SOURCE_FILES
 set(TEST_FILES
     Test.cpp
     algo/TrieTest.cpp 
+    rpc/RpcTest.cpp 
     utils/ConvertTest.cpp 
     utils/RequestMethodType.cpp
     utils/MessageUtilTest.cpp
