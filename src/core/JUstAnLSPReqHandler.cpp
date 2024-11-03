@@ -115,6 +115,9 @@ void JustAnLSPReqHandler::textDocumenHoverReq(const std::shared_ptr<HoverRequest
 
     std::string document = m_justAnLSPClient->getDocumentByURI(URI);
 
+    (void)position;
+    (void)document;
+
     // TODO hover logic
 }
 
