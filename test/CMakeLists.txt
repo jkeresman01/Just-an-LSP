@@ -31,6 +31,7 @@ include_directories(
 
 set(SOURCE_FILES
     ../src/algo/Trie.cpp 
+    ../src/core/JustAnLSPCounter.cpp
     ../src/messages/response/CompletionResponse.cpp
     ../src/messages/response/InitializeResponse.cpp
     ../src/messages/response/ResponseMessage.cpp
@@ -43,6 +44,7 @@ set(SOURCE_FILES
 set(TEST_FILES
     Test.cpp
     algo/TrieTest.cpp 
+    core/JustAnLSPCounterTest.cpp 
     rpc/RpcTest.cpp 
     messages/ResponseMessageTest.cpp
     messages/CompletionResponseTest.cpp
