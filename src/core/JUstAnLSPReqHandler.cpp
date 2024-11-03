@@ -104,6 +104,18 @@ void JustAnLSPReqHandler::textDocumentCompletionReq(const std::shared_ptr<Comple
     Rpc::send(completionResponse);
 }
 
+void JustAnLSPReqHandler::textDocumenHoverReq(const std::shared_ptr<HoverRequest> &hoverTextDocumentReq)
+{
+    std::shared_ptr<HoverParams> hoverParams = hoverTextDocumentReq->getParams();
+
+    std::string URI = hoverParams->getTextDocumentIdentifier().URI;
+    Position position = hoverParams->getPostion();
+
+    std::string document = m_justAnLSPClient->getDocumentByURI(URI);
+
+    // TODO hover logic
+}
+
 void JustAnLSPReqHandler::shutdownReq(const std::shared_ptr<ShutdownRequest> &shutdownRequest)
 {
     LOG_INFO("Processing shutdown request");

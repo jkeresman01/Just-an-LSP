@@ -10,8 +10,8 @@
 #include "../enums/TextDocumentSyncKind.h"
 #include "../factories/MessageFactory.h"
 #include "../messages/request/DidChangeTextDocumentRequest.h"
-#include "../messages/request/ShutdownRequest.h"
 #include "../messages/request/HoverRequest.h"
+#include "../messages/request/ShutdownRequest.h"
 #include "../messages/response/CompletionResponse.h"
 #include "../messages/response/ResponseMessage.h"
 #include "../params/InitializeParams.h"
@@ -166,6 +166,8 @@ void JustAnLSPFacade::handleTextDocumentHoverRequest(const nlohmann::json &jsonR
     ensureNoReqIsProcessedAfterShutdown(jsonRPC);
 
     std::shared_ptr<HoverRequest> hoverRequest = MessageFactory::createHoverReq(jsonRPC);
+
+    m_justAnLSPReqHandler->textDocumenHoverReq(hoverRequest);
 }
 
 void JustAnLSPFacade::ensureNoReqIsProcessedAfterShutdown(const nlohmann::json &jsonRPC)

@@ -5,6 +5,7 @@
 #include "../messages/request/CompletionRequest.h"
 #include "../messages/request/DidChangeTextDocumentRequest.h"
 #include "../messages/request/DidOpenTextDocumentRequest.h"
+#include "../messages/request/HoverRequest.h"
 #include "../messages/request/InitializeRequest.h"
 #include "../messages/request/ShutdownRequest.h"
 #include "JustAnLSPClient.h"
@@ -80,6 +81,15 @@ class JustAnLSPReqHandler
     //////////////////////////////////////////////////////////////
     void textDocumentDidChangeReq(
         const std::shared_ptr<DidChangeTextDocumentRequest> &didChangeTextDocumentReq);
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Handles textDocument/hover request
+    ///
+    /// @param textDocument/hover  request
+    ///
+    //////////////////////////////////////////////////////////////
+    void textDocumenHoverReq(const std::shared_ptr<HoverRequest> &hoverTextDocuementReq);
 
   private:
     //////////////////////////////////////////////////////////////
