@@ -10,7 +10,7 @@ include(FetchContent)
 FetchContent_Declare(
     nlohmann_json
     GIT_REPOSITORY https://github.com/nlohmann/json.git
-    GIT_TAG v3.10.5 # Specify the version you need
+    GIT_TAG v3.10.5
 )
 FetchContent_MakeAvailable(nlohmann_json)
 
@@ -29,15 +29,19 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/../src/utils
 )
 
-# Source and test files
 set(SOURCE_FILES
     ../src/algo/Trie.cpp 
+    ../src/messages/response/CompletionResponse.cpp
+    ../src/messages/response/ResponseMessage.cpp
+    ../src/results/CompletionResult.cpp
+    ../src/messages/response/ResponseError.cpp
 )
 
 set(TEST_FILES
     Test.cpp
     algo/TrieTest.cpp 
     rpc/RpcTest.cpp 
+    messages/CompletionResponseTest.cpp
     utils/ConvertTest.cpp 
     utils/RequestMethodType.cpp
     utils/MessageUtilTest.cpp
