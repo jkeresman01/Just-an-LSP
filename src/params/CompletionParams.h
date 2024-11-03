@@ -30,7 +30,7 @@ class CompletionParams
     Position getPosition() const { return m_position; };
 
     //////////////////////////////////////////////////////////////
-    ///
+    /// NotificationMessage
     /// @brief Accessor method for text document URI on which
     ///        completion is requested
     ///
