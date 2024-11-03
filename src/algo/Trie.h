@@ -1,10 +1,10 @@
 #pragma once
 
-#include "TrieNode.h"
-
 #include <memory>
 #include <string>
 #include <vector>
+
+#include "TrieNode.h"
 
 namespace justanlsp
 {

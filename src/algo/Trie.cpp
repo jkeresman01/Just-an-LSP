@@ -1,4 +1,5 @@
 #include "Trie.h"
+
 #include <memory>
 
 namespace justanlsp
