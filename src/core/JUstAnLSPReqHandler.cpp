@@ -12,6 +12,7 @@
 #include "../params/DidChangeTextDocumentParams.h"
 #include "../params/DidOpenTextDocumentParams.h"
 #include "../params/PublishDiagnosticsParams.h"
+#include "../results/CompletionResult.h"
 #include "../rpc/Rpc.h"
 #include "../types/CompletionItem.h"
 #include "../types/Diagnostic.h"
@@ -101,7 +102,8 @@ void JustAnLSPReqHandler::textDocumentCompletionReq(const std::shared_ptr<Comple
 
     int64_t requestId = completionReq->getId();
 
-    CompletionResponse completionResponse{"2.0", requestId, {completionItems}};
+    CompletionResult completionResult(completionItems);
+    CompletionResponse completionResponse{"2.0", requestId, completionResult};
 
     Rpc::send(completionResponse);
 }

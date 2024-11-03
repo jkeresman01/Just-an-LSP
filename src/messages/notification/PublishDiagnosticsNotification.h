@@ -12,7 +12,7 @@ namespace justanlsp
 class PublishDiagnosticsNoticifation : public NotificationMessage
 {
   public:
-    PublishDiagnosticsNoticifation(std::string &method,
+    PublishDiagnosticsNoticifation(const std::string &method,
                                    const std::shared_ptr<PublishDiagnosticsParams> &diagnosticsParams);
     nlohmann::json toJson() const override;
 
