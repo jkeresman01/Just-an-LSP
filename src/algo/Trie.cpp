@@ -10,11 +10,7 @@ void Trie::insert(const std::string &word)
 
     for (const char &ch : word)
     {
-        if (current->children.find(ch) == current->children.end())
-        {
-            current->children[ch] = std::make_shared<TrieNode>();
-        }
-
+        current->children.try_emplace(ch, std::make_shared<TrieNode>());
         current = current->children[ch];
     }
 
