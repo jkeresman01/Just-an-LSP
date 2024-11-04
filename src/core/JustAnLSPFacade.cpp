@@ -6,6 +6,7 @@
 #include <memory>
 #include <vector>
 
+#include "../enums/ExitStatus.h"
 #include "../enums/RequestType.h"
 #include "../enums/TextDocumentSyncKind.h"
 #include "../factories/MessageFactory.h"
@@ -148,12 +149,12 @@ void JustAnLSPFacade::handleExitRequest(const nlohmann::json &jsonRPC)
     if (isShutdownReqReceived)
     {
         LOG_INFO("Exiting with status code 0 (successful shutdown)");
-        std::exit(0);
+        std::exit(ExitStatus::SUCCESS);
     }
     else
     {
         LOG_ERROR("Exiting with status code 1 (shutdown not received)");
-        std::exit(1);
+        std::exit(ExitStatus::FAILURE);
     }
 }
 
