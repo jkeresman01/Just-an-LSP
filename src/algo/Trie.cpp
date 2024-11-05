@@ -8,7 +8,7 @@ void Trie::insert(const std::string &word)
 {
     std::shared_ptr<TrieNode> current = m_root;
 
-    for (const char &ch : word)
+    for (const char ch : word)
     {
         current->children.try_emplace(ch, std::make_shared<TrieNode>());
         current = current->children[ch];
@@ -34,7 +34,7 @@ std::shared_ptr<TrieNode> Trie::getTrieNode(const std::string &prefix) const
 {
     std::shared_ptr<TrieNode> current = m_root;
 
-    for (const char &ch : prefix)
+    for (const char ch : prefix)
     {
         if (current->children.find(ch) == current->children.end())
         {
