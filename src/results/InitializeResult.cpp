@@ -20,9 +20,7 @@ nlohmann::json InitializeResult::toJson() const
              {{"textDocumentSync", m_serverCapabilities.toJson()},
               {"hoverProvider", true},
               {"completionProvider",
-               {
-                   {"resolveProvider", false},
-               }}}}};
+               {{"resolveProvider", false}, {"completionItem", {{"snippetSupport", true}}}}}}}};
 }
 
 std::string InitializeResult::toString() const
