@@ -23,8 +23,10 @@ void JustAnLSPErrorHandler::handleParseError(int64_t id)
 {
     LOG_INFO("Handling parse error");
 
-    ResponseError parseError{ErrorCodes::PARSE_ERROR,
-                             "There was an parse error during processing of request!"};
+    ResponseError parseError = ResponseError::Builder()
+                                   .withErrorCode(ErrorCodes::PARSE_ERROR)
+                                   .withErrorMessage("There was an parse error during processing of request!")
+                                   .build();
 
     handleError(parseError, id);
 }
