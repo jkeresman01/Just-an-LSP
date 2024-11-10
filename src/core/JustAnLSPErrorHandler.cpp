@@ -11,8 +11,10 @@ void JustAnLSPErrorHandler::handleServerNotInitalizedError(int64_t id)
 {
     LOG_INFO("Handling server not initialized error");
 
-    ResponseError serverNotInitializedError{ErrorCodes::SERVER_NOT_INITIALIZED,
-                                            "Received request before initialization"};
+    ResponseError serverNotInitializedError = ResponseError::Builder()
+                                                  .withErrorCode(ErrorCodes::SERVER_NOT_INITIALIZED)
+                                                  .withErrorMessage("Received request before initialization")
+                                                  .build();
 
     handleError(serverNotInitializedError, id);
 }
@@ -31,7 +33,10 @@ void JustAnLSPErrorHandler::handleMethodNotFoundError(int64_t id)
 {
     LOG_INFO("Handling method not found error");
 
-    ResponseError methodNotFoundError{ErrorCodes::METHOD_NOT_FOUND, "Didn't find method for given request"};
+    ResponseError methodNotFoundError = ResponseError::Builder()
+                                            .withErrorCode(ErrorCodes::METHOD_NOT_FOUND)
+                                            .withErrorMessage("Didn't find method for given request")
+                                            .build();
 
     handleError(methodNotFoundError, id);
 }
@@ -40,7 +45,10 @@ void JustAnLSPErrorHandler::handleInternalError(int64_t id)
 {
     LOG_INFO("Handling internal server error");
 
-    ResponseError internalServerError{ErrorCodes::INTERNAL_ERROR, "Internal error happened"};
+    ResponseError internalServerError = ResponseError::Builder()
+                                            .withErrorCode(ErrorCodes::INTERNAL_ERROR)
+                                            .withErrorMessage("Internal error happened")
+                                            .build();
 
     handleError(internalServerError, id);
 }
@@ -49,7 +57,10 @@ void JustAnLSPErrorHandler::handleReceivedReqAfterShutdownError(int64_t id)
 {
     LOG_INFO("Handling invalid request error");
 
-    ResponseError invalidRequestError{ErrorCodes::INVALID_REQUEST, "Received request after shutdown"};
+    ResponseError invalidRequestError = ResponseError::Builder()
+                                            .withErrorCode(ErrorCodes::INVALID_REQUEST)
+                                            .withErrorMessage("Received request after shutdown")
+                                            .build();
 
     handleError(invalidRequestError, id);
 }

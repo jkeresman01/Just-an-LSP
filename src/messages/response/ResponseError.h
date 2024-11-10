@@ -37,7 +37,7 @@ class ResponseError
     /// @return Error code
     ///
     //////////////////////////////////////////////////////////////
-    ErrorCodes getErrorCode() const { return m_errorCode; };
+    ErrorCodes getErrorCode() const { return m_errorCode; }
 
     //////////////////////////////////////////////////////////////
     ///
@@ -46,7 +46,7 @@ class ResponseError
     /// @return Error message
     ///
     //////////////////////////////////////////////////////////////
-    std::string getErrorMessage() const { return m_message; };
+    std::string getErrorMessage() const { return m_message; }
 
     //////////////////////////////////////////////////////////////
     ///
@@ -59,12 +59,41 @@ class ResponseError
 
     ///////////////////////////////////////////////////////////////
     ///
-    /// @brief Sereializes ResponseEror to JSON format
+    /// @brief Sereializes ResponseError to JSON format
     ///
-    /// @return ResponseError in JSON formt
+    /// @return ResponseError in JSON format
     ///
     //////////////////////////////////////////////////////////////
     nlohmann::json toJson() const;
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @class Builder
+    ///
+    /// @brief Builder class for constructing ResponseError instances.
+    ///
+    //////////////////////////////////////////////////////////////
+    class Builder
+    {
+      public:
+        Builder &withErrorCode(const ErrorCodes &errorCode)
+        {
+            m_errorCode = errorCode;
+            return *this;
+        }
+
+        Builder &withErrorMessage(const std::string &message)
+        {
+            m_message = message;
+            return *this;
+        }
+
+        ResponseError build() const { return ResponseError(m_errorCode, m_message); }
+
+      private:
+        ErrorCodes m_errorCode;
+        std::string m_message;
+    };
 
   private:
     //////////////////////////////////////////////////////////////
