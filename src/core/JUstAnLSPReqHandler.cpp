@@ -35,8 +35,14 @@ void JustAnLSPReqHandler::initializeReq(const std::shared_ptr<InitializeRequest>
     m_justAnLSPClient->saveInfo(clientInfo);
     m_justAnLSPClient->registerCapabilites(clientCapabilities);
 
-    InitializeResult initializeResult({"JustAnLSP", "0.0.0.0.0.1-alpha"},
-                                      ServerCapabilities(TextDocumentSyncKind::FULL));
+    ServerCapabilities serverCapabilites = ServerCapabilities::Builder()
+                                               .withTextDocumentSyncKind(TextDocumentSyncKind::FULL)
+                                               .withHoverSupport(true)
+                                               .withSnippetSupport(true)
+                                               .withCompletionSupport(true)
+                                               .build();
+
+    InitializeResult initializeResult({"JustAnLSP", "0.0.0.0.0.1-alpha"}, serverCapabilites);
     InitializeResponse initializeResponse("2.0", initializeRequest->getId(), initializeResult);
 
     Rpc::send(initializeResponse);

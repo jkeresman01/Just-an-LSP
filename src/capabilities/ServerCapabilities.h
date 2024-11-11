@@ -24,13 +24,58 @@ class ServerCapabilities
     // TODO rest of the capilites (only text is provided for now)
 
   public:
-    explicit ServerCapabilities(const TextDocumentSyncKind &textDocumentSyncKind);
+    ServerCapabilities(const TextDocumentSyncKind &textDocumentSyncKind, bool areSnippetsSupported,
+                       bool isHoverSupported, bool areComletionsSupported);
+
+    class Builder
+    {
+      public:
+        Builder &withTextDocumentSyncKind(const TextDocumentSyncKind &textDocuemntSyncKind)
+        {
+            m_textDocumentSyncKind = textDocuemntSyncKind;
+            return *this;
+        }
+
+        Builder &withSnippetSupport(bool areSnippetsSupported)
+        {
+            m_areSnippetsSupported = areSnippetsSupported;
+            return *this;
+        }
+
+        Builder &withHoverSupport(bool isHoverSupported)
+        {
+            m_isHoverSupported = isHoverSupported;
+            return *this;
+        }
+
+        Builder &withCompletionSupport(bool areCompletionsSupported)
+        {
+            m_areCompletionsSupported = areCompletionsSupported;
+            return *this;
+        }
+
+        ServerCapabilities build() const
+        {
+            return ServerCapabilities(m_textDocumentSyncKind, m_areSnippetsSupported, m_isHoverSupported,
+                                      m_areCompletionsSupported);
+        }
+
+      private:
+        TextDocumentSyncKind m_textDocumentSyncKind;
+        bool m_areSnippetsSupported;
+        bool m_areCompletionsSupported;
+        bool m_isHoverSupported;
+    };
 
     nlohmann::json toJson() const;
 
   private:
     TextDocumentSyncKind m_textDocumentSyncKind;
+    bool m_areSnippetsSupported;
+    bool m_areCompletionsSupported;
+    bool m_isHoverSupported;
 
-    CompletionProviderT m_completionProvider;
+    // TODO
+    /* CompletionProviderT m_completionProvider; */
 };
 } // namespace justanlsp

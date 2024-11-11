@@ -3,8 +3,11 @@
 namespace justanlsp
 {
 
-ServerCapabilities::ServerCapabilities(const TextDocumentSyncKind &textDocumentSyncKind)
-    : m_textDocumentSyncKind(textDocumentSyncKind)
+ServerCapabilities::ServerCapabilities(const TextDocumentSyncKind &textDocumentSyncKind,
+                                       bool areSnippetsSupported, bool isHoverSupported,
+                                       bool areComletionsSupported)
+    : m_textDocumentSyncKind(textDocumentSyncKind), m_areSnippetsSupported(areSnippetsSupported),
+      m_areCompletionsSupported(areSnippetsSupported), m_isHoverSupported(isHoverSupported)
 {
 }
 
