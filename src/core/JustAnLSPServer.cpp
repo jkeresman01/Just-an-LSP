@@ -11,16 +11,6 @@
 namespace justanlsp
 {
 
-JustAnLSPServer::JustAnLSPServer()
-{
-    LOG_INFO("Instance of JustAnLSP server successfully created");
-}
-
-JustAnLSPServer::~JustAnLSPServer()
-{
-    LOG_INFO("Tilda Swinton - Successfull shutdown of JustANLSPServer!");
-}
-
 void JustAnLSPServer::run()
 {
     LOG_INFO("JustAnLSP server successfully started");
