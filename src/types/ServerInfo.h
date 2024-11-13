@@ -19,14 +19,14 @@ struct ServerInfo
 {
     //////////////////////////////////////////////////////////////
     ///
-    /// @brief The name of the server as defined by the server
+    /// @brief The name of the server as defined by the JustAnLSP server
     ///
     //////////////////////////////////////////////////////////////
     std::string name;
 
     //////////////////////////////////////////////////////////////
     ///
-    /// @brief The Server's version as defined by the server
+    /// @brief The Server's version as defined by the JustAnLSP server
     ///
     //////////////////////////////////////////////////////////////
     std::string version;
