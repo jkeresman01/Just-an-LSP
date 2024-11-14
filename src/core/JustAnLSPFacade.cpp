@@ -171,6 +171,12 @@ void JustAnLSPFacade::handleTextDocumentHoverRequest(const nlohmann::json &jsonR
     m_justAnLSPReqHandler->textDocumenHoverReq(hoverRequest);
 }
 
+void handleTextDocumentCodeActionRequest(const nlohmann::json &request)
+{
+    //TODO
+   (void)request; 
+}
+
 void JustAnLSPFacade::ensureNoReqIsProcessedAfterShutdown(const nlohmann::json &jsonRPC)
 {
     bool isShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
