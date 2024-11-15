@@ -37,17 +37,3 @@ vim.api.nvim_create_autocmd("FileType", {
     end
 
 })
-
-```
-Afterwards you can check that the server is attached to the buffer:
-
-```Lua
-:lua =vim.lsp.get_clients()
-```
-
-
-
-
-
-
-
