@@ -1,12 +1,11 @@
 #pragma once
 
-#include <nlohmann/json.hpp>
-
 #include <memory>
 #include <string>
+#include <nlohmann/json.hpp>
 
-#include "../messages/response/ResponseMessage.h"
 #include "JustAnLSPFacade.h"
+#include "../messages/response/ResponseMessage.h"
 
 namespace justanlsp
 {

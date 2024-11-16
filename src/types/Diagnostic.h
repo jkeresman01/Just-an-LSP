@@ -1,10 +1,10 @@
 #pragma once
 
-#include <nlohmann/json.hpp>
 #include <string>
+#include <nlohmann/json.hpp>
 
-#include "../enums/DiagnosticSeverity.h"
 #include "Range.h"
+#include "../enums/DiagnosticSeverity.h"
 
 namespace justanlsp
 {

@@ -1,11 +1,11 @@
 #pragma once
 
-#include "../capabilities/ClientCapabilites.h"
-#include "../types/ClientInfo.h"
-
 #include <memory>
 #include <string>
 #include <unordered_map>
+
+#include "../types/ClientInfo.h"
+#include "../capabilities/ClientCapabilites.h"
 
 namespace justanlsp
 {

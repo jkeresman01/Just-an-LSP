@@ -1,16 +1,15 @@
 #pragma once
 
+#include <memory>
+#include <string>
+#include <nlohmann/json.hpp>
+
 #include "JustAnLSPClient.h"
 #include "JustAnLSPErrorHandler.h"
 #include "JustAnLSPReqHandler.h"
-
-#include <memory>
-#include <nlohmann/json.hpp>
-#include <string>
-
-#include "../messages/response/ResponseMessage.h"
 #include "JustAnLSPClient.h"
 #include "JustAnLSPCounter.h"
+#include "../messages/response/ResponseMessage.h"
 
 namespace justanlsp
 {
