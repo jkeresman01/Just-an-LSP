@@ -26,10 +26,11 @@ void JustAnLSPClient::registerCapabilites(const std::shared_ptr<ClientCapabiliti
 
 void JustAnLSPClient::addDocument(const std::string &URI, const std::string &document)
 {
-    LOG_INFO(STR("Adding text document with URI: %s, for client: %s", URI.c_str(),
+    m_documentState.emplace(URI, document);
+
+    LOG_INFO(STR("Added text document with URI: %s, for client: %s", URI.c_str(),
                  m_clientInfo.toString().c_str()));
 
-    m_documentState.emplace(URI, document);
 }
 
 std::string JustAnLSPClient::getDocumentByURI(const std::string &URI) const
@@ -47,10 +48,11 @@ std::string JustAnLSPClient::getDocumentByURI(const std::string &URI) const
 
 void JustAnLSPClient::updateDocumentByURI(const std::string &URI, const std::string &document)
 {
-    LOG_INFO(STR("Updating text document with URI: %s, for client: %s", URI.c_str(),
+    m_documentState[URI] = document;
+
+    LOG_INFO(STR("Updated text document with URI: %s, for client: %s", URI.c_str(),
                  m_clientInfo.toString().c_str()));
 
-    m_documentState[URI] = document;
 }
 
 } // namespace justanlsp
