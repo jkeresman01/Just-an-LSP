@@ -11,10 +11,10 @@ namespace justanlsp
 
 //////////////////////////////////////////////////////////////
 ///
-/// @class HoverRequest 
+/// @class HoverRequest
 ///
-/// @brief The hover request is sent from the client to the 
-///        server to request hover information at a given 
+/// @brief The hover request is sent from the client to the
+///        server to request hover information at a given
 ///        text document position.
 ///
 //////////////////////////////////////////////////////////////

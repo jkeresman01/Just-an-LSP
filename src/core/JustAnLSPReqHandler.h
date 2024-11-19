@@ -91,6 +91,15 @@ class JustAnLSPReqHandler
     //////////////////////////////////////////////////////////////
     void textDocumenHoverReq(const std::shared_ptr<HoverRequest> &hoverTextDocuementReq);
 
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Handles textDocument/codeAction request
+    ///
+    /// @param textDocument/codeAction  request
+    ///
+    //////////////////////////////////////////////////////////////
+    void textDocumentCodeActionReq(const std::shared_ptr<CodeActionRequest> &codeActionRequest);
+
   private:
     //////////////////////////////////////////////////////////////
     ///

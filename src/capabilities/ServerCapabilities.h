@@ -1,9 +1,9 @@
 #pragma once
 
 #include <memory>
+#include <nlohmann/json.hpp>
 #include <string>
 #include <unordered_map>
-#include <nlohmann/json.hpp>
 
 #include "../enums/TextDocumentSyncKind.h"
 

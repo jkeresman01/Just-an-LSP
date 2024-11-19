@@ -173,8 +173,8 @@ void JustAnLSPFacade::handleTextDocumentHoverRequest(const nlohmann::json &jsonR
 
 void handleTextDocumentCodeActionRequest(const nlohmann::json &request)
 {
-    //TODO
-   (void)request; 
+    // TODO
+    (void)request;
 }
 
 void JustAnLSPFacade::ensureNoReqIsProcessedAfterShutdown(const nlohmann::json &jsonRPC)

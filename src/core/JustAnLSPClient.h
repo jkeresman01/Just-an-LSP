@@ -4,8 +4,8 @@
 #include <string>
 #include <unordered_map>
 
-#include "../types/ClientInfo.h"
 #include "../capabilities/ClientCapabilites.h"
+#include "../types/ClientInfo.h"
 
 namespace justanlsp
 {

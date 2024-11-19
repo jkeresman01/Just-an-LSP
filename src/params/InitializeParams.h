@@ -3,9 +3,9 @@
 #include <cstdint>
 #include <locale>
 #include <memory>
+#include <nlohmann/json.hpp>
 #include <optional>
 #include <string>
-#include <nlohmann/json.hpp>
 
 #include "../capabilities/ClientCapabilites.h"
 #include "../enums/TraceValue.h"

@@ -1,11 +1,11 @@
 #pragma once
 
-#include <string>
 #include <nlohmann/json.hpp>
+#include <string>
 
+#include "../enums/RequestType.h"
 #include "Logger.h"
 #include "RequestMethodUtil.h"
-#include "../enums/RequestType.h"
 
 namespace justanlsp
 {
