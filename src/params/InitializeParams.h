@@ -105,8 +105,6 @@ class InitializeParams
     ///
     /// @brief Information about the client
     ///
-    /// @since 3.15.0
-    ///
     //////////////////////////////////////////////////////////////
     ClientInfo m_clientInfo;
 
@@ -115,8 +113,6 @@ class InitializeParams
     /// @brief The locale the client is currently showing the user
     ///        interface in. This must not necessarily be the
     ///        locale of the operating system
-    ///
-    /// @since 3.16.0
     ///
     //////////////////////////////////////////////////////////////
     std::string m_locale;

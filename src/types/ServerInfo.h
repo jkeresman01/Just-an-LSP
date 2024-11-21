@@ -12,8 +12,6 @@ namespace justanlsp
 ///
 /// @brief Stores the information about the server
 ///
-/// @since 3.15.0
-///
 //////////////////////////////////////////////////////////////
 struct ServerInfo
 {
