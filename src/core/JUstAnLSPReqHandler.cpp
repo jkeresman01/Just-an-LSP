@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <vector>
 
+#include "../capabilities/ServeCapabilitiesDirector.h"
 #include "../capabilities/ServerCapabilities.h"
 #include "../enums/TextDocumentSyncKind.h"
 #include "../messages/notification/PublishDiagnosticsNotification.h"
@@ -35,12 +36,10 @@ void JustAnLSPReqHandler::initializeReq(const std::shared_ptr<InitializeRequest>
     m_justAnLSPClient->saveInfo(clientInfo);
     m_justAnLSPClient->registerCapabilites(clientCapabilities);
 
-    ServerCapabilities serverCapabilites = ServerCapabilities::Builder()
-                                               .withTextDocumentSyncKind(TextDocumentSyncKind::FULL)
-                                               .withHoverSupport(true)
-                                               .withSnippetSupport(true)
-                                               .withCompletionSupport(true)
-                                               .build();
+    ServerCapabilities::Builder builder;
+    ServerCapabilities serverCapabilites = ServerCapabilitiesDirector::getDefaultServerCapabilites(builder);
+
+    LOG_INFO(serverCapabilites.toJson().dump(4));
 
     InitializeResult initializeResult({"JustAnLSP", "0.0.0.0.0.1-alpha"}, serverCapabilites);
     InitializeResponse initializeResponse("2.0", initializeRequest->getId(), initializeResult);
@@ -129,11 +128,11 @@ void JustAnLSPReqHandler::textDocumenHoverReq(const std::shared_ptr<HoverRequest
     // TODO hover logic
 }
 
-void JustAnLSPReqHandler::textDocumentCodeActionReq(
-    const std::shared_ptr<CodeActionRequest> &codeActionRequest)
-{
-    (void)codeActionRequest;
-}
+/* void JustAnLSPReqHandler::textDocumentCodeActionReq( */
+/*     const std::shared_ptr<CodeActionRequest> &codeActionRequest) */
+/* { */
+/*     (void)codeActionRequest; */
+/* } */
 
 void JustAnLSPReqHandler::shutdownReq(const std::shared_ptr<ShutdownRequest> &shutdownRequest)
 {

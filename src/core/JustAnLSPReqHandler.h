@@ -98,7 +98,7 @@ class JustAnLSPReqHandler
     /// @param textDocument/codeAction  request
     ///
     //////////////////////////////////////////////////////////////
-    void textDocumentCodeActionReq(const std::shared_ptr<CodeActionRequest> &codeActionRequest);
+    /* void textDocumentCodeActionReq(const std::shared_ptr<CodeActionRequest> &codeActionRequest); */
 
   private:
     //////////////////////////////////////////////////////////////
