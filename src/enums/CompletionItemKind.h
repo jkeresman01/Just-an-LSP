@@ -189,4 +189,3 @@ enum class CompletionItemKind
 };
 
 } // namespace justanlsp
-
