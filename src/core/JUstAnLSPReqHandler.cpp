@@ -128,12 +128,6 @@ void JustAnLSPReqHandler::textDocumenHoverReq(const std::shared_ptr<HoverRequest
     // TODO hover logic
 }
 
-/* void JustAnLSPReqHandler::textDocumentCodeActionReq( */
-/*     const std::shared_ptr<CodeActionRequest> &codeActionRequest) */
-/* { */
-/*     (void)codeActionRequest; */
-/* } */
-
 void JustAnLSPReqHandler::shutdownReq(const std::shared_ptr<ShutdownRequest> &shutdownRequest)
 {
     LOG_INFO("Processing shutdown request");
