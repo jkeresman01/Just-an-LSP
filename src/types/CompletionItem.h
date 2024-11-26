@@ -26,8 +26,48 @@ class CompletionItem
     /// @param detail
     ///
     //////////////////////////////////////////////////////////////
-    CompletionItem(const std::string &label, const std::string &detail, const std::string &documentation)
-        : m_label(label), m_detail(detail), m_documentation(documentation){};
+    CompletionItem(const std::string &label, const std::string &detail, const std::string &documentation,
+                   const std::string &insertedText)
+        : m_label(label), m_detail(detail), m_documentation(documentation) {};
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Builder for construction textDocument/completion items
+    ///
+    //////////////////////////////////////////////////////////////
+    class Builder
+    {
+        public:
+            Builder& withLabel(const std::string &label)
+            {
+                m_label = label;
+                return *this;
+            }
+
+            Builder& withDetail(const std::string detail)
+            {
+                m_detail = detail;
+                return *this;
+            }
+
+            Builder& withInsertedText(const std::string &insertedText)
+            {
+                m_insertedText = insertedText;
+                return *this;
+            }
+
+            Builder& withDocumentation(const std::string &documentation)
+            {
+                m_documentation = documentation;
+                return *this;
+            }
+
+        private:
+            std::string m_label;
+            std::string m_detail;
+            std::string m_documentation;
+            std::string m_insertedText;
+    };
 
     //////////////////////////////////////////////////////////////
     ///
