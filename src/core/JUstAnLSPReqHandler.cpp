@@ -39,8 +39,6 @@ void JustAnLSPReqHandler::initializeReq(const std::shared_ptr<InitializeRequest>
     ServerCapabilities::Builder builder;
     ServerCapabilities serverCapabilites = ServerCapabilitiesDirector::getDefaultServerCapabilites(builder);
 
-    LOG_INFO(serverCapabilites.toJson().dump(4));
-
     InitializeResult initializeResult({"JustAnLSP", "0.0.0.0.0.1-alpha"}, serverCapabilites);
     InitializeResponse initializeResponse("2.0", initializeRequest->getId(), initializeResult);
 
