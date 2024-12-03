@@ -3,8 +3,8 @@
 #include <cstdint>
 #include <vector>
 
-#include "../capabilities/ServeCapabilitiesDirector.h"
 #include "../capabilities/ServerCapabilities.h"
+#include "../capabilities/ServerCapabilitiesDirector.h"
 #include "../enums/TextDocumentSyncKind.h"
 #include "../messages/notification/PublishDiagnosticsNotification.h"
 #include "../messages/response/CompletionResponse.h"
@@ -98,9 +98,9 @@ void JustAnLSPReqHandler::textDocumentCompletionReq(const std::shared_ptr<Comple
 {
     // TODO Move this out, it's here just to test communication
     std::vector<CompletionItem> completionItems{
-        {"dnsClient", "DNS client test 1", "DNS client test 1 documentation"},
-        {"dnsClientId", "DNS client test 1", "DNS client id test 1 documentation"},
-        {"dnsClientIpAddress", "DNS client ip address test 1", "DNS client ip address test 1 documentation"},
+        {"dnsClient", "DNS client test 1", "DNS client test 1 documentation", "dnsClient"},
+        {"dnsClientId", "DNS client test 1", "DNS client id test 1 documentation", "dnsClientId"},
+        {"dnsClientIpAddress", "DNS client ip address test 1", "DNS client ip address test 1 documentation", "dnsClientIpAddress"},
     };
 
     int64_t requestId = completionReq->getId();
