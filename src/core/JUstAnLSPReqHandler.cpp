@@ -100,7 +100,8 @@ void JustAnLSPReqHandler::textDocumentCompletionReq(const std::shared_ptr<Comple
     std::vector<CompletionItem> completionItems{
         {"dnsClient", "DNS client test 1", "DNS client test 1 documentation", "dnsClient"},
         {"dnsClientId", "DNS client test 1", "DNS client id test 1 documentation", "dnsClientId"},
-        {"dnsClientIpAddress", "DNS client ip address test 1", "DNS client ip address test 1 documentation", "dnsClientIpAddress"},
+        {"dnsClientIpAddress", "DNS client ip address test 1", "DNS client ip address test 1 documentation",
+         "dnsClientIpAddress"},
     };
 
     int64_t requestId = completionReq->getId();

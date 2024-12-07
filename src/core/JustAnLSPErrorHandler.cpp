@@ -11,11 +11,11 @@ void JustAnLSPErrorHandler::handleServerNotInitalizedError(int64_t id)
 {
     LOG_INFO("Handling server not initialized error");
 
-    ResponseError serverNotInitializedError = ResponseError::Builder()
-        .withErrorCode(ErrorCodes::SERVER_NOT_INITIALIZED)
-        .withErrorMessage("Received request before initiliazition request was send!")
-        .build();
-
+    ResponseError serverNotInitializedError =
+        ResponseError::Builder()
+            .withErrorCode(ErrorCodes::SERVER_NOT_INITIALIZED)
+            .withErrorMessage("Received request before initiliazition request was send!")
+            .build();
 
     handleError(serverNotInitializedError, id);
 }
@@ -25,10 +25,9 @@ void JustAnLSPErrorHandler::handleParseError(int64_t id)
     LOG_INFO("Handling parse error");
 
     ResponseError parseError = ResponseError::Builder()
-        .withErrorCode(ErrorCodes::PARSE_ERROR)
-        .withErrorMessage("Parsing error happened, while processing request!")
-        .build();
-
+                                   .withErrorCode(ErrorCodes::PARSE_ERROR)
+                                   .withErrorMessage("Parsing error happened, while processing request!")
+                                   .build();
 
     handleError(parseError, id);
 }
