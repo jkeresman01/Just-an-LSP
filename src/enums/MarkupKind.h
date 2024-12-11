@@ -7,10 +7,7 @@ namespace justanlsp
 ///
 /// @enum MarkupKind
 ///
-/// @brief Describes the content type that a client supports in
-///        various result literals like `Hover`,
-///        `ParameterInfo` or `CompletionItem`.
-///
+/// @brief Describes the content type that an LSP client supports
 ///
 //////////////////////////////////////////////////////////////
 enum class MarkupKind
