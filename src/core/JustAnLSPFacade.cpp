@@ -115,7 +115,7 @@ void JustAnLSPFacade::handleTextDocumentDidOpenRequest(const nlohmann::json &jso
 
 void JustAnLSPFacade::handleTextDocumentDidChangeRequest(const nlohmann::json &jsonRPC)
 {
-    LOG_INFO("Received request with notification: textDocument/didChange");
+    LOG_INFO("Received request with method: textDocument/didChange");
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_DID_CHANGE);
 
@@ -129,7 +129,7 @@ void JustAnLSPFacade::handleTextDocumentDidChangeRequest(const nlohmann::json &j
 
 void JustAnLSPFacade::handleTextDocumentCompletionRequest(const nlohmann::json &jsonRPC)
 {
-    LOG_INFO("Received request with notification: textDocument/completion");
+    LOG_INFO("Received request with method: textDocument/completion");
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_COMPLETION);
 
