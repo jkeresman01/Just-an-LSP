@@ -26,7 +26,7 @@ void JustAnLSPClient::registerCapabilites(const std::shared_ptr<ClientCapabiliti
 
 void JustAnLSPClient::addDocument(const std::string &URI, const std::string &document)
 {
-    m_documentState.emplace(URI, document);
+    m_documentsByURI.emplace(URI, document);
 
     LOG_INFO(STR("Added text document with URI: %s, for client: %s", URI.c_str(),
                  m_clientInfo.toString().c_str()));
@@ -34,9 +34,9 @@ void JustAnLSPClient::addDocument(const std::string &URI, const std::string &doc
 
 std::string JustAnLSPClient::getDocumentByURI(const std::string &URI) const
 {
-    auto it = m_documentState.find(URI);
+    auto it = m_documentsByURI.find(URI);
 
-    if (it == m_documentState.end())
+    if (it == m_documentsByURI.end())
     {
         LOG_ERROR(STR("There are no registered documents with URI: %s !", URI.c_str()));
         return std::string();
@@ -47,7 +47,7 @@ std::string JustAnLSPClient::getDocumentByURI(const std::string &URI) const
 
 void JustAnLSPClient::updateDocumentByURI(const std::string &URI, const std::string &document)
 {
-    m_documentState[URI] = document;
+    m_documentsByURI[URI] = document;
 
     LOG_INFO(STR("Updated text document with URI: %s, for client: %s", URI.c_str(),
                  m_clientInfo.toString().c_str()));

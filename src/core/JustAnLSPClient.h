@@ -116,6 +116,6 @@ class JustAnLSPClient
     /// @brief Documents mapped by their corresponding URI
     ///
     //////////////////////////////////////////////////////////////
-    std::unordered_map<std::string, std::string> m_documentState;
+    std::unordered_map<std::string, std::string> m_documentsByURI;
 };
 } // namespace justanlsp
