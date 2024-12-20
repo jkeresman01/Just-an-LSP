@@ -59,5 +59,4 @@ static std::ostream &putTime(std::ostream &out, const std::time_t &time)
     return out << std::put_time(std::localtime(&time), "%Y-%m-%d %H:%M:%S");
 }
 
-
 } // namespace justanlsp

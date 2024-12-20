@@ -53,5 +53,4 @@ TraceValue inline getTraceValue(const std::string &traceValueStr)
     return TraceValue::OFF;
 }
 
-
 } // namespace justanlsp
