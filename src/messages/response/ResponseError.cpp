@@ -18,8 +18,10 @@ nlohmann::json ResponseError::toJson() const
 std::string ResponseError::toString() const
 {
     std::stringstream ss;
+
     ss << "Error code { " << std::to_string(static_cast<uint32_t>(m_errorCode)) << " }, ";
     ss << "Error msg { " << m_message << " }, ";
+
     return ss.str();
 }
 

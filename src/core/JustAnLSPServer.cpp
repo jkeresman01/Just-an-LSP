@@ -17,8 +17,7 @@ void JustAnLSPServer::run()
 
     for (;;)
     {
-        std::string message = Rpc::read();
-        handleRequest(message);
+        handleRequest(Rpc::read());
     }
 }
 
