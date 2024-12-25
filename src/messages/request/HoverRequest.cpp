@@ -16,11 +16,10 @@ void HoverRequest::setParams(const nlohmann::json &jsonRPC)
     if (it == jsonRPC.end())
     {
         LOG_ERROR("No params in textDocument/hover request");
+        return;
     }
-    else
-    {
-        m_hoverParams = std::make_shared<HoverParams>(jsonRPC["params"]);
-    }
+
+    m_hoverParams = std::make_shared<HoverParams>(jsonRPC["params"]);
 }
 
 } // namespace justanlsp

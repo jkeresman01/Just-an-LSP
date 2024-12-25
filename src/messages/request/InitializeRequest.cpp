@@ -17,11 +17,10 @@ void InitializeRequest::setInitializeParams(const nlohmann::json &jsonRPC)
     if (it == jsonRPC.end())
     {
         LOG_ERROR("No initliaze params in initialize request");
+        return;
     }
-    else
-    {
-        m_initializeParams = std::make_shared<InitializeParams>(jsonRPC["params"]);
-    }
+
+    m_initializeParams = std::make_shared<InitializeParams>(jsonRPC["params"]);
 }
 
 } // namespace justanlsp

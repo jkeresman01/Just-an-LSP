@@ -1,7 +1,5 @@
 #include "DidOpenTextDocumentRequest.h"
 
-#include <memory>
-
 #include "../utils/Logger.h"
 
 namespace justanlsp
@@ -19,11 +17,10 @@ void DidOpenTextDocumentRequest::setParams(const nlohmann::json &jsonRPC)
     if (it == jsonRPC.end())
     {
         LOG_ERROR("No textDocumentDidChange params in textDocument/DidChange request");
+        return;
     }
-    else
-    {
-        m_params = std::make_shared<DidOpenTextDocumentParams>(jsonRPC["params"]);
-    }
+
+    m_params = std::make_shared<DidOpenTextDocumentParams>(jsonRPC["params"]);
 }
 
 } // namespace justanlsp

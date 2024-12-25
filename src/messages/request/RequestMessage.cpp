@@ -22,11 +22,10 @@ void RequestMessage::setId(const nlohmann::json &jsonRPC)
     if (it == jsonRPC.end())
     {
         LOG_ERROR("Can't construct Request message, there is no id in request");
+        return;
     }
-    else
-    {
-        m_id = jsonRPC["id"];
-    }
+
+    m_id = jsonRPC["id"];
 }
 
 void RequestMessage::setMethod(const nlohmann::json &jsonRPC)
@@ -36,11 +35,10 @@ void RequestMessage::setMethod(const nlohmann::json &jsonRPC)
     if (it == jsonRPC.end())
     {
         LOG_ERROR("Can't construct Request message, there is no method in request");
+        return;
     }
-    else
-    {
-        m_method = jsonRPC["method"];
-    }
+
+    m_method = jsonRPC["method"];
 }
 
 } // namespace justanlsp

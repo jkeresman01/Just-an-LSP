@@ -16,11 +16,10 @@ void CompletionRequest::setParams(const nlohmann::json &jsonRPC)
     if (it == jsonRPC.end())
     {
         LOG_ERROR("No params in request with method: textDocument/completion");
+        return;
     }
-    else
-    {
-        m_completionParams = std::make_shared<CompletionParams>(jsonRPC["params"]);
-    }
+
+    m_completionParams = std::make_shared<CompletionParams>(jsonRPC["params"]);
 }
 
 } // namespace justanlsp

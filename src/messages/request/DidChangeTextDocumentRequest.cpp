@@ -17,10 +17,9 @@ void DidChangeTextDocumentRequest::setParams(const nlohmann::json &jsonRPC)
     if (it == jsonRPC.end())
     {
         LOG_ERROR("No params in textDocument/didChange notification!");
+        return;
     }
-    else
-    {
-        m_didChangeTextDocumentParams = std::make_shared<DidChangeTextDocumentParams>(jsonRPC["params"]);
-    }
+
+    m_didChangeTextDocumentParams = std::make_shared<DidChangeTextDocumentParams>(jsonRPC["params"]);
 }
 } // namespace justanlsp
