@@ -18,7 +18,7 @@ namespace justanlsp
 //////////////////////////////////////////////////////////////
 class TextDocumentCapabilities
 {
-    // TODO reset of the capabilities only sync and hover are currently included
+    // TODO rest of the capabilities only sync and hover are currently included
 
   public:
     //////////////////////////////////////////////////////////////
