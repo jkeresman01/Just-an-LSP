@@ -76,7 +76,7 @@ class JustAnLSPClient
     /// @param document
     ///
     //////////////////////////////////////////////////////////////
-    void updateDocumentByURI(const std::string &URI, const std::string &document);
+    void updateDocumentWithURI(const std::string &URI, const std::string &document);
 
     //////////////////////////////////////////////////////////////
     ///

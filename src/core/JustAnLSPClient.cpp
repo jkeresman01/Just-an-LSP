@@ -45,7 +45,7 @@ std::string JustAnLSPClient::getDocumentByURI(const std::string &URI) const
     return it->second;
 }
 
-void JustAnLSPClient::updateDocumentByURI(const std::string &URI, const std::string &document)
+void JustAnLSPClient::updateDocumentWithURI(const std::string &URI, const std::string &document)
 {
     m_documentsByURI[URI] = document;
 

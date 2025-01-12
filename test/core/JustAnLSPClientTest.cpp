@@ -62,7 +62,7 @@ TEST_F(JustAnLSPClientTest, WillUpdateDocumentCorrectly)
 
     // WHEN
     std::string updatedContent = "Updated content";
-    client.updateDocumentByURI(URI, updatedContent);
+    client.updateDocumentWithURI(URI, updatedContent);
 
     // THEN
     EXPECT_EQ(client.getDocumentByURI(URI), updatedContent);

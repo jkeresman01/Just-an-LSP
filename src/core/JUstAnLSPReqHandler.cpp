@@ -81,7 +81,7 @@ void JustAnLSPReqHandler::textDocumentDidChangeReq(
     std::string URI = didChangeParams->getChangedDocumentURI();
     std::string contentChanges = didChangeParams->getContentChanges();
 
-    m_justAnLSPClient->updateDocumentByURI(URI, contentChanges);
+    m_justAnLSPClient->updateDocumentWithURI(URI, contentChanges);
 
     // TODO Move this out, it's here just to test communication
     std::vector<Diagnostic> diagnostics{
@@ -117,7 +117,7 @@ void JustAnLSPReqHandler::textDocumenHoverReq(const std::shared_ptr<HoverRequest
     std::shared_ptr<HoverParams> hoverParams = hoverTextDocumentReq->getParams();
 
     std::string URI = hoverParams->getTextDocumentIdentifier().URI;
-    Position position = hoverParams->getPostion();
+    Position position = hoverParams->getPosition();
 
     std::string document = m_justAnLSPClient->getDocumentByURI(URI);
 

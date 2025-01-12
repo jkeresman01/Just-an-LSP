@@ -7,10 +7,10 @@ namespace justanlsp
 TextDocumentPositionParams::TextDocumentPositionParams(const nlohmann::json &jsonRPC)
 {
     setTextDocumentIdentifier(jsonRPC["textDocument"]);
-    setPostion(jsonRPC["position"]);
+    setPosition(jsonRPC["position"]);
 }
 
-void TextDocumentPositionParams::setPostion(const nlohmann::json &jsonRPC)
+void TextDocumentPositionParams::setPosition(const nlohmann::json &jsonRPC)
 {
     m_position.line = jsonRPC["line"];
     m_position.character = jsonRPC["character"];

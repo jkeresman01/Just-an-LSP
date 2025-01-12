@@ -44,7 +44,7 @@ class TextDocumentPositionParams
     /// @return position
     ///
     //////////////////////////////////////////////////////////////
-    Position getPostion() const { return m_position; };
+    Position getPosition() const { return m_position; };
 
   private:
     //////////////////////////////////////////////////////////////
@@ -63,7 +63,7 @@ class TextDocumentPositionParams
     /// @param jsonRPC
     ///
     //////////////////////////////////////////////////////////////
-    void setPostion(const nlohmann::json &jsonRPC);
+    void setPosition(const nlohmann::json &jsonRPC);
 
   private:
     //////////////////////////////////////////////////////////////
