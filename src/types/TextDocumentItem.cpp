@@ -19,11 +19,10 @@ void TextDocumentItem::setURI(const nlohmann::json &jsonRPC)
     if (it == jsonRPC.end())
     {
         LOG_ERROR("No URI in textDocumentItemKind");
+        return;
     }
-    else
-    {
-        m_URI = jsonRPC["uri"];
-    }
+
+    m_URI = jsonRPC["uri"];
 }
 
 void TextDocumentItem::setLanguageId(const nlohmann::json &jsonRPC)
@@ -33,11 +32,10 @@ void TextDocumentItem::setLanguageId(const nlohmann::json &jsonRPC)
     if (it == jsonRPC.end())
     {
         LOG_ERROR("No languageId in textDocumentItemKind");
+        return;
     }
-    else
-    {
-        m_languageId = jsonRPC["languageId"];
-    }
+
+    m_languageId = jsonRPC["languageId"];
 }
 
 void TextDocumentItem::setTextVersion(const nlohmann::json &jsonRPC)
@@ -47,11 +45,10 @@ void TextDocumentItem::setTextVersion(const nlohmann::json &jsonRPC)
     if (it == jsonRPC.end())
     {
         LOG_ERROR("No version in textDocumentItemKind");
+        return;
     }
-    else
-    {
-        m_version = jsonRPC["version"];
-    }
+
+    m_version = jsonRPC["version"];
 }
 
 void TextDocumentItem::setText(const nlohmann::json &jsonRPC)
@@ -61,10 +58,9 @@ void TextDocumentItem::setText(const nlohmann::json &jsonRPC)
     if (it == jsonRPC.end())
     {
         LOG_ERROR("No text in textDocumentItemKind");
+        return;
     }
-    else
-    {
-        m_text = jsonRPC["text"];
-    }
+
+    m_text = jsonRPC["text"];
 }
 } // namespace justanlsp
