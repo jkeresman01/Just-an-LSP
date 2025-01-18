@@ -18,11 +18,10 @@ void CompletionParams::setCompletionContext(const nlohmann::json &jsonRPC)
     if (it == jsonRPC.end())
     {
         LOG_ERROR("No trigger king was set in textDocument/comletion request");
+        return;
     }
-    else
-    {
-        m_completionContext.completionTriggerKind = jsonRPC["triggerKind"];
-    }
+
+    m_completionContext.completionTriggerKind = jsonRPC["triggerKind"];
 }
 
 void CompletionParams::setPosition(const nlohmann::json &jsonRPC)
@@ -38,10 +37,9 @@ void CompletionParams::setTextDocumentIdentifier(const nlohmann::json &jsonRPC)
     if (it == jsonRPC.end())
     {
         LOG_ERROR("No textDocumentIdentifier(UR) was set in textDocument/comletion request");
+        return;
     }
-    else
-    {
-        m_textDocumentIdentifier.URI = jsonRPC["uri"];
-    }
+
+    m_textDocumentIdentifier.URI = jsonRPC["uri"];
 }
 } // namespace justanlsp

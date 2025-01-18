@@ -18,11 +18,10 @@ void DidChangeTextDocumentParams::setTextDocumentIdentifier(const nlohmann::json
     if (it == jsonRPC.end())
     {
         LOG_ERROR("No textDocument in textDocument/didChange notification!");
+        return;
     }
-    else
-    {
-        m_textDocument.URI = jsonRPC["uri"];
-    }
+
+    m_textDocument.URI = jsonRPC["uri"];
 }
 
 void DidChangeTextDocumentParams::setContentChanges(const nlohmann::json &jsonRPC)
@@ -32,10 +31,9 @@ void DidChangeTextDocumentParams::setContentChanges(const nlohmann::json &jsonRP
     if (it == jsonRPC.end())
     {
         LOG_ERROR("No text changes in textDocument/didChange notification!");
+        return;
     }
-    else
-    {
-        m_contentChanges = jsonRPC["text"];
-    }
+
+    m_contentChanges = jsonRPC["text"];
 }
 } // namespace justanlsp

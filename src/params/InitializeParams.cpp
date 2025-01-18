@@ -22,11 +22,10 @@ void InitializeParams::setProccessId(const nlohmann::json &jsonRPC)
     if (it == jsonRPC.end())
     {
         LOG_ERROR("No process id was set in request");
+        return;
     }
-    else
-    {
-        m_processId = jsonRPC["processId"];
-    }
+
+    m_processId = jsonRPC["processId"];
 }
 
 void InitializeParams::setLocale(const nlohmann::json &jsonRPC)
@@ -36,11 +35,10 @@ void InitializeParams::setLocale(const nlohmann::json &jsonRPC)
     if (it == jsonRPC.end())
     {
         LOG_ERROR("No locale value was set in Initialize request");
+        return;
     }
-    else
-    {
-        m_locale = jsonRPC["locale"];
-    }
+
+    m_locale = jsonRPC["locale"];
 }
 
 void InitializeParams::setClientInfo(const nlohmann::json &jsonRPC)
@@ -58,12 +56,13 @@ void InitializeParams::setTraceLevel(const nlohmann::json &jsonRPC)
     if (it == jsonRPC.end())
     {
         LOG_INFO("No trace value set in Initialize request, defaulting to TraceValue::OFF");
+
         m_traceValue = TraceValue::OFF;
+
+        return;
     }
-    else
-    {
-        m_traceValue = jsonRPC["trace"];
-    }
+
+    m_traceValue = jsonRPC["trace"];
 }
 
 } // namespace justanlsp

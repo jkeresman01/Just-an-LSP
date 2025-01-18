@@ -16,10 +16,9 @@ void DidOpenTextDocumentParams::setTextDocumentItemKind(const nlohmann::json &js
     if (it == jsonRPC.end())
     {
         LOG_ERROR("No textDocument in textDocument/didOpen request");
+        return;
     }
-    else
-    {
-        m_textDocumentItem = std::make_shared<TextDocumentItem>(jsonRPC["textDocument"]);
-    }
+
+    m_textDocumentItem = std::make_shared<TextDocumentItem>(jsonRPC["textDocument"]);
 }
 } // namespace justanlsp

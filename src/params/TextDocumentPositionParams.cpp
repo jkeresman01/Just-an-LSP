@@ -23,10 +23,9 @@ void TextDocumentPositionParams::setTextDocumentIdentifier(const nlohmann::json 
     if (it == jsonRPC.end())
     {
         LOG_ERROR("No text docuemnt identifier in TextDocumentPositionParams");
+        return;
     }
-    else
-    {
-        m_textDocument.URI = jsonRPC["uri"];
-    }
+
+    m_textDocument.URI = jsonRPC["uri"];
 }
 } // namespace justanlsp
