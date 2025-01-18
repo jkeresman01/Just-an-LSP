@@ -11,6 +11,16 @@
 namespace justanlsp
 {
 
+void JustAnLSPServer::init()
+{
+    LOG_INFO("Initilalizing JustAnLSP server");
+}
+
+void JustAnLSPServer::shutdown()
+{
+    LOG_INFO("Successfull shutdown of JustAnLSP server");
+}
+
 void JustAnLSPServer::run()
 {
     LOG_INFO("JustAnLSP server successfully started");
