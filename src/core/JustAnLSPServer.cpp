@@ -27,7 +27,7 @@ void JustAnLSPServer::run()
 
     for (;;)
     {
-        handleRequest(Rpc::read());
+        handleRequest(Rpc::receive());
     }
 }
 

@@ -43,7 +43,7 @@ TEST_F(RpcTest, WillReadContentWithCorrectContentLength)
     redirectStdin(input);
 
     // WHEN
-    std::string content = Rpc::read();
+    std::string content = Rpc::receive();
 
     // THEN
     EXPECT_EQ(content, "Swilda Tinton");
@@ -76,7 +76,7 @@ TEST_F(RpcTest, WillReadWithMultipleHeaders)
     redirectStdin(input);
 
     // WHEN
-    std::string content = Rpc::read();
+    std::string content = Rpc::receive();
 
     // THEN
     EXPECT_EQ(content, "Hello World");
@@ -89,7 +89,7 @@ TEST_F(RpcTest, WillReturnEmptyStringIfNoContentLengthHeader)
     redirectStdin(input);
 
     // WHEN
-    std::string content = Rpc::read();
+    std::string content = Rpc::receive();
 
     // THEN
     EXPECT_EQ(content, "");
@@ -102,7 +102,7 @@ TEST_F(RpcTest, WillHandleMalformedContentLengthHeader)
     redirectStdin(input);
 
     // WHEN
-    EXPECT_THROW(Rpc::read(), std::invalid_argument);
+    EXPECT_THROW(Rpc::receive(), std::invalid_argument);
 }
 
 TEST_F(RpcTest, WillHandleZeroContentLength)
@@ -112,7 +112,7 @@ TEST_F(RpcTest, WillHandleZeroContentLength)
     redirectStdin(input);
 
     // WHEN
-    std::string content = Rpc::read();
+    std::string content = Rpc::receive();
 
     // THEN
     EXPECT_EQ(content, "");

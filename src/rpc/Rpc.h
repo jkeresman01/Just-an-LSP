@@ -13,7 +13,7 @@ namespace justanlsp
 ///
 /// @class Rpc
 ///
-/// @brief Responsible for read and sending messages defined by
+/// @brief Responsible for receive and sending messages defined by
 ///        language server protocol
 ///
 /////////////////////////////////////////////////////////////////////
@@ -41,7 +41,7 @@ class Rpc
     /// @brief Read JSON RPC request
     ///
     /////////////////////////////////////////////////////////////////////
-    static std::string read();
+    static std::string receive();
 
   private:
     /////////////////////////////////////////////////////////////////////
@@ -49,16 +49,16 @@ class Rpc
     /// @brief Read content length from JSON RPC request
     ///
     /////////////////////////////////////////////////////////////////////
-    static uint32_t readContentLength();
+    static uint32_t receiveContentLength();
 };
 
 /////////////////////////////////////////////////////////////////////
 /// Implementation of inline defined functions
 /////////////////////////////////////////////////////////////////////
 
-inline std::string Rpc::read()
+inline std::string Rpc::receive()
 {
-    uint32_t contentlength = readContentLength();
+    uint32_t contentlength = receiveContentLength();
 
     std::string content(contentlength, ' ');
     std::cin.read(&content[0], contentlength);
@@ -66,7 +66,7 @@ inline std::string Rpc::read()
     return content;
 }
 
-inline uint32_t Rpc::readContentLength()
+inline uint32_t Rpc::receiveContentLength()
 {
     std::string header;
     uint32_t contentLength = 0;
