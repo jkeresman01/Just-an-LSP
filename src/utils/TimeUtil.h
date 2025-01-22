@@ -54,7 +54,7 @@ inline std::time_t TimeUtil::now()
     return std::chrono::high_resolution_clock::to_time_t(currentTime);
 }
 
-static std::ostream &putTime(std::ostream &out, const std::time_t &time)
+inline std::ostream &TimeUtil::putTime(std::ostream &out, const std::time_t &time)
 {
     return out << std::put_time(std::localtime(&time), "%Y-%m-%d %H:%M:%S");
 }

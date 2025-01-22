@@ -59,7 +59,7 @@ void JustAnLSPReqHandler::textDocumentDidOpenReq(
     m_justAnLSPClient->addDocument(URI, textDocumentContent);
 
     std::vector<Diagnostic> diagnostics{
-        {{10, 10}, DiagnosticSeverity::ERROR, "Source is this stuff", "THis is really big error msg!!!"}};
+        {{10, 10}, DiagnosticSeverity::ERROR, "Source is this stuff", "This is really big error msg!!!"}};
 
     // TODO Move this out, it's here just to test communication
     std::shared_ptr<PublishDiagnosticsParams> diagnosticsParams =

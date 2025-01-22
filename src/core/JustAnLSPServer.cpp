@@ -33,8 +33,8 @@ void JustAnLSPServer::run()
 
 void JustAnLSPServer::handleRequest(const std::string &request)
 {
-    nlohmann::json jsoRPC = MessageUtil::tryParse(request);
-    m_justAnLspFacade->handleRequest(jsoRPC);
+    nlohmann::json jsonRPC = MessageUtil::tryParse(request);
+    m_justAnLspFacade->handleRequest(jsonRPC);
 }
 
 } // namespace justanlsp
