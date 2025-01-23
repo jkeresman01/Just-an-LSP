@@ -112,7 +112,7 @@ void JustAnLSPReqHandler::textDocumentCompletionReq(const std::shared_ptr<Comple
     Rpc::send(completionResponse);
 }
 
-void JustAnLSPReqHandler::textDocumenHoverReq(const std::shared_ptr<HoverRequest> &hoverTextDocumentReq)
+void JustAnLSPReqHandler::textDocumentHoverReq(const std::shared_ptr<HoverRequest> &hoverTextDocumentReq)
 {
     std::shared_ptr<HoverParams> hoverParams = hoverTextDocumentReq->getParams();
 

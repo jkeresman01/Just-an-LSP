@@ -89,7 +89,7 @@ class JustAnLSPReqHandler
     /// @param textDocument/hover  request
     ///
     //////////////////////////////////////////////////////////////
-    void textDocumenHoverReq(const std::shared_ptr<HoverRequest> &hoverTextDocuementReq);
+    void textDocumentHoverReq(const std::shared_ptr<HoverRequest> &hoverTextDocuementReq);
 
     //////////////////////////////////////////////////////////////
     ///
