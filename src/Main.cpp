@@ -1,4 +1,4 @@
-#include "core/JustAnLSPServer.h"
+#include "Core/JustAnLSPServer.h"
 
 int main()
 {
