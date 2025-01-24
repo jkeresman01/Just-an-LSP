@@ -3,9 +3,9 @@
 #include <iostream>
 #include <sstream>
 
-#include "../../src/messages/Message.h"
-#include "../../src/rpc/Rpc.h"
-#include "../../src/utils/Convert.h"
+#include "../../s../Messages/Message.h"
+#include "../../s../Rpc/Rpc.h"
+#include "../../s../Utils/Convert.h"
 
 using namespace justanlsp;
 

@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 
-#include "../../src/enums/TraceValue.h"
-#include "../../src/utils/TraceUtil.h"
+#include "../../s../Enums/TraceValue.h"
+#include "../../s../Utils/TraceUtil.h"
 
 using namespace justanlsp;
 

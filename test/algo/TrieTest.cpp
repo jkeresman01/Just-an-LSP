@@ -1,4 +1,4 @@
-#include "../../src/algo/Trie.h"
+#include "../../s../Algo/Trie.h"
 
 #include <gtest/gtest.h>
 #include <string>

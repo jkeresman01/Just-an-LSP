@@ -1,7 +1,7 @@
 #include <cstdint>
 #include <gtest/gtest.h>
 
-#include "../../src/utils/Convert.h"
+#include "../../s../Utils/Convert.h"
 
 using namespace justanlsp;
 

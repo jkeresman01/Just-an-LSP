@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 
-#include "../../src/enums/DiagnosticSeverity.h"
-#include "../../src/messages/notification/PublishDiagnosticsNotification.h"
-#include "../../src/params/PublishDiagnosticsParams.h"
+#include "../../s../Enums/DiagnosticSeverity.h"
+#include "../../s../Messages/notification/PublishDiagnosticsNotification.h"
+#include "../../s../Params/PublishDiagnosticsParams.h"
 
 #include <memory>
 #include <nlohmann/json.hpp>

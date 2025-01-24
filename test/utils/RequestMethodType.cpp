@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 
-#include "../../src/enums/RequestType.h"
-#include "../../src/utils/RequestMethodUtil.h"
+#include "../../s../Enums/RequestType.h"
+#include "../../s../Utils/RequestMethodUtil.h"
 
 using namespace justanlsp;
 

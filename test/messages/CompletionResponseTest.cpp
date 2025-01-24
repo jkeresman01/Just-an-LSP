@@ -2,8 +2,8 @@
 #include <nlohmann/json.hpp>
 #include <sstream>
 
-#include "../../src/messages/response/CompletionResponse.h"
-#include "../../src/results/CompletionResult.h"
+#include "../../s../Messages/response/CompletionResponse.h"
+#include "../../s../Results/CompletionResult.h"
 
 using json = nlohmann::json;
 
