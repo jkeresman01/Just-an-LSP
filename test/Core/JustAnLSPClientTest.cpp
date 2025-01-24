@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 
-#include "../../s../Capabilities/ClientCapabilites.h"
-#include "../../s../Core/JustAnLSPClient.h"
-#include "../../s../Types/ClientInfo.h"
+#include "../../src/Capabilities/ClientCapabilites.h"
+#include "../../src/Core/JustAnLSPClient.h"
+#include "../../src/Types/ClientInfo.h"
 
 #include <memory>
 

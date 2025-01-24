@@ -2,7 +2,7 @@
 #include <nlohmann/json.hpp>
 #include <sstream>
 
-#include "../../s../Messages/response/ShutdownResponse.h"
+#include "../../src/Messages/response/ShutdownResponse.h"
 
 using json = nlohmann::json;
 

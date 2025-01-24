@@ -16,51 +16,51 @@ FetchContent_MakeAvailable(nlohmann_json)
 
 include_directories(
     ${CMAKE_SOURCE_DIR}/../src
-    ${CMAKE_SOURCE_DIR}/../src/algo
-    ${CMAKE_SOURCE_DIR}/../src/capabilities
-    ${CMAKE_SOURCE_DIR}/../src/core
-    ${CMAKE_SOURCE_DIR}/../src/enums
-    ${CMAKE_SOURCE_DIR}/../src/errors
-    ${CMAKE_SOURCE_DIR}/../src/factories
-    ${CMAKE_SOURCE_DIR}/../src/messages
-    ${CMAKE_SOURCE_DIR}/../src/params
-    ${CMAKE_SOURCE_DIR}/../src/rpc
-    ${CMAKE_SOURCE_DIR}/../src/types
-    ${CMAKE_SOURCE_DIR}/../src/utils
+    ${CMAKE_SOURCE_DIR}/../src/Algo
+    ${CMAKE_SOURCE_DIR}/../src/Capabilities
+    ${CMAKE_SOURCE_DIR}/../src/Core
+    ${CMAKE_SOURCE_DIR}/../src/Enums
+    ${CMAKE_SOURCE_DIR}/../src/Errors
+    ${CMAKE_SOURCE_DIR}/../src/Factories
+    ${CMAKE_SOURCE_DIR}/../src/Messages
+    ${CMAKE_SOURCE_DIR}/../src/Params
+    ${CMAKE_SOURCE_DIR}/../src/Rpc
+    ${CMAKE_SOURCE_DIR}/../src/Types
+    ${CMAKE_SOURCE_DIR}/../src/Utils
 )
 
 set(SOURCE_FILES
-    ../src/algo/Trie.cpp 
-    ../src/core/JustAnLSPCounter.cpp
-    ../src/core/JustAnLSPClient.cpp
-    ../src/messages/response/CompletionResponse.cpp
-    ../src/messages/response/InitializeResponse.cpp
-    ../src/messages/response/ResponseMessage.cpp
-    ../src/messages/response/ResponseError.cpp
-    ../src/messages/notification/NotificationMessage.cpp
-    ../src/messages/notification/PublishDiagnosticsNotification.cpp
-    ../src/params/PublishDiagnosticsParams.cpp
-    ../src/results/CompletionResult.cpp
-    ../src/results/InitializeResult.cpp
-    ../src/capabilities/ServerCapabilities.cpp
-    ../src/types/Diagnostic.cpp
+    ../src/Algo/Trie.cpp 
+    ../src/Core/JustAnLSPCounter.cpp
+    ../src/Core/JustAnLSPClient.cpp
+    ../src/Messages/response/CompletionResponse.cpp
+    ../src/Messages/response/InitializeResponse.cpp
+    ../src/Messages/response/ResponseMessage.cpp
+    ../src/Messages/response/ResponseError.cpp
+    ../src/Messages/notification/NotificationMessage.cpp
+    ../src/Messages/notification/PublishDiagnosticsNotification.cpp
+    ../src/Params/PublishDiagnosticsParams.cpp
+    ../src/Results/CompletionResult.cpp
+    ../src/Results/InitializeResult.cpp
+    ../src/Capabilities/ServerCapabilities.cpp
+    ../src/Types/Diagnostic.cpp
 )
 
 set(TEST_FILES
     Test.cpp
-    algo/TrieTest.cpp 
-    core/JustAnLSPCounterTest.cpp 
-    core/JustAnLSPClientTest.cpp 
-    rpc/RpcTest.cpp 
-    messages/ResponseMessageTest.cpp
-    messages/CompletionResponseTest.cpp
-    messages/InitializeResponseTest.cpp
-    messages/ShutdownResponseTest.cpp
-    messages/PublishDiagnosticsTest.cpp
-    utils/ConvertTest.cpp 
-    utils/RequestMethodType.cpp
-    utils/MessageUtilTest.cpp
-    utils/TraceLevelTest.cpp
+    Algo/TrieTest.cpp 
+    Core/JustAnLSPCounterTest.cpp 
+    Core/JustAnLSPClientTest.cpp 
+    Rpc/RpcTest.cpp 
+    Messages/ResponseMessageTest.cpp
+    Messages/CompletionResponseTest.cpp
+    Messages/InitializeResponseTest.cpp
+    Messages/ShutdownResponseTest.cpp
+    Messages/PublishDiagnosticsTest.cpp
+    Utils/ConvertTest.cpp 
+    Utils/RequestMethodType.cpp
+    Utils/MessageUtilTest.cpp
+    Utils/TraceLevelTest.cpp
 )
 
 add_executable(run-tests ${SOURCE_FILES} ${TEST_FILES})

@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 
-#include "../../s../Core/JustAnLSPCounter.h"
-#include "../../s../Enums/RequestType.h"
+#include "../../src/Core/JustAnLSPCounter.h"
+#include "../../src/Enums/RequestType.h"
 
 namespace justanlsp
 {

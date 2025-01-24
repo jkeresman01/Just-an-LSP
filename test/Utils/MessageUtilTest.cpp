@@ -2,8 +2,8 @@
 
 #include <nlohmann/json.hpp>
 
-#include "../../s../Enums/RequestType.h"
-#include "../../s../Utils/MessageUtil.h"
+#include "../../src/Enums/RequestType.h"
+#include "../../src/Utils/MessageUtil.h"
 
 using namespace justanlsp;
 

@@ -1,9 +1,10 @@
 #include <gtest/gtest.h>
 #include <nlohmann/json.hpp>
 #include <sstream>
+#include <vector>
 
-#include "../../s../Messages/response/CompletionResponse.h"
-#include "../../s../Results/CompletionResult.h"
+#include "../../src/Messages/response/CompletionResponse.h"
+#include "../../src/Results/CompletionResult.h"
 
 using json = nlohmann::json;
 

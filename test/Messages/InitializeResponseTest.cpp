@@ -3,8 +3,8 @@
 #include <nlohmann/json.hpp>
 #include <sstream>
 
-#include "../../s../Messages/response/InitializeResponse.h"
-#include "../../s../Results/InitializeResult.h"
+#include "../../src/Messages/response/InitializeResponse.h"
+#include "../../src/Results/InitializeResult.h"
 
 using json = nlohmann::json;
 
