@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15)
+cake_minimum_required(VERSION 3.15)
 project(JustAnLSPServerProject)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -14,7 +14,6 @@ include_directories(${SRC_DIR}/Completions)
 include_directories(${SRC_DIR}/Core)
 include_directories(${SRC_DIR}/Enums)
 include_directories(${SRC_DIR}/Errors)
-include_directories(${SRC_DIR}/Factories)
 include_directories(${SRC_DIR}/Messages)
 include_directories(${SRC_DIR}/Params)
 include_directories(${SRC_DIR}/Rpc)
