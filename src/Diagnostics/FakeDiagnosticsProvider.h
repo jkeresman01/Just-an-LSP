@@ -16,5 +16,10 @@ class FakeDiagnosticsProvider : public IDiagnosticsProvider
 
   private:
     void fillFakeDiagnostics(std::vector<Diagnostic> &diagnostics);
+
+    void fillFakeHints(std::vector<Diagnostic> &diagnostics);
+    void fillFakeWarnings(std::vector<Diagnostic> &diagnostics);
+    void fillFakeErrors(std::vector<Diagnostic> &diagnostics);
+    void fillFakeInfo(std::vector<Diagnostic> &diagnostics);
 };
 } // namespace justanlsp
