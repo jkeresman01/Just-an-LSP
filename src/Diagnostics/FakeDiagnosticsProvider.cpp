@@ -7,7 +7,7 @@ std::vector<Diagnostic> FakeDiagnosticsProvider::getDiagnostics(const std::strin
                                                                 const Position &position)
 {
     std::vector<Diagnostic> diagnostics;
-    fillFakeDiagnostics();
+    fillFakeDiagnostics(diagnostics);
     return diagnostics;
 }
 

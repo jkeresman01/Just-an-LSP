@@ -62,8 +62,13 @@ void JustAnLSPReqHandler::textDocumentDidOpenReq(
 
     m_justAnLSPClient->addDocument(URI, textDocumentContent);
 
+    std::string document = m_justAnLSPClient->getDocumentByURI(URI);
+
+    //TODO instanitatediagnostics provider on creation of reqHandler
     std::shared_ptr<IDiagnosticsProvider> diagnosticsProvider = DiagnosticsProviderFactory::create();
-    std::vector<Diagnostic> diagnostics = diagnosticsProvider->getDiagnostics();
+
+    //TODO remove position from diagonostics provider
+    std::vector<Diagnostic> diagnostics = diagnosticsProvider->getDiagnostics(document, Position{10,10});
 
     std::shared_ptr<PublishDiagnosticsParams> diagnosticsParams =
         std::make_shared<PublishDiagnosticsParams>(URI, diagnostics);
@@ -86,8 +91,13 @@ void JustAnLSPReqHandler::textDocumentDidChangeReq(
 
     m_justAnLSPClient->updateDocumentWithURI(URI, contentChanges);
 
+    std::string document = m_justAnLSPClient->getDocumentByURI(URI);
+
+    //TODO instanitatediagnostics provider on creation of reqHandler
     std::shared_ptr<IDiagnosticsProvider> diagnosticsProvider = DiagnosticsProviderFactory::create();
-    std::vector<Diagnostic> diagnostics = diagnosticsProvider->getDiagnostics();
+
+    //TODO remove position from diagonostics provider
+    std::vector<Diagnostic> diagnostics = diagnosticsProvider->getDiagnostics(document, Position{10, 10});
 
     std::shared_ptr<PublishDiagnosticsParams> diagnosticsParams =
         std::make_shared<PublishDiagnosticsParams>(URI, diagnostics);
