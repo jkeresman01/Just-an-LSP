@@ -3,9 +3,12 @@
 
 #include "../Capabilities/ServerCapabilities.h"
 #include "../Capabilities/ServerCapabilitiesDirector.h"
+#include "../Completions/FakeCompletionProvider.h"
+#include "../Completions/ICompletionProvider.h"
 #include "../Diagnostics/FakeDiagnosticsProvider.h"
 #include "../Diagnostics/IDiagnosticsProvider.h"
 #include "../Enums/TextDocumentSyncKind.h"
+#include "../Factories/CompletionProviderFactory.h"
 #include "../Factories/DiagnosticsProviderFactory.h"
 #include "../Messages/Notification/PublishDiagnosticsNotification.h"
 #include "../Messages/Response/CompletionResponse.h"
@@ -97,13 +100,8 @@ void JustAnLSPReqHandler::textDocumentDidChangeReq(
 
 void JustAnLSPReqHandler::textDocumentCompletionReq(const std::shared_ptr<CompletionRequest> &completionReq)
 {
-    // TODO Move this out, it's here just to test communication
-    std::vector<CompletionItem> completionItems{
-        {"dnsClient", "DNS client test 1", "DNS client test 1 documentation", "dnsClient"},
-        {"dnsClientId", "DNS client test 1", "DNS client id test 1 documentation", "dnsClientId"},
-        {"dnsClientIpAddress", "DNS client ip address test 1", "DNS client ip address test 1 documentation",
-         "dnsClientIpAddress"},
-    };
+    std::shared_ptr<ICompletionProvider> completionsProvider = CompletionProviderFactory::create();
+    std::vector<CompletionItem> completionItems = completionsProvider->getCompletions();
 
     int64_t requestId = completionReq->getId();
 
