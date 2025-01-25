@@ -65,7 +65,6 @@ void JustAnLSPReqHandler::textDocumentDidOpenReq(
     std::shared_ptr<IDiagnosticsProvider> diagnosticsProvider = DiagnosticsProviderFactory::create();
     std::vector<Diagnostic> diagnostics = diagnosticsProvider->getDiagnostics();
 
-    // TODO Move this out, it's here just to test communication
     std::shared_ptr<PublishDiagnosticsParams> diagnosticsParams =
         std::make_shared<PublishDiagnosticsParams>(URI, diagnostics);
     PublishDiagnosticsNoticifation publishDiagnostics("textDocument/publishDiagnostics", diagnosticsParams);
@@ -90,7 +89,6 @@ void JustAnLSPReqHandler::textDocumentDidChangeReq(
     std::shared_ptr<IDiagnosticsProvider> diagnosticsProvider = DiagnosticsProviderFactory::create();
     std::vector<Diagnostic> diagnostics = diagnosticsProvider->getDiagnostics();
 
-    // TODO Move this out, it's here just to test communication
     std::shared_ptr<PublishDiagnosticsParams> diagnosticsParams =
         std::make_shared<PublishDiagnosticsParams>(URI, diagnostics);
     PublishDiagnosticsNoticifation publishDiagnostics("textDocument/publishDiagnostics", diagnosticsParams);
