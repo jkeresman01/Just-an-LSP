@@ -3,6 +3,7 @@
 #include <memory>
 
 #include "../Completions/ICompletionProvider.h"
+#include "../CodeActions/ICodeActionsProvider.h"
 #include "../Diagnostics/IDiagnosticsProvider.h"
 #include "../Messages/Request/CompletionRequest.h"
 #include "../Messages/Request/DidChangeTextDocumentRequest.h"
@@ -110,7 +111,10 @@ class JustAnLSPReqHandler
     ///
     //////////////////////////////////////////////////////////////
     std::unique_ptr<JustAnLSPClient> m_justAnLSPClient = std::make_unique<JustAnLSPClient>();
+
+    //TODO document this stuff
     std::shared_ptr<ICompletionProvider> m_completionProvider;
-    std::shared_ptr<IDiagnosticsProvider> m_diagnosticsProvier;
+    std::shared_ptr<IDiagnosticsProvider> m_diagnosticsProvider;
+    std::shared_ptr<ICodeActionsProvider> m_codeActionsProvider;
 };
 } // namespace justanlsp
