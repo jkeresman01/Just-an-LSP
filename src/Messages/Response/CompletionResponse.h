@@ -4,7 +4,7 @@
 #include <ostream>
 #include <string>
 
-#include "../Messages/response/ResponseMessage.h"
+#include "../Messages/Response/ResponseMessage.h"
 #include "../Results/CompletionResult.h"
 
 namespace justanlsp

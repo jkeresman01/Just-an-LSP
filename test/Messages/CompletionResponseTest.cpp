@@ -3,7 +3,7 @@
 #include <sstream>
 #include <vector>
 
-#include "../../src/Messages/response/CompletionResponse.h"
+#include "../../src/Messages/Response/CompletionResponse.h"
 #include "../../src/Results/CompletionResult.h"
 
 using json = nlohmann::json;

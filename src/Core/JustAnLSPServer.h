@@ -4,7 +4,7 @@
 #include <nlohmann/json.hpp>
 #include <string>
 
-#include "../Messages/response/ResponseMessage.h"
+#include "../Messages/Response/ResponseMessage.h"
 #include "JustAnLSPFacade.h"
 
 namespace justanlsp

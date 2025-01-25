@@ -49,7 +49,7 @@ class Rpc
     /// @brief Read content length from JSON RPC request
     ///
     /////////////////////////////////////////////////////////////////////
-    static uint32_t receiveContentLength();
+    static uint32_t extractContentLength();
 };
 
 /////////////////////////////////////////////////////////////////////
@@ -58,7 +58,7 @@ class Rpc
 
 inline std::string Rpc::receive()
 {
-    uint32_t contentlength = receiveContentLength();
+    uint32_t contentlength = extractContentLength();
 
     std::string content(contentlength, ' ');
     std::cin.read(&content[0], contentlength);
@@ -66,7 +66,7 @@ inline std::string Rpc::receive()
     return content;
 }
 
-inline uint32_t Rpc::receiveContentLength()
+inline uint32_t Rpc::extractContentLength()
 {
     std::string header;
     uint32_t contentLength = 0;

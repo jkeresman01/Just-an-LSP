@@ -3,8 +3,8 @@
 #include <sstream>
 
 #include "../../src/Errors/ErrorCodes.h"
-#include "../../src/Messages/response/ResponseError.h"
-#include "../../src/Messages/response/ResponseMessage.h"
+#include "../../src/Messages/Response/ResponseError.h"
+#include "../../src/Messages/Response/ResponseMessage.h"
 
 using json = nlohmann::json;
 

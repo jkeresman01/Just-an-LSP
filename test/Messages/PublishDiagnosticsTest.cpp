@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 
 #include "../../src/Enums/DiagnosticSeverity.h"
-#include "../../src/Messages/notification/PublishDiagnosticsNotification.h"
+#include "../../src/Messages/Notification/PublishDiagnosticsNotification.h"
 #include "../../src/Params/PublishDiagnosticsParams.h"
 
 #include <memory>

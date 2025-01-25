@@ -4,7 +4,7 @@
 #include <nlohmann/json.hpp>
 #include <string>
 
-#include "../notification/NotificationMessage.h"
+#include "../Notification/NotificationMessage.h"
 #include "../Params/DidChangeTextDocumentParams.h"
 
 namespace justanlsp

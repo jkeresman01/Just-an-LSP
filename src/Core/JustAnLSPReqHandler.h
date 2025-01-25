@@ -2,12 +2,12 @@
 
 #include <memory>
 
-#include "../Messages/request/CompletionRequest.h"
-#include "../Messages/request/DidChangeTextDocumentRequest.h"
-#include "../Messages/request/DidOpenTextDocumentRequest.h"
-#include "../Messages/request/HoverRequest.h"
-#include "../Messages/request/InitializeRequest.h"
-#include "../Messages/request/ShutdownRequest.h"
+#include "../Messages/Request/CompletionRequest.h"
+#include "../Messages/Request/DidChangeTextDocumentRequest.h"
+#include "../Messages/Request/DidOpenTextDocumentRequest.h"
+#include "../Messages/Request/HoverRequest.h"
+#include "../Messages/Request/InitializeRequest.h"
+#include "../Messages/Request/ShutdownRequest.h"
 #include "JustAnLSPClient.h"
 #include "JustAnLSPCounter.h"
 

@@ -4,7 +4,7 @@
 #include <string>
 
 #include "../Errors/ErrorCodes.h"
-#include "../Messages/response/ResponseError.h"
+#include "../Messages/Response/ResponseError.h"
 
 namespace justanlsp
 {
