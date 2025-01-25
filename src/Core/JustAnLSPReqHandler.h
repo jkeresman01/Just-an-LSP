@@ -2,6 +2,8 @@
 
 #include <memory>
 
+#include "../Completions/ICompletionProvider.h"
+#include "../Diagnostics/IDiagnosticsProvider.h"
 #include "../Messages/Request/CompletionRequest.h"
 #include "../Messages/Request/DidChangeTextDocumentRequest.h"
 #include "../Messages/Request/DidOpenTextDocumentRequest.h"
@@ -30,7 +32,7 @@ class JustAnLSPReqHandler
     ///        and assignment operators
     ///
     //////////////////////////////////////////////////////////////
-    JustAnLSPReqHandler() = default;
+    JustAnLSPReqHandler();
     JustAnLSPReqHandler(const JustAnLSPReqHandler &) = delete;
     JustAnLSPReqHandler(JustAnLSPReqHandler &&) = delete;
     JustAnLSPReqHandler &operator=(const JustAnLSPReqHandler &) = delete;
@@ -108,5 +110,7 @@ class JustAnLSPReqHandler
     ///
     //////////////////////////////////////////////////////////////
     std::unique_ptr<JustAnLSPClient> m_justAnLSPClient = std::make_unique<JustAnLSPClient>();
+    std::shared_ptr<ICompletionProvider> m_completionProvider;
+    std::shared_ptr<IDiagnosticsProvider> m_diagnosticsProvier;
 };
 } // namespace justanlsp

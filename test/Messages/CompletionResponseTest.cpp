@@ -17,9 +17,9 @@ class CompletionResponseTest : public ::testing::Test
     std::string mockJsonRPC = "2.0";
 
     std::vector<CompletionItem> completionItems{
-        {"dnsClient", "DNS client test 1", "DNS client test 1 documentation"},
-        {"dnsClientId", "DNS client test 1", "DNS client id test 1 documentation"},
-        {"dnsClientIpAddress", "DNS client ip address test 1", "DNS client ip address test 1 documentation"},
+        CompletionItem("dnsClient", "DNS client test 1", "DNS client test 1 documentation"),
+        CompletionItem("dnsClientId", "DNS client test 1", "DNS client id test 1 documentation"),
+        CompletionItem("dnsClientIpAddress", "DNS client ip address test 1", "DNS client ip address test 1 documentation"),
     };
 
     CompletionResult mockCompletionResult{completionItems};
