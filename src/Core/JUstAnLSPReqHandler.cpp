@@ -72,7 +72,7 @@ void JustAnLSPReqHandler::textDocumentDidOpenReq(
 
     std::string document = m_justAnLSPClient->getDocumentByURI(URI);
 
-    std::vector<Diagnostic> diagnostics = m_diagnosticsProvier->getDiagnostics(document, Position{10, 10});
+    std::vector<Diagnostic> diagnostics = m_diagnosticsProvider->getDiagnostics(document, Position{10, 10});
 
     std::shared_ptr<PublishDiagnosticsParams> diagnosticsParams =
         std::make_shared<PublishDiagnosticsParams>(URI, diagnostics);
@@ -97,7 +97,7 @@ void JustAnLSPReqHandler::textDocumentDidChangeReq(
 
     std::string document = m_justAnLSPClient->getDocumentByURI(URI);
 
-    std::vector<Diagnostic> diagnostics = m_diagnosticsProvier->getDiagnostics(document, Position{10, 10});
+    std::vector<Diagnostic> diagnostics = m_diagnosticsProvider->getDiagnostics(document, Position{10, 10});
 
     std::shared_ptr<PublishDiagnosticsParams> diagnosticsParams =
         std::make_shared<PublishDiagnosticsParams>(URI, diagnostics);
