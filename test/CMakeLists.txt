@@ -33,12 +33,12 @@ set(SOURCE_FILES
     ../src/Algo/Trie.cpp 
     ../src/Core/JustAnLSPCounter.cpp
     ../src/Core/JustAnLSPClient.cpp
-    ../src/Messages/response/CompletionResponse.cpp
-    ../src/Messages/response/InitializeResponse.cpp
-    ../src/Messages/response/ResponseMessage.cpp
-    ../src/Messages/response/ResponseError.cpp
-    ../src/Messages/notification/NotificationMessage.cpp
-    ../src/Messages/notification/PublishDiagnosticsNotification.cpp
+    ../src/Messages/Response/CompletionResponse.cpp
+    ../src/Messages/Response/InitializeResponse.cpp
+    ../src/Messages/Response/ResponseMessage.cpp
+    ../src/Messages/Response/ResponseError.cpp
+    ../src/Messages/Notification/NotificationMessage.cpp
+    ../src/Messages/Notification/PublishDiagnosticsNotification.cpp
     ../src/Params/PublishDiagnosticsParams.cpp
     ../src/Results/CompletionResult.cpp
     ../src/Results/InitializeResult.cpp
