@@ -162,6 +162,8 @@ void JustAnLSPFacade::handleTextDocumentHoverRequest(const nlohmann::json &jsonR
 {
     LOG_INFO("Received request with method: textDocument/hover");
 
+    LOG_WARN(jsonRPC.dump(4));
+
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_HOVER);
 
     ensureNoReqIsProcessedAfterShutdown(jsonRPC);

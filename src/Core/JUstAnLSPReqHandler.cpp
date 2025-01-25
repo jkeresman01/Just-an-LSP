@@ -1,11 +1,12 @@
 #include "JustAnLSPReqHandler.h"
-
-#include <cstdint>
 #include <vector>
 
 #include "../Capabilities/ServerCapabilities.h"
 #include "../Capabilities/ServerCapabilitiesDirector.h"
+#include "../Diagnostics/FakeDiagnosticsProvider.h"
+#include "../Diagnostics/IDiagnosticsProvider.h"
 #include "../Enums/TextDocumentSyncKind.h"
+#include "../Factories/DiagnosticsProviderFactory.h"
 #include "../Messages/Notification/PublishDiagnosticsNotification.h"
 #include "../Messages/Response/CompletionResponse.h"
 #include "../Messages/Response/InitializeResponse.h"
@@ -58,8 +59,8 @@ void JustAnLSPReqHandler::textDocumentDidOpenReq(
 
     m_justAnLSPClient->addDocument(URI, textDocumentContent);
 
-    std::vector<Diagnostic> diagnostics{
-        {{10, 10}, DiagnosticSeverity::ERROR, "Source is this stuff", "This is really big error msg!!!"}};
+    std::shared_ptr<IDiagnosticsProvider> diagnosticsProvider = DiagnosticsProviderFactory::create();
+    std::vector<Diagnostic> diagnostics = diagnosticsProvider->getDiagnostics();
 
     // TODO Move this out, it's here just to test communication
     std::shared_ptr<PublishDiagnosticsParams> diagnosticsParams =
@@ -83,10 +84,10 @@ void JustAnLSPReqHandler::textDocumentDidChangeReq(
 
     m_justAnLSPClient->updateDocumentWithURI(URI, contentChanges);
 
-    // TODO Move this out, it's here just to test communication
-    std::vector<Diagnostic> diagnostics{
-        {{10, 10}, DiagnosticSeverity::ERROR, "Source is this stuff", "THis is really big error msg!!!"}};
+    std::shared_ptr<IDiagnosticsProvider> diagnosticsProvider = DiagnosticsProviderFactory::create();
+    std::vector<Diagnostic> diagnostics = diagnosticsProvider->getDiagnostics();
 
+    // TODO Move this out, it's here just to test communication
     std::shared_ptr<PublishDiagnosticsParams> diagnosticsParams =
         std::make_shared<PublishDiagnosticsParams>(URI, diagnostics);
     PublishDiagnosticsNoticifation publishDiagnostics("textDocument/publishDiagnostics", diagnosticsParams);

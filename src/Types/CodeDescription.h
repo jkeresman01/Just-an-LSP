@@ -5,21 +5,20 @@
 namespace justanlsp
 {
 
+//////////////////////////////////////////////////////////////
+///
+/// @struct CodeDescription
+///
+/// @brief Structure to capture a description for an error code.
+///
+//////////////////////////////////////////////////////////////
+struct CodeDescription
+{
     //////////////////////////////////////////////////////////////
     ///
-    /// @struct CodeDescription
-    ///
-    /// @brief Structure to capture a description for an error code.
+    /// @brief An URI to open with more information about the diagnostic error.
     ///
     //////////////////////////////////////////////////////////////
-    struct CodeDescription
-    {
-        //////////////////////////////////////////////////////////////
-        ///
-        /// @brief An URI to open with more information about the diagnostic error.
-        ///
-        //////////////////////////////////////////////////////////////
-        std::string URI;
-    };
-}
-
+    std::string URI;
+};
+} // namespace justanlsp

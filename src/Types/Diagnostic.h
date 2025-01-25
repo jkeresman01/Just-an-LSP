@@ -85,7 +85,8 @@ class Diagnostic
     /// @brief Additional information about diagnostics
     ///
     //////////////////////////////////////////////////////////////
-    std::vector<DiagnosticRelatedInformation> m_diagnosticsRelatedInformation;;
+    std::vector<DiagnosticRelatedInformation> m_diagnosticsRelatedInformation;
+    ;
 
     //////////////////////////////////////////////////////////////
     ///
