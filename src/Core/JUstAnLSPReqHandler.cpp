@@ -108,8 +108,7 @@ void JustAnLSPReqHandler::textDocumentDidChangeReq(
 
 void JustAnLSPReqHandler::textDocumentCompletionReq(const std::shared_ptr<CompletionRequest> &completionReq)
 {
-    std::shared_ptr<ICompletionProvider> completionsProvider = CompletionProviderFactory::create();
-    std::vector<CompletionItem> completionItems = completionsProvider->getCompletions();
+    std::vector<CompletionItem> completionItems = m_completionProvider->getCompletions();
 
     int64_t requestId = completionReq->getId();
 
