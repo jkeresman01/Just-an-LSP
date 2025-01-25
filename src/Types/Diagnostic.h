@@ -6,6 +6,7 @@
 
 #include "../Enums/DiagnosticSeverity.h"
 #include "../Enums/DiagnosticsTag.h"
+#include "../Types/DiagnosticsRelatedInformation.h"
 #include "Range.h"
 
 namespace justanlsp
@@ -74,10 +75,17 @@ class Diagnostic
 
     //////////////////////////////////////////////////////////////
     ///
-    /// @brief Specifies the source
+    /// @brief Diagnostic tags
     ///
     //////////////////////////////////////////////////////////////
     std::vector<DiagnosticTag> m_diagnosticsTag;
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Additional information about diagnostics
+    ///
+    //////////////////////////////////////////////////////////////
+    std::vector<DiagnosticRelatedInformation> m_diagnosticsRelatedInformation;;
 
     //////////////////////////////////////////////////////////////
     ///
