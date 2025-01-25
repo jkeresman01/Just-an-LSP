@@ -8,6 +8,7 @@
 #include "../Diagnostics/FakeDiagnosticsProvider.h"
 #include "../Diagnostics/IDiagnosticsProvider.h"
 #include "../Enums/TextDocumentSyncKind.h"
+#include "../Factories/CodeActionProviderFactory.h"
 #include "../Factories/CompletionProviderFactory.h"
 #include "../Factories/DiagnosticsProviderFactory.h"
 #include "../Messages/Notification/PublishDiagnosticsNotification.h"
@@ -29,8 +30,9 @@ namespace justanlsp
 
 JustAnLSPReqHandler::JustAnLSPReqHandler()
 {
-    m_diagnosticsProvier = DiagnosticsProviderFactory::create();
+    m_diagnosticsProvider = DiagnosticsProviderFactory::create();
     m_completionProvider = CompletionProviderFactory::create();
+    m_codeActionsProvider = CodeActionsProviderFactory::create();
 }
 
 void JustAnLSPReqHandler::initializeReq(const std::shared_ptr<InitializeRequest> &initializeRequest)

@@ -1,21 +1,19 @@
 #pragma once
 
-#include <memory>
-#include "../CodeActions/ICodeActionsProvider.h"
 #include "../CodeActions/FakeCodectionsProvider.h"
+#include "../CodeActions/ICodeActionsProvider.h"
+#include <memory>
 
 namespace justanlsp
 {
-    class CodeActionsProviderFactory
+class CodeActionsProviderFactory
+{
+  public:
+    CodeActionsProviderFactory() = delete;
+
+    static std::shared_ptr<ICodeActionsProvider> create()
     {
-        public:
-            CodeActionsProviderFactory() = delete;
-        
-            static std::shared_ptr<ICodeActionsProvider> create()
-            {
-                return std::make_shared<FakeCodeActionsProvider>();
-            }
-    };
-}
-
-
+        return std::make_shared<FakeCodeActionsProvider>();
+    }
+};
+} // namespace justanlsp
