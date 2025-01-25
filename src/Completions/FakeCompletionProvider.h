@@ -13,6 +13,6 @@ class FakeCompletionProvider : public ICompletionProvider
     std::vector<CompletionItem> getCompletions() override;
 
   private:
-    F void fillFakeComletions(std::vector<CompletionItem> &completions);
+    void fillFakeComletions(std::vector<CompletionItem> &completions);
 };
 } // namespace justanlsp
