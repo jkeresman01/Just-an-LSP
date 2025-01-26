@@ -9,7 +9,7 @@
 #include "../Enums/ExitStatus.h"
 #include "../Enums/RequestType.h"
 #include "../Enums/TextDocumentSyncKind.h"
-#include "../Factories/MessageFactory.h"
+#include "../Messages/FactoryIml/MessageFactory.h"
 #include "../Messages/Request/DidChangeTextDocumentRequest.h"
 #include "../Messages/Request/HoverRequest.h"
 #include "../Messages/Request/ShutdownRequest.h"

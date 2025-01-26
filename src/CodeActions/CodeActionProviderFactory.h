@@ -1,8 +1,9 @@
 #pragma once
 
-#include "../CodeActions/FakeCodectionsProvider.h"
-#include "../CodeActions/ICodeActionsProvider.h"
 #include <memory>
+
+#include "FakeCodectionsProvider.h"
+#include "ICodeActionsProvider.h"
 
 namespace justanlsp
 {

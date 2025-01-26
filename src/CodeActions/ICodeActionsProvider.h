@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../Types/CodeAction.h"
+
 #include <vector>
 
 namespace justanlsp
@@ -7,7 +9,6 @@ namespace justanlsp
 class ICodeActionsProvider
 {
   public:
-    // TODO => add code aciton type
     virtual std::vector<CodeAction> getCodeActions() = 0;
 };
 } // namespace justanlsp

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../Types/CodeAction.h"
 #include "ICodeActionsProvider.h"
 
 namespace justanlsp

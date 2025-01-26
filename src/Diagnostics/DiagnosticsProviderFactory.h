@@ -2,8 +2,8 @@
 
 #include <memory>
 
-#include "../Diagnostics/FakeDiagnosticsProvider.h"
-#include "../Diagnostics/IDiagnosticsProvider.h"
+#include "FakeDiagnosticsProvider.h"
+#include "IDiagnosticsProvider.h"
 
 namespace justanlsp
 {

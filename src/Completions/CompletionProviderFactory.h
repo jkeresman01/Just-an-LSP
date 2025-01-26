@@ -2,8 +2,8 @@
 
 #include <memory>
 
-#include "../Completions/FakeCompletionProvider.h"
-#include "../Completions/ICompletionProvider.h"
+#include "FakeCompletionProvider.h"
+#include "ICompletionProvider.h"
 
 namespace justanlsp
 {
