@@ -60,7 +60,7 @@ class ConfigurationManager
     /// @return The value associated with the given key
     ///
     //////////////////////////////////////////////////////////////
-    std::string getProperty(const std::string_view &key);
+    std::string getProperty(const std::string &key);
 
   private:
     //////////////////////////////////////////////////////////////
@@ -71,7 +71,7 @@ class ConfigurationManager
     /// the `getInstance` method.
     ///
     //////////////////////////////////////////////////////////////
-    ConfigurationManager();
+    ConfigurationManager() = default;
 
     //////////////////////////////////////////////////////////////
     ///
@@ -102,7 +102,7 @@ class ConfigurationManager
     /// @brief Path to the XML configuration file
     ///
     //////////////////////////////////////////////////////////////
-    static constexpr char *XML_CONFIGURATION_PATH = "../../config_files/congiguration.xml";
+    const char *XML_CONFIGURATION_PATH = "../../config_files/congiguration.xml";
 
     //////////////////////////////////////////////////////////////
     ///

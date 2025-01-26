@@ -3,8 +3,10 @@
 #include <memory>
 
 #include "FakeCompletionProvider.h"
-#include "../Config/ConfigurationManager.h"
 #include "ICompletionProvider.h"
+
+#include "../Config/ConfigurationManager.h"
+#include "../Utils/Logger.h"
 
 namespace justanlsp
 {
@@ -17,6 +19,8 @@ class CompletionProviderFactory
     static std::shared_ptr<ICompletionProvider> create()
     {
         std::string completionProvider = ConfigurationManager::getInstance()->getProperty("completion");
+
+        JLSP_DEBUG(STR("Completion provder: %s", completionProvider.c_str()));
 
         if(completionProvider == "fake")
         {

@@ -3,6 +3,7 @@
 #include <memory>
 
 #include "../Config/ConfigurationManager.h"
+#include "../Utils/Logger.h"
 #include "FakeCodectionsProvider.h"
 #include "ICodeActionsProvider.h"
 
@@ -16,6 +17,8 @@ class CodeActionsProviderFactory
     static std::shared_ptr<ICodeActionsProvider> create()
     {
         std::string codeActionProvider = ConfigurationManager::getInstance()->getProperty("codeActionProvider");
+
+        JLSP_DEBUG(STR("Code action provider: %s", codeActionProvider.c_str()));
 
         if(codeActionProvider == "fake")
         {

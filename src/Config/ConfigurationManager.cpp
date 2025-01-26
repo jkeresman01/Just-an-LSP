@@ -30,7 +30,7 @@ void ConfigurationManager::load()
     in.close();
 }
 
-std::string ConfigurationManager::getProperty(const std::string_view &propertyName)
+std::string ConfigurationManager::getProperty(const std::string &propertyName)
 {
     auto it = m_properties.find(propertyName);
 
@@ -82,7 +82,7 @@ ConfigurationManager *ConfigurationManager::getInstance()
 
     if (!s_instance)
     {
-        s_instance = new ConfigurationManager();
+        s_instance = new ConfigurationManager;
     }
 
     return s_instance;
