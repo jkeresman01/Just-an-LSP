@@ -54,7 +54,7 @@ void ConfigurationManager::load(std::ifstream &in)
             continue;
         }
 
-        std::pair<std::string, std::string> property = XMLUtil::parseFromFile(line);
+        std::pair<std::string, std::string> property = XMLUtil::parseFromFileLine(line);
 
         if (property.first != "" and property.second != "")
         {

@@ -29,7 +29,7 @@ class XMLUtil
     /// @param line from XML file
     ///
     /////////////////////////////////////////////////////////////////////
-    static std::pair<std::string, std::string> parseFromFile(const std::string &line);
+    static std::pair<std::string, std::string> parseFromFileLine(const std::string &line);
 
     /////////////////////////////////////////////////////////////////////
     ///
@@ -64,7 +64,7 @@ class XMLUtil
 /// Implementation of inline defined functions
 /////////////////////////////////////////////////////////////////////
 
-std::pair<std::string, std::string> inline XMLUtil::parseFromFile(const std::string &line)
+std::pair<std::string, std::string> inline XMLUtil::parseFromFileLine(const std::string &line)
 {
     size_t nameStart = line.find("name=\"") + 6;
     size_t nameEnd = line.find("\"", nameStart);
