@@ -56,8 +56,7 @@ void JustAnLSPReqHandler::initializeReq(const std::shared_ptr<InitializeRequest>
 
     Rpc::send(initializeResponse);
 
-    JLSP_DEBUG(
-        STR("Initialize response was successfully sent for client: %s", info.toString().c_str()));
+    JLSP_DEBUG(STR("Initialize response was successfully sent for client: %s", info.toString().c_str()));
 }
 
 void JustAnLSPReqHandler::textDocumentDidOpenReq(

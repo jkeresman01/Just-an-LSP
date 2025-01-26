@@ -3,6 +3,7 @@
 #include <memory>
 #include <string>
 
+#include "../Config/ConfigurationManager.h"
 #include "../Rpc/Rpc.h"
 #include "../Utils/Logger.h"
 #include "../Utils/MessageUtil.h"
@@ -13,6 +14,8 @@ namespace justanlsp
 
 void JustAnLSPServer::init()
 {
+    ConfigurationManager::getInstance()->load();
+
     JLSP_DEBUG("Initializing JustAnLSP server");
 }
 

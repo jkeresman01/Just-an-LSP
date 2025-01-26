@@ -22,7 +22,7 @@ std::vector<std::string> Trie::getCompletionWords(const std::string &prefix) con
     std::vector<std::string> completionOptions;
     std::shared_ptr<TrieNode> node = getTrieNode(prefix);
 
-    if (node != nullptr)
+    if (node)
     {
         findAllWords(node, prefix, completionOptions);
     }

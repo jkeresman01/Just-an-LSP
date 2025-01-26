@@ -32,10 +32,13 @@ class ServerCapabilities
     /// @param areSnippetsSupported
     /// @param isHoverSupported
     /// @param areCompletionsSupported
+    /// @param areCodeActionsSupported
+    /// @param areDefinitionsSupported
     ///
     //////////////////////////////////////////////////////////////
     ServerCapabilities(const TextDocumentSyncKind &textDocumentSyncKind, bool areSnippetsSupported,
-                       bool isHoverSupported, bool areCompletionsSupported, bool areCodeActionsSupported);
+                       bool isHoverSupported, bool areCompletionsSupported, bool areCodeActionsSupported,
+                       bool areDefintionsSupported);
 
     //////////////////////////////////////////////////////////////
     ///
@@ -113,7 +116,7 @@ class ServerCapabilities
         /// @brief Enables or disables code action support.
         ///
         /// @param areCodeActions
-        ///
+
         /// @return Reference to the Builder for method chaining.
         ///
         //////////////////////////////////////////////////////////////
@@ -125,6 +128,20 @@ class ServerCapabilities
 
         //////////////////////////////////////////////////////////////
         ///
+        /// @brief Enables or disables code action support.
+        ///
+        /// @param areCodeActions
+        ///
+        /// @return Reference to the Builder for method chaining.
+        ///
+        //////////////////////////////////////////////////////////////
+        Builder &withDefinitionSupport(bool areDefintionsSupported)
+        {
+            m_areDefinitionsSupported = areDefintionsSupported;
+            return *this;
+        }
+        //////////////////////////////////////////////////////////////
+        ///
         /// @brief Constructs a ServerCapabilities instance based on
         ///        the set parameters.
         ///
@@ -134,7 +151,8 @@ class ServerCapabilities
         ServerCapabilities build() const
         {
             return ServerCapabilities(m_textDocumentSyncKind, m_areSnippetsSupported, m_isHoverSupported,
-                                      m_areCompletionsSupported, m_areCodeActionsSupported);
+                                      m_areCompletionsSupported, m_areCodeActionsSupported,
+                                      m_areDefinitionsSupported);
         }
 
       private:
@@ -172,6 +190,13 @@ class ServerCapabilities
         ///
         //////////////////////////////////////////////////////////////
         bool m_areCodeActionsSupported;
+
+        //////////////////////////////////////////////////////////////
+        ///
+        /// @brief Indicates whether go to definition functionality is supported.
+        ///
+        //////////////////////////////////////////////////////////////
+        bool m_areDefinitionsSupported;
     };
 
     //////////////////////////////////////////////////////////////
@@ -219,5 +244,12 @@ class ServerCapabilities
     ///
     //////////////////////////////////////////////////////////////
     bool m_areCodeActionsSupported;
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Indicates whether go to definition functionality is supported.
+    ///
+    //////////////////////////////////////////////////////////////
+    bool m_areDefinitionsSupported;
 };
 } // namespace justanlsp
