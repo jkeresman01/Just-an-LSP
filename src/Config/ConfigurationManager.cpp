@@ -56,7 +56,7 @@ void ConfigurationManager::load(std::ifstream &in)
         }
         else
         {
-            JLSP_ERROR(STR("Found empty propery: [\"%s\"] : [\"%s\"]", property.first.c_str(),
+            JLSP_WARN(STR("Found empty propery: [\"%s\"] : [\"%s\"]", property.first.c_str(),
                            property.second.c_str()));
         }
     }
