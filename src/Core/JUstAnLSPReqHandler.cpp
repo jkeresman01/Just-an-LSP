@@ -62,6 +62,8 @@ void JustAnLSPReqHandler::initializeReq(const std::shared_ptr<InitializeRequest>
 void JustAnLSPReqHandler::textDocumentDidOpenReq(
     const std::shared_ptr<DidOpenTextDocumentRequest> &didOpenTextDocumentReq)
 {
+    JLSP_DEBUG("Processing textDocument/didOpen request");
+
     std::shared_ptr<DidOpenTextDocumentParams> didOpenParams = didOpenTextDocumentReq->getParams();
     std::shared_ptr<TextDocumentItem> textDocumentItem = didOpenParams->getTextDocumentItem();
 
@@ -104,10 +106,14 @@ void JustAnLSPReqHandler::textDocumentDidChangeReq(
     PublishDiagnosticsNoticifation publishDiagnostics("textDocument/publishDiagnostics", diagnosticsParams);
 
     Rpc::send(publishDiagnostics);
+
+    JLSP_DEBUG("Response successfully sent for textDocument/didChangerequest");
 }
 
 void JustAnLSPReqHandler::textDocumentCompletionReq(const std::shared_ptr<CompletionRequest> &completionReq)
 {
+    JLSP_DEBUG("Processing textDocument/completion request");
+
     std::vector<CompletionItem> completionItems = m_completionProvider->getCompletions();
 
     int64_t requestId = completionReq->getId();
@@ -116,10 +122,14 @@ void JustAnLSPReqHandler::textDocumentCompletionReq(const std::shared_ptr<Comple
     CompletionResponse completionResponse{"2.0", requestId, completionResult};
 
     Rpc::send(completionResponse);
+
+    JLSP_DEBUG("Response successfully sent for textDocument/completion request");
 }
 
 void JustAnLSPReqHandler::textDocumentHoverReq(const std::shared_ptr<HoverRequest> &hoverTextDocumentReq)
 {
+    JLSP_DEBUG("Processing textDocument/hover request");
+
     std::shared_ptr<HoverParams> hoverParams = hoverTextDocumentReq->getParams();
 
     std::string URI = hoverParams->getTextDocumentIdentifier().URI;
