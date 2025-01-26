@@ -1,4 +1,4 @@
-#include "JustAnLSPClient.h".cpp
+#include "JustAnLSPClient.h"
 
 #include <memory>
 

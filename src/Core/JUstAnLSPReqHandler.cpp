@@ -43,7 +43,7 @@ void JustAnLSPReqHandler::initializeReq(const std::shared_ptr<InitializeRequest>
     std::shared_ptr<ClientCapabilities> capabilities = initializeParams->getClientCapabilites();
     ClientInfo info = initializeParams->getClientInfo();
 
-    JLSP_DEBUG(STR("Client: %s has sent initializtion request", clientInfo.toString().c_str()));
+    JLSP_DEBUG(STR("Client: %s has sent initializtion request", info.toString().c_str()));
 
     m_justAnLSPClient->saveInfo(info);
     m_justAnLSPClient->registerCapabilites(capabilities);
@@ -57,7 +57,7 @@ void JustAnLSPReqHandler::initializeReq(const std::shared_ptr<InitializeRequest>
     Rpc::send(initializeResponse);
 
     JLSP_DEBUG(
-        STR("Initialize response was successfully sent for client: %s", clientInfo.toString().c_str()));
+        STR("Initialize response was successfully sent for client: %s", info.toString().c_str()));
 }
 
 void JustAnLSPReqHandler::textDocumentDidOpenReq(
