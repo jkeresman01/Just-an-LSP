@@ -1,6 +1,7 @@
 #include "ConfigurationManager.h"
 
 #include "../Utils/Logger.h"
+#include "../Utils/XMLUtil.h"
 
 #include <fstream>
 #include <mutex>
@@ -48,7 +49,12 @@ void ConfigurationManager::load(std::ifstream &in)
 
     while (getline(in, line))
     {
-        std::pair<std::string, std::string> property = XMLUtil::parseFromFileLine(line);
+        if(!XMLUtil::isValidXMLLine(line))
+        {
+            continue;
+        }
+
+        std::pair<std::string, std::string> property = XMLUtil::parseFromFile(line);
 
         if (property.first != "" and property.second != "")
         {
@@ -57,7 +63,7 @@ void ConfigurationManager::load(std::ifstream &in)
         else
         {
             JLSP_WARN(STR("Found empty propery: [\"%s\"] : [\"%s\"]", property.first.c_str(),
-                           property.second.c_str()));
+                          property.second.c_str()));
         }
     }
 }
