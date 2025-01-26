@@ -7,7 +7,7 @@ namespace justanlsp
 CodeActionParams::CodeActionParams(const nlohmann::json &jsonRPC)
 {
     setRange(jsonRPC);
-    setURI(jsonRPC);
+    setURI(jsonRPC["textDocument"]);
     // TODO reset of the params
 }
 

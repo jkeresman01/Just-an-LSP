@@ -40,13 +40,13 @@ void JustAnLSPReqHandler::initializeReq(const std::shared_ptr<InitializeRequest>
     JLSP_DEBUG("Processing textDocument/initialize request");
 
     std::shared_ptr<InitializeParams> initializeParams = initializeRequest->getInitializeParams();
-    std::shared_ptr<ClientCapabilities> clientCapabilities = initializeParams->getClientCapabilites();
-    ClientInfo clientInfo = initializeParams->getClientInfo();
+    std::shared_ptr<ClientCapabilities> capabilities = initializeParams->getClientCapabilites();
+    ClientInfo info = initializeParams->getClientInfo();
 
     JLSP_DEBUG(STR("Client: %s has sent initializtion request", clientInfo.toString().c_str()));
 
-    m_justAnLSPClient->saveInfo(clientInfo);
-    m_justAnLSPClient->registerCapabilites(clientCapabilities);
+    m_justAnLSPClient->saveInfo(info);
+    m_justAnLSPClient->registerCapabilites(capabilities);
 
     ServerCapabilities::Builder builder;
     ServerCapabilities serverCapabilites = ServerCapabilitiesDirector::getDefaultServerCapabilites(builder);
