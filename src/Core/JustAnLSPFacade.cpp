@@ -59,14 +59,14 @@ void JustAnLSPFacade::handleRequest(const nlohmann::json &request)
         handleExitRequest(request);
         break;
     default:
-        LOG_ERROR("Received request/notification with method: UNKNOWN_TYPE");
+        JLSP_ERROR("Received request/notification with method: UNKNOWN_TYPE");
         break;
     }
 }
 
 void JustAnLSPFacade::handleInitializeRequest(const nlohmann::json &jsonRPC)
 {
-    LOG_INFO("Received request with method: initialize");
+    JLSP_INFO("Received request with method: initialize");
 
     m_justAnLspCounters->increment(RequestType::INITIALIZE);
 
@@ -79,7 +79,7 @@ void JustAnLSPFacade::handleInitializeRequest(const nlohmann::json &jsonRPC)
 
 void JustAnLSPFacade::handleShutdownRequest(const nlohmann::json &jsonRPC)
 {
-    LOG_INFO("Received request with method: shutdown");
+    JLSP_INFO("Received request with method: shutdown");
 
     m_justAnLspCounters->increment(RequestType::SHUTDOWN);
 
@@ -90,18 +90,18 @@ void JustAnLSPFacade::handleShutdownRequest(const nlohmann::json &jsonRPC)
 
 void JustAnLSPFacade::handleInitializedRequest(const nlohmann::json &jsonRPC)
 {
-    LOG_INFO("Received notification with method: initialized");
+    JLSP_INFO("Received notification with method: initialized");
 
     m_justAnLspCounters->increment(RequestType::INITIALIZED);
 
     ensureNoReqIsProcessedAfterShutdown(jsonRPC);
 
-    LOG_INFO("Successful connection between client and JustAnLSPServer has been established");
+    JLSP_INFO("Successful connection between client and JustAnLSPServer has been established");
 }
 
 void JustAnLSPFacade::handleTextDocumentDidOpenRequest(const nlohmann::json &jsonRPC)
 {
-    LOG_INFO("Received notification with method: textDocument/didOpen");
+    JLSP_INFO("Received notification with method: textDocument/didOpen");
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_DID_OPEN);
 
@@ -115,7 +115,7 @@ void JustAnLSPFacade::handleTextDocumentDidOpenRequest(const nlohmann::json &jso
 
 void JustAnLSPFacade::handleTextDocumentDidChangeRequest(const nlohmann::json &jsonRPC)
 {
-    LOG_INFO("Received request with method: textDocument/didChange");
+    JLSP_INFO("Received request with method: textDocument/didChange");
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_DID_CHANGE);
 
@@ -129,7 +129,7 @@ void JustAnLSPFacade::handleTextDocumentDidChangeRequest(const nlohmann::json &j
 
 void JustAnLSPFacade::handleTextDocumentCompletionRequest(const nlohmann::json &jsonRPC)
 {
-    LOG_INFO("Received request with method: textDocument/completion");
+    JLSP_INFO("Received request with method: textDocument/completion");
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_COMPLETION);
 
@@ -142,27 +142,27 @@ void JustAnLSPFacade::handleTextDocumentCompletionRequest(const nlohmann::json &
 
 void JustAnLSPFacade::handleExitRequest(const nlohmann::json &jsonRPC)
 {
-    LOG_INFO("Received notification with method: exit");
+    JLSP_INFO("Received notification with method: exit");
 
     bool isShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
 
     if (isShutdownReqReceived)
     {
-        LOG_INFO("Exiting with status code 0 (successful shutdown)");
+        JLSP_INFO("Exiting with status code 0 (successful shutdown)");
         std::exit(ExitStatus::SUCCESS);
     }
     else
     {
-        LOG_ERROR("Exiting with status code 1 (shutdown not received)");
+        JLSP_ERROR("Exiting with status code 1 (shutdown not received)");
         std::exit(ExitStatus::FAILURE);
     }
 }
 
 void JustAnLSPFacade::handleTextDocumentHoverRequest(const nlohmann::json &jsonRPC)
 {
-    LOG_INFO("Received request with method: textDocument/hover");
+    JLSP_INFO("Received request with method: textDocument/hover");
 
-    LOG_WARN(jsonRPC.dump(4));
+    JLSP_WARN(jsonRPC.dump(4));
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_HOVER);
 
@@ -185,7 +185,7 @@ void JustAnLSPFacade::ensureNoReqIsProcessedAfterShutdown(const nlohmann::json &
 
     if (isShutdownReqReceived)
     {
-        LOG_ERROR("Received request after shutdown");
+        JLSP_ERROR("Received request after shutdown");
         m_justAnLSPErrorHandler->handleReceivedReqAfterShutdownError(jsonRPC["id"]);
     }
 }

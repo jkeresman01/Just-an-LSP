@@ -15,7 +15,7 @@ void HoverRequest::setParams(const nlohmann::json &jsonRPC)
 
     if (it == jsonRPC.end())
     {
-        LOG_ERROR("No params in textDocument/hover request");
+        JLSP_ERROR("No params in textDocument/hover request");
         return;
     }
 

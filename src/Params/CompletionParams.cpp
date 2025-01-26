@@ -17,7 +17,7 @@ void CompletionParams::setCompletionContext(const nlohmann::json &jsonRPC)
 
     if (it == jsonRPC.end())
     {
-        LOG_ERROR("No trigger king was set in textDocument/comletion request");
+        JLSP_ERROR("No trigger king was set in textDocument/comletion request");
         return;
     }
 
@@ -36,7 +36,7 @@ void CompletionParams::setTextDocumentIdentifier(const nlohmann::json &jsonRPC)
 
     if (it == jsonRPC.end())
     {
-        LOG_ERROR("No textDocumentIdentifier(UR) was set in textDocument/comletion request");
+        JLSP_ERROR("No textDocumentIdentifier(UR) was set in textDocument/comletion request");
         return;
     }
 

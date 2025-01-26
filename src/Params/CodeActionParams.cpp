@@ -17,7 +17,7 @@ void CodeActionParams::setRange(const nlohmann::json &jsonRPC)
 
     if (it == jsonRPC.end())
     {
-        LOG_ERROR("No range in textDocument/codeAction request");
+        JLSP_ERROR("No range in textDocument/codeAction request");
         return;
     }
 
@@ -45,7 +45,7 @@ void CodeActionParams::setURI(const nlohmann::json &jsonRPC)
 
     if (it == jsonRPC.end())
     {
-        LOG_ERROR("No document URI in textDocument/codeAction request");
+        JLSP_ERROR("No document URI in textDocument/codeAction request");
         return;
     }
 

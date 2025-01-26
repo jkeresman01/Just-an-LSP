@@ -46,12 +46,12 @@ template <typename T> inline T Converter::convert(const std::string &input)
 
     if (!(converter >> result))
     {
-        LOG_ERROR(STR("Conversion failed: invalid input '%s'", input));
+        JLSP_ERROR(STR("Conversion failed: invalid input '%s'", input));
     }
 
     if (!converter.eof())
     {
-        LOG_ERROR(STR("Conversion failed: extra characters in input '%s'", input));
+        JLSP_ERROR(STR("Conversion failed: extra characters in input '%s'", input));
     }
 
     return result;

@@ -37,13 +37,13 @@ JustAnLSPReqHandler::JustAnLSPReqHandler()
 
 void JustAnLSPReqHandler::initializeReq(const std::shared_ptr<InitializeRequest> &initializeRequest)
 {
-    LOG_INFO("Processing textDocument/initialize request");
+    JLSP_DEBUG("Processing textDocument/initialize request");
 
     std::shared_ptr<InitializeParams> initializeParams = initializeRequest->getInitializeParams();
     std::shared_ptr<ClientCapabilities> clientCapabilities = initializeParams->getClientCapabilites();
     ClientInfo clientInfo = initializeParams->getClientInfo();
 
-    LOG_INFO(STR("Client: %s has sent initializtion request", clientInfo.toString().c_str()));
+    JLSP_DEBUG(STR("Client: %s has sent initializtion request", clientInfo.toString().c_str()));
 
     m_justAnLSPClient->saveInfo(clientInfo);
     m_justAnLSPClient->registerCapabilites(clientCapabilities);
@@ -56,7 +56,7 @@ void JustAnLSPReqHandler::initializeReq(const std::shared_ptr<InitializeRequest>
 
     Rpc::send(initializeResponse);
 
-    LOG_INFO(STR("Initialize response was successfully sent for client: %s", clientInfo.toString().c_str()));
+    JLSP_DEBUG(STR("Initialize response was successfully sent for client: %s", clientInfo.toString().c_str()));
 }
 
 void JustAnLSPReqHandler::textDocumentDidOpenReq(
@@ -80,13 +80,13 @@ void JustAnLSPReqHandler::textDocumentDidOpenReq(
 
     Rpc::send(publishDiagnostics);
 
-    LOG_INFO("Request with method: textDocument/didOpen was successfully processed");
+    JLSP_DEBUG("Request with method: textDocument/didOpen was successfully processed");
 }
 
 void JustAnLSPReqHandler::textDocumentDidChangeReq(
     const std::shared_ptr<DidChangeTextDocumentRequest> &didChangeTextDocumentReq)
 {
-    LOG_INFO("Processing textDocument/didChange request");
+    JLSP_DEBUG("Processing textDocument/didChange request");
 
     std::shared_ptr<DidChangeTextDocumentParams> didChangeParams = didChangeTextDocumentReq->getParams();
 
@@ -135,13 +135,13 @@ void JustAnLSPReqHandler::textDocumentHoverReq(const std::shared_ptr<HoverReques
 
 void JustAnLSPReqHandler::shutdownReq(const std::shared_ptr<ShutdownRequest> &shutdownRequest)
 {
-    LOG_INFO("Processing shutdown request");
+    JLSP_DEBUG("Processing shutdown request");
 
     ShutdownResponse shutdownResponse{"2.0", shutdownRequest->getId()};
 
     Rpc::send(shutdownResponse);
 
-    LOG_INFO("Response was sent for shutdown request!");
+    JLSP_DEBUG("Response was sent for shutdown request!");
 }
 
 } // namespace justanlsp

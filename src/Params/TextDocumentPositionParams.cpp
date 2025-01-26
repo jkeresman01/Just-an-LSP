@@ -22,7 +22,7 @@ void TextDocumentPositionParams::setTextDocumentIdentifier(const nlohmann::json 
 
     if (it == jsonRPC.end())
     {
-        LOG_ERROR("No text docuemnt identifier in TextDocumentPositionParams");
+        JLSP_ERROR("No text docuemnt identifier in TextDocumentPositionParams");
         return;
     }
 

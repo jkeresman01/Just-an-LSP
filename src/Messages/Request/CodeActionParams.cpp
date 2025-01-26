@@ -15,7 +15,7 @@ void CodeActionRequest::setParams(const nlohmann::json &jsonRPC)
 
     if (it == jsonRPC.end())
     {
-        LOG_ERROR("No textDocument/codeAction params in textDocument/codeAction request");
+        JLSP_ERROR("No textDocument/codeAction params in textDocument/codeAction request");
         return;
     }
 

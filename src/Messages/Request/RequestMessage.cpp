@@ -21,7 +21,7 @@ void RequestMessage::setId(const nlohmann::json &jsonRPC)
 
     if (it == jsonRPC.end())
     {
-        LOG_ERROR("Can't construct Request message, there is no id in request");
+        JLSP_ERROR("Can't construct Request message, there is no id in request");
         return;
     }
 
@@ -34,7 +34,7 @@ void RequestMessage::setMethod(const nlohmann::json &jsonRPC)
 
     if (it == jsonRPC.end())
     {
-        LOG_ERROR("Can't construct Request message, there is no method in request");
+        JLSP_ERROR("Can't construct Request message, there is no method in request");
         return;
     }
 

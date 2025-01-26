@@ -15,7 +15,7 @@ void CompletionRequest::setParams(const nlohmann::json &jsonRPC)
 
     if (it == jsonRPC.end())
     {
-        LOG_ERROR("No params in request with method: textDocument/completion");
+        JLSP_ERROR("No params in request with method: textDocument/completion");
         return;
     }
 

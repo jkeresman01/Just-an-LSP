@@ -63,7 +63,7 @@ inline nlohmann::json MessageUtil::tryParse(const std::string &request)
     }
     catch (const std::exception &e)
     {
-        LOG_ERROR(STR("Failed to parse request: %s!", e.what()));
+        JLSP_ERROR(STR("Failed to parse request: %s!", e.what()));
     }
 
     return jsonRequest;
@@ -75,7 +75,7 @@ inline RequestType MessageUtil::getType(const nlohmann::json &request)
 
     if (it == request.end())
     {
-        LOG_ERROR("Received unknown request type");
+        JLSP_ERROR("Received unknown request type");
         return RequestType::UNKNOWN;
     }
 

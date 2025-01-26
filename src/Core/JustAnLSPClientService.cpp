@@ -11,7 +11,7 @@ void JustAnLSPClientService::registerClient(const JustAnLSPClient &client)
 {
     m_registeredClients.emplace(++m_clientId, client);
 
-    LOG_INFO(STR("Client with ID: %u, ( %s ) has been successfully registered!", m_clientId,
+    JLSP_INFO(STR("Client with ID: %u, ( %s ) has been successfully registered!", m_clientId,
                  client.getInfo().c_str()));
 }
 
@@ -21,7 +21,7 @@ JustAnLSPClient JustAnLSPClientService::getClientById(uint32_t clientId) const
 
     if (it == m_registeredClients.end())
     {
-        LOG_ERROR(STR("There are no registered clients with ID: %u!", clientId));
+        JLSP_ERROR(STR("There are no registered clients with ID: %u!", clientId));
     }
 
     return it->second;

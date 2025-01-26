@@ -9,7 +9,7 @@ namespace justanlsp
 
 void JustAnLSPErrorHandler::handleServerNotInitalizedError(int64_t id)
 {
-    LOG_INFO("Handling server not initialized error");
+    JLSP_INFO("Handling server not initialized error");
 
     ResponseError serverNotInitializedError =
         ResponseError::Builder()
@@ -22,7 +22,7 @@ void JustAnLSPErrorHandler::handleServerNotInitalizedError(int64_t id)
 
 void JustAnLSPErrorHandler::handleParseError(int64_t id)
 {
-    LOG_INFO("Handling parse error");
+    JLSP_INFO("Handling parse error");
 
     ResponseError parseError = ResponseError::Builder()
                                    .withErrorCode(ErrorCodes::PARSE_ERROR)
@@ -34,7 +34,7 @@ void JustAnLSPErrorHandler::handleParseError(int64_t id)
 
 void JustAnLSPErrorHandler::handleMethodNotFoundError(int64_t id)
 {
-    LOG_INFO("Handling method not found error");
+    JLSP_INFO("Handling method not found error");
 
     ResponseError methodNotFoundError = ResponseError::Builder()
                                             .withErrorCode(ErrorCodes::METHOD_NOT_FOUND)
@@ -46,7 +46,7 @@ void JustAnLSPErrorHandler::handleMethodNotFoundError(int64_t id)
 
 void JustAnLSPErrorHandler::handleInternalError(int64_t id)
 {
-    LOG_INFO("Handling internal server error");
+    JLSP_INFO("Handling internal server error");
 
     ResponseError internalServerError = ResponseError::Builder()
                                             .withErrorCode(ErrorCodes::INTERNAL_ERROR)
@@ -58,7 +58,7 @@ void JustAnLSPErrorHandler::handleInternalError(int64_t id)
 
 void JustAnLSPErrorHandler::handleReceivedReqAfterShutdownError(int64_t id)
 {
-    LOG_INFO("Handling invalid request error");
+    JLSP_INFO("Handling invalid request error");
 
     ResponseError invalidRequestError = ResponseError::Builder()
                                             .withErrorCode(ErrorCodes::INVALID_REQUEST)
@@ -70,7 +70,7 @@ void JustAnLSPErrorHandler::handleReceivedReqAfterShutdownError(int64_t id)
 
 void JustAnLSPErrorHandler::handleError(const ResponseError &responseError, int64_t id)
 {
-    LOG_INFO(STR("Sending response error: %s", responseError.toString().c_str()));
+    JLSP_INFO(STR("Sending response error: %s", responseError.toString().c_str()));
 
     ResponseMessage responseMessage("2.0", id, responseError);
 

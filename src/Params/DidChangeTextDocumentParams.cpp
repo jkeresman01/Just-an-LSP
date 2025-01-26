@@ -17,7 +17,7 @@ void DidChangeTextDocumentParams::setTextDocumentIdentifier(const nlohmann::json
 
     if (it == jsonRPC.end())
     {
-        LOG_ERROR("No textDocument in textDocument/didChange notification!");
+        JLSP_ERROR("No textDocument in textDocument/didChange notification!");
         return;
     }
 
@@ -30,7 +30,7 @@ void DidChangeTextDocumentParams::setContentChanges(const nlohmann::json &jsonRP
 
     if (it == jsonRPC.end())
     {
-        LOG_ERROR("No text changes in textDocument/didChange notification!");
+        JLSP_ERROR("No text changes in textDocument/didChange notification!");
         return;
     }
 

@@ -28,7 +28,7 @@ void JustAnLSPClient::addDocument(const std::string &URI, const std::string &doc
 {
     m_documentsByURI.emplace(URI, document);
 
-    LOG_INFO(STR("Added text document with URI: %s, for client: %s", URI.c_str(),
+    JLSP_INFO(STR("Added text document with URI: %s, for client: %s", URI.c_str(),
                  m_clientInfo.toString().c_str()));
 }
 
@@ -38,7 +38,7 @@ std::string JustAnLSPClient::getDocumentByURI(const std::string &URI) const
 
     if (it == m_documentsByURI.end())
     {
-        LOG_ERROR(STR("There are no registered documents with URI: %s !", URI.c_str()));
+        JLSP_ERROR(STR("There are no registered documents with URI: %s !", URI.c_str()));
         return std::string();
     }
 
@@ -49,7 +49,7 @@ void JustAnLSPClient::updateDocumentWithURI(const std::string &URI, const std::s
 {
     m_documentsByURI[URI] = document;
 
-    LOG_INFO(STR("Updated text document with URI: %s, for client: %s", URI.c_str(),
+    JLSP_INFO(STR("Updated text document with URI: %s, for client: %s", URI.c_str(),
                  m_clientInfo.toString().c_str()));
 }
 

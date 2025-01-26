@@ -24,10 +24,10 @@
 
 #define LOG(severity, message) justanlsp::Logger::log(severity, message, __FILE__, __LINE__)
 
-#define LOG_DEBUG(message) LOG("DEBUG", message)
-#define LOG_INFO(message) LOG("INFO", message)
-#define LOG_WARN(message) LOG("WARN", message)
-#define LOG_ERROR(message) LOG("ERROR", message)
+#define JLSP_DEBUG(message) LOG("DEBUG", message)
+#define JLSP(message) LOG("INFO", message)
+#define JLSP_WARN(message) LOG("WARN", message)
+#define JLSP_ERROR(message) LOG("ERROR", message)
 
 namespace justanlsp
 {

@@ -18,7 +18,7 @@ void TextDocumentItem::setURI(const nlohmann::json &jsonRPC)
 
     if (it == jsonRPC.end())
     {
-        LOG_ERROR("No URI in textDocumentItemKind");
+        JLSP_ERROR("No URI in textDocumentItemKind");
         return;
     }
 
@@ -31,7 +31,7 @@ void TextDocumentItem::setLanguageId(const nlohmann::json &jsonRPC)
 
     if (it == jsonRPC.end())
     {
-        LOG_ERROR("No languageId in textDocumentItemKind");
+        JLSP_ERROR("No languageId in textDocumentItemKind");
         return;
     }
 
@@ -44,7 +44,7 @@ void TextDocumentItem::setTextVersion(const nlohmann::json &jsonRPC)
 
     if (it == jsonRPC.end())
     {
-        LOG_ERROR("No version in textDocumentItemKind");
+        JLSP_ERROR("No version in textDocumentItemKind");
         return;
     }
 
@@ -57,7 +57,7 @@ void TextDocumentItem::setText(const nlohmann::json &jsonRPC)
 
     if (it == jsonRPC.end())
     {
-        LOG_ERROR("No text in textDocumentItemKind");
+        JLSP_ERROR("No text in textDocumentItemKind");
         return;
     }
 

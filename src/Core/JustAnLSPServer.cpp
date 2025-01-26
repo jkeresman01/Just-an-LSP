@@ -13,17 +13,17 @@ namespace justanlsp
 
 void JustAnLSPServer::init()
 {
-    LOG_DEBUG("Initializing JustAnLSP server");
+    JLSP_DEBUG("Initializing JustAnLSP server");
 }
 
 void JustAnLSPServer::shutdown()
 {
-    LOG_DEBUG("Successful shutdown of JustAnLSP server");
+    JLSP_DEBUG("Successful shutdown of JustAnLSP server");
 }
 
 void JustAnLSPServer::run()
 {
-    LOG_DEBUG("JustAnLSP server successfully started");
+    JLSP_DEBUG("JustAnLSP server successfully started");
 
     for (;;)
     {

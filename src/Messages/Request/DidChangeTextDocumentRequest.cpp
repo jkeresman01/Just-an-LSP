@@ -16,7 +16,7 @@ void DidChangeTextDocumentRequest::setParams(const nlohmann::json &jsonRPC)
 
     if (it == jsonRPC.end())
     {
-        LOG_ERROR("No params in textDocument/didChange notification!");
+        JLSP_ERROR("No params in textDocument/didChange notification!");
         return;
     }
 
