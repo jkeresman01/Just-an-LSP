@@ -56,7 +56,8 @@ void JustAnLSPReqHandler::initializeReq(const std::shared_ptr<InitializeRequest>
 
     Rpc::send(initializeResponse);
 
-    JLSP_DEBUG(STR("Initialize response was successfully sent for client: %s", clientInfo.toString().c_str()));
+    JLSP_DEBUG(
+        STR("Initialize response was successfully sent for client: %s", clientInfo.toString().c_str()));
 }
 
 void JustAnLSPReqHandler::textDocumentDidOpenReq(
@@ -137,8 +138,15 @@ void JustAnLSPReqHandler::textDocumentHoverReq(const std::shared_ptr<HoverReques
 
     std::string document = m_justAnLSPClient->getDocumentByURI(URI);
 
-    (void)position;
-    (void)document;
+    // TODO hover logic
+}
+
+void JustAnLSPReqHandler::textDocumentCodeActionReq(
+    const std::shared_ptr<CodeActionRequest> &codeActionRequest)
+{
+    JLSP_DEBUG("Processing textDocument/codeAction request");
+
+    std::shared_ptr<CodeActionParams> codeActionParams = codeActionRequest->getParams();
 
     // TODO hover logic
 }

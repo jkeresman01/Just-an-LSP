@@ -17,7 +17,7 @@ std::ostream &operator<<(std::ostream &os, const CodeActionResponse &codeActionR
 {
     nlohmann::json jsonRPC = codeActionResponse.toJson();
 
-    os << "Content-length: " << jsonRPC.dum(4).size() << "\r\n\r\n";
+    os << "Content-length: " << jsonRPC.dump(4).size() << "\r\n\r\n";
     os << jsonRPC.dump(4) << std::endl;
 
     return os;

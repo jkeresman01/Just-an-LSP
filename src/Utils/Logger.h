@@ -25,7 +25,7 @@
 #define LOG(severity, message) justanlsp::Logger::log(severity, message, __FILE__, __LINE__)
 
 #define JLSP_DEBUG(message) LOG("DEBUG", message)
-#define JLSP(message) LOG("INFO", message)
+#define JLSP_INFO(message) LOG("INFO", message)
 #define JLSP_WARN(message) LOG("WARN", message)
 #define JLSP_ERROR(message) LOG("ERROR", message)
 

@@ -3,7 +3,7 @@
 #include <nlohmann/json.hpp>
 #include <string>
 
-#include "../../Results/CodeActionResult.h "
+#include "../../Results/CodeActionResult.h"
 #include "ResponseMessage.h"
 
 namespace justanlsp

@@ -3,6 +3,7 @@
 #include <memory>
 #include <nlohmann/json.hpp>
 
+#include "../Messages/Request/CodeActionRequest.h"
 #include "../Messages/Request/CompletionRequest.h"
 #include "../Messages/Request/DidChangeTextDocumentRequest.h"
 #include "../Messages/Request/DidOpenTextDocumentRequest.h"
@@ -116,6 +117,20 @@ class MessageFactory
     static std::shared_ptr<HoverRequest> createHoverReq(const nlohmann::json &jsonRPC)
     {
         return std::make_shared<HoverRequest>(jsonRPC);
+    }
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Creates an Code action request message object.
+    ///
+    /// @param jsonRPC The JSON object containing the request data.
+    ///
+    /// @return A shared pointer to an code action request object.
+    ///
+    //////////////////////////////////////////////////////////////
+    static std::shared_ptr<CodeActionRequest> createCodeActionRequest(const nlohmann::json &jsonRPC)
+    {
+        return std::make_shared<CodeActionRequest>(jsonRPC);
     }
 };
 

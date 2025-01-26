@@ -58,6 +58,10 @@ RequestType inline RequestMethodUtil::getType(const std::string &method)
     {
         return RequestType::TEXT_DOCUMENT_COMPLETION;
     }
+    else if (method == "textDocument/codeAction")
+    {
+        return RequestType::TEXT_DOCUMENT_CODE_ACTION;
+    }
     else if (method == "textDocument/didOpen")
     {
         return RequestType::TEXT_DOCUMENT_DID_OPEN;

@@ -12,7 +12,7 @@ void JustAnLSPClientService::registerClient(const JustAnLSPClient &client)
     m_registeredClients.emplace(++m_clientId, client);
 
     JLSP_INFO(STR("Client with ID: %u, ( %s ) has been successfully registered!", m_clientId,
-                 client.getInfo().c_str()));
+                  client.getInfo().c_str()));
 }
 
 JustAnLSPClient JustAnLSPClientService::getClientById(uint32_t clientId) const

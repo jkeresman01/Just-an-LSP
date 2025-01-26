@@ -5,6 +5,7 @@
 #include "../CodeActions/ICodeActionsProvider.h"
 #include "../Completions/ICompletionProvider.h"
 #include "../Diagnostics/IDiagnosticsProvider.h"
+#include "../Messages/Request/CodeActionRequest.h"
 #include "../Messages/Request/CompletionRequest.h"
 #include "../Messages/Request/DidChangeTextDocumentRequest.h"
 #include "../Messages/Request/DidOpenTextDocumentRequest.h"
@@ -101,7 +102,7 @@ class JustAnLSPReqHandler
     /// @param textDocument/codeAction  request
     ///
     //////////////////////////////////////////////////////////////
-    /* void textDocumentCodeActionReq(const std::shared_ptr<CodeActionRequest> &codeActionRequest); */
+    void textDocumentCodeActionReq(const std::shared_ptr<CodeActionRequest> &codeActionRequest);
 
   private:
     //////////////////////////////////////////////////////////////
@@ -112,9 +113,25 @@ class JustAnLSPReqHandler
     //////////////////////////////////////////////////////////////
     std::unique_ptr<JustAnLSPClient> m_justAnLSPClient = std::make_unique<JustAnLSPClient>();
 
-    // TODO document this stuff
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief shared pointer to completions provider object
+    ///
+    //////////////////////////////////////////////////////////////
     std::shared_ptr<ICompletionProvider> m_completionProvider;
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief shared pointer to diagnostics provider object
+    ///
+    //////////////////////////////////////////////////////////////
     std::shared_ptr<IDiagnosticsProvider> m_diagnosticsProvider;
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief shared pointer to code actions provider object
+    ///
+    //////////////////////////////////////////////////////////////
     std::shared_ptr<ICodeActionsProvider> m_codeActionsProvider;
 };
 } // namespace justanlsp

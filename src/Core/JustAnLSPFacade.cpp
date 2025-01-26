@@ -10,6 +10,7 @@
 #include "../Enums/RequestType.h"
 #include "../Enums/TextDocumentSyncKind.h"
 #include "../Messages/FactoryIml/MessageFactory.h"
+#include "../Messages/Request/CodeActionRequest.h"
 #include "../Messages/Request/DidChangeTextDocumentRequest.h"
 #include "../Messages/Request/HoverRequest.h"
 #include "../Messages/Request/ShutdownRequest.h"
@@ -51,6 +52,9 @@ void JustAnLSPFacade::handleRequest(const nlohmann::json &request)
         break;
     case RequestType::TEXT_DOCUMENT_HOVER:
         handleTextDocumentHoverRequest(request);
+        break;
+    case RequestType::TEXT_DOCUMENT_CODE_ACTION:
+        handleTextDocumentCodeActionRequest(request);
         break;
     case RequestType::SHUTDOWN:
         handleShutdownRequest(request);
@@ -173,10 +177,19 @@ void JustAnLSPFacade::handleTextDocumentHoverRequest(const nlohmann::json &jsonR
     m_justAnLSPReqHandler->textDocumentHoverReq(hoverRequest);
 }
 
-void handleTextDocumentCodeActionRequest(const nlohmann::json &request)
+void JustAnLSPFacade::handleTextDocumentCodeActionRequest(const nlohmann::json &jsonRPC)
 {
-    // TODO
-    (void)request;
+    JLSP_INFO("Received request with method: textDocument/codeAction");
+
+    JLSP_WARN(jsonRPC.dump(4));
+
+    m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_CODE_ACTION);
+
+    ensureNoReqIsProcessedAfterShutdown(jsonRPC);
+
+    std::shared_ptr<CodeActionRequest> codeActionRequest = MessageFactory::createCodeActionRequest(jsonRPC);
+
+    m_justAnLSPReqHandler->textDocumentCodeActionReq(codeActionRequest);
 }
 
 void JustAnLSPFacade::ensureNoReqIsProcessedAfterShutdown(const nlohmann::json &jsonRPC)

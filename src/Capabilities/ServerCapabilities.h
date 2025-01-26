@@ -35,7 +35,7 @@ class ServerCapabilities
     ///
     //////////////////////////////////////////////////////////////
     ServerCapabilities(const TextDocumentSyncKind &textDocumentSyncKind, bool areSnippetsSupported,
-                       bool isHoverSupported, bool areCompletionsSupported);
+                       bool isHoverSupported, bool areCompletionsSupported, bool areCodeActionsSupported);
 
     //////////////////////////////////////////////////////////////
     ///
@@ -110,6 +110,21 @@ class ServerCapabilities
 
         //////////////////////////////////////////////////////////////
         ///
+        /// @brief Enables or disables code action support.
+        ///
+        /// @param areCodeActions
+        ///
+        /// @return Reference to the Builder for method chaining.
+        ///
+        //////////////////////////////////////////////////////////////
+        Builder &withCodeActionSupport(bool areCodeActionsSupported)
+        {
+            m_areCodeActionsSupported = areCodeActionsSupported;
+            return *this;
+        }
+
+        //////////////////////////////////////////////////////////////
+        ///
         /// @brief Constructs a ServerCapabilities instance based on
         ///        the set parameters.
         ///
@@ -119,7 +134,7 @@ class ServerCapabilities
         ServerCapabilities build() const
         {
             return ServerCapabilities(m_textDocumentSyncKind, m_areSnippetsSupported, m_isHoverSupported,
-                                      m_areCompletionsSupported);
+                                      m_areCompletionsSupported, m_areCodeActionsSupported);
         }
 
       private:
@@ -150,6 +165,13 @@ class ServerCapabilities
         ///
         //////////////////////////////////////////////////////////////
         bool m_isHoverSupported;
+
+        //////////////////////////////////////////////////////////////
+        ///
+        /// @brief Indicates whether code action functionality is supported.
+        ///
+        //////////////////////////////////////////////////////////////
+        bool m_areCodeActionsSupported;
     };
 
     //////////////////////////////////////////////////////////////
@@ -190,5 +212,12 @@ class ServerCapabilities
     ///
     //////////////////////////////////////////////////////////////
     bool m_isHoverSupported;
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Indicates whether hover functionality is supported.
+    ///
+    //////////////////////////////////////////////////////////////
+    bool m_areCodeActionsSupported;
 };
 } // namespace justanlsp

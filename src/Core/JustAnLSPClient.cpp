@@ -29,7 +29,7 @@ void JustAnLSPClient::addDocument(const std::string &URI, const std::string &doc
     m_documentsByURI.emplace(URI, document);
 
     JLSP_INFO(STR("Added text document with URI: %s, for client: %s", URI.c_str(),
-                 m_clientInfo.toString().c_str()));
+                  m_clientInfo.toString().c_str()));
 }
 
 std::string JustAnLSPClient::getDocumentByURI(const std::string &URI) const
@@ -50,7 +50,7 @@ void JustAnLSPClient::updateDocumentWithURI(const std::string &URI, const std::s
     m_documentsByURI[URI] = document;
 
     JLSP_INFO(STR("Updated text document with URI: %s, for client: %s", URI.c_str(),
-                 m_clientInfo.toString().c_str()));
+                  m_clientInfo.toString().c_str()));
 }
 
 } // namespace justanlsp

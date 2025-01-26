@@ -16,6 +16,7 @@ class ServerCapabilitiesDirector
         serverCapabilitesBuilder.withHoverSupport(true);
         serverCapabilitesBuilder.withSnippetSupport(true);
         serverCapabilitesBuilder.withCompletionSupport(true);
+        serverCapabilitesBuilder.withCodeActionSupport(true);
         return serverCapabilitesBuilder.build();
     }
 };
