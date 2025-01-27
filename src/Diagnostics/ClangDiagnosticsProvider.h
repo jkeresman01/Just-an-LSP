@@ -6,9 +6,9 @@
 
 namespace justanlsp
 {
-    class ClangDiagnosticsProvider : public IDiagnosticsProvider
-    {
-        public:
-        std::vector<Diagnostic> getDiagnostics(const std::string &document, const Position &position) override;
-    };
-}
+class ClangDiagnosticsProvider : public IDiagnosticsProvider
+{
+  public:
+    std::vector<Diagnostic> getDiagnostics(const std::string &document, const Position &position) override;
+};
+} // namespace justanlsp

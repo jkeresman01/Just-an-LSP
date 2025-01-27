@@ -1,6 +1,7 @@
 #pragma once
 
 #include <nlohmann/json.hpp>
+#include <sstream>
 
 #include "Position.h"
 
@@ -46,6 +47,16 @@ struct Range
             {"start", start.toJson()},
             {"end", end.toJson()},
         };
+    }
+
+    std::string toString() const
+    {
+        std::stringstream ss;
+
+        ss << "Start: " << start.toString() << "\r\n";
+        ss << "End: " << end.toString() << "\r\n";
+
+        return ss.str();
     }
 };
 } // namespace justanlsp

@@ -16,16 +16,17 @@ class CodeActionsProviderFactory
 
     static std::shared_ptr<ICodeActionsProvider> create()
     {
-        std::string codeActionProvider = ConfigurationManager::getInstance()->getProperty("codeActionProvider");
+        std::string codeActionProvider =
+            ConfigurationManager::getInstance()->getProperty("codeActionProvider");
 
         JLSP_DEBUG(STR("Code action provider: %s", codeActionProvider.c_str()));
 
-        if(codeActionProvider == "fake")
+        if (codeActionProvider == "fake")
         {
             return std::make_shared<FakeCodeActionsProvider>();
         }
 
-        //TODO implement rest of code action providers
+        // TODO implement rest of code action providers
 
         return std::make_shared<FakeCodeActionsProvider>();
     }

@@ -2,8 +2,8 @@
 
 #include <memory>
 
-#include "FakeDiagnosticsProvider.h"
 #include "ClangDiagnosticsProvider.h"
+#include "FakeDiagnosticsProvider.h"
 #include "IDiagnosticsProvider.h"
 
 #include "../Config/ConfigurationManager.h"
@@ -18,16 +18,17 @@ class DiagnosticsProviderFactory
 
     static std::shared_ptr<IDiagnosticsProvider> create()
     {
-        std::string diagnosticsProvider = ConfigurationManager::getInstance()->getProperty("diagnosticsProvider");
+        std::string diagnosticsProvider =
+            ConfigurationManager::getInstance()->getProperty("diagnosticsProvider");
 
         JLSP_DEBUG(STR("Diagnostics provder: %s", diagnosticsProvider.c_str()));
 
-        if(diagnosticsProvider == "fake")
+        if (diagnosticsProvider == "fake")
         {
             return std::make_shared<FakeDiagnosticsProvider>();
         }
 
-        if(diagnosticsProvider == "clang")
+        if (diagnosticsProvider == "clang")
         {
             return std::make_shared<ClangDiagnosticsProvider>();
         }

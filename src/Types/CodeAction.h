@@ -1,6 +1,7 @@
 #pragma once
 
 #include <nlohmann/json.hpp>
+#include <sstream>
 #include <string>
 
 #include "../Enums/CodeActionKind.h"
@@ -15,6 +16,18 @@ class CodeAction
 
     CodeAction(const std::string &title, const CodeActionKind &codeActionKind, const bool isPreffered,
                const WorkspaceEdit &edit){};
+
+    std::string toString() const
+    {
+        std::stringstream ss;
+
+        ss << "Title: " << m_title << "\r\n";
+        ss << "Kind: " << m_codeActionKind << "\r\n";
+        ss << "Is preffered: " << (m_isPreffered ? "YES" : "NO") << "\r\n";
+        ss << "Edit: " << m_workspaceEdit.toString() << "\r\n";
+
+        return ss.str();
+    }
 
     nlohmann::json toJson() const
     {

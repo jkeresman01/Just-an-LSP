@@ -9,6 +9,6 @@ namespace justanlsp
 class ICodeActionsProvider
 {
   public:
-    virtual std::vector<CodeAction> getCodeActions() = 0;
+    virtual std::vector<CodeAction> getCodeActions(const std::string &URI) = 0;
 };
 } // namespace justanlsp

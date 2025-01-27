@@ -39,5 +39,15 @@ struct Position
     ///
     //////////////////////////////////////////////////////////////
     nlohmann::json toJson() const { return {{"line", line}, {"character", character}}; }
+
+    std::string toString() const
+    {
+        std::stringstream ss;
+
+        ss << "Line: " << line << "\r\n";
+        ss << "Character: " << character << "\r\n";
+
+        return ss.str();
+    }
 };
 } // namespace justanlsp

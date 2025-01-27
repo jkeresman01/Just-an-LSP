@@ -80,7 +80,7 @@ std::pair<std::string, std::string> inline XMLUtil::parseFromFileLine(const std:
     if (hasPropertyName and hasPropertyValue)
     {
         std::string propertyName = line.substr(nameStart, nameEnd - nameStart);
-        std::string propertyValue  = line.substr(valueStart, valueEnd - valueStart);
+        std::string propertyValue = line.substr(valueStart, valueEnd - valueStart);
 
         property = std::make_pair(propertyName, propertyValue);
     }
@@ -98,9 +98,10 @@ std::string inline XMLUtil::trim(const std::string &line)
     size_t start = line.find_first_not_of(" \t\n\r");
     size_t end = line.find_last_not_of(" \t\n\r");
 
-    bool isAllWhitespaceLine = start or end;;
+    bool isAllWhitespaceLine = start or end;
+    ;
 
-    return isAllWhitespaceLine ? "" : line.substr(start , end - start + 1);
+    return isAllWhitespaceLine ? "" : line.substr(start, end - start + 1);
 }
 
 } // namespace justanlsp

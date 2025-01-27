@@ -3,6 +3,7 @@
 #include "TextEdit.h"
 
 #include <nlohmann/json.hpp>
+#include <sstream>
 #include <unordered_map>
 #include <vector>
 
@@ -31,6 +32,22 @@ struct WorkspaceEdit
         }
 
         return json;
+    }
+
+    std::string toString() const
+    {
+        std::stringstream ss;
+
+        for (const auto &[URI, edits] : changes)
+        {
+            for (const auto &edit : edits)
+            {
+                ss << "[" << URI << "]"
+                   << " : " << edit.toString() << "\r\n";
+            }
+        }
+
+        return ss.str();
     }
 };
 } // namespace justanlsp

@@ -22,12 +22,12 @@ class CompletionProviderFactory
 
         JLSP_DEBUG(STR("Completion provder: %s", completionProvider.c_str()));
 
-        if(completionProvider == "fake")
+        if (completionProvider == "fake")
         {
             return std::make_shared<FakeCompletionProvider>();
         }
 
-        //TODO implement rest of the completion providers
+        // TODO implement rest of the completion providers
 
         return std::make_shared<FakeCompletionProvider>();
     }
