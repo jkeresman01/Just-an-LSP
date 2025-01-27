@@ -99,7 +99,6 @@ std::string inline XMLUtil::trim(const std::string &line)
     size_t end = line.find_last_not_of(" \t\n\r");
 
     bool isAllWhitespaceLine = start or end;
-    ;
 
     return isAllWhitespaceLine ? "" : line.substr(start, end - start + 1);
 }
