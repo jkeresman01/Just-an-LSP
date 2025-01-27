@@ -11,9 +11,11 @@ namespace justanlsp
 {
 typedef std::unordered_map<std::string, std::vector<TextEdit>> ChangesT;
 
-struct WorkspaceEdit
+class WorkspaceEdit
 {
-    ChangesT changes;
+    public:
+
+        void addChage(const std::pair<std::string, std::vector<TextEdit>> &textEdit) const;
 
     nlohmann::json toJson() const
     {
@@ -49,5 +51,8 @@ struct WorkspaceEdit
 
         return ss.str();
     }
+
+    private:
+        ChangesT m_changes;
 };
 } // namespace justanlsp
