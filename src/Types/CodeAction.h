@@ -17,56 +17,22 @@ class CodeAction
     CodeAction(const std::string &title, const CodeActionKind &codeActionKind, const bool isPreffered,
                const WorkspaceEdit &edit){};
 
-    std::string toString() const
-    {
-        std::stringstream ss;
+    std::string toString() const;
 
-        ss << "Title: " << m_title << "\r\n";
-        ss << "Kind: " << m_codeActionKind << "\r\n";
-        ss << "Is preffered: " << (m_isPreffered ? "YES" : "NO") << "\r\n";
-        ss << "Edit: " << m_workspaceEdit.toString() << "\r\n";
-
-        return ss.str();
-    }
-
-    nlohmann::json toJson() const
-    {
-        nlohmann::json json;
-
-        json["title"] = m_title;
-        json["kind"] = m_codeActionKind;
-        json["isPreffered"] = m_isPreffered;
-        json["edit"] = m_workspaceEdit.toJson();
-
-        return json;
-    }
+    nlohmann::json toJson() const;
 
     class Builder
     {
       public:
-        Builder &withTitle(const std::string &title)
-        {
-            m_title = title;
-            return *this;
-        }
+        Builder &withTitle(const std::string &title);
 
-        Builder &withCodeActionKind(const CodeActionKind &codeActionKind)
-        {
-            m_codeActionKind = codeActionKind;
-            return *this;
-        }
+        Builder &withCodeActionKind(const CodeActionKind &codeActionKind);
 
-        Builder &withPrefferedFix(bool isPreffered)
-        {
-            m_isPreffered = isPreffered;
-            return *this;
-        }
+        Builder &withPrefferedFix(bool isPreffered);
 
-        Builder &withWorkspaceEdit(const WorkspaceEdit &workspaceEdit)
-        {
-            m_workspaceEdit = workspaceEdit;
-            return *this;
-        }
+        Builder &withWorkspaceEdit(const WorkspaceEdit &workspaceEdit);
+
+        CodeAction build();
 
       private:
         std::string m_title;
