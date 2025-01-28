@@ -9,11 +9,33 @@
 
 namespace justanlsp
 {
+
+//////////////////////////////////////////////////////////////
+///
+/// @class CodeActionsProviderFactory
+///
+/// @brief Factory class to create instances of code actions
+///        providers based on configuration settings.
+///
+//////////////////////////////////////////////////////////////
 class CodeActionsProviderFactory
 {
   public:
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Deleted constructor to prevent instantiation.
+    ///
+    //////////////////////////////////////////////////////////////
     CodeActionsProviderFactory() = delete;
 
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Creates an instance of a code actions provider.
+    ///
+    /// @return A shared pointer to an instance of
+    ///         a class implementing ICodeActionsProvider.
+    ///
+    //////////////////////////////////////////////////////////////
     static std::shared_ptr<ICodeActionsProvider> create()
     {
         std::string codeActionProvider =
@@ -31,4 +53,5 @@ class CodeActionsProviderFactory
         return std::make_shared<FakeCodeActionsProvider>();
     }
 };
+
 } // namespace justanlsp

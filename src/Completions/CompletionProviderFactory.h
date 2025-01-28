@@ -10,17 +10,38 @@
 
 namespace justanlsp
 {
+
+//////////////////////////////////////////////////////////////
+///
+/// @class CompletionProviderFactory
+///
+/// @brief Factory class for creating instances of completion
+///        providers based on configuration settings.
+///
+//////////////////////////////////////////////////////////////
 class CompletionProviderFactory
 {
   public:
-    // delete constructor to prevent instantion
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Deleted constructor to prevent instantiation.
+    ///
+    //////////////////////////////////////////////////////////////
     CompletionProviderFactory() = delete;
 
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Creates an instance of a completion provider.
+    ///
+    /// @return A shared pointer to an instance of a class
+    ///         implementing ICompletionProvider.
+    ///
+    //////////////////////////////////////////////////////////////
     static std::shared_ptr<ICompletionProvider> create()
     {
         std::string completionProvider = ConfigurationManager::getInstance()->getProperty("completion");
 
-        JLSP_DEBUG(STR("Completion provder: %s", completionProvider.c_str()));
+        JLSP_DEBUG(STR("Completion provider: %s", completionProvider.c_str()));
 
         if (completionProvider == "fake")
         {
@@ -32,4 +53,5 @@ class CompletionProviderFactory
         return std::make_shared<FakeCompletionProvider>();
     }
 };
+
 } // namespace justanlsp
