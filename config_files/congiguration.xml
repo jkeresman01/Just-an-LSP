@@ -4,5 +4,6 @@
     <property name="hoverProvider">fake</property>
     <property name="codeActionProvider">fake</property>
     <property name="diagnosticsProvider">fake</property>
+    <property name="snippetsProvider">fake</property>
 </config>
 

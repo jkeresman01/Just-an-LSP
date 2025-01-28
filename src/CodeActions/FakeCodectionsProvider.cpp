@@ -25,6 +25,8 @@ void FakeCodeActionsProvider::fillFakeCodeActions(std::vector<CodeAction> &codeA
 
     workspaceEdit.changes[URI].push_back(textEdit);
     codeActions.emplace_back("Code action test", CodeActionKind::QUICK_FIX, false, workspaceEdit);
+    codeActions.emplace_back("Code action test 1", CodeActionKind::QUICK_FIX, false, workspaceEdit);
+    codeActions.emplace_back("Code action test 2", CodeActionKind::QUICK_FIX, false, workspaceEdit);
 }
 
 } // namespace justanlsp

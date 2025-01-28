@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../Enums/CompletionItemKind.h"
+
 #include <nlohmann/json.hpp>
 #include <string>
 
@@ -26,7 +28,8 @@ class CompletionItem
     /// @param detail
     ///
     //////////////////////////////////////////////////////////////
-    CompletionItem(const std::string &label, const std::string &detail, const std::string &documentation,
+    CompletionItem(const std::string &label, const CompletionItemKind completionItemKind,
+                   const std::string &detail, const std::string &documentation,
                    const std::string &insertedText)
         : m_label(label), m_detail(detail), m_documentation(documentation){};
 
@@ -78,7 +81,11 @@ class CompletionItem
     //////////////////////////////////////////////////////////////
     nlohmann::json toJson() const
     {
-        return {{"label", m_label}, {"detail", m_detail}, {"documentation", m_documentation}};
+        return {{"label", m_label},
+                {"detail", m_detail},
+                {"insertText", m_insertText},
+                {"kind", m_completionItemKind},
+                {"documentation", m_documentation}};
     }
 
   private:
@@ -109,6 +116,13 @@ class CompletionItem
     ///
     //////////////////////////////////////////////////////////////
     std::string m_insertText;
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Completion item kind (QUICK_FIX, SNIPPET...)
+    ///
+    //////////////////////////////////////////////////////////////
+    CompletionItemKind m_completionItemKind;
 };
 
 } // namespace justanlsp

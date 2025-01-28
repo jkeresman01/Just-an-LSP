@@ -13,9 +13,8 @@ typedef std::unordered_map<std::string, std::vector<TextEdit>> ChangesT;
 
 class WorkspaceEdit
 {
-    public:
-
-        void addChage(const std::pair<std::string, std::vector<TextEdit>> &textEdit) const;
+  public:
+    void addChage(const std::pair<std::string, std::vector<TextEdit>> &textEdit) const;
 
     nlohmann::json toJson() const
     {
@@ -52,7 +51,7 @@ class WorkspaceEdit
         return ss.str();
     }
 
-    private:
-        ChangesT m_changes;
+  private:
+    ChangesT m_changes;
 };
 } // namespace justanlsp

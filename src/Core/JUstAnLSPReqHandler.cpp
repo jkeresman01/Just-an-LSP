@@ -20,6 +20,8 @@
 #include "../Params/PublishDiagnosticsParams.h"
 #include "../Results/CompletionResult.h"
 #include "../Rpc/Rpc.h"
+#include "../Snippets/ISnippetProvider.h"
+#include "../Snippets/SnippetProviderFactory.h"
 #include "../Types/CompletionItem.h"
 #include "../Types/Diagnostic.h"
 #include "../Types/TextDocumentItem.h"
@@ -30,6 +32,7 @@ namespace justanlsp
 
 JustAnLSPReqHandler::JustAnLSPReqHandler()
 {
+    m_snippetsProvider = SnippetProviderFactory::create();
     m_diagnosticsProvider = DiagnosticsProviderFactory::create();
     m_completionProvider = CompletionProviderFactory::create();
     m_codeActionsProvider = CodeActionsProviderFactory::create();

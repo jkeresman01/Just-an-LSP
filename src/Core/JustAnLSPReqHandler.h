@@ -12,6 +12,7 @@
 #include "../Messages/Request/HoverRequest.h"
 #include "../Messages/Request/InitializeRequest.h"
 #include "../Messages/Request/ShutdownRequest.h"
+#include "../Snippets/ISnippetProvider.h"
 #include "JustAnLSPClient.h"
 #include "JustAnLSPCounter.h"
 
@@ -133,5 +134,12 @@ class JustAnLSPReqHandler
     ///
     //////////////////////////////////////////////////////////////
     std::shared_ptr<ICodeActionsProvider> m_codeActionsProvider;
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief shared pointer to snippets provider object
+    ///
+    //////////////////////////////////////////////////////////////
+    std::shared_ptr<ICodeActionsProvider> m_snippetsProvider;
 };
 } // namespace justanlsp
