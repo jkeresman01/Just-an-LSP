@@ -17,17 +17,17 @@ void ConfigurationManager::load()
 {
     m_properties.clear();
 
-    std::ifstream in(XML_CONFIGURATION_PATH);
+    std::ifstream configFile(XML_CONFIGURATION_PATH);
 
-    if (!in)
+    if (!configFile.is_open())
     {
-        JLSP_ERROR(STR("No can do for config file: %s", XML_CONFIGURATION_PATH));
+        JLSP_ERROR(STR("No can do for configFile file: %s", XML_CONFIGURATION_PATH));
         return;
     }
 
-    load(in);
+    load(configFile);
 
-    in.close();
+    configFile.close();
 }
 
 std::string ConfigurationManager::getProperty(const std::string &propertyName)
