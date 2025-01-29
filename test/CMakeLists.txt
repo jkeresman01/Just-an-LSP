@@ -61,6 +61,7 @@ set(TEST_FILES
     Utils/RequestMethodType.cpp
     Utils/MessageUtilTest.cpp
     Utils/TraceLevelTest.cpp
+    Utils/XMLUtilTest.cpp
 )
 
 add_executable(run-tests ${SOURCE_FILES} ${TEST_FILES})
