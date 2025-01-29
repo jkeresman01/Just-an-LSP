@@ -102,7 +102,7 @@ class ConfigurationManager
     /// @brief Path to the XML configuration file
     ///
     //////////////////////////////////////////////////////////////
-    const char *XML_CONFIGURATION_PATH = "../../config_files/config.xml";
+    const char *XML_CONFIGURATION_PATH = "../../config/config.xml";
 
     //////////////////////////////////////////////////////////////
     ///
