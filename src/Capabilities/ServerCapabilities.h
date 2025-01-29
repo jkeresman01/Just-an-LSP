@@ -60,11 +60,7 @@ class ServerCapabilities
         /// @return Reference to the Builder for method chaining.
         ///
         //////////////////////////////////////////////////////////////
-        Builder &withTextDocumentSyncKind(const TextDocumentSyncKind &textDocuemntSyncKind)
-        {
-            m_textDocumentSyncKind = textDocuemntSyncKind;
-            return *this;
-        }
+        Builder &withTextDocumentSyncKind(const TextDocumentSyncKind &textDocuemntSyncKind);
 
         //////////////////////////////////////////////////////////////
         ///
@@ -75,11 +71,7 @@ class ServerCapabilities
         /// @return Reference to the Builder for method chaining.
         ///
         //////////////////////////////////////////////////////////////
-        Builder &withSnippetSupport(bool areSnippetsSupported)
-        {
-            m_areSnippetsSupported = areSnippetsSupported;
-            return *this;
-        }
+        Builder &withSnippetSupport(bool areSnippetsSupported);
 
         //////////////////////////////////////////////////////////////
         ///
@@ -90,11 +82,7 @@ class ServerCapabilities
         /// @return Reference to the Builder for method chaining.
         ///
         //////////////////////////////////////////////////////////////
-        Builder &withHoverSupport(bool isHoverSupported)
-        {
-            m_isHoverSupported = isHoverSupported;
-            return *this;
-        }
+        Builder &withHoverSupport(bool isHoverSupported);
 
         //////////////////////////////////////////////////////////////
         ///
@@ -105,26 +93,7 @@ class ServerCapabilities
         /// @return Reference to the Builder for method chaining.
         ///
         //////////////////////////////////////////////////////////////
-        Builder &withCompletionSupport(bool areCompletionsSupported)
-        {
-            m_areCompletionsSupported = areCompletionsSupported;
-            return *this;
-        }
-
-        //////////////////////////////////////////////////////////////
-        ///
-        /// @brief Enables or disables code action support.
-        ///
-        /// @param areCodeActions
-
-        /// @return Reference to the Builder for method chaining.
-        ///
-        //////////////////////////////////////////////////////////////
-        Builder &withCodeActionSupport(bool areCodeActionsSupported)
-        {
-            m_areCodeActionsSupported = areCodeActionsSupported;
-            return *this;
-        }
+        Builder &withCompletionSupport(bool areCompletionsSupported);
 
         //////////////////////////////////////////////////////////////
         ///
@@ -135,11 +104,19 @@ class ServerCapabilities
         /// @return Reference to the Builder for method chaining.
         ///
         //////////////////////////////////////////////////////////////
-        Builder &withDefinitionSupport(bool areDefintionsSupported)
-        {
-            m_areDefinitionsSupported = areDefintionsSupported;
-            return *this;
-        }
+        Builder &withCodeActionSupport(bool areCodeActionsSupported);
+
+        //////////////////////////////////////////////////////////////
+        ///
+        /// @brief Enables or disables code action support.
+        ///
+        /// @param areCodeActions
+        ///
+        /// @return Reference to the Builder for method chaining.
+        ///
+        //////////////////////////////////////////////////////////////
+        Builder &withDefinitionSupport(bool areDefintionsSupported);
+
         //////////////////////////////////////////////////////////////
         ///
         /// @brief Constructs a ServerCapabilities instance based on

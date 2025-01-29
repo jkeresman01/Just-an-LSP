@@ -11,7 +11,7 @@ namespace justanlsp
 ///
 /// @class IDiagnosticsProvider
 ///
-/// @brief An interface for providing diagnostics for a 
+/// @brief An interface for providing diagnostics for a
 ///        given document and position.
 ///
 //////////////////////////////////////////////////////////////
@@ -20,13 +20,13 @@ class IDiagnosticsProvider
   public:
     //////////////////////////////////////////////////////////////
     ///
-    /// @brief Retrieves a list of diagnostics for a given 
+    /// @brief Retrieves a list of diagnostics for a given
     ///        document and position.
     ///
-    /// @param document 
+    /// @param document
     /// @param position
     ///
-    /// @return A vector of Diagnostic objects representing the 
+    /// @return A vector of Diagnostic objects representing the
     ///         diagnostics for the specified document and position.
     ///
     //////////////////////////////////////////////////////////////
@@ -34,4 +34,3 @@ class IDiagnosticsProvider
 };
 
 } // namespace justanlsp
-
