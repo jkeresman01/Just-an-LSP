@@ -199,7 +199,7 @@ void JustAnLSPFacade::handleTextDocumentDefintionReqest(const nlohmann::json &js
 
     ensureNoReqIsProcessedAfterShutdown(jsonRPC);
 
-    std::shared_ptr<CodeActionRequest> definitionRequest =
+    std::shared_ptr<DefintionRequest> definitionRequest =
         MessageFactory::createGoToDefinitionRequest(jsonRPC);
 
     m_justAnLSPReqHandler->textDocumentDefintionReq(definitionRequest);

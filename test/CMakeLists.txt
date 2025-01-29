@@ -26,6 +26,7 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/../src/Params
     ${CMAKE_SOURCE_DIR}/../src/Rpc
     ${CMAKE_SOURCE_DIR}/../src/Types
+    ${CMAKE_SOURCE_DIR}/../src/Config
     ${CMAKE_SOURCE_DIR}/../src/Utils
 )
 
@@ -44,6 +45,7 @@ set(SOURCE_FILES
     ../src/Results/InitializeResult.cpp
     ../src/Capabilities/ServerCapabilities.cpp
     ../src/Types/Diagnostic.cpp
+    ../src/Config/ConfigurationManager.cpp
 )
 
 set(TEST_FILES
@@ -62,6 +64,7 @@ set(TEST_FILES
     Utils/MessageUtilTest.cpp
     Utils/TraceLevelTest.cpp
     Utils/XMLUtilTest.cpp
+    Config/ConfigurationManageTest.cpp
 )
 
 add_executable(run-tests ${SOURCE_FILES} ${TEST_FILES})
