@@ -95,4 +95,3 @@ TEST_F(MessageUtilTest, WillReturnEmptyJsonForNonJsonText)
     // THEN
     EXPECT_TRUE(result.is_null());
 }
-
