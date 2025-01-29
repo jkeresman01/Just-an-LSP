@@ -81,9 +81,10 @@ void JustAnLSPReqHandler::textDocumentDidOpenReq(
 
     std::shared_ptr<PublishDiagnosticsParams> diagnosticsParams =
         std::make_shared<PublishDiagnosticsParams>(URI, diagnostics);
-    PublishDiagnosticsNoticifation publishDiagnostics("textDocument/publishDiagnostics", diagnosticsParams);
+    PublishDiagnosticsNoticifation publishDiagnosticsNotification("textDocument/publishDiagnostics",
+                                                                  diagnosticsParams);
 
-    Rpc::send(publishDiagnostics);
+    Rpc::send(publishDiagnosticsNotification);
 
     JLSP_DEBUG("Request with method: textDocument/didOpen was successfully processed");
 }
@@ -106,9 +107,10 @@ void JustAnLSPReqHandler::textDocumentDidChangeReq(
 
     std::shared_ptr<PublishDiagnosticsParams> diagnosticsParams =
         std::make_shared<PublishDiagnosticsParams>(URI, diagnostics);
-    PublishDiagnosticsNoticifation publishDiagnostics("textDocument/publishDiagnostics", diagnosticsParams);
+    PublishDiagnosticsNoticifation publishDiagnosticsNotification("textDocument/publishDiagnostics",
+                                                                  diagnosticsParams);
 
-    Rpc::send(publishDiagnostics);
+    Rpc::send(publishDiagnosticsNotification);
 
     JLSP_DEBUG("Response successfully sent for textDocument/didChangerequest");
 }
@@ -151,6 +153,13 @@ void JustAnLSPReqHandler::textDocumentCodeActionReq(
     std::shared_ptr<CodeActionParams> codeActionParams = codeActionRequest->getParams();
 
     // TODO hover logic
+}
+
+void textDocumentDefinitionReq(const std::shared_ptr<DefintionRequest> &defintionRequest)
+{
+    JLSP_DEBUG("Processing textDocument/definition request");
+
+    std::shared_ptr<DefinitionParams> definitionParams = defintionRequest->getParams();
 }
 
 void JustAnLSPReqHandler::shutdownReq(const std::shared_ptr<ShutdownRequest> &shutdownRequest)

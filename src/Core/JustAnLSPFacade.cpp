@@ -56,6 +56,9 @@ void JustAnLSPFacade::handleRequest(const nlohmann::json &request)
     case RequestType::TEXT_DOCUMENT_CODE_ACTION:
         handleTextDocumentCodeActionRequest(request);
         break;
+    case RequestType::TEXT_DOCUMENT_DEFINITION:
+        handleTextDocumentDefintionReqest(request);
+        break;
     case RequestType::SHUTDOWN:
         handleShutdownRequest(request);
         break;
@@ -179,8 +182,6 @@ void JustAnLSPFacade::handleTextDocumentCodeActionRequest(const nlohmann::json &
 {
     JLSP_DEBUG("Received request with method: textDocument/codeAction");
 
-    JLSP_WARN(jsonRPC.dump(4));
-
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_CODE_ACTION);
 
     ensureNoReqIsProcessedAfterShutdown(jsonRPC);
@@ -188,6 +189,20 @@ void JustAnLSPFacade::handleTextDocumentCodeActionRequest(const nlohmann::json &
     std::shared_ptr<CodeActionRequest> codeActionRequest = MessageFactory::createCodeActionRequest(jsonRPC);
 
     m_justAnLSPReqHandler->textDocumentCodeActionReq(codeActionRequest);
+}
+
+void JustAnLSPFacade::handleTextDocumentDefintionReqest(const nlohmann::json &jsonRPC)
+{
+    JLSP_DEBUG("Received request with method: textDocument/codeAction");
+
+    m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_DEFINITION);
+
+    ensureNoReqIsProcessedAfterShutdown(jsonRPC);
+
+    std::shared_ptr<CodeActionRequest> definitionRequest =
+        MessageFactory::createGoToDefinitionRequest(jsonRPC);
+
+    m_justAnLSPReqHandler->textDocumentDefintionReq(definitionRequest);
 }
 
 void JustAnLSPFacade::ensureNoReqIsProcessedAfterShutdown(const nlohmann::json &jsonRPC)

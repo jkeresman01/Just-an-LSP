@@ -1,4 +1,4 @@
-#include "DefintionRequest.h"
+#include "DefinitionRequest.h"
 
 #include "../../Utils/Logger.h"
 

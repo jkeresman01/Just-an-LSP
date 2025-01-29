@@ -54,6 +54,10 @@ RequestType inline RequestMethodUtil::getType(const std::string &method)
     {
         return RequestType::TEXT_DOCUMENT_DID_CHANGE;
     }
+    else if (method == "textDocument/definition")
+    {
+        return RequestType::TEXT_DOCUMENT_DEFINITION;
+    }
     else if (method == "textDocument/completion")
     {
         return RequestType::TEXT_DOCUMENT_COMPLETION;

@@ -7,6 +7,7 @@
 #include "../Diagnostics/IDiagnosticsProvider.h"
 #include "../Messages/Request/CodeActionRequest.h"
 #include "../Messages/Request/CompletionRequest.h"
+#include "../Messages/Request/DefinitionRequest.h"
 #include "../Messages/Request/DidChangeTextDocumentRequest.h"
 #include "../Messages/Request/DidOpenTextDocumentRequest.h"
 #include "../Messages/Request/HoverRequest.h"
@@ -104,6 +105,15 @@ class JustAnLSPReqHandler
     ///
     //////////////////////////////////////////////////////////////
     void textDocumentCodeActionReq(const std::shared_ptr<CodeActionRequest> &codeActionRequest);
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Handles textDocument/definition request
+    ///
+    /// @param textDocument/definition request
+    ///
+    //////////////////////////////////////////////////////////////
+    void textDocumentDefinitionReq(const std::shared_ptr<DefintionRequest> &defintionRequest);
 
   private:
     //////////////////////////////////////////////////////////////

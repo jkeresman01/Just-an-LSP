@@ -5,6 +5,7 @@
 
 #include "../Messages/Request/CodeActionRequest.h"
 #include "../Messages/Request/CompletionRequest.h"
+#include "../Messages/Request/DefinitionRequest.h"
 #include "../Messages/Request/DidChangeTextDocumentRequest.h"
 #include "../Messages/Request/DidOpenTextDocumentRequest.h"
 #include "../Messages/Request/HoverRequest.h"
@@ -131,6 +132,20 @@ class MessageFactory
     static std::shared_ptr<CodeActionRequest> createCodeActionRequest(const nlohmann::json &jsonRPC)
     {
         return std::make_shared<CodeActionRequest>(jsonRPC);
+    }
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Creates an go to definition request message object.
+    ///
+    /// @param jsonRPC The JSON object containing the request data.
+    ///
+    /// @return A shared pointer to an go to definition request objecy
+    ///
+    //////////////////////////////////////////////////////////////
+    static std::shared_ptr<DefintionRequest> createGoToDefinitionRequest(const nlohmann::json &jsonRPC)
+    {
+        return std::make_shared<DefintionRequest>(jsonRPC);
     }
 };
 
