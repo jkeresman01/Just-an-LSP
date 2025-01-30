@@ -50,6 +50,7 @@ inline std::string DocumentUtil::extractPrefix(const std::string &document, cons
     {
         getline(ss, prefix);
     }
+
     JLSP_DEBUG(STR("Extracted prefix %s from document: %s", prefix.c_str(), document.c_str()));
 
     return prefix;

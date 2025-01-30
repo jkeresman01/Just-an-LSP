@@ -1,0 +1,85 @@
+{
+  "snippets": [
+    {
+      "label": "main function",
+      "insertText": "int main() {\n\t${0}// code\n\treturn 0;\n}",
+      "insertTextFormat": 2
+    },
+    {
+      "label": "for loop",
+      "insertText": "for (int ${1:i} = 0; ${1:i} < ${2:N}; ${1:i}++) {\n\t${0}// code\n}",
+      "insertTextFormat": 2
+    },
+    {
+      "label": "while loop",
+      "insertText": "while (${1:condition}) {\n\t${0}// code\n}",
+      "insertTextFormat": 2
+    },
+    {
+      "label": "if statement",
+      "insertText": "if (${1:condition}) {\n\t${0}// code\n}",
+      "insertTextFormat": 2
+    },
+    {
+      "label": "if-else statement",
+      "insertText": "if (${1:condition}) {\n\t${2}// code\n} else {\n\t${3}// code\n}",
+      "insertTextFormat": 2
+    },
+    {
+      "label": "switch case",
+      "insertText": "switch (${1:var}) {\n\tcase ${2:value}:\n\t\t${3}// code\n\t\tbreak;\n\tdefault:\n\t\t${4}// code\n}",
+      "insertTextFormat": 2
+    },
+    {
+      "label": "function",
+      "insertText": "${1:void} ${2:functionName}(${3:int arg}) {\n\t${0}// code\n}",
+      "insertTextFormat": 2
+    },
+    {
+      "label": "class definition",
+      "insertText": "class ${1:ClassName} {\npublic:\n\t${1:ClassName}() {}\n\t~${1:ClassName}() {}\nprivate:\n\t${2}// members\n};",
+      "insertTextFormat": 2
+    },
+    {
+      "label": "vector declaration",
+      "insertText": "std::vector<${1:int}> ${2:vec};",
+      "insertTextFormat": 2
+    },
+    {
+      "label": "map declaration",
+      "insertText": "std::map<${1:keyType}, ${2:valueType}> ${3:mapVar};",
+      "insertTextFormat": 2
+    },
+    {
+      "label": "shared pointer",
+      "insertText": "std::shared_ptr<${1:Type}> ${2:ptr} = std::make_shared<${1:Type}>(${3:args});",
+      "insertTextFormat": 2
+    },
+    {
+      "label": "unique pointer",
+      "insertText": "std::unique_ptr<${1:Type}> ${2:ptr} = std::make_unique<${1:Type}>(${3:args});",
+      "insertTextFormat": 2
+    },
+    {
+      "label": "mutex lock",
+      "insertText": "std::mutex ${1:mtx};\nstd::lock_guard<std::mutex> lock(${1:mtx});",
+      "insertTextFormat": 2
+    },
+    {
+      "label": "thread creation",
+      "insertText": "std::thread ${1:t}(${2:function});\n${1:t}.join();",
+      "insertTextFormat": 2
+    },
+    {
+      "label": "file read",
+      "insertText": "std::ifstream ${1:file}(\"${2:filename}.txt\");\nstd::string ${3:line};\nwhile (std::getline(${1:file}, ${3:line})) {\n\t${0}// process line\n}",
+      "insertTextFormat": 2
+    },
+    {
+      "label": "file write",
+      "insertText": "std::ofstream ${1:file}(\"${2:filename}.txt\");\n${1:file} << ${3:data} << std::endl;",
+      "insertTextFormat": 2
+    }
+  ]
+}
+

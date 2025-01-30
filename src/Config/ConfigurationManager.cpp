@@ -21,7 +21,7 @@ void ConfigurationManager::load()
 
     if (!configFile.is_open())
     {
-        JLSP_ERROR(STR("No can do for configFile file: %s", XML_CONFIGURATION_PATH));
+        JLSP_ERROR(STR("No can do for config file: %s", XML_CONFIGURATION_PATH));
         return;
     }
 
