@@ -38,7 +38,7 @@ std::string JustAnLSPClient::getDocumentByURI(const std::string &URI) const
 
     if (it == m_documentsByURI.end())
     {
-        JLSP_ERROR(STR("There are no registered documents with URI: %s !", URI.c_str()));
+        JLSP_ERROR(STR("There are no documents with URI: %s !", URI.c_str()));
         return std::string();
     }
 
