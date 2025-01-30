@@ -150,6 +150,6 @@ class JustAnLSPReqHandler
     /// @brief shared pointer to snippets provider object
     ///
     //////////////////////////////////////////////////////////////
-    std::shared_ptr<ICodeActionsProvider> m_snippetsProvider;
+    std::shared_ptr<ISnippetProvider> m_snippetsProvider;
 };
 } // namespace justanlsp
