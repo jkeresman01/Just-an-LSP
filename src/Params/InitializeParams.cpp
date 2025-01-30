@@ -55,7 +55,7 @@ void InitializeParams::setTraceLevel(const nlohmann::json &jsonRPC)
 
     if (it == jsonRPC.end())
     {
-        JLSP_ERROR("No trace value set in Initialize request, defaulting to TraceValue::OFF");
+        JLSP_WARN("No trace value set in Initialize request, defaulting to TraceValue::OFF");
 
         m_traceValue = TraceValue::OFF;
 
