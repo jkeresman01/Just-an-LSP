@@ -25,4 +25,22 @@ std::string ResponseError::toString() const
     return ss.str();
 }
 
+
+ResponseError::Builder &ResponseError::Builder::withErrorCode(const ErrorCodes &errorCode)
+{
+    m_errorCode = errorCode;
+    return *this;
+}
+
+ResponseError::Builder & ResponseError::Builder::withErrorMessage(const std::string &message)
+{
+    m_message = message;
+    return *this;
+}
+
+ResponseError ResponseError::Builder::build() const 
+{ 
+    return ResponseError(m_errorCode, m_message); 
+}
+
 } // namespace justanlsp

@@ -76,22 +76,42 @@ class ResponseError
     class Builder
     {
       public:
-        Builder &withErrorCode(const ErrorCodes &errorCode)
-        {
-            m_errorCode = errorCode;
-            return *this;
-        }
+        //////////////////////////////////////////////////////////////
+        ///
+        /// @brief Sets the error code in response error
+        ///
+        //////////////////////////////////////////////////////////////
+        Builder &withErrorCode(const ErrorCodes &errorCode);
 
-        Builder &withErrorMessage(const std::string &message)
-        {
-            m_message = message;
-            return *this;
-        }
 
-        ResponseError build() const { return ResponseError(m_errorCode, m_message); }
+        //////////////////////////////////////////////////////////////
+        ///
+        /// @brief Sets the error message in response errror
+        ///
+        //////////////////////////////////////////////////////////////
+        Builder &withErrorMessage(const std::string &message);
+
+
+        //////////////////////////////////////////////////////////////
+        ///
+        /// @brief Creates an instance on ResponseError
+        ///
+        //////////////////////////////////////////////////////////////
+        ResponseError build() const;
 
       private:
+        //////////////////////////////////////////////////////////////
+        ///
+        /// @brief The error code representing the type of error.
+        ///
+        //////////////////////////////////////////////////////////////
         ErrorCodes m_errorCode;
+
+        //////////////////////////////////////////////////////////////
+        ///
+        /// @brief A message providing additional information about the error.
+        ///
+        //////////////////////////////////////////////////////////////
         std::string m_message;
     };
 
