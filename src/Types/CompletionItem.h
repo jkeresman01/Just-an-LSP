@@ -30,8 +30,7 @@ class CompletionItem
     //////////////////////////////////////////////////////////////
     CompletionItem(const std::string &label, const CompletionItemKind completionItemKind,
                    const std::string &detail, const std::string &documentation,
-                   const std::string &insertedText)
-        : m_label(label), m_detail(detail), m_documentation(documentation){};
+                   const std::string &insertedText);
 
     //////////////////////////////////////////////////////////////
     ///
@@ -41,29 +40,13 @@ class CompletionItem
     class Builder
     {
       public:
-        Builder &withLabel(const std::string &label)
-        {
-            m_label = label;
-            return *this;
-        }
+        Builder &withLabel(const std::string &label);
 
-        Builder &withDetail(const std::string detail)
-        {
-            m_detail = detail;
-            return *this;
-        }
+        Builder &withDetail(const std::string detail);
 
-        Builder &withInsertedText(const std::string &insertedText)
-        {
-            m_insertedText = insertedText;
-            return *this;
-        }
+        Builder &withInsertedText(const std::string &insertedText);
 
-        Builder &withDocumentation(const std::string &documentation)
-        {
-            m_documentation = documentation;
-            return *this;
-        }
+        Builder &withDocumentation(const std::string &documentation);
 
       private:
         std::string m_label;
@@ -79,16 +62,8 @@ class CompletionItem
     /// @return Returns a JSON object representing the completion item,
     ///
     //////////////////////////////////////////////////////////////
-    nlohmann::json toJson() const
-    {
-        return {{"label", m_label},
-                {"detail", m_detail},
-                {"insertText", m_insertText},
-                {"kind", m_completionItemKind},
-                {"documentation", m_documentation}};
-    }
+    nlohmann::json toJson() const;
 
-  private:
     //////////////////////////////////////////////////////////////
     ///
     /// @brief The label of the completion item.
