@@ -49,6 +49,13 @@ struct Range
         };
     }
 
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @return String representation of Range type
+    ///
+    /// @return string representation of Range type
+    ///
+    //////////////////////////////////////////////////////////////
     std::string toString() const
     {
         std::stringstream ss;
