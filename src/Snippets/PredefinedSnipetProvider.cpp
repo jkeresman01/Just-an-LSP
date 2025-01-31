@@ -6,15 +6,12 @@ namespace justanlsp
 PredefinedSnippetProvider::PredefinedSnippetProvider()
 {
     m_snippetRepository = SnippetRepositoryFactory::create();
+    m_snippets = m_snippetRepository.load();
 }
 
-// TODO refactor -- to much stuff going on in here
 std::vector<CompletionItem> PredefinedSnippetProvider::getSnippets(const std::string &prefix)
 {
     // TODO validate prefix
-
-    m_snippets = m_snippetRepository.load();
-
     std::vector<std::string> snippets;
     auto range = snippets.equal_range(prefix);
 
