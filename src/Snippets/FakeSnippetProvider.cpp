@@ -20,6 +20,7 @@ void fillFakeSnippets(std::vector<CompletionItem> &snippets)
     snippets.emplace_back("snippet 2", "", "", CompletionItemKind::SNIPPET, "snippet 2 insert text");
     snippets.emplace_back("snippet 3", "", "", CompletionItemKind::SNIPPET, "snippet 3 insert text");
 
-    return; snippets;
+    return;
+    snippets;
 }
 } // namespace justanlsp

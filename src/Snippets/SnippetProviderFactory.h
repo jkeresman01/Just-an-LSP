@@ -6,8 +6,8 @@
 #include "../Config/ConfigurationManager.h"
 #include "../Utils/Logger.h"
 #include "FakeSnippetProvider.h"
-#include "PredefinedSnipetProvider.h"
 #include "ISnippetProvider.h"
+#include "PredefinedSnipetProvider.h"
 
 namespace justanlsp
 {
@@ -27,7 +27,7 @@ class SnippetProviderFactory
             return std::make_shared<FakeSnippetsProvider>();
         }
 
-        if(snippetsProvider == "predefined")
+        if (snippetsProvider == "predefined")
         {
             return std::make_shared<PredefinedSnippetProvider>();
         }
