@@ -1,19 +1,37 @@
 #pragma once
 
+#include <memory>
+
 #include "ISnippetRepository.h"
 #include "SnippetRepository.h"
 
-#include <map>
-#include <memory>
-#include <string>
-
 namespace justanlsp
 {
+//////////////////////////////////////////////////////////////
+///
+/// @class SnippetRepositoryFactory
+///
+/// @brief Factory class for creating instances of ISnippetRepository.
+///
+//////////////////////////////////////////////////////////////
 class SnippetRepositoryFactory
 {
   public:
-    SnippetRepositoryFactory() = default;
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Deleted constructor to prevent instantiation.
+    ///
+    //////////////////////////////////////////////////////////////
+    SnippetRepositoryFactory() = delete;
 
-    static std::unique_ptr<ISnippetRepository> create() { return std::unique_ptr<SnippetRepository>(); }
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Creates an instance of ISnippetRepository.
+    ///
+    /// @return A shared pointer to a newly created
+    ///         SnippetRepository instance.
+    ///
+    //////////////////////////////////////////////////////////////
+    static std::shared_ptr<ISnippetRepository> create() { return std::make_shared<SnippetRepository>(); }
 };
 } // namespace justanlsp
