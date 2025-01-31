@@ -1,0 +1,54 @@
+#pragma once
+
+#include "ISnippetRepository.h"
+#include "SnippetRepository.h"
+
+#include <map>
+#include <string>
+
+namespace justanlsp
+{
+//////////////////////////////////////////////////////////////
+///
+/// Typedefs
+///
+//////////////////////////////////////////////////////////////
+typedef std::multimap<std::string, std::string> SnippetsT;
+
+class SnippetRepository : public ISnippetRepository
+{
+  public:
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Loads predefined snippets for C++ programming language
+    ///
+    //////////////////////////////////////////////////////////////
+    std::multimap<std::string, std::string> load() override;
+
+  private:
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Loads predefined snippets for C++ programming
+    ///        language from provider input stream
+    ///
+    /// @param in
+    ///
+    //////////////////////////////////////////////////////////////
+    void load(std::ifstream &in);
+
+  private:
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Path to the predefined C++ snippets
+    ///
+    //////////////////////////////////////////////////////////////
+    const char *PREDEFINED_SNIPPETS_PATH = "../../snippets/snippets.json";
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Predefined snippets for C++ programming language
+    ///
+    //////////////////////////////////////////////////////////////
+    SnippetsT m_snippets;
+};
+} // namespace justanlsp
