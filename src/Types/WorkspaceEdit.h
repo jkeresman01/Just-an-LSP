@@ -16,40 +16,9 @@ class WorkspaceEdit
   public:
     void addChage(const std::pair<std::string, std::vector<TextEdit>> &textEdit) const;
 
-    nlohmann::json toJson() const
-    {
-        nlohmann::json json;
+    nlohmann::json toJson() const;
 
-        for (const auto &[URI, edits] : changes)
-        {
-            nlohmann::json jsonEdits = nlohmann::json::array();
-
-            for (const auto &edit : edits)
-            {
-                jsonEdits.push_back(edit.toJson());
-            }
-
-            json["changes"][URI] = jsonEdits;
-        }
-
-        return json;
-    }
-
-    std::string toString() const
-    {
-        std::stringstream ss;
-
-        for (const auto &[URI, edits] : changes)
-        {
-            for (const auto &edit : edits)
-            {
-                ss << "[" << URI << "]"
-                   << " : " << edit.toString() << "\r\n";
-            }
-        }
-
-        return ss.str();
-    }
+    std::string toString() const;
 
   private:
     ChangesT m_changes;
