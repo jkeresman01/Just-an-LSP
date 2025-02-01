@@ -125,12 +125,7 @@ class ServerCapabilities
         /// @return A ServerCapabilities instance.
         ///
         //////////////////////////////////////////////////////////////
-        ServerCapabilities build() const
-        {
-            return ServerCapabilities(m_textDocumentSyncKind, m_areSnippetsSupported, m_isHoverSupported,
-                                      m_areCompletionsSupported, m_areCodeActionsSupported,
-                                      m_areDefinitionsSupported);
-        }
+        ServerCapabilities build() const;
 
       private:
         //////////////////////////////////////////////////////////////
