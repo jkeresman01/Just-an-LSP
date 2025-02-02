@@ -24,7 +24,7 @@ class XMLUtil
 
     /////////////////////////////////////////////////////////////////////
     ///
-    /// @brief Delete default constructor to prevent instantiation
+    /// @brief Parse xml property from line in XML file
     ///
     /// @param line from XML file
     ///
