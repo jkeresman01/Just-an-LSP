@@ -40,6 +40,13 @@ struct Position
     //////////////////////////////////////////////////////////////
     nlohmann::json toJson() const { return {{"line", line}, {"character", character}}; }
 
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Converts Postion to it's string representation
+    ///
+    /// @return String representation of postion
+    ///
+    //////////////////////////////////////////////////////////////
     std::string toString() const
     {
         std::stringstream ss;
