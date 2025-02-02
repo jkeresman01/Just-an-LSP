@@ -91,7 +91,9 @@ inline std::string DocumentUtil::extractPrefix(const std::string &document, cons
 
     if (!isValidPosition)
     {
-        return line;
+        JLSP_WARN(STR("Invalid position, when trying to extract prefix, at line %zu, character %zu:",
+                      position.line, position.character));
+        return std::string();
     }
 
     size_t start = findStartOfTheWord(line, position);
