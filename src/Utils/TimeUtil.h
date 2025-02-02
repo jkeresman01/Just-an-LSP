@@ -5,6 +5,8 @@
 #include <iomanip>
 #include <ostream>
 
+using namespace std::chrono;
+
 namespace justanlsp
 {
 
@@ -49,9 +51,8 @@ class TimeUtil
 
 inline std::time_t TimeUtil::now()
 {
-    std::chrono::time_point<std::chrono::high_resolution_clock> currentTime =
-        std::chrono::high_resolution_clock::now();
-    return std::chrono::high_resolution_clock::to_time_t(currentTime);
+    time_point<std::chrono::high_resolution_clock> currentTime = high_resolution_clock::now();
+    return high_resolution_clock::to_time_t(currentTime);
 }
 
 inline std::ostream &TimeUtil::putTime(std::ostream &out, const std::time_t &time)
