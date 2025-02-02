@@ -20,10 +20,14 @@ void FakeCodeActionsProvider::fillFakeCodeActions(std::vector<CodeAction> &codeA
                                                   const std::string &URI)
 {
     WorkspaceEdit workspaceEdit;
-    Range range{{4, 0}, {4, 10}};
+    Range range{{2, 0}, {4, 10}};
+
     TextEdit textEdit(range, "New text");
 
-    workspaceEdit.changes[URI].push_back(textEdit);
+    std::vector<TextEdit> textEdits;
+    textEdits.push_back(textEdit);
+
+    workspaceEdit.addChage({URI, textEdits});
     codeActions.emplace_back("Code action test", CodeActionKind::QUICK_FIX, false, workspaceEdit);
     codeActions.emplace_back("Code action test 1", CodeActionKind::QUICK_FIX, false, workspaceEdit);
     codeActions.emplace_back("Code action test 2", CodeActionKind::QUICK_FIX, false, workspaceEdit);
