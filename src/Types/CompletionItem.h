@@ -40,19 +40,91 @@ class CompletionItem
     class Builder
     {
       public:
+        //////////////////////////////////////////////////////////////
+        ///
+        /// @brief Sets the label of the completion item
+        ///
+        /// @param label
+        ///
+        /// @return Reference to the Builder for method chaining.
+        ///
+        //////////////////////////////////////////////////////////////
         Builder &withLabel(const std::string &label);
 
+        //////////////////////////////////////////////////////////////
+        ///
+        /// @brief Sets the details of the completion item
+        ///
+        /// @param label
+        ///
+        /// @return Reference to the Builder for method chaining.
+        ///
+        //////////////////////////////////////////////////////////////
         Builder &withDetail(const std::string detail);
 
+        //////////////////////////////////////////////////////////////
+        ///
+        /// @brief Sets the text that will be inserted for the completion item
+        ///
+        /// @param insertedText
+        ///
+        /// @return Reference to the Builder for method chaining.
+        ///
+        //////////////////////////////////////////////////////////////
         Builder &withInsertedText(const std::string &insertedText);
 
+        //////////////////////////////////////////////////////////////
+        ///
+        /// @brief Sets the documentaiton for completion item
+        ///
+        /// @param documentation
+        ///
+        /// @return Reference to the Builder for method chaining.
+        ///
+        //////////////////////////////////////////////////////////////
         Builder &withDocumentation(const std::string &documentation);
+
+        //////////////////////////////////////////////////////////////
+        ///
+        /// @brief Sets the completion item kind
+        ///
+        /// @param completionItemKind
+        ///
+        /// @return Reference to the Builder for method chaining.
+        ///
+        //////////////////////////////////////////////////////////////
+        Builder &withCompletionItemKind(const CompletionItemKind &completionItemKind);
 
       private:
         std::string m_label;
+
+        //////////////////////////////////////////////////////////////
+        ///
+        /// @brief Additional detail about the completion item.
+        ///
+        //////////////////////////////////////////////////////////////
         std::string m_detail;
+
+        //////////////////////////////////////////////////////////////
+        ///
+        /// @brief Text to ne inserted by the editor
+        ///
+        //////////////////////////////////////////////////////////////
         std::string m_documentation;
+
+        //////////////////////////////////////////////////////////////
+        ///
+        /// @brief Text to ne inserted by the editor
+        ///
+        //////////////////////////////////////////////////////////////
         std::string m_insertedText;
+
+        //////////////////////////////////////////////////////////////
+        ///
+        /// @brief Completion item kind (QUICK_FIX, SNIPPET...)
+        ///
+        //////////////////////////////////////////////////////////////
+        CompletionItemKind m_completionItemKind;
     };
 
     //////////////////////////////////////////////////////////////

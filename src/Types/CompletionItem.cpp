@@ -32,6 +32,13 @@ CompletionItem::Builder &CompletionItem::Builder::withDocumentation(const std::s
     return *this;
 }
 
+CompletionItem::Builder &CompletionItem::Builder::withCompletionItemKind(
+    const CompletionItemKind &completionItemKind)
+{
+    m_completionItemKind = completionItemKind;
+    return *this;
+}
+
 nlohmann::json CompletionItem::toJson() const
 {
     return {{"label", m_label},

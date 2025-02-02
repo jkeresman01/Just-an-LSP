@@ -4,7 +4,6 @@
 
 namespace justanlsp
 {
-typedef std::unordered_map<std::string, std::vector<TextEdit>> ChangesT;
 
 void WorkspaceEdit::addChage(const std::pair<std::string, std::vector<TextEdit>> &textEdit) const
 {

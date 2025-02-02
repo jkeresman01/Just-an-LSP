@@ -9,11 +9,19 @@
 
 namespace justanlsp
 {
+
+//////////////////////////////////////////////////////////////
+///
+/// Typedefs
+///
+//////////////////////////////////////////////////////////////
 typedef std::unordered_map<std::string, std::vector<TextEdit>> ChangesT;
 
 class WorkspaceEdit
 {
   public:
+    WorkspaceEdit() = default;
+
     void addChage(const std::pair<std::string, std::vector<TextEdit>> &textEdit) const;
 
     nlohmann::json toJson() const;
