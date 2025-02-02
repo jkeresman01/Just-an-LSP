@@ -51,7 +51,7 @@ class TimeUtil
 
 inline std::time_t TimeUtil::now()
 {
-    time_point<std::chrono::high_resolution_clock> currentTime = high_resolution_clock::now();
+    time_point<high_resolution_clock> currentTime = high_resolution_clock::now();
     return high_resolution_clock::to_time_t(currentTime);
 }
 
