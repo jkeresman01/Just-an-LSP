@@ -42,7 +42,7 @@ class Logger
     {
         std::ofstream logfile("/tmp/log.txt", std::ios::app);
 
-        if (!logfile)
+        if (!logfile.is_open())
         {
             std::cerr << "No can do for opening log file!" << std::endl;
             return;
