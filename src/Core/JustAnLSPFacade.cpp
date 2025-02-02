@@ -71,83 +71,83 @@ void JustAnLSPFacade::handleRequest(const nlohmann::json &request)
     }
 }
 
-void JustAnLSPFacade::handleInitializeRequest(const nlohmann::json &jsonRPC)
+void JustAnLSPFacade::handleInitializeRequest(const nlohmann::json &request)
 {
     JLSP_DEBUG("Received request with method: initialize");
 
     m_justAnLspCounters->increment(RequestType::INITIALIZE);
 
-    ensureNoReqIsProcessedAfterShutdown(jsonRPC);
+    ensureNoReqIsProcessedAfterShutdown(request);
 
-    std::shared_ptr<InitializeRequest> initializeRequest = MessageFactory::createInitializeReq(jsonRPC);
+    std::shared_ptr<InitializeRequest> initializeRequest = MessageFactory::createInitializeReq(request);
 
     m_justAnLSPReqHandler->initializeReq(initializeRequest);
 }
 
-void JustAnLSPFacade::handleShutdownRequest(const nlohmann::json &jsonRPC)
+void JustAnLSPFacade::handleShutdownRequest(const nlohmann::json &request)
 {
     JLSP_DEBUG("Received request with method: shutdown");
 
     m_justAnLspCounters->increment(RequestType::SHUTDOWN);
 
-    std::shared_ptr<ShutdownRequest> shutdownRequest = MessageFactory::createShutdownReq(jsonRPC);
+    std::shared_ptr<ShutdownRequest> shutdownRequest = MessageFactory::createShutdownReq(request);
 
     m_justAnLSPReqHandler->shutdownReq(shutdownRequest);
 }
 
-void JustAnLSPFacade::handleInitializedRequest(const nlohmann::json &jsonRPC)
+void JustAnLSPFacade::handleInitializedRequest(const nlohmann::json &request)
 {
     JLSP_DEBUG("Received notification with method: initialized");
 
     m_justAnLspCounters->increment(RequestType::INITIALIZED);
 
-    ensureNoReqIsProcessedAfterShutdown(jsonRPC);
+    ensureNoReqIsProcessedAfterShutdown(request);
 
     JLSP_DEBUG("Successful connection between client and JustAnLSPServer has been established");
 }
 
-void JustAnLSPFacade::handleTextDocumentDidOpenRequest(const nlohmann::json &jsonRPC)
+void JustAnLSPFacade::handleTextDocumentDidOpenRequest(const nlohmann::json &request)
 {
     JLSP_DEBUG("Received notification with method: textDocument/didOpen");
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_DID_OPEN);
 
-    ensureNoReqIsProcessedAfterShutdown(jsonRPC);
+    ensureNoReqIsProcessedAfterShutdown(request);
 
     std::shared_ptr<DidOpenTextDocumentRequest> didOpenTextDocumentNotification =
-        MessageFactory::createDidOpenTextDocumentReq(jsonRPC);
+        MessageFactory::createDidOpenTextDocumentReq(request);
 
     m_justAnLSPReqHandler->textDocumentDidOpenReq(didOpenTextDocumentNotification);
 }
 
-void JustAnLSPFacade::handleTextDocumentDidChangeRequest(const nlohmann::json &jsonRPC)
+void JustAnLSPFacade::handleTextDocumentDidChangeRequest(const nlohmann::json &request)
 {
     JLSP_DEBUG("Received request with method: textDocument/didChange");
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_DID_CHANGE);
 
-    ensureNoReqIsProcessedAfterShutdown(jsonRPC);
+    ensureNoReqIsProcessedAfterShutdown(request);
 
     std::shared_ptr<DidChangeTextDocumentRequest> didChangeTextDocumentReq =
-        MessageFactory::createDidChangeTextDocumentReq(jsonRPC);
+        MessageFactory::createDidChangeTextDocumentReq(request);
 
     m_justAnLSPReqHandler->textDocumentDidChangeReq(didChangeTextDocumentReq);
 }
 
-void JustAnLSPFacade::handleTextDocumentCompletionRequest(const nlohmann::json &jsonRPC)
+void JustAnLSPFacade::handleTextDocumentCompletionRequest(const nlohmann::json &request)
 {
     JLSP_DEBUG("Received request with method: textDocument/completion");
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_COMPLETION);
 
-    ensureNoReqIsProcessedAfterShutdown(jsonRPC);
+    ensureNoReqIsProcessedAfterShutdown(request);
 
-    std::shared_ptr<CompletionRequest> completionRequest = MessageFactory::createCompletionReq(jsonRPC);
+    std::shared_ptr<CompletionRequest> completionRequest = MessageFactory::createCompletionReq(request);
 
     m_justAnLSPReqHandler->textDocumentCompletionReq(completionRequest);
 }
 
-void JustAnLSPFacade::handleExitRequest(const nlohmann::json &jsonRPC)
+void JustAnLSPFacade::handleExitRequest(const nlohmann::json &request)
 {
     JLSP_DEBUG("Received notification with method: exit");
 
@@ -165,54 +165,54 @@ void JustAnLSPFacade::handleExitRequest(const nlohmann::json &jsonRPC)
     }
 }
 
-void JustAnLSPFacade::handleTextDocumentHoverRequest(const nlohmann::json &jsonRPC)
+void JustAnLSPFacade::handleTextDocumentHoverRequest(const nlohmann::json &request)
 {
     JLSP_DEBUG("Received request with method: textDocument/hover");
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_HOVER);
 
-    ensureNoReqIsProcessedAfterShutdown(jsonRPC);
+    ensureNoReqIsProcessedAfterShutdown(request);
 
-    std::shared_ptr<HoverRequest> hoverRequest = MessageFactory::createHoverReq(jsonRPC);
+    std::shared_ptr<HoverRequest> hoverRequest = MessageFactory::createHoverReq(request);
 
     m_justAnLSPReqHandler->textDocumentHoverReq(hoverRequest);
 }
 
-void JustAnLSPFacade::handleTextDocumentCodeActionRequest(const nlohmann::json &jsonRPC)
+void JustAnLSPFacade::handleTextDocumentCodeActionRequest(const nlohmann::json &request)
 {
     JLSP_DEBUG("Received request with method: textDocument/codeAction");
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_CODE_ACTION);
 
-    ensureNoReqIsProcessedAfterShutdown(jsonRPC);
+    ensureNoReqIsProcessedAfterShutdown(request);
 
-    std::shared_ptr<CodeActionRequest> codeActionRequest = MessageFactory::createCodeActionRequest(jsonRPC);
+    std::shared_ptr<CodeActionRequest> codeActionRequest = MessageFactory::createCodeActionRequest(request);
 
     m_justAnLSPReqHandler->textDocumentCodeActionReq(codeActionRequest);
 }
 
-void JustAnLSPFacade::handleTextDocumentDefintionReqest(const nlohmann::json &jsonRPC)
+void JustAnLSPFacade::handleTextDocumentDefintionReqest(const nlohmann::json &request)
 {
     JLSP_DEBUG("Received request with method: textDocument/codeAction");
 
     m_justAnLspCounters->increment(RequestType::TEXT_DOCUMENT_DEFINITION);
 
-    ensureNoReqIsProcessedAfterShutdown(jsonRPC);
+    ensureNoReqIsProcessedAfterShutdown(request);
 
     std::shared_ptr<DefintionRequest> definitionRequest =
-        MessageFactory::createGoToDefinitionRequest(jsonRPC);
+        MessageFactory::createGoToDefinitionRequest(request);
 
     m_justAnLSPReqHandler->textDocumentDefintionReq(definitionRequest);
 }
 
-void JustAnLSPFacade::ensureNoReqIsProcessedAfterShutdown(const nlohmann::json &jsonRPC)
+void JustAnLSPFacade::ensureNoReqIsProcessedAfterShutdown(const nlohmann::json &request)
 {
     bool isShutdownReqReceived = m_justAnLspCounters->getValue(RequestType::SHUTDOWN) != 0;
 
     if (isShutdownReqReceived)
     {
         JLSP_ERROR("Received request after shutdown");
-        m_justAnLSPErrorHandler->handleReceivedReqAfterShutdownError(jsonRPC["id"]);
+        m_justAnLSPErrorHandler->handleReceivedReqAfterShutdownError(request["id"]);
     }
 }
 
