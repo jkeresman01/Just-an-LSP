@@ -14,7 +14,7 @@ std::string CodeAction::toString() const
     std::stringstream ss;
 
     ss << "Title: " << m_title << "\r\n";
-    ss << "Kind: " << static_cast<uint_fast32_t>(m_codeActionKind) << "\r\n";
+    ss << "Kind: " << static_cast<uint32_t>(m_codeActionKind) << "\r\n";
     ss << "Is preffered: " << (m_isPreffered ? "YES" : "NO") << "\r\n";
     ss << "Edit: " << m_workspaceEdit.toString() << "\r\n";
 
