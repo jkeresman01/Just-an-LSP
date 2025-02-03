@@ -134,7 +134,7 @@ class JustAnLSPFacade
     /// @param jsonRPC request
     ///
     //////////////////////////////////////////////////////////////
-    void handleTextDocumentDefintionReqest(const nlohmann::json &request);
+    void handleTextDocumentDefintionRequest(const nlohmann::json &request);
 
   private:
     //////////////////////////////////////////////////////////////

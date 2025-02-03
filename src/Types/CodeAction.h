@@ -37,7 +37,7 @@ class CodeAction
     ///
     //////////////////////////////////////////////////////////////
     CodeAction(const std::string &title, const CodeActionKind &codeActionKind, const bool isPreffered,
-               const WorkspaceEdit &edit){};
+               const WorkspaceEdit &edit);
 
     //////////////////////////////////////////////////////////////
     ///

@@ -155,7 +155,7 @@ void JustAnLSPReqHandler::textDocumentCodeActionReq(
     // TODO hover logic
 }
 
-void textDocumentDefinitionReq(const std::shared_ptr<DefintionRequest> &defintionRequest)
+void JustAnLSPReqHandler::textDocumentDefinitionReq(const std::shared_ptr<DefintionRequest> &defintionRequest)
 {
     JLSP_DEBUG("Processing textDocument/definition request");
 

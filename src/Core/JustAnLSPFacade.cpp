@@ -57,7 +57,7 @@ void JustAnLSPFacade::handleRequest(const nlohmann::json &request)
         handleTextDocumentCodeActionRequest(request);
         break;
     case RequestType::TEXT_DOCUMENT_DEFINITION:
-        handleTextDocumentDefintionReqest(request);
+        handleTextDocumentDefintionRequest(request);
         break;
     case RequestType::SHUTDOWN:
         handleShutdownRequest(request);
@@ -191,7 +191,7 @@ void JustAnLSPFacade::handleTextDocumentCodeActionRequest(const nlohmann::json &
     m_justAnLSPReqHandler->textDocumentCodeActionReq(codeActionRequest);
 }
 
-void JustAnLSPFacade::handleTextDocumentDefintionReqest(const nlohmann::json &request)
+void JustAnLSPFacade::handleTextDocumentDefintionRequest(const nlohmann::json &request)
 {
     JLSP_DEBUG("Received request with method: textDocument/codeAction");
 
@@ -202,7 +202,7 @@ void JustAnLSPFacade::handleTextDocumentDefintionReqest(const nlohmann::json &re
     std::shared_ptr<DefintionRequest> definitionRequest =
         MessageFactory::createGoToDefinitionRequest(request);
 
-    m_justAnLSPReqHandler->textDocumentDefintionReq(definitionRequest);
+    m_justAnLSPReqHandler->textDocumentDefinitionReq(definitionRequest);
 }
 
 void JustAnLSPFacade::ensureNoReqIsProcessedAfterShutdown(const nlohmann::json &request)

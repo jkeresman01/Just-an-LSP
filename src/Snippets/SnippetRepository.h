@@ -23,7 +23,7 @@ class SnippetRepository : public ISnippetRepository
     /// @brief Loads predefined snippets for C++ programming language
     ///
     //////////////////////////////////////////////////////////////
-    std::multimap<std::string, std::string> load() override;
+    SnippetsT load() override;
 
   private:
     //////////////////////////////////////////////////////////////
@@ -34,7 +34,7 @@ class SnippetRepository : public ISnippetRepository
     /// @param in
     ///
     //////////////////////////////////////////////////////////////
-    void load(std::ifstream &in);
+    void load(std::ifstream &snippetsFile);
 
   private:
     //////////////////////////////////////////////////////////////

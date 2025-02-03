@@ -22,6 +22,13 @@ class CompletionItem
     ///
     /// @brief Constructs textDocument/completion item
     ///
+    //////////////////////////////////////////////////////////////
+    CompletionItem() = default;
+
+    //////////////////////////////////////////////////////////////
+    ///
+    /// @brief Constructs textDocument/completion item
+    ///
     /// @param label
     /// @param detail
     /// @param documentation

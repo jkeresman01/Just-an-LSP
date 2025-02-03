@@ -76,6 +76,6 @@ class PredefinedSnippetProvider : public ISnippetProvider
     /// @brief Unique pointer to an instance of ISnippetRepository
     ///
     //////////////////////////////////////////////////////////////
-    std::unique_ptr<ISnippetRepository> m_snippetRepository;
+    std::shared_ptr<ISnippetRepository> m_snippetRepository;
 };
 } // namespace justanlsp

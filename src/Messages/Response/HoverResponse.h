@@ -3,7 +3,7 @@
 #include <nlohmann/json.hpp>
 #include <string>
 
-#include "../../Results/HoverResult.h/"
+#include "../../Results/HoverResult.h"
 #include "ResponseMessage.h"
 
 namespace justanlsp
@@ -57,6 +57,6 @@ class HoverResponse : public ResponseMessage
     ///
     //////////////////////////////////////////////////////////////
     HoverResult m_hoverResult;
-}
+};
 
 } // namespace justanlsp

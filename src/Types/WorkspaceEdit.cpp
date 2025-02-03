@@ -5,7 +5,7 @@
 namespace justanlsp
 {
 
-void WorkspaceEdit::addChage(const std::pair<std::string, std::vector<TextEdit>> &textEdit) const
+void WorkspaceEdit::addChage(const std::pair<std::string, std::vector<TextEdit>> &textEdit)
 {
     m_changes.insert(textEdit);
 }
@@ -14,7 +14,7 @@ nlohmann::json WorkspaceEdit::toJson() const
 {
     nlohmann::json json;
 
-    for (const auto &[URI, edits] : changes)
+    for (const auto &[URI, edits] : m_changes)
     {
         nlohmann::json jsonEdits = nlohmann::json::array();
 
@@ -33,7 +33,7 @@ std::string WorkspaceEdit::toString() const
 {
     std::stringstream ss;
 
-    for (const auto &[URI, edits] : changes)
+    for (const auto &[URI, edits] : m_changes)
     {
         for (const auto &edit : edits)
         {

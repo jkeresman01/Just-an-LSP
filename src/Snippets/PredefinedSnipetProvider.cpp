@@ -6,21 +6,21 @@ namespace justanlsp
 PredefinedSnippetProvider::PredefinedSnippetProvider()
 {
     m_snippetRepository = SnippetRepositoryFactory::create();
-    m_snippets = m_snippetRepository.load();
+    m_snippets = m_snippetRepository->load();
 }
 
 std::vector<CompletionItem> PredefinedSnippetProvider::getSnippets(const std::string &prefix)
 {
     // TODO validate prefix
     std::vector<std::string> snippets;
-    auto range = snippets.equal_range(prefix);
+    auto range = m_snippets.equal_range(prefix);
 
     for (auto it = range.first; it != range.second; ++it)
     {
         snippets.push_back(it->second);
     }
 
-    return getCompletionItems(snippets, prefix);
+    return getCompletions(snippets, prefix);
 }
 
 std::vector<CompletionItem> PredefinedSnippetProvider::getCompletions(
@@ -30,7 +30,7 @@ std::vector<CompletionItem> PredefinedSnippetProvider::getCompletions(
 
     for (size_t i = 0; i < completionItems.size(); ++i)
     {
-        completionItems.emplace_back(prefix, "", "", CompletionItemKind::SNIPPET, snippets[i]);
+        completionItems.emplace_back(prefix, CompletionItemKind::SNIPPET, "", "",  snippets[i]);
     }
 
     return completionItems;
