@@ -36,19 +36,15 @@ std::vector<Diagnostic> ClangDiagnosticsProvider::getDiagnostics(const std::stri
     std::vector<Diagnostic> diagnostics;
     unsigned numDiagnostics = m_diagnosticsEngine.getNumDiagnostics();
 
+    Diagnostic justAnLSPDiagnostic;
     for (unsigned i = 0; i < numDiagnostics; ++i)
     {
         clang::Diagnostic &clangDiagnostics = m_diagnosticsEngine.getDiagnostic(i);
-        Diagnostic justAnLSPDiagnostic;
 
         justAnLSPDiagnostic.message =
-            clang::DiagnosticIDs::getDiagnosticString(justAnLSPDiagnosticnostic.getID());
+            clang::DiagnosticIDs::getDiagnosticString(clangDiagnostics.getID());
         justAnLSPDiagnostic.severity =
-            static_cast<DiagnosticSeverity>(justAnLSPDiagnosticnostic.getSeverity());
-
-        clang::SourceLocation location = justAnLSPDiagnosticnostic.getLocation();
-        clang::SourceRange range = justAnLSPDiagnosticnostic.getRange();
-
+            static_cast<DiagnosticSeverity>(clangDiagnostics.getSeverity());
         justAnLSPDiagnostic.range = Range(location, range.getEnd());
 
         justAnLSPDiagnosticnostics.push_back(justAnLSPDiagnostic);
