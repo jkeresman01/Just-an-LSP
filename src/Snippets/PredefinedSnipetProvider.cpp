@@ -30,7 +30,7 @@ std::vector<CompletionItem> PredefinedSnippetProvider::getCompletions(
 
     for (size_t i = 0; i < completionItems.size(); ++i)
     {
-        completionItems.emplace_back(prefix, CompletionItemKind::SNIPPET, "", "",  snippets[i]);
+        completionItems.emplace_back(prefix, CompletionItemKind::SNIPPET, "", "", snippets[i]);
     }
 
     return completionItems;

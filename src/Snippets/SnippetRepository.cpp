@@ -6,32 +6,33 @@
 
 namespace justanlsp
 {
-    SnippetsT SnippetRepository ::load()
+SnippetsT SnippetRepository ::load()
+{
+    std::ifstream snippetsFile(PREDEFINED_SNIPPETS_PATH);
+
+    if (!snippetsFile.is_open())
     {
-        std::ifstream snippetsFile(PREDEFINED_SNIPPETS_PATH);
-
-        if (!snippetsFile.is_open()) {
-            JLSP_ERROR(STR("No can do for %s", PREDEFINED_SNIPPETS_PATH));
-            return {};
-        }
-
-        load(snippetsFile); 
-
-        snippetsFile.close();
-
-        return m_snippets;
+        JLSP_ERROR(STR("No can do for %s", PREDEFINED_SNIPPETS_PATH));
+        return {};
     }
 
+    load(snippetsFile);
+    snippetsFile.close();
 
-    void SnippetRepository::load(std::ifstream &snippetsFile)
+    return m_snippets;
+}
+
+void SnippetRepository::load(std::ifstream &snippetsFile)
+{
+    nlohmann::json snippetsJson;
+    snippetsFile >> snippetsJson;
+
+    for (auto &[key, snippets] : snippetsJson.items())
     {
-        nlohmann::json snippetsJson;
-        snippetsFile >> snippetsJson;
-
-        for (auto& [key, values] : snippetsJson.items()) {
-            for (const auto& snippet : values) {
-                m_snippets.insert({key, snippet});
-            }
+        for (const auto &snippet : snippets)
+        {
+            m_snippets.insert({key, snippet});
         }
     }
 }
+} // namespace justanlsp

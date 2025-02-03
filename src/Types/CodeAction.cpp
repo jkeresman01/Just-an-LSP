@@ -6,7 +6,7 @@ namespace justanlsp
 {
 
 CodeAction::CodeAction(const std::string &title, const CodeActionKind &codeActionKind, const bool isPreffered,
-           const WorkspaceEdit &edit)
+                       const WorkspaceEdit &edit)
     : m_title(title), m_codeActionKind(codeActionKind), m_isPreffered(isPreffered), m_workspaceEdit(edit){};
 
 std::string CodeAction::toString() const
