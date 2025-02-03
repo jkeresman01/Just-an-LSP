@@ -11,7 +11,6 @@ PredefinedSnippetProvider::PredefinedSnippetProvider()
 
 std::vector<CompletionItem> PredefinedSnippetProvider::getSnippets(const std::string &prefix)
 {
-    // TODO validate prefix
     std::vector<std::string> snippets;
     auto range = m_snippets.equal_range(prefix);
 
