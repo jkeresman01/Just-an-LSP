@@ -37,8 +37,8 @@ std::string WorkspaceEdit::toString() const
     {
         for (const auto &edit : edits)
         {
-            ss << "[" << URI << "]"
-               << " : " << edit.toString() << "\r\n";
+            ss << "[" << URI << "]";
+            ss << " : " << edit.toString() << "\r\n";
         }
     }
 
