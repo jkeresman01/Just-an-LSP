@@ -7,17 +7,17 @@ namespace justanlsp
 {
 JustAnLSPCounter::JustAnLSPCounter()
 {
-    m_justAnLSPCounters.resize(static_cast<int32_t>(RequestType::COUNT), 0);
+    m_justAnLSPCounters.resize(static_cast<uint32_t>(RequestType::COUNT), 0);
 }
 
 void JustAnLSPCounter::increment(RequestType requestType)
 {
-    m_justAnLSPCounters[static_cast<int32_t>(requestType)]++;
+    m_justAnLSPCounters[static_cast<uint32_t>(requestType)]++;
 };
 
 uint32_t JustAnLSPCounter::getValue(RequestType requestType) const
 {
-    return m_justAnLSPCounters[static_cast<int32_t>(requestType)];
+    return m_justAnLSPCounters[static_cast<uint32_t>(requestType)];
 };
 
 uint32_t JustAnLSPCounter::getSum() const
