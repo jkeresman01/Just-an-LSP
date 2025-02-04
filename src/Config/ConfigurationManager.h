@@ -51,6 +51,15 @@ class ConfigurationManager
 
     //////////////////////////////////////////////////////////////
     ///
+    /// @brief Helper function to load properties from a file stream
+    ///
+    /// @param in Reference to an input file stream
+    ///
+    //////////////////////////////////////////////////////////////
+    void load(std::ifstream &in);
+
+    //////////////////////////////////////////////////////////////
+    ///
     /// @brief Get the Singleton instance of ConfigurationManager
     ///
     /// @return Pointer to the single instance of ConfigurationManager
@@ -73,21 +82,12 @@ class ConfigurationManager
     ///
     /// @brief Private constructor
     ///
-    /// Ensures that the class can only be instantiated through
-    /// the `getInstance` method.
+    /// @note Ensures that the class can only be instantiated through
+    ///       the `getInstance` method.
     ///
     //////////////////////////////////////////////////////////////
     ConfigurationManager() = default;
-
-    //////////////////////////////////////////////////////////////
-    ///
-    /// @brief Helper function to load properties from a file stream
-    ///
-    /// @param in Reference to an input file stream
-    ///
-    //////////////////////////////////////////////////////////////
-    void load(std::ifstream &in);
-
+    
   private:
     //////////////////////////////////////////////////////////////
     ///

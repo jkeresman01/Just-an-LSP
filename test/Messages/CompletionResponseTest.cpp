@@ -19,7 +19,8 @@ class CompletionResponseTest : public ::testing::Test
     std::vector<CompletionItem> completionItems{
         CompletionItem("dnsClient", "DNS client test 1", "DNS client test 1 documentation"),
         CompletionItem("dnsClientId", "DNS client test 1", "DNS client id test 1 documentation"),
-        CompletionItem("dnsClientIpAddress", "DNS client ip address test 1", "DNS client ip address test 1 documentation"),
+        CompletionItem("dnsClientIpAddress", "DNS client ip address test 1",
+                       "DNS client ip address test 1 documentation"),
     };
 
     CompletionResult mockCompletionResult{completionItems};

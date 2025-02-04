@@ -21,6 +21,10 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/../src/Core
     ${CMAKE_SOURCE_DIR}/../src/Enums
     ${CMAKE_SOURCE_DIR}/../src/Errors
+    ${CMAKE_SOURCE_DIR}/../src/CodeActions
+    ${CMAKE_SOURCE_DIR}/../src/Diagnostics
+    ${CMAKE_SOURCE_DIR}/../src/Completions
+    ${CMAKE_SOURCE_DIR}/../src/Snippets
     ${CMAKE_SOURCE_DIR}/../src/Factories
     ${CMAKE_SOURCE_DIR}/../src/Messages
     ${CMAKE_SOURCE_DIR}/../src/Params
@@ -48,6 +52,7 @@ set(SOURCE_FILES
     ../src/Config/ConfigurationManager.cpp
 )
 
+# TODO add rest of the tests
 set(TEST_FILES
     Test.cpp
     Algo/TrieTest.cpp 
