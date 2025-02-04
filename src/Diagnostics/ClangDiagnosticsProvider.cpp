@@ -41,10 +41,8 @@ std::vector<Diagnostic> ClangDiagnosticsProvider::getDiagnostics(const std::stri
     {
         clang::Diagnostic &clangDiagnostics = m_diagnosticsEngine.getDiagnostic(i);
 
-        justAnLSPDiagnostic.message =
-            clang::DiagnosticIDs::getDiagnosticString(clangDiagnostics.getID());
-        justAnLSPDiagnostic.severity =
-            static_cast<DiagnosticSeverity>(clangDiagnostics.getSeverity());
+        justAnLSPDiagnostic.message = clang::DiagnosticIDs::getDiagnosticString(clangDiagnostics.getID());
+        justAnLSPDiagnostic.severity = static_cast<DiagnosticSeverity>(clangDiagnostics.getSeverity());
         justAnLSPDiagnostic.range = Range(location, range.getEnd());
 
         justAnLSPDiagnosticnostics.push_back(justAnLSPDiagnostic);
