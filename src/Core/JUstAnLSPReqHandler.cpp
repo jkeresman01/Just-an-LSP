@@ -31,11 +31,11 @@ namespace justanlsp
 {
 
 JustAnLSPReqHandler::JustAnLSPReqHandler()
+    : m_snippetsProvider(SnippetProviderFactory::create()),
+      m_diagnosticsProvider(DiagnosticsProviderFactory::create()),
+      m_completionProvider(CompletionProviderFactory::create()),
+      m_codeActionsProvider(CodeActionsProviderFactory::create())
 {
-    m_snippetsProvider = SnippetProviderFactory::create();
-    m_diagnosticsProvider = DiagnosticsProviderFactory::create();
-    m_completionProvider = CompletionProviderFactory::create();
-    m_codeActionsProvider = CodeActionsProviderFactory::create();
 }
 
 void JustAnLSPReqHandler::initializeReq(const std::shared_ptr<InitializeRequest> &initializeRequest)
