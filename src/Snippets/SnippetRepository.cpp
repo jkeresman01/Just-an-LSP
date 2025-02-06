@@ -31,7 +31,7 @@ void SnippetRepository::load(std::ifstream &snippetsFile)
     {
         for (const auto &snippet : snippets)
         {
-            m_snippets.insert({key, snippet});
+            m_snippets.emplace(key, snippet);
         }
     }
 }
