@@ -24,7 +24,7 @@ void CodeActionParams::setRange(const nlohmann::json &jsonRPC)
     nlohmann::json range = jsonRPC["range"];
 
     setStartPosition(range["start"]);
-    setStartPosition(range["end"]);
+    setEndPosition(range["end"]);
 }
 
 void CodeActionParams::setStartPosition(const nlohmann::json &jsonRPC)
