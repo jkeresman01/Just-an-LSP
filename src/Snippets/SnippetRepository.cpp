@@ -6,7 +6,7 @@
 
 namespace justanlsp
 {
-SnippetsT SnippetRepository ::load()
+SnippetsT SnippetRepository::load()
 {
     std::ifstream snippetsFile(PREDEFINED_SNIPPETS_PATH);
 
