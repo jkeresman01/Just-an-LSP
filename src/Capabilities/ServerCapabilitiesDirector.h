@@ -9,15 +9,13 @@ class ServerCapabilitiesDirector
   public:
     ServerCapabilitiesDirector() = delete;
 
-    static ServerCapabilities getDefaultServerCapabilites(
-        ServerCapabilities::Builder &serverCapabilitesBuilder)
+    static void createDefaultServerCapabilities(ServerCapabilities::Builder &serverCapabilitesBuilder)
     {
-        serverCapabilitesBuilder.withTextDocumentSyncKind(TextDocumentSyncKind::FULL);
-        serverCapabilitesBuilder.withHoverSupport(true);
-        serverCapabilitesBuilder.withSnippetSupport(true);
-        serverCapabilitesBuilder.withCompletionSupport(true);
-        serverCapabilitesBuilder.withCodeActionSupport(true);
-        return serverCapabilitesBuilder.build();
+        serverCapabilitesBuilder.withTextDocumentSyncKind(TextDocumentSyncKind::FULL)
+            .withHoverSupport(true)
+            .withSnippetSupport(true)
+            .withCompletionSupport(true)
+            .withCodeActionSupport(true);
     }
 };
 } // namespace justanlsp
