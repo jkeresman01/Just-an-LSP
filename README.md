@@ -1,4 +1,15 @@
-# !!!!!!!!!!!!!! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; THIS ISN'T BAKED YET &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   !!!!!!!!!!!!!!
+
+<div align="center">
+
+  <h1>Just-an-LSP</h1>
+  <h3> !!!!!!!   Not baked yet   !!!!!!! </h3>
+  <h6> ---> Toy langauge server for C++, just for funzies <--- </h6>
+
+![C++](https://img.shields.io/badge/C++-blue?style=for-the-badge&logo=c%2B%2B)
+![Work In Progress](https://img.shields.io/badge/Work%20In%20Progress-orange?style=for-the-badge)
+
+</div>
+
 # Just-an-LSP #
 Just me and myself trying to build language server for C++ programming language
 
